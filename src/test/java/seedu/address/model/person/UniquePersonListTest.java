@@ -168,3 +168,4 @@ public class UniquePersonListTest {
             -> uniquePersonList.asUnmodifiableObservableList().remove(0));
     }
 }
+
