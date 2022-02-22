@@ -23,7 +23,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/yunbinmo.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/yunbinmo)]
 [[portfolio](team/yunbinmo.md)]
 
 * Role: Integration
