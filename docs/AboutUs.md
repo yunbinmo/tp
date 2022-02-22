@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Koh Su En
 
-<img src"images/seksek13.png" width="200px">
+<img src="images/seksek13.png" width="200px">
 
 [[github](http://github.com/seksek13)]
 [[portfolio](team/seksek13.md)]
