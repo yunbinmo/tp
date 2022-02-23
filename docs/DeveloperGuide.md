@@ -288,6 +288,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+**Use case: Add a client** (***todo***)
+**Use case: Edit a client** (***todo***)
+
+**MSS**
+
+1.  User requests to list cleints.
+2.  Mr Agent shows a list of clients.
+3.  User requests to edit a specific client by index in the list and enters requested details.
+4.  Mr Agent updates the client.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Mr Agent shows an error message.
+
+      Use case resumes at step 2.
+      
+* 3b. Mr Agent detects an error in the entered data.
+
+    * 3a1. Mr Agent shows an error message.
+
+      Use case resumes at step 3.
+    
+      
+**Use case: List a client** (***todo***)
 
 **Use case: Delete a client**
 
