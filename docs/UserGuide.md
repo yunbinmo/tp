@@ -143,12 +143,41 @@ Examples: (***todo***)
   ![result for 'find alex david'](images/findAlexDavidResult.png)
   
 ### Adding a Insurance type: `add -i` (***todo***)
+
+Adds a type of insurance 
+
+Format: `add -i KEYWORD`
+
+* Adds a insurance type as specified in the `KEYWORD`
+* The keyword will be case insensitve
+
+Examples: (***todo***)
+* `add -i hosipitalision`
+* `add -i terminal_illness`
+
 ### Listing all Insurance type: `list -i` (***todo***)
 ### Deleting a Insurance type: `delete -i` (***todo***)
 ### Editing a Insurance type: `edit -i` (***coming soon***)
 
 ### Adding a record to a client: `add -r` (***todo***)
+
+Adds an insurance to a client
+
+Format: `add -r INDEX [i/TYPE] [sd/START_DATE] [ed/END_DATE]
+
+* START_DATE and END_DATE are in the format of dd-MM-yyyy
+
+Examples: (***todo***)
+* `add -r 10 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision type insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
+* `add -r 25 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
+
+
 ### Listing all record: `list -r` (***todo***)
+
+Lists all records that the insurance agent have
+
+Format: `list -r`
+
 ### Deleting a record: `delete -r` (***todo***)
 ### Editing a record : `edit -r` (***coming soon***)
 ### Locating record by keyword(client id/name,insurance id/name): `find -r` (***coming soon***)
