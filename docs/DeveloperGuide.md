@@ -273,10 +273,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
+| `* * *`  | user                                       | add a new client               |                                                                        |
+| `* * *`  | user                                       | delete a client                | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | find a client by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                       | list all clients               | view clients that are in my contact            |
+| `* * *`  | user                                       | add a insurance type           | easily indentify which type of insurance my clients bought    |
+| `* * *`  | user                                       | list all insurance type        | view all tpyes of insurance that I sell
+|
+| `* * *`  | user                                       | add a insurance to client      | keep a record of the insurances that the client have
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 
 *{More to be added}*
@@ -285,14 +289,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Delete a client**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list cleints
+2.  Mr Agent shows a list of clients
+3.  User requests to delete a specific client by index in the list
+4.  Mr Agent deletes the client
 
     Use case ends.
 
@@ -304,7 +308,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. Mr Agent shows an error message.
 
       Use case resumes at step 2.
 
