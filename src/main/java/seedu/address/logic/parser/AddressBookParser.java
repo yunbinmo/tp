@@ -6,15 +6,15 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.DeletePersonCommand;
+import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindPersonCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -41,26 +41,52 @@ public class AddressBookParser {
         }
 
         final String commandWord = matcher.group("commandWord");
-        final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        final String theRest = matcher.group("arguments");
 
-        case AddCommand.COMMAND_WORD:
+        final String type = theRest.trim().substring(0, 2);
+        final String arguments = theRest.trim().substring(2);
+
+        switch (type) {
+        case Command.COMMAND_PERSON:
+            return parsePersonCommand(commandWord, arguments);
+        case Command.COMMAND_INSURANCE:
+            //TODO: parse insurance
+        case Command.COMMAND_RECORD:
+            //TODO: parse record
+        case Command.COMMAND_APPOINTMENT:
+            //TODO: parse appointment
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    /**
+     * Parse person command command.
+     *
+     * @param commandWord the command word
+     * @param arguments the argument
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public Command parsePersonCommand(String commandWord, String arguments) throws ParseException {
+        switch (commandWord) {
+        case AddPersonCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
+        case EditPersonCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
+        case DeletePersonCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
+        case FindPersonCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ListPersonCommand.COMMAND_WORD:
+            return new ListPersonCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
