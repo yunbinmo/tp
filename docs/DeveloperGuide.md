@@ -257,13 +257,13 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of clients
+* has a need to manage and schedule numerous appointments
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
 
 
 ### User stories
@@ -357,7 +357,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Client**: Contacts that needs to be managed by user
+* **Insurance category:** Types of insurance, e.g. health, financial, life
 
 --------------------------------------------------------------------------------------------------------------------
 
