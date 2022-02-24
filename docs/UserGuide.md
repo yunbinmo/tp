@@ -3,14 +3,14 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Mr. Agent is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Quick start (***todo***)
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -38,7 +38,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Features (***todo***)
 
 <div markdown="block" class="alert alert-info">
 
@@ -64,7 +64,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 </div>
 
-### Viewing help : `help`
+### Viewing help : `help` (***todo***)
 
 Shows a message explaning how to access the help page.
 
@@ -73,33 +73,47 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a client: `add -c`
 
-Adds a person to the address book.
+Adds a client to Mr. Agent.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DESCRIPTION [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+A client can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01 d/come from China`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 d/like to coffee t/NUS`
 
-### Listing all persons : `list`
+### Listing all client : `list -c`
 
-Shows a list of all persons in the address book.
+Shows a list of all clients in the Mr. Agent.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Deleting a client : `delete -c`
 
-Edits an existing person in the address book.
+Deletes the specified client from the Mr. Agent.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `delete -c INDEX`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list -c` followed by `delete -c 2` deletes the 2nd person in the Mr. Agent.
+* `find -c Junjie` followed by `delete -c 1` deletes the 1st person in the results of the `find` command.
+
+### Editing a client : `edit -c`
+
+Edits an existing client in the Mr. Agent.
+
+Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DESCRIPTION] [t/TAG]…​`
+
+* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
@@ -110,41 +124,73 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating client by name: `find -c`
 
-Finds persons whose names contain any of the given keywords.
+Finds client whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find -c KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is case-insensitive. e.g `mike` will match `Mike`
+* The order of the keywords does not matter. e.g. `Lee Junjie` will match `Junjie Lee`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Only full words will be matched e.g. `Le` will not match `Lee`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  e.g. `Lee Junjie` will return `Wong Junjie`, `Lee Yang`
 
-Examples:
+Examples: (***todo***)
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
+  
+### Adding a Insurance type: `add -i` (***todo***)
 
-### Deleting a person : `delete`
+Adds a type of insurance 
 
-Deletes the specified person from the address book.
+Format: `add -i KEYWORD`
 
-Format: `delete INDEX`
+* Adds a insurance type as specified in the `KEYWORD`
+* The keyword will be case insensitve
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+Examples: (***todo***)
+* `add -i hosipitalision`
+* `add -i terminal_illness`
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+### Listing all Insurance type: `list -i` (***todo***)
+### Deleting a Insurance type: `delete -i` (***todo***)
+### Editing a Insurance type: `edit -i` (***coming soon***)
 
-### Clearing all entries : `clear`
+### Adding a record to a client: `add -r` (***todo***)
 
-Clears all entries from the address book.
+Adds an insurance to a client
+
+Format: `add -r INDEX [i/TYPE] [sd/START_DATE] [ed/END_DATE]
+
+* START_DATE and END_DATE are in the format of dd-MM-yyyy
+
+Examples: (***todo***)
+* `add -r 10 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision type insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
+* `add -r 25 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
+
+
+### Listing all record: `list -r` (***todo***)
+
+Lists all records that the insurance agent have
+
+Format: `list -r`
+
+### Deleting a record: `delete -r` (***todo***)
+### Editing a record : `edit -r` (***coming soon***)
+### Locating record by keyword(client id/name,insurance id/name): `find -r` (***coming soon***)
+
+### Adding an appointment with client: `add -a` (***todo***)
+### Listing all appointment: `list -a` (***todo***)
+### Deleting a appointment: `delete -a` (***todo***)
+### Editing a appointment: `edit -a` (***coming soon***)
+### Locating appointment by keyword: `find -a` (***coming soon***)
+
+### Clearing all entries : `clear` (***todo***)
+
+Clears all entries from the Mr. Agent.
 
 Format: `clear`
 
