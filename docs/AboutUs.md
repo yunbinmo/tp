@@ -29,16 +29,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Integration
 * Responsibilities: Appointment
 
-### Koh Su En
-
-<img src"images/seksek13.png" width="200px">
-
-[[github](http://github.com/seksek13)]
-[[portfolio](team/seksek13.md)]
-
-* Role: Documentation
-* Responsibilities: Responsible for the quality of various project documents.
-
 ### Jessica Jacelyn
 
 <img src="images/johndoe.png" width="200px">
