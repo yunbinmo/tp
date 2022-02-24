@@ -293,7 +293,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list cleints.
+1.  User requests to list clients.
 2.  Mr Agent shows a list of clients.
 3.  User requests to edit a specific client by index in the list and enters requested details.
 4.  Mr Agent updates the client.
@@ -319,13 +319,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 3.
     
       
-**Use case: List a client** (***todo***)
+**Use case: List a client**
+
+**MSS**
+
+1.  User requests to list clients
+2.  Mr Agent shows a list of clients
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
 
 **Use case: Delete a client**
 
 **MSS**
 
-1.  User requests to list cleints
+1.  User requests to list clients
 2.  Mr Agent shows a list of clients
 3.  User requests to delete a specific client by index in the list
 4.  Mr Agent deletes the client
