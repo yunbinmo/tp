@@ -271,18 +271,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new client               |                                                                        |
-| `* * *`  | user                                       | delete a client                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a client by name          | locate details of persons without having to go through the entire list |
-| `* * *`  | user                                       | list all clients               | view clients that are in my contact            |
-| `* * *`  | user                                       | add a insurance type           | easily indentify which type of insurance my clients bought    |
-| `* * *`  | user                                       | list all insurance type        | view all tpyes of insurance that I sell
+| Priority | As a …​                                        | I want to …​              | So that I can…​                                                        |
+|----------|------------------------------------------------|---------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                       | see usage instructions    | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                           | add a new client          |                                                                        |
+| `* * *`  | user                                           | delete a client           | remove entries that I no longer need                                   |
+| `* * *`  | user                                           | find a client by name     | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                           | list all clients          | view clients that are in my contact                                    |
+| `* * *`  | user                                           | add a insurance type      | easily indentify which type of insurance my clients bought             |
+| `* * *`  | user                                           | list all insurance type   | view all tpyes of insurance that I sell                                
 |
-| `* * *`  | user                                       | add a insurance to client      | keep a record of the insurances that the client have
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | user                                           | add a insurance to client | keep a record of the insurances that the client have                   
+| `*`      | user with many persons in the address book     | sort persons by name      | locate a person easily                                                 |
+| `***`    | insurance agent frequently having appointments | view all appointments     | I can be reminded of all the meetings I have with my clients           |
+| `***`    | insurance agent frequently having appointments     | add new appointments      | note down any future meetings I have with my client                    |
+| `***`    | insurance agent frequently having appointments     | delete an appointment      | get rid of any canceled/completed appointments to avoid confusion      |
 
 *{More to be added}*
 
