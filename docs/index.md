@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Insurance agent helper
+title: Mr. Agent
 ---
 [![Java CI](https://github.com/AY2122S2-CS2103-F09-3/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2122S2-CS2103-F09-3/tp/actions/workflows/gradle.yml)
 [![codecov](https://codecov.io/gh/AY2122S2-CS2103-F09-3/tp/branch/master/graph/badge.svg?token=52KJ8BFDAX)](https://codecov.io/gh/AY2122S2-CS2103-F09-3/tp)

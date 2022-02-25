@@ -257,14 +257,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* insurance agent who has a need to manage a significant number of clients
-* has a need to manage upcoming appointments
+
+* has a need to manage a significant number of clients
+* has a need to manage and schedule numerous appointments
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
 
 
 ### User stories
@@ -294,7 +294,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list cleints.
+1.  User requests to list clients.
 2.  Mr Agent shows a list of clients.
 3.  User requests to edit a specific client by index in the list and enters requested details.
 4.  Mr Agent updates the client.
@@ -320,13 +320,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 3.
     
       
-**Use case: List a client** (***todo***)
+**Use case: List a client**
+
+**MSS**
+
+1.  User requests to list clients
+2.  Mr Agent shows a list of clients
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
 
 **Use case: Delete a client**
 
 **MSS**
 
-1.  User requests to list cleints
+1.  User requests to list clients
 2.  Mr Agent shows a list of clients
 3.  User requests to delete a specific client by index in the list
 4.  Mr Agent deletes the client
@@ -359,9 +373,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Insurance code**: 
+* **Client**: Contacts that needs to be managed by user
+* **Insurance category:** Types of insurance, e.g. health, financial, life
 
-*{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
 
