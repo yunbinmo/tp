@@ -279,21 +279,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                           | find a client by name     | locate details of persons without having to go through the entire list |
 | `* * *`  | user                                           | list all clients          | view clients that are in my contact                                    |
 | `* * *`  | user                                           | add a insurance type      | easily indentify which type of insurance my clients bought             |
-| `* * *`  | user                                           | list all insurance type   | view all tpyes of insurance that I sell                                
-|
-| `* * *`  | user                                           | add a insurance to client | keep a record of the insurances that the client have                   
+| `* * *`  | user                                           | list all insurance type   | view all tpyes of insurance that I sell                                |
+| `* * *`  | user                                           | add a insurance to client | keep a record of the insurances that the client have                   |
 | `*`      | user with many persons in the address book     | sort persons by name      | locate a person easily                                                 |
 | `***`    | insurance agent frequently having appointments | view all appointments     | I can be reminded of all the meetings I have with my clients           |
-| `***`    | insurance agent frequently having appointments     | add new appointments      | note down any future meetings I have with my client                    |
-| `***`    | insurance agent frequently having appointments     | delete an appointment      | get rid of any canceled/completed appointments to avoid confusion      |
+| `***`    | insurance agent frequently having appointments     | add new appointments      | note down any future meetings I have with my client                |
+| `***`    | insurance agent frequently having appointments     | delete an appointment      | get rid of any canceled/completed appointments to avoid confusion |
 
 *{More to be added}*
 
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-**Use case: Add a client** (***todo***)
-**Use case: Edit a client** (***todo***)
+
+**Use case: Add a client**
+
+**MSS**
+1. User enters command and arguments to add new client.
+2. Mr Agent shows success message for adding client.
+
+**Extensions**
+* 2a. The argument(s) are incomplete.
+
+    * 2a1. Mr Agent shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Edit a client**
 
 **MSS**
 
