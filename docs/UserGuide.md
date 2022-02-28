@@ -152,9 +152,27 @@ Format: `list -r`
 ### Editing a record : `edit -r` (***coming soon***)
 ### Locating record by keyword(client id/name,insurance id/name): `find -r` (***coming soon***)
 
-### Adding an appointment with client: `add -a` (***todo***)
-### Listing all appointment: `list -a` (***todo***)
-### Deleting a appointment: `delete -a` (***todo***)
+### Adding an appointment with client: `add -a`
+
+Adds a new appointment with client
+
+Format: `add -a CLIENT_INDEX d/DESCRIPTION dt/DATETIME`
+
+Examples:
+* `add -a 1 d/Meet James dt/20-02-2022 1800` 
+
+### Listing all appointment: `list -a`
+
+Lists all appointments with clients
+
+Format: `list -a`
+
+### Deleting a appointment: `delete -a`
+
+Deletes an unneeded appointment
+
+Format: `delete -a APPOINTMENT_INDEX`
+
 ### Editing a appointment: `edit -a` (***coming soon***)
 ### Locating appointment by keyword: `find -a` (***coming soon***)
 
