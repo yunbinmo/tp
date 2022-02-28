@@ -61,7 +61,7 @@ Examples:
 
 Shows a list of all clients in the Mr. Agent.
 
-Format: `list`
+Format: `list -c`
 
 ### Deleting a client : `delete -c`
 
@@ -92,7 +92,7 @@ Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DESCRIPTION] 
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 2 n/Betsy Crower t/` Edits the title of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 ### Locating client by name: `find -c`
 
@@ -107,12 +107,12 @@ Format: `find -c KEYWORD [MORE_KEYWORDS]`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Lee Junjie` will return `Wong Junjie`, `Lee Yang`
 
-Examples: (***todo***)
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+Examples: 
+* `find -c John` returns `john` and `John Doe`
+* `find -c alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
   
-### Adding a Insurance type: `add -i` (***todo***)
+### Adding an Insurance: `add -i`
 
 Adds a type of insurance 
 
@@ -125,32 +125,41 @@ Examples: (***todo***)
 * `add -i hosipitalision`
 * `add -i terminal_illness`
 
-### Listing all Insurance type: `list -i` (***todo***)
-### Deleting a Insurance type: `delete -i` (***todo***)
-### Editing a Insurance type: `edit -i` (***coming soon***)
+### Listing all Insurance: `list -i`
 
-### Adding a record to a client: `add -r` (***todo***)
+Shows a list of all insurances in the Mr. Agent.
+
+Format: `list -i`
+
+### Deleting an Insurance: `delete -i`
+
+Deletes the specified insurance from the Mr. Agent.
+
+Format: `delete -i INDEX`
+
+### Editing an Insurance: `edit -i` (***coming soon***)
+
+### Adding a record to a client: `add -r`
 
 Adds an insurance to a client
 
-Format: `add -r INDEX [i/TYPE] [sd/START_DATE] [ed/END_DATE]
+Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 
 Examples: (***todo***)
-* `add -r 10 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision type insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
-* `add -r 25 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
+* `add -r 10 2 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
+* `add -r 25 2 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
 
 
-### Listing all record: `list -r` (***todo***)
+### Deleting a record: `delete -r`
 
-Lists all records that the insurance agent have
+Deletes the specified record from the Mr. Agent.
 
-Format: `list -r`
+Format: `delete -r RECORD_INDEX`
 
-### Deleting a record: `delete -r` (***todo***)
 ### Editing a record : `edit -r` (***coming soon***)
-### Locating record by keyword(client id/name,insurance id/name): `find -r` (***coming soon***)
+### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
 
 ### Adding an appointment with client: `add -a`
 
@@ -176,7 +185,7 @@ Format: `delete -a APPOINTMENT_INDEX`
 ### Editing a appointment: `edit -a` (***coming soon***)
 ### Locating appointment by keyword: `find -a` (***coming soon***)
 
-### Clearing all entries : `clear` (***todo***)
+### Clearing all entries : `clear`
 
 Clears all entries from the Mr. Agent.
 
