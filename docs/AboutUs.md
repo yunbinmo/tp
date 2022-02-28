@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Jessica Jacelyn
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jessicajacelyn.png" width="200px">
 
 [[github](http://github.com/jessicajacelyn)] [[portfolio](team/jessicajacelyn.md)]
 

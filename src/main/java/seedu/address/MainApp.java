@@ -16,6 +16,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
+import seedu.address.model.InsuranceBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -51,21 +52,21 @@ public class MainApp extends Application {
         logger.info("=============================[ Initializing AddressBook ]===========================");
         super.init();
 
-        AppParameters appParameters = AppParameters.parse(getParameters());
-        config = initConfig(appParameters.getConfigPath());
+        AppParameters appParameters = AppParameters.parse(this.getParameters());
+        this.config = this.initConfig(appParameters.getConfigPath());
 
-        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
-        UserPrefs userPrefs = initPrefs(userPrefsStorage);
+        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(this.config.getUserPrefsFilePath());
+        UserPrefs userPrefs = this.initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        this.storage = new StorageManager(addressBookStorage, userPrefsStorage);
 
-        initLogging(config);
+        this.initLogging(this.config);
 
-        model = initModelManager(storage, userPrefs);
+        this.model = this.initModelManager(this.storage, userPrefs);
 
-        logic = new LogicManager(model, storage);
+        this.logic = new LogicManager(this.model, this.storage);
 
-        ui = new UiManager(logic);
+        this.ui = new UiManager(this.logic);
     }
 
     /**
@@ -90,7 +91,8 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        //Todo: implement insuranceBook Storage
+        return new ModelManager(initialData, (InsuranceBook) SampleDataUtil.getSampleInInsuranceBook(), userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -168,14 +170,14 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
-        ui.start(primaryStage);
+        this.ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
-            storage.saveUserPrefs(model.getUserPrefs());
+            this.storage.saveUserPrefs(this.model.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

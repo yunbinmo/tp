@@ -14,7 +14,7 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `Mr Agent.jar` from [here](https://github.com/AY2122S2-CS2103-F09-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
@@ -40,37 +40,7 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 ## Features (***todo***)
 
-<div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
-  e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-</div>
-
-### Viewing help : `help` (***todo***)
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
 
 
 ### Adding a client: `add -c`
@@ -91,7 +61,7 @@ Examples:
 
 Shows a list of all clients in the Mr. Agent.
 
-Format: `list`
+Format: `list -c`
 
 ### Deleting a client : `delete -c`
 
@@ -122,7 +92,7 @@ Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DESCRIPTION] 
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 2 n/Betsy Crower t/` Edits the title of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 ### Locating client by name: `find -c`
 
@@ -137,12 +107,12 @@ Format: `find -c KEYWORD [MORE_KEYWORDS]`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Lee Junjie` will return `Wong Junjie`, `Lee Yang`
 
-Examples: (***todo***)
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+Examples: 
+* `find -c John` returns `john` and `John Doe`
+* `find -c alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
   
-### Adding a Insurance type: `add -i` (***todo***)
+### Adding an Insurance: `add -i`
 
 Adds a type of insurance 
 
@@ -155,40 +125,67 @@ Examples: (***todo***)
 * `add -i hosipitalision`
 * `add -i terminal_illness`
 
-### Listing all Insurance type: `list -i` (***todo***)
-### Deleting a Insurance type: `delete -i` (***todo***)
-### Editing a Insurance type: `edit -i` (***coming soon***)
+### Listing all Insurance: `list -i`
 
-### Adding a record to a client: `add -r` (***todo***)
+Shows a list of all insurances in the Mr. Agent.
+
+Format: `list -i`
+
+### Deleting an Insurance: `delete -i`
+
+Deletes the specified insurance from the Mr. Agent.
+
+Format: `delete -i INDEX`
+
+### Editing an Insurance: `edit -i` (***coming soon***)
+
+### Adding a record to a client: `add -r`
 
 Adds an insurance to a client
 
-Format: `add -r INDEX [i/TYPE] [sd/START_DATE] [ed/END_DATE]
+Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 
 Examples: (***todo***)
-* `add -r 10 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision type insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
-* `add -r 25 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
+* `add -r 10 2 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
+* `add -r 25 2 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
 
 
-### Listing all record: `list -r` (***todo***)
+### Deleting a record: `delete -r`
 
-Lists all records that the insurance agent have
+Deletes the specified record from the Mr. Agent.
 
-Format: `list -r`
+Format: `delete -r RECORD_INDEX`
 
-### Deleting a record: `delete -r` (***todo***)
 ### Editing a record : `edit -r` (***coming soon***)
-### Locating record by keyword(client id/name,insurance id/name): `find -r` (***coming soon***)
+### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
 
-### Adding an appointment with client: `add -a` (***todo***)
-### Listing all appointment: `list -a` (***todo***)
-### Deleting a appointment: `delete -a` (***todo***)
+### Adding an appointment with client: `add -a`
+
+Adds a new appointment with client
+
+Format: `add -a CLIENT_INDEX d/DESCRIPTION dt/DATETIME`
+
+Examples:
+* `add -a 1 d/Meet James dt/20-02-2022 1800` 
+
+### Listing all appointment: `list -a`
+
+Lists all appointments with clients
+
+Format: `list -a`
+
+### Deleting a appointment: `delete -a`
+
+Deletes an unneeded appointment
+
+Format: `delete -a APPOINTMENT_INDEX`
+
 ### Editing a appointment: `edit -a` (***coming soon***)
 ### Locating appointment by keyword: `find -a` (***coming soon***)
 
-### Clearing all entries : `clear` (***todo***)
+### Clearing all entries : `clear`
 
 Clears all entries from the Mr. Agent.
 
@@ -199,20 +196,6 @@ Format: `clear`
 Exits the program.
 
 Format: `exit`
-
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.
-</div>
-
-### Archiving data files `[coming in v2.0]`
 
 _Details coming soon ..._
 
@@ -229,10 +212,9 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+**Add a client** | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`
+**Edit a client** | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find a client** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**List all client** | `list -c`
+

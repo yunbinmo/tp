@@ -5,24 +5,32 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
+     * {@code Predicate} that always evaluate to true
      */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    Predicate<Insurance> PREDICATE_SHOW_ALL_INSURANCES = unused -> true;
 
     /**
      * Returns the user prefs.
      */
     ReadOnlyUserPrefs getUserPrefs();
+
+    /**
+     * Replaces user prefs data with the data in {@code userPrefs}.
+     */
+    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
 
     /**
      * Returns the user prefs' GUI settings.
@@ -45,12 +53,14 @@ public interface Model {
     void setAddressBookFilePath(Path addressBookFilePath);
 
     /**
+     * Returns the AddressBook
+     */
+    ReadOnlyAddressBook getAddressBook();
+
+    /**
      * Replaces address book data with the data in {@code addressBook}.
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
-
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
@@ -76,12 +86,63 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Returns the InsuranceBook
+     */
+    ReadOnlyInsuranceBook getInsuranceBook();
+
+    /**
+     * Replaces address book data with the data in {@code addressBook}.
+     */
+    void setInsuranceBook(ReadOnlyInsuranceBook insuranceBook);
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     */
+    boolean hasInsurance(Insurance insurance);
+
+    /**
+     * Deletes the given insurance.
+     * The insurance must exist in the address book.
+     */
+    void deleteInsurance(Insurance target);
+
+    /**
+     * Adds the given insurance.
+     * {@code insurance} must not already exist in the address book.
+     */
+    void addInsurance(Insurance insurance);
+
+    /**
+     * Replaces the given person {@code target} with {@code editedInsurance}.
+     * {@code target} must exist in the address book.
+     * The person identity of {@code editedInsurance} must not be the same as another
+     * existing person in the address book.
+     */
+    void setInsurance(Insurance target, Insurance editedInsurance);
+
+
+    /**
+     * Returns an unmodifiable view of the filtered insurance list
+     */
+    ObservableList<Insurance> getFilteredInsuranceList();
+
+    /**
+     * Updates the filter of the filtered insurance list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredInsuranceList(Predicate<Insurance> predicate);
 }

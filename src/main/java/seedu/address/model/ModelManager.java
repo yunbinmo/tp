@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 
 /**
@@ -20,27 +21,36 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final InsuranceBook insuranceBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Insurance> filteredInsurances;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, InsuranceBook insuranceBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.insuranceBook = new InsuranceBook(insuranceBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new InsuranceBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
+
+    @Override
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return this.userPrefs;
+    }
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -49,33 +59,33 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
-    }
-
-    @Override
     public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
+        return this.userPrefs.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
+        this.userPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
     public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return this.userPrefs.getAddressBookFilePath();
     }
 
     @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        this.userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
+
+    @Override
+    public ReadOnlyAddressBook getAddressBook() {
+        return this.addressBook;
+    }
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
@@ -83,32 +93,63 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
-    }
-
-    @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return this.addressBook.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        this.addressBook.removePerson(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        this.addressBook.addPerson(person);
+        this.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedPerson);
+        this.addressBook.setPerson(target, editedPerson);
+    }
+
+    //=========== InsuranceBook ================================================================================
+
+    @Override
+    public ReadOnlyInsuranceBook getInsuranceBook() {
+        return this.insuranceBook;
+    }
+
+    @Override
+    public void setInsuranceBook(ReadOnlyInsuranceBook insuranceBook) {
+        this.insuranceBook.resetData(insuranceBook);
+    }
+
+    @Override
+    public boolean hasInsurance(Insurance insurance) {
+        requireNonNull(insurance);
+        return this.insuranceBook.hasInsurance(insurance);
+    }
+
+    @Override
+    public void deleteInsurance(Insurance target) {
+        this.insuranceBook.removeInsurance(target);
+    }
+
+    @Override
+    public void addInsurance(Insurance insurance) {
+        this.insuranceBook.addInsurance(insurance);
+        this.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
+    }
+
+    @Override
+    public void setInsurance(Insurance target, Insurance editedInsurance) {
+        requireAllNonNull(target, editedInsurance);
+
+        this.insuranceBook.setInsurance(target, editedInsurance);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -119,13 +160,30 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+        return this.filteredPersons;
     }
 
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        this.filteredPersons.setPredicate(predicate);
+    }
+
+    //=========== Filtered Insurance List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Insurance> getFilteredInsuranceList() {
+        return this.filteredInsurances;
+    }
+
+    @Override
+    public void updateFilteredInsuranceList(Predicate<Insurance> predicate) {
+        requireNonNull(predicate);
+        this.filteredInsurances.setPredicate(predicate);
     }
 
     @Override
@@ -142,9 +200,9 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+        return this.addressBook.equals(other.addressBook)
+                && this.userPrefs.equals(other.userPrefs)
+                && this.filteredPersons.equals(other.filteredPersons);
     }
 
 }

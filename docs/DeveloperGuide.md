@@ -257,43 +257,59 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+
+* has a need to manage a significant number of clients
+* has a need to manage and schedule numerous appointments
 * prefer desktop apps over other types
-* can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new client               |                                                                        |
-| `* * *`  | user                                       | delete a client                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a client by name          | locate details of persons without having to go through the entire list |
-| `* * *`  | user                                       | list all clients               | view clients that are in my contact            |
-| `* * *`  | user                                       | add a insurance type           | easily indentify which type of insurance my clients bought    |
-| `* * *`  | user                                       | list all insurance type        | view all tpyes of insurance that I sell
-|
-| `* * *`  | user                                       | add a insurance to client      | keep a record of the insurances that the client have
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                                        | I want to …​              | So that I can…​                                                        |
+|----------|------------------------------------------------|---------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                       | see usage instructions    | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                           | add a new client          |                                                                        |
+| `* * *`  | user                                           | delete a client           | remove entries that I no longer need                                   |
+| `* * *`  | user                                           | find a client by name     | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                           | list all clients          | view clients that are in my contact                                    |
+| `* * *`  | user                                           | add a insurance type      | easily indentify which type of insurance my clients bought             |
+| `* * *`  | user                                           | list all insurance type   | view all tpyes of insurance that I sell                                |
+| `* * *`  | user                                           | add a insurance to client | keep a record of the insurances that the client have                   |
+| `*`      | user with many persons in the address book     | sort persons by name      | locate a person easily                                                 |
+| `***`    | insurance agent frequently having appointments | view all appointments     | I can be reminded of all the meetings I have with my clients           |
+| `***`    | insurance agent frequently having appointments     | add new appointments      | note down any future meetings I have with my client                |
+| `***`    | insurance agent frequently having appointments     | delete an appointment      | get rid of any canceled/completed appointments to avoid confusion |
 
 *{More to be added}*
 
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-**Use case: Add a client** (***todo***)
-**Use case: Edit a client** (***todo***)
+
+**Use case: Add a client**
+
+**MSS**
+1. User enters command and arguments to add new client.
+2. Mr Agent shows success message for adding client.
+
+**Extensions**
+* 2a. The argument(s) are incomplete.
+
+    * 2a1. Mr Agent shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Edit a client**
 
 **MSS**
 
-1.  User requests to list cleints.
+1.  User requests to list clients.
 2.  Mr Agent shows a list of clients.
 3.  User requests to edit a specific client by index in the list and enters requested details.
 4.  Mr Agent updates the client.
@@ -319,13 +335,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 3.
     
       
-**Use case: List a client** (***todo***)
+**Use case: List a client**
+
+**MSS**
+
+1.  User requests to list clients
+2.  Mr Agent shows a list of clients
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
 
 **Use case: Delete a client**
 
 **MSS**
 
-1.  User requests to list cleints
+1.  User requests to list clients
 2.  Mr Agent shows a list of clients
 3.  User requests to delete a specific client by index in the list
 4.  Mr Agent deletes the client
@@ -351,13 +381,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  No network connection needed.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Client**: Contacts that needs to be managed by user
+* **Insurance category:** Types of insurance, e.g. health, financial, life
+
 
 --------------------------------------------------------------------------------------------------------------------
 
