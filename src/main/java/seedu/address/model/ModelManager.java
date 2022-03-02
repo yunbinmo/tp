@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 
@@ -22,27 +23,32 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final InsuranceBook insuranceBook;
+    private final AppointmentBook appointmentBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Insurance> filteredInsurances;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, InsuranceBook insuranceBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, InsuranceBook insuranceBook,
+                        AppointmentBook appointmentBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.insuranceBook = new InsuranceBook(insuranceBook);
+        this.appointmentBook = new AppointmentBook(appointmentBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
+        this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new InsuranceBook(), new UserPrefs());
+        this(new AddressBook(), new InsuranceBook(), new AppointmentBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -150,6 +156,13 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedInsurance);
 
         this.insuranceBook.setInsurance(target, editedInsurance);
+    }
+
+    //=========== AppointmentBook ============================================================================
+    @Override
+    public void addAppointment(Appointment appointment) {
+        this.appointmentBook.addAppointment(appointment);
+        this.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
     }
 
     //=========== Filtered Person List Accessors =============================================================

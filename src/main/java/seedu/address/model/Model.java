@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 
@@ -145,4 +146,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredInsuranceList(Predicate<Insurance> predicate);
+
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment appoinment);
 }
