@@ -24,7 +24,6 @@ public class AddInsuranceCommandParser implements Parser<AddInsuranceCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddInsuranceCommand parse(String args) throws ParseException {
-        System.out.println(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_PRICE);
 

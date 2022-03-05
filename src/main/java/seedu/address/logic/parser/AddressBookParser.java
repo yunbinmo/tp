@@ -136,7 +136,6 @@ public class AddressBookParser {
     public Command parseInsuranceCommand(String commandWord, String arguments) throws ParseException {
         switch (commandWord) {
         case AddInsuranceCommand.COMMAND_WORD:
-            System.out.println("passed");
             return new AddInsuranceCommandParser().parse(arguments);
 
         default:
