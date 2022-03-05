@@ -29,10 +29,12 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, InsuranceBook insuranceBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInsuranceBook insuranceBook,
+                        ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, insuranceBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook
+                + "and insurance book" + insuranceBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.insuranceBook = new InsuranceBook(insuranceBook);

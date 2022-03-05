@@ -58,7 +58,7 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
-    public static ReadOnlyInsuranceBook getSampleInInsuranceBook() {
+    public static ReadOnlyInsuranceBook getSampleInsuranceBook() {
         InsuranceBook sampleAb = new InsuranceBook();
         for (Insurance sampleInsurance : getSampleInsurances()) {
             sampleAb.addInsurance(sampleInsurance);
