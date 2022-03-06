@@ -160,10 +160,55 @@ public class ModelManager implements Model {
 
     //=========== AppointmentBook ============================================================================
     @Override
+    public ReadOnlyAppointmentBook getAppointmentBook() {
+        return this.appointmentBook;
+    }
+
+    @Override
+    public void setAppointmentBook(ReadOnlyAppointmentBook appointmentBook) {
+        this.appointmentBook.resetData(appointmentBook);
+    }
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return this.appointmentBook.hasAppointment(appointment);
+    }
+
+    @Override
     public void addAppointment(Appointment appointment) {
         this.appointmentBook.addAppointment(appointment);
-        this.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
+        this.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
     }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        this.appointmentBook.removeAppointment(appointment);
+    }
+
+    @Override
+    public void setAppointment(Appointment target, Appointment editedAppointment) {
+        requireAllNonNull(target, editedAppointment);
+        this.appointmentBook.setAppointment(target, editedAppointment);
+    }
+
+    //=========== Filtered Appointment List Accessors ========================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return this.filteredAppointments;
+    }
+
+    @Override
+    public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+        requireNonNull(predicate);
+        this.filteredAppointments.setPredicate(predicate);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

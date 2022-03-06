@@ -16,6 +16,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
+import seedu.address.model.AppointmentBook;
 import seedu.address.model.InsuranceBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -92,7 +93,8 @@ public class MainApp extends Application {
         }
 
         //Todo: implement insuranceBook Storage
-        return new ModelManager(initialData, (InsuranceBook) SampleDataUtil.getSampleInInsuranceBook(), userPrefs);
+        return new ModelManager(initialData, (InsuranceBook) SampleDataUtil.getSampleInInsuranceBook(),
+                (AppointmentBook) SampleDataUtil.getSampleAppointmentBook(), userPrefs);
     }
 
     private void initLogging(Config config) {

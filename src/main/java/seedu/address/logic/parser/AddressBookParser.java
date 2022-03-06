@@ -6,15 +6,18 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddInsuranceCommand;
 import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeletePersonCommand;
 import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindPersonCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ListAppointmentCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -56,7 +59,7 @@ public class AddressBookParser {
         case Command.COMMAND_RECORD:
             //TODO: parse record
         case Command.COMMAND_APPOINTMENT:
-            //TODO: parse appointment
+            return this.parseAppointmentCommand(commandWord, arguments);
         case SINGLE_COMMAND_FORMAT:
             return this.parseGeneralCommand(commandWord);
         default:
@@ -139,6 +142,27 @@ public class AddressBookParser {
             System.out.println("passed");
             return new AddInsuranceCommandParser().parse(arguments);
 
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    /**
+     * Parse appointment command.
+     *
+     * @param commandWord the command word
+     * @param arguments   the argument
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public Command parseAppointmentCommand(String commandWord, String arguments) throws ParseException {
+        switch (commandWord) {
+        case AddAppointmentCommand.COMMAND_WORD:
+            return new AddAppointmentCommandParser().parse(arguments);
+        case DeleteAppointmentCommand.COMMAND_WORD:
+            return new DeleteAppointmentCommandParser().parse(arguments);
+        case ListAppointmentCommand.COMMAND_WORD:
+            return new ListAppointmentCommand();
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
