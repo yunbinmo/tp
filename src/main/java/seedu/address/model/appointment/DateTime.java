@@ -58,7 +58,7 @@ public class DateTime {
 
     @Override
     public String toString() {
-        return dateTime.toString();
+        return dateTime.format(DATE_TIME_FORMATTER);
     }
 
     @Override

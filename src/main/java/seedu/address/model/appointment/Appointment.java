@@ -8,20 +8,16 @@ import java.util.Objects;
  */
 public class Appointment {
     // Data fields
-    private final ClientId clientId;
     private final Description description;
     private final DateTime dateTime;
     /**
      * Every field must be present and not null.
      */
-    public Appointment(ClientId clientId, Description description, DateTime dateTime) {
-        this.clientId = clientId;
+    public Appointment(Description description, DateTime dateTime) {
         this.description = description;
         this.dateTime = dateTime;
     }
-    public ClientId getClientId() {
-        return this.clientId;
-    }
+
     public Description getDescription() {
         return this.description;
     }
@@ -30,17 +26,15 @@ public class Appointment {
     }
 
     /**
-     * Returns true if both appointments have the same client id and date time.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both appointments have the same date time.
+     * This defines a weaker notion of equality between two appointments.
      */
     public boolean isSameAppointment(Appointment otherAppointment) {
         if (otherAppointment == this) {
             return true;
         }
 
-        return otherAppointment != null
-                && otherAppointment.getClientId() == this.getClientId()
-                && otherAppointment.getDateTime().equals(this.getDateTime());
+        return otherAppointment != null && otherAppointment.getDateTime().equals(this.getDateTime());
     }
 
 
@@ -59,23 +53,20 @@ public class Appointment {
         }
 
         Appointment otherAppointment = (Appointment) other;
-        return otherAppointment.getClientId() == this.getClientId()
-                && otherAppointment.getDescription().equals(this.getDescription())
+        return otherAppointment.getDescription().equals(this.getDescription())
                 && otherAppointment.getDateTime().equals(this.getDateTime());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(this.getClientId(), this.getDescription(), this.getDateTime());
+        return Objects.hash(this.getDescription(), this.getDateTime());
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Client ID: ")
-                .append(this.getClientId())
-                .append(" ")
+        builder.append("Appointment: ")
                 .append(this.getDescription())
                 .append("at ")
                 .append(this.getDateTime().toString());

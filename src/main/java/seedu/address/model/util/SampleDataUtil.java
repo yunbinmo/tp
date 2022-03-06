@@ -11,7 +11,6 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.appointment.ClientId;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
 import seedu.address.model.insurance.Insurance;
@@ -58,8 +57,7 @@ public class SampleDataUtil {
 
     public static Appointment[] getSampleAppointments() {
         return new Appointment[]{
-            new Appointment(new ClientId(1),
-                    new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
+            new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
         };
     }
 

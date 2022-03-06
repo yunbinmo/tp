@@ -7,11 +7,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DESCRIPTION;
 
 import java.util.stream.Stream;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.appointment.ClientId;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
 
@@ -29,25 +27,16 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_APPT_DESCRIPTION, PREFIX_APPT_DATETIME);
 
-        Index index;
-
-        try {
-            index = AppointmentParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAppointmentCommand.MESSAGE_USAGE), pe);
-        }
         // Just check if any prefixes are missing
         if (!arePrefixesPresent(argMultimap, PREFIX_APPT_DESCRIPTION, PREFIX_APPT_DATETIME)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddAppointmentCommand.MESSAGE_USAGE));
         }
-        ClientId clientId = new ClientId(index.getOneBased());
         Description description =
                 AppointmentParserUtil.parseDescription(argMultimap.getValue(PREFIX_APPT_DESCRIPTION).get());
         DateTime dateTime = AppointmentParserUtil.parseDateTime(argMultimap.getValue(PREFIX_APPT_DATETIME).get());
 
-        Appointment appointment = new Appointment(clientId, description, dateTime);
+        Appointment appointment = new Appointment(description, dateTime);
         return new AddAppointmentCommand(appointment);
     }
 

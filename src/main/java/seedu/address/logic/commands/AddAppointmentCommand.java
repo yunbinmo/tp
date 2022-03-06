@@ -16,12 +16,13 @@ public class AddAppointmentCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the address book. "
             + "Parameters: "
-            + "CLIENT INDEX "
             + PREFIX_APPT_DESCRIPTION + "DESCRIPTION "
             + PREFIX_APPT_DATETIME + "DATETIME "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_APPT_DESCRIPTION + "Meet James at UTown "
             + PREFIX_APPT_DATETIME + "20-03-2022 18:00 ";
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT =
+            "A appointment at the same time already exists in the address book";
 
     private final Appointment toAdd;
 
@@ -36,6 +37,10 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (model.hasAppointment(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
+        }
 
         model.addAppointment(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
