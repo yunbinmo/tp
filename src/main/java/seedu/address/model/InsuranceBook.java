@@ -3,6 +3,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -94,8 +95,13 @@ public class InsuranceBook implements ReadOnlyInsuranceBook {
 
     @Override
     public String toString() {
-        return this.insurances.asUnmodifiableObservableList().size() + " insurances";
-        // TODO: refine later
+        final StringBuilder builder = new StringBuilder();
+        for (Iterator<Insurance> it = insurances.iterator(); it.hasNext(); ) {
+            Insurance insurance = it.next();
+            builder.append(insurance.toString());
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 
     @Override
