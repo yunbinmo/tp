@@ -46,6 +46,8 @@ public class AddInsuranceCommand extends Command {
         }
 
         model.addInsurance(toAdd);
+        //TODO: delete this debug comment
+        System.out.println(model.getInsuranceBook().toString());
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
