@@ -7,13 +7,14 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
+import seedu.address.model.ReadOnlyInsuranceBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, AppointmentBookStorage, UserPrefsStorage {
+public interface Storage extends AddressBookStorage, InsuranceBookStorage, AppointmentBookStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -30,8 +31,22 @@ public interface Storage extends AddressBookStorage, AppointmentBookStorage, Use
     @Override
     void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 
+
     // ================ AppointmentBook methods ==========================
+    @Override
     Path getAppointmentBookFilePath();
+    @Override
     Optional<ReadOnlyAppointmentBook> readAppointmentBook() throws DataConversionException, IOException;
+    @Override
     void saveAppointmentBook(ReadOnlyAppointmentBook appointmentBook) throws IOException;
+
+    // ================ InsuranceBook methods ==========================
+    @Override
+    Path getInsuranceBookFilePath();
+
+    @Override
+    Optional<ReadOnlyInsuranceBook> readInsuranceBook() throws DataConversionException, IOException;
+
+    @Override
+    void saveInsuranceBook(ReadOnlyInsuranceBook insuranceBook) throws IOException;
 }

@@ -2,11 +2,13 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.UniqueAppointmentList;
+import seedu.address.model.insurance.Insurance;
 
 /**
  * Wraps all data at the appointment-book level
@@ -90,8 +92,13 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
 
     @Override
     public String toString() {
-        return this.appointments.asUnmodifiableObservableList().size() + " appointments";
-        // TODO: refine later
+        final StringBuilder builder = new StringBuilder();
+        for (Iterator<Appointment> it = appointments.iterator(); it.hasNext(); ) {
+            Appointment appointment = it.next();
+            builder.append(appointment.toString());
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 
     @Override

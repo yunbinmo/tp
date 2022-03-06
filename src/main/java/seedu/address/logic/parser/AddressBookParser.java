@@ -12,12 +12,14 @@ import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteAppointmentCommand;
+import seedu.address.logic.commands.DeleteInsuranceCommand;
 import seedu.address.logic.commands.DeletePersonCommand;
 import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindPersonCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppointmentCommand;
+import seedu.address.logic.commands.ListInsuranceCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -49,7 +51,11 @@ public class AddressBookParser {
         final String theRest = matcher.group("arguments");
 
         final String type = getCommandType(theRest);
-        final String arguments = theRest.trim().substring(2);
+        String arguments = "";
+
+        if (type != SINGLE_COMMAND_FORMAT) {
+            arguments = theRest.trim().substring(2);
+        }
 
         switch (type) {
         case Command.COMMAND_PERSON:
@@ -71,9 +77,6 @@ public class AddressBookParser {
         switch (commandWord) {
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        case ListPersonCommand.COMMAND_WORD:
-            return new ListPersonCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -139,8 +142,13 @@ public class AddressBookParser {
     public Command parseInsuranceCommand(String commandWord, String arguments) throws ParseException {
         switch (commandWord) {
         case AddInsuranceCommand.COMMAND_WORD:
-            System.out.println("passed");
             return new AddInsuranceCommandParser().parse(arguments);
+
+        case DeleteInsuranceCommand.COMMAND_WORD:
+            return new DeleteInsuranceCommandParser().parse(arguments);
+
+        case ListInsuranceCommand.COMMAND_WORD:
+            return new ListInsuranceCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

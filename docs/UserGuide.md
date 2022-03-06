@@ -161,11 +161,11 @@ Format: `delete -r RECORD_INDEX`
 ### Editing a record : `edit -r` (***coming soon***)
 ### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
 
-### Adding an appointment with client: `add -a`
+### Adding an appointment: `add -a`
 
 Adds a new appointment with client
 
-Format: `add -a CLIENT_INDEX d/DESCRIPTION dt/DATETIME`
+Format: `add -a d/DESCRIPTION dt/DATETIME`
 
 Examples:
 * `add -a 1 d/Meet James dt/20-02-2022 1800` 
