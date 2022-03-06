@@ -14,7 +14,9 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path addressBookFilePath = Paths.get("data", "addressbook.json");
+
+    private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
+    private Path appointmentBookFilePath = Paths.get("data" , "appointmentbook.json");
     private Path insuranceBookFilePath = Paths.get("data", "insurancebook.json");
 
     /**
@@ -38,6 +40,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setAppointmentBookFilePath(newUserPrefs.getAppointmentBookFilePath());
         setInsuranceBookFilePath(newUserPrefs.getInsuranceBookFilePath());
     }
 
@@ -54,10 +57,19 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return addressBookFilePath;
     }
 
+    public Path getAppointmentBookFilePath() {
+        return appointmentBookFilePath;
+    }
 
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         this.addressBookFilePath = addressBookFilePath;
+    }
+
+    public void setAppointmentBookFilePath(Path appointmentBookFilePath) {
+        requireNonNull(appointmentBookFilePath);
+        this.appointmentBookFilePath = appointmentBookFilePath;
+
     }
 
     public Path getInsuranceBookFilePath() {
@@ -82,21 +94,23 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
         return guiSettings.equals(o.guiSettings)
                 && addressBookFilePath.equals(o.addressBookFilePath)
+                && appointmentBookFilePath.equals((o.appointmentBookFilePath))
                 && insuranceBookFilePath.equals((o.insuranceBookFilePath));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, addressBookFilePath, insuranceBookFilePath);
+        return Objects.hash(guiSettings, addressBookFilePath, insuranceBookFilePath, appointmentBookFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
+        sb.append("\nLocal data file location : " + addressBookFilePath);
+        sb.append("\nLocal data file location : " + appointmentBookFilePath);
         sb.append("\nLocal addressBook data file location : " + addressBookFilePath);
         sb.append("\nLocal insuranceBook data file location : " + insuranceBookFilePath);
         return sb.toString();
     }
-
 }

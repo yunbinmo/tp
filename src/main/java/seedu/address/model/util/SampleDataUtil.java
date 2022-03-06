@@ -5,9 +5,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.AppointmentBook;
 import seedu.address.model.InsuranceBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
+import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.DateTime;
+import seedu.address.model.appointment.Description;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.insurance.Price;
 import seedu.address.model.insurance.Title;
@@ -50,6 +55,12 @@ public class SampleDataUtil {
         };
     }
 
+    public static Appointment[] getSampleAppointments() {
+        return new Appointment[]{
+            new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -62,6 +73,14 @@ public class SampleDataUtil {
         InsuranceBook sampleAb = new InsuranceBook();
         for (Insurance sampleInsurance : getSampleInsurances()) {
             sampleAb.addInsurance(sampleInsurance);
+        }
+        return sampleAb;
+    }
+
+    public static ReadOnlyAppointmentBook getSampleAppointmentBook() {
+        AppointmentBook sampleAb = new AppointmentBook();
+        for (Appointment sampleAppointment : getSampleAppointments()) {
+            sampleAb.addAppointment(sampleAppointment);
         }
         return sampleAb;
     }
