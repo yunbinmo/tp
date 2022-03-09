@@ -271,23 +271,25 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                        | I want to …​              | So that I can…​                                                        |
-|----------|------------------------------------------------|---------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                       | see usage instructions    | refer to instructions when I forget how to use the App                 |
-| `* * *`  | insurance agent                                | add a new client          | manage clients in the application                                      |
-| `* * *`  | insurance agent                                | delete a client           | remove entries that I no longer need                                   |
-| `* * *`  | insurance agent                                | find a client by name     | locate details of persons without having to go through the entire list |
-| `* * *`  | insurance agent                                | list all clients          | view clients that are in my contact                                    |
-| `* * *`  | insurance agent                                | add an insurance           | manage all insurances in the apllication                                            
-| `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     
-| `* * *`  | insurance agent                                | list all insurance        | view all that i have stored in the application                                   |
-| `* * *`  | insurance agent                                    | add a record to client | keep a record of the insurances that the client have                   |
-| `* * *`  | insurance agent                                | delete a client insurance record         | remove entries that I no longer need                                   |
-| `* * *`  | insurance agent                                | edit a record            | make changes to record saved in the application                     
-| `*`      | user with many persons in the address book     | sort persons by name      | locate a person easily                                                 |
-| `***`    | insurance agent frequently having appointments | view all appointments     | be reminded of all the meetings I have with my clients           |
-| `***`    | insurance agent frequently having appointments | add new appointments      | note down any future meetings I have with my client                    |
-| `***`    | insurance agent frequently having appointments | delete an appointment     | get rid of any canceled/completed appointments to avoid confusion      |
+| Priority | As a …​                                        | I want to …​                     | So that I can…​                                                        |
+|----------|------------------------------------------------|----------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                       | see usage instructions           | refer to instructions when I forget how to use the App                 |
+| `* * *`  | insurance agent                                | add a new client                 | manage clients in the application                                      |
+| `* * *`  | insurance agent                                | delete a client                  | remove entries that I no longer need                                   |
+| `* * *`  | insurance agent                                | find a client by name            | locate details of persons without having to go through the entire list |
+| `* * *`  | insurance agent                                | list all clients                 | view clients that are in my contact                                    |
+| `* * *`  | insurance agent                                | add an insurance                 | manage all insurances in the apllication                                            
+| `* * *`  | insurance agent                                | edit an insurance                | make changes to insurance saved in the application                     
+| `* * *`  | insurance agent                                | list all insurance               | view all that i have stored in the application                                   |
+| `* * *`  | insurance agent                                    | add a record to client           | keep a record of the insurances that the client have                   |
+| `* * *`  | insurance agent                                | delete a client insurance record | remove entries that I no longer need                                   |
+| `* * *`  | insurance agent                                | edit a record                    | make changes to record saved in the application                     
+| `*`      | user with many persons in the address book     | sort persons by name             | locate a person easily                                                 |
+| `***`    | insurance agent frequently having appointments | view all appointments            | be reminded of all the meetings I have with my clients           |
+| `***`    | insurance agent frequently having appointments | add new appointments             | note down any future meetings I have with my client                    |
+| `***`    | insurance agent frequently having appointments | delete an appointment            | get rid of any canceled/completed appointments to avoid confusion      |
+| `* * *`  | insurance agent                                | view passed appointments         | know account my meetups with my clients
+| `* * *`  | insurance agent                                | view expired records                   | refer to passed records in case clients want to know/renew insurance
 
 
 *{More to be added}*
@@ -394,6 +396,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Client**: Contacts that needs to be managed by user
 * **Insurance category:** Types of insurance, e.g. health, financial, life
+* **Insurance code:** Unique IDs attached to each insurance
+* **Record:** Insurances that are bought by the client. The insurances are saved as records in the database
+
 
 
 --------------------------------------------------------------------------------------------------------------------
