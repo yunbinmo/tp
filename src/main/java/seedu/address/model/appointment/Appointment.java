@@ -68,7 +68,7 @@ public class Appointment {
         final StringBuilder builder = new StringBuilder();
         builder.append("Appointment: ")
                 .append(this.getDescription())
-                .append("at ")
+                .append(" at ")
                 .append(this.getDateTime().toString());
 
         return builder.toString();
