@@ -148,8 +148,8 @@ Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 
 Examples: (***todo***)
-* `add -r 10 2 i/hospitalisation sd/23-02-2022 ed/23-02-2024` , adds a hospitalision insurance to index 10 with start date from 23-02-2022 and end date at 23-02-2024
-* `add -r 25 2 i/terminal_illness sd/21-11-2021 ed/21-11-2023`
+* `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024
+* `add -r c/25 i/2  sd/21-11-2021 ed/21-11-2023`
 
 
 ### Deleting a record: `delete -r`
