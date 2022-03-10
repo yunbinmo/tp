@@ -25,7 +25,7 @@ class JsonAdaptedRecord {
      * Converts a given {@code Record} into this class for Jackson use.
      */
     public JsonAdaptedRecord(Record source) {
-        id = source.id;
+        id = source.getRecordId();
     }
 
     @JsonValue
