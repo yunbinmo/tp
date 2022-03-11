@@ -2,9 +2,6 @@ package seedu.address.model.record;
 
 import java.util.Objects;
 
-import seedu.address.model.appointment.Appointment;
-import seedu.address.model.appointment.DateTime;
-import seedu.address.model.insurance.Insurance;
 
 public class Record {
     //TODO
@@ -12,14 +9,14 @@ public class Record {
     public static int globalId = 0;
 
     private final int record_id;
-    private final int client_id;
-    private final int insurance_id;
-    private final DateTime startDate;
-    private final DateTime endDate;
+    private final ClientID client_id;
+    private final InsuranceID insurance_id;
+    private final StartDate startDate;
+    private final EndDate endDate;
 
 
 
-    public Record(int client_id, int insurance_id, DateTime startDate, DateTime endDate) {
+    public Record(ClientID client_id, InsuranceID insurance_id, StartDate startDate, EndDate endDate) {
         this.record_id = globalId++;
         this.client_id = client_id;
         this.insurance_id = insurance_id;
@@ -31,19 +28,19 @@ public class Record {
         return this.record_id;
     }
 
-    public int getClientID(){
+    public ClientID getClientID(){
         return this.client_id;
     }
 
-    public int getInsuranceID(){
+    public InsuranceID getInsuranceID(){
         return this.insurance_id;
     }
 
-    public DateTime getStartDate(){
+    public StartDate getStartDate(){
         return this.startDate;
     }
 
-    public DateTime getEndDate(){
+    public EndDate getEndDate(){
         return this.endDate;
     }
 
@@ -57,13 +54,14 @@ public class Record {
         }
 
         return otherRecord != null
-                && otherRecord.getClientID() == this.getClientID();
+                && otherRecord.getClientID().equals(this.client_id)
+                && otherRecord.getInsuranceID().equals(this.insurance_id);
 
     }
 
     /**
-     * Returns true if both appointments have the same identity and data fields.
-     * This defines a stronger notion of equality between two appointments.
+     * Returns true if both records have the same identity and data fields.
+     * This defines a stronger notion of equality between two records.
      */
     @Override
     public boolean equals(Object other) {
@@ -76,8 +74,11 @@ public class Record {
         }
 
         Record otherRecord = (Record) other;
-        return otherRecord.getClientID()==this.client_id
-                && otherRecord.getRecordId()==this.record_id;
+        return otherRecord.getRecordId()==this.record_id
+                && otherRecord.getClientID().equals(this.client_id)
+                && otherRecord.getInsuranceID().equals(this.insurance_id)
+                && otherRecord.getStartDate().equals(this.startDate)
+                && otherRecord.getEndDate().equals(this.endDate);
     }
 
 
@@ -85,6 +86,17 @@ public class Record {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + String.valueOf(record_id) + ']';
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Record: ")
+                .append(this.getRecordId())
+                .append(" Client: ")
+                .append(this.getClientID())
+                .append(" bought ")
+                .append(this.getInsuranceID())
+                .append(" valid from ")
+                .append(this.getStartDate())
+                .append(" to ")
+                .append(this.getEndDate());
+        return builder.toString();
     }
 }

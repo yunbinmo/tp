@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.record.Record;
 
 
-public class AddRecordCommand {
+public class AddRecordCommand extends Command{
     public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an record to the address book. "
             + "Parameters: "
@@ -51,5 +51,11 @@ public class AddRecordCommand {
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddRecordCommand // instanceof handles nulls
+                && toAdd.equals(((AddRecordCommand) other).toAdd));
+    }
 
 }

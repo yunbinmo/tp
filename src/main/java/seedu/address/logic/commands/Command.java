@@ -13,6 +13,7 @@ public abstract class Command {
     public static final String COMMAND_RECORD = "-r";
     public static final String COMMAND_APPOINTMENT = "-a";
 
+
     /**
      * Executes the command and returns the result message.
      *

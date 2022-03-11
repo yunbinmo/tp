@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  * Represents an Record's associated date and time in the address book.
  * Guarantees: immutable; is valid as declared in {@link #validateDateTime(String)}
  */
-public class DateTime {
+public class EndDate {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Date and time should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
@@ -28,7 +28,7 @@ public class DateTime {
      *
      * @param input A valid date time string.
      */
-    public DateTime(String input) {
+    public EndDate(String input) {
         requireNonNull(input);
         LocalDateTime result = validateDateTime(input);
         if (result == null) {
@@ -42,7 +42,7 @@ public class DateTime {
      *
      * @param date A valid LocalDateTime object.
      */
-    public DateTime(LocalDateTime date) {
+    public EndDate(LocalDateTime date) {
         this.date = date;
     }
 
