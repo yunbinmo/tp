@@ -162,6 +162,20 @@ Format: `delete -r RECORD_INDEX`
 ### Editing a record : `edit -r` (***coming soon***)
 ### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
 
+### Listing appointment history: `history -a`
+
+Shows a list of all passed appointments.
+
+Format: `history -a`
+
+### Listing expired records: `history -r`
+
+Shows a list of all expired records.
+
+Format: `history -r`
+
+### List history by client (***coming soon***)
+
 ### Adding an appointment: `add -a`
 
 Adds a new appointment with client
