@@ -23,16 +23,23 @@ public class InsuranceListPanel extends UiPart<Region> {
     /**
      * Creates a {@code InsuranceListPanel} with the given {@code ObservableList}.
      */
-    public InsuranceListPanel(ObservableList<Insurance> personList) {
+    public InsuranceListPanel(ObservableList<Insurance> personList, MainWindow main) {
         super(FXML);
         personListView.setItems(personList);
-        personListView.setCellFactory(listView -> new InsuranceListViewCell());
+        personListView.setCellFactory(listView -> new InsuranceListViewCell(main));
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Insurance} using a {@code InsuranceCard}.
      */
     class InsuranceListViewCell extends ListCell<Insurance> {
+        private MainWindow main;
+
+        InsuranceListViewCell(MainWindow main) {
+            super();
+            this.main = main;
+        }
+
         @Override
         protected void updateItem(Insurance insurance, boolean empty) {
             super.updateItem(insurance, empty);
@@ -41,7 +48,7 @@ public class InsuranceListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new InsuranceCard(insurance, getIndex() + 1).getRoot());
+                setGraphic(new InsuranceCard(insurance, getIndex() + 1, main).getRoot());
             }
         }
     }

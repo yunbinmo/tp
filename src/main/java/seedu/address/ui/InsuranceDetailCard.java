@@ -4,10 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.appointment.Appointment;
+import seedu.address.model.insurance.Insurance;
+import seedu.address.model.insurance.Price;
+import seedu.address.model.insurance.Title;
 
-public class AppointmentCard extends UiPart<Region> {
-    private static final String FXML = "AppointmentListCard.fxml";
+/**
+ * An UI component that displays information of a {@code Insurance}.
+ */
+public class InsuranceDetailCard extends UiPart<Region> {
+
+    private static final String FXML = "InsuranceDetailCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -16,22 +22,25 @@ public class AppointmentCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-    public final Appointment appointment;
+
+    public final Insurance insurance;
+
     @FXML
     private HBox cardPane;
     @FXML
-    private Label id;
+    private Label title;
     @FXML
-    private Label content;
+    private Label id;
 
     /**
-     * Creates a {@code AppointmentCode} with the given {@code Appointment} and index to display.
+     * Creates a {@code InsuranceCode} with the given {@code Insurance} and index to display.
      */
-    public AppointmentCard(Appointment appointment, int displayedIndex) {
+    public InsuranceDetailCard(Insurance insurance, int displayedIndex) {
         super(FXML);
-        this.appointment = appointment;
+        this.insurance = insurance;
         id.setText(displayedIndex + ". ");
-        content.setText(appointment.toString());
+        title.setText(insurance.getTitle().toString());
+
     }
 
     @Override
@@ -42,13 +51,13 @@ public class AppointmentCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AppointmentCard)) {
+        if (!(other instanceof InsuranceDetailCard)) {
             return false;
         }
 
         // state check
-        AppointmentCard card = (AppointmentCard) other;
+        InsuranceDetailCard card = (InsuranceDetailCard) other;
         return id.getText().equals(card.id.getText())
-                && appointment.equals(card.appointment);
+                && insurance.equals(card.insurance);
     }
 }

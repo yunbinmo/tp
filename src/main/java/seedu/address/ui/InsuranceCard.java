@@ -1,7 +1,9 @@
 package seedu.address.ui;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.insurance.Insurance;
@@ -30,16 +32,25 @@ public class InsuranceCard extends UiPart<Region> {
     @FXML
     private Label id;
 
+
     /**
      * Creates a {@code InsuranceCode} with the given {@code Insurance} and index to display.
      */
-    public InsuranceCard(Insurance insurance, int displayedIndex) {
+    public InsuranceCard(Insurance insurance, int displayedIndex, MainWindow main) {
         super(FXML);
         this.insurance = insurance;
         id.setText(displayedIndex + ". ");
         title.setText(insurance.getTitle().toString());
+        cardPane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent me) {
+                System.out.println("Mouse pressed box " + displayedIndex);
+                main.updateInsuranceDetailPanel(insurance);
+            }
+        });
+
 
     }
+
 
     @Override
     public boolean equals(Object other) {
