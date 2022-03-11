@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.insurance.Insurance;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -45,6 +46,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane objectListPanelPlaceholder;
+
+    @FXML
+    private StackPane detailPanel;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -120,7 +124,9 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         objectListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList());
+
+        insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList(), this);
+
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
@@ -147,6 +153,15 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+
+    /**
+     * update DetailPanel
+     */
+    public void updateDetailPanel(Insurance insurance) {
+        detailPanel.getChildren().clear();
+        detailPanel.getChildren().add(new InsuranceDetailCard(insurance, 1).getRoot());
+    }
+
     /**
      * Opens the help window or focuses on it if it's already opened.
      */
@@ -158,6 +173,7 @@ public class MainWindow extends UiPart<Stage> {
             helpWindow.focus();
         }
     }
+
 
     void show() {
         primaryStage.show();
