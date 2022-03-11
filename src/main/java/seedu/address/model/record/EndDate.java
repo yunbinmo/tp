@@ -3,7 +3,6 @@ package seedu.address.model.record;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -15,9 +14,9 @@ import java.time.format.DateTimeParseException;
 public class EndDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
+            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 18:00";
 
-    private static final String DATE_FORMAT = "dd-MM-yyyy";
+    private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm";
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
