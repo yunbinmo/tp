@@ -15,9 +15,9 @@ import java.time.format.DateTimeParseException;
 public class StartDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Start Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
+            "Start Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 18:00";
 
-    private static final String DATE_FORMAT = "dd-MM-yyyy";
+    private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm";
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
