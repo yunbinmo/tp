@@ -63,12 +63,12 @@ public class JsonRecordBookStorage implements RecordBookStorage{
     }
 
     @Override
-    public void saveRecord(ReadOnlyRecordBook recordBook) throws IOException {
+    public void saveRecordBook(ReadOnlyRecordBook recordBook) throws IOException {
 
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException {
+    public void saveRecordBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException {
 
     }
 }

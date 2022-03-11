@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
+import seedu.address.model.record.Record;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,32 +25,38 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final InsuranceBook insuranceBook;
     private final AppointmentBook appointmentBook;
+    private final RecordBook recordBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Insurance> filteredInsurances;
     private final FilteredList<Appointment> filteredAppointments;
+    private final FilteredList<Record> filteredRecords;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInsuranceBook insuranceBook,
-                        ReadOnlyAppointmentBook appointmentBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, insuranceBook, userPrefs);
+                        ReadOnlyAppointmentBook appointmentBook, ReadOnlyRecordBook recordBook,
+                        ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, insuranceBook, recordBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook
-                + "and insurance book" + insuranceBook + " and user prefs " + userPrefs);
+                + "and insurance book" + insuranceBook + "and record book" + recordBook
+                + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.insuranceBook = new InsuranceBook(insuranceBook);
         this.appointmentBook = new AppointmentBook(appointmentBook);
+        this.recordBook = new RecordBook(recordBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
         this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
+        this.filteredRecords = new FilteredList<>(this.recordBook.getRecordList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new InsuranceBook(), new AppointmentBook(), new UserPrefs());
+        this(new AddressBook(), new InsuranceBook(), new AppointmentBook(), new RecordBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -193,6 +200,41 @@ public class ModelManager implements Model {
         this.appointmentBook.setAppointment(target, editedAppointment);
     }
 
+    //=========== RecordBook ============================================================================
+    @Override
+    public ReadOnlyRecordBook getRecordBook() {
+        return this.recordBook;
+    }
+
+    @Override
+    public void setRecordBook(ReadOnlyRecordBook recordBook) {
+        this.recordBook.resetData(recordBook);
+    }
+
+    @Override
+    public boolean hasRecord(Record record) {
+        requireNonNull(record);
+        return this.recordBook.hasRecord(record);
+    }
+
+    @Override
+    public void addRecord(Record record) {
+        this.recordBook.addRecord(record);
+        this.updateFilteredRecordList(PREDICATE_SHOW_ALL_RECORDS);
+    }
+
+    @Override
+    public void deleteRecord(Record record) {
+        this.recordBook.removeRecord(record);
+    }
+
+    @Override
+    public void setRecord(Record target, Record editedRecord) {
+        requireAllNonNull(target, editedRecord);
+        this.recordBook.setRecord(target, editedRecord);
+    }
+
+
     //=========== Filtered Appointment List Accessors ========================================================
 
     /**
@@ -263,5 +305,23 @@ public class ModelManager implements Model {
                 && this.userPrefs.equals(other.userPrefs)
                 && this.filteredPersons.equals(other.filteredPersons);
     }
+
+    //=========== Filtered Record List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Record} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Record> getFilteredRecordList() {
+        return this.filteredRecords;
+    }
+
+    @Override
+    public void updateFilteredRecordList(Predicate<Record> predicate) {
+        requireNonNull(predicate);
+        this.filteredRecords.setPredicate(predicate);
+    }
+
 
 }

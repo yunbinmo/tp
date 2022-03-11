@@ -32,10 +32,10 @@ public interface RecordBookStorage {
      * @param recordBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveRecord(ReadOnlyRecordBook recordBook) throws IOException;
+    void saveRecordBook(ReadOnlyRecordBook recordBook) throws IOException;
 
     /**
-     * @see #saveRecord(ReadOnlyRecordBook)
+     * @see #saveRecordBook(ReadOnlyRecordBook)
      */
-    void saveAddressBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException;
+    void saveRecordBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException;
 }
