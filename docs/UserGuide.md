@@ -146,6 +146,7 @@ Adds an insurance to a client
 Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
+* Each client index can only own 1 insurance of each type
 
 Examples: (***todo***)
 * `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024
