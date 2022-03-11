@@ -11,17 +11,47 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
+    /**
+     * The application should list person.
+     */
+    private final boolean person;
+
+    /**
+     * The application should list insurance.
+     */
+    private final boolean insurance;
+
+    /**
+     * The application should list record.
+     */
+    private final boolean record;
+
+    /**
+     * The application should list history.
+     */
+    private final boolean history;
+
+    /**
+     * Help information should be shown to the user.
+     */
     private final boolean showHelp;
 
-    /** The application should exit. */
+    /**
+     * The application should exit.
+     */
     private final boolean exit;
+
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean person, boolean insurance,
+                         boolean record, boolean history, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.person = person;
+        this.insurance = insurance;
+        this.record = record;
+        this.history = history;
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -31,12 +61,29 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false, false, false, false);
     }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
+
+    public boolean isListPerson() {
+        return person;
+    }
+
+    public boolean isListInsurance() {
+        return insurance;
+    }
+
+    public boolean isListRecord() {
+        return record;
+    }
+
+    public boolean isListHistory() {
+        return history;
+    }
+
 
     public boolean isShowHelp() {
         return showHelp;
@@ -59,13 +106,17 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
+                && person == otherCommandResult.person
+                && insurance == otherCommandResult.insurance
+                && record == otherCommandResult.record
+                && history == otherCommandResult.showHelp
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, person, insurance, record, history, showHelp, exit);
     }
 
 }

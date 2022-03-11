@@ -32,6 +32,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private InsuranceListPanel insuranceListPanel;
     private AppointmentListPanel appointmentListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -43,7 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane objectListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -82,6 +83,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -114,8 +116,11 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        // default will display Person List
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        objectListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList());
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
@@ -184,6 +189,24 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isListPerson()) {
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            }
+
+            if (commandResult.isListInsurance()) {
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(insuranceListPanel.getRoot());
+            }
+
+            if (commandResult.isListRecord()) {
+                //TODO: replace Panel with Records
+            }
+
+            if (commandResult.isListHistory()) {
+                //TODO: replace Panel with Hisotry
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
