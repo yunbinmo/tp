@@ -1,10 +1,7 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.appointment.Appointment;
@@ -23,9 +20,9 @@ public class AppointmentCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label id;
+    private Label title;
     @FXML
-    private Label content;
+    private Label dateTime;
 
     /**
      * Creates a {@code AppointmentCode} with the given {@code Appointment} and index to display.
@@ -33,8 +30,8 @@ public class AppointmentCard extends UiPart<Region> {
     public AppointmentCard(Appointment appointment, int displayedIndex) {
         super(FXML);
         this.appointment = appointment;
-        id.setText(displayedIndex + ". ");
-        content.setText(appointment.toString());
+        title.setText(displayedIndex + ". " + appointment.getDescription());
+        dateTime.setText(appointment.getDateTime().toString());
     }
 
     @Override
@@ -51,7 +48,7 @@ public class AppointmentCard extends UiPart<Region> {
 
         // state check
         AppointmentCard card = (AppointmentCard) other;
-        return id.getText().equals(card.id.getText())
+        return title.getText().equals(card.title.getText())
                 && appointment.equals(card.appointment);
     }
 }
