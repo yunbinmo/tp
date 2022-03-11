@@ -15,7 +15,7 @@ import java.time.format.DateTimeParseException;
 public class StartDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Date and time should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
+            "Start Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
