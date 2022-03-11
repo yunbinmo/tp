@@ -17,6 +17,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.insurance.Insurance;
+import seedu.address.model.person.Person;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -121,7 +122,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         // default will display Person List
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList(), this);
         objectListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
 
@@ -155,11 +156,19 @@ public class MainWindow extends UiPart<Stage> {
 
 
     /**
-     * update DetailPanel
+     * update DetailPanel for clicked insurance card
      */
-    public void updateDetailPanel(Insurance insurance) {
+    public void updateInsuranceDetailPanel(Insurance insurance) {
         detailPanel.getChildren().clear();
         detailPanel.getChildren().add(new InsuranceDetailCard(insurance, 1).getRoot());
+    }
+
+    /**
+     * update DetailPanel for clicked insurance card
+     */
+    public void updatePersonDetailPanel(Person person) {
+        detailPanel.getChildren().clear();
+        detailPanel.getChildren().add(new PersonDetailCard(person, 1).getRoot());
     }
 
     /**

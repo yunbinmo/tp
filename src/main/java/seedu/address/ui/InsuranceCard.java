@@ -44,7 +44,7 @@ public class InsuranceCard extends UiPart<Region> {
         cardPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 System.out.println("Mouse pressed box " + displayedIndex);
-                main.updateDetailPanel(insurance);
+                main.updateInsuranceDetailPanel(insurance);
             }
         });
 

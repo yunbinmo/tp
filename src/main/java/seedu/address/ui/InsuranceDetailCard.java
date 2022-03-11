@@ -43,17 +43,6 @@ public class InsuranceDetailCard extends UiPart<Region> {
 
     }
 
-    /**
-     * Creates a {@code InsuranceCode} with the given {@code Insurance} and index to display.
-     */
-    public InsuranceDetailCard() {
-        super(FXML);
-        this.insurance = new Insurance(new Title("wwww"), new Price("123"));
-        id.setText(999 + ". ");
-        title.setText(insurance.getTitle().toString());
-
-    }
-
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
