@@ -87,11 +87,11 @@ public class Record {
      */
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Record: ")
+        builder.append(" Record ")
                 .append(this.getRecordId())
-                .append(" Client: ")
+                .append(" Client ")
                 .append(this.getClientID())
-                .append(" bought ")
+                .append(" bought insurance ")
                 .append(this.getInsuranceID())
                 .append(" valid from ")
                 .append(this.getStartDate())

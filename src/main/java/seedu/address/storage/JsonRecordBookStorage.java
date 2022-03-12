@@ -19,7 +19,7 @@ import seedu.address.model.ReadOnlyRecordBook;
  */
 public class JsonRecordBookStorage implements RecordBookStorage{
 
-    private static final Logger logger = LogsCenter.getLogger(JsonAppointmentBookStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(JsonRecordBookStorage.class);
 
     private Path filePath;
 
@@ -64,11 +64,15 @@ public class JsonRecordBookStorage implements RecordBookStorage{
 
     @Override
     public void saveRecordBook(ReadOnlyRecordBook recordBook) throws IOException {
-
+        saveRecordBook(recordBook, filePath);
     }
 
     @Override
     public void saveRecordBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException {
+        requireNonNull(recordBook);
+        requireNonNull(filePath);
 
+        FileUtil.createIfMissing(filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableRecordBook(recordBook), filePath);
     }
 }

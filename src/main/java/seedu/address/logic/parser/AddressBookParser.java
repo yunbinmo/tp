@@ -9,11 +9,13 @@ import java.util.regex.Pattern;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddInsuranceCommand;
 import seedu.address.logic.commands.AddPersonCommand;
+import seedu.address.logic.commands.AddRecordCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeleteInsuranceCommand;
 import seedu.address.logic.commands.DeletePersonCommand;
+import seedu.address.logic.commands.DeleteRecordCommand;
 import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindPersonCommand;
@@ -21,6 +23,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppointmentCommand;
 import seedu.address.logic.commands.ListInsuranceCommand;
 import seedu.address.logic.commands.ListPersonCommand;
+import seedu.address.logic.commands.ListRecordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -63,7 +66,7 @@ public class AddressBookParser {
         case Command.COMMAND_INSURANCE:
             return this.parseInsuranceCommand(commandWord, arguments);
         case Command.COMMAND_RECORD:
-            //TODO: parse record
+            return this.parseRecordCommand(commandWord, arguments);
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
         case SINGLE_COMMAND_FORMAT:
@@ -176,4 +179,24 @@ public class AddressBookParser {
         }
     }
 
+    /**
+     * Parse appointment command.
+     *
+     * @param commandWord the command word
+     * @param arguments   the argument
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public Command parseRecordCommand(String commandWord, String arguments) throws ParseException {
+        switch (commandWord) {
+        case AddRecordCommand.COMMAND_WORD:
+            return new AddRecordCommandParser().parse(arguments);
+        case DeleteRecordCommand.COMMAND_WORD:
+            return new DeleteRecordCommandParser().parse(arguments);
+        case ListRecordCommand.COMMAND_WORD:
+            return new ListRecordCommand();
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
 }
