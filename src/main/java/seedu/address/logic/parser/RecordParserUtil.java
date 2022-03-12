@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -68,7 +69,7 @@ public class RecordParserUtil {
     public static StartDate parseStartDate(String startDate) throws ParseException {
         requireNonNull(startDate);
         String trimmedStartDate = startDate.trim();
-        LocalDateTime result = StartDate.validateDateTime(trimmedStartDate);
+        LocalDate result = StartDate.validateDateTime(trimmedStartDate);
         if (result == null) {
             throw new ParseException(StartDate.MESSAGE_CONSTRAINTS);
         }
@@ -84,7 +85,7 @@ public class RecordParserUtil {
     public static EndDate parseEndDate(String endDate) throws ParseException {
         requireNonNull(endDate);
         String trimmedEndDate = endDate.trim();
-        LocalDateTime result = EndDate.validateDateTime(trimmedEndDate);
+        LocalDate result = EndDate.validateDateTime(trimmedEndDate);
         if (result == null) {
             throw new ParseException(StartDate.MESSAGE_CONSTRAINTS);
         }

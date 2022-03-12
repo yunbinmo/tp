@@ -15,9 +15,11 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.RecordParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -36,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private InsuranceListPanel insuranceListPanel;
     private AppointmentListPanel appointmentListPanel;
+    private RecordListPanel recordListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -59,6 +62,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane appointmentListPanelPlaceholder;
+
+    //@FXML
+    //private StackPane recordListPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -128,9 +134,10 @@ public class MainWindow extends UiPart<Stage> {
 
         insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList(), this);
 
-
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
+
+        recordListPanel = new RecordListPanel(logic.getFilteredRecordList(), this);
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -169,6 +176,11 @@ public class MainWindow extends UiPart<Stage> {
     public void updatePersonDetailPanel(Person person) {
         detailPanel.getChildren().clear();
         detailPanel.getChildren().add(new PersonDetailCard(person, 1).getRoot());
+    }
+
+    public void updateRecordDetailPanel(Record record) {
+        detailPanel.getChildren().clear();
+        detailPanel.getChildren().add(new RecordDetailCard(record, 1).getRoot());
     }
 
     /**
@@ -227,6 +239,8 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isListRecord()) {
                 //TODO: replace Panel with Records
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(recordListPanel.getRoot());
             }
 
             if (commandResult.isListHistory()) {

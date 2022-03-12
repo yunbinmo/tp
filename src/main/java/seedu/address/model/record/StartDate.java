@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -15,13 +14,13 @@ import java.time.format.DateTimeParseException;
 public class StartDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Start Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 13:00";
+            "Start Date should be in this format: dd-MM-yyyy e.g. 02-03-2022";
 
-    private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm";
+    private static final String DATE_FORMAT = "dd-MM-yyyy";
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-    public final LocalDateTime date;
+    public final LocalDate date;
 
     /**
      * Constructs a {@code DateTime}.
@@ -30,7 +29,7 @@ public class StartDate {
      */
     public StartDate(String input) {
         requireNonNull(input);
-        LocalDateTime result = validateDateTime(input);
+        LocalDate result = validateDateTime(input);
         if (result == null) {
             checkArgument(false, MESSAGE_CONSTRAINTS);
         }
@@ -42,16 +41,16 @@ public class StartDate {
      *
      * @param date A valid LocalDateTime object.
      */
-    public StartDate(LocalDateTime date) {
+    public StartDate(LocalDate date) {
         this.date = date;
     }
 
     /**
      * Returns a valid LocalDateTime object if a given string is valid date and time.
      */
-    public static LocalDateTime validateDateTime(String test) {
+    public static LocalDate validateDateTime(String test) {
         try {
-            LocalDateTime date = LocalDateTime.parse(test, DATE_FORMATTER);
+            LocalDate date = LocalDate.parse(test, DATE_FORMATTER);
             return date;
         } catch (DateTimeParseException e) {
             return null;

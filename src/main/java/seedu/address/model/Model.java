@@ -211,7 +211,7 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code Recordook}.
      */
-    void setRecordBook(ReadOnlyRecordBook RecordBook);
+    void setRecordBook(ReadOnlyRecordBook recordBook);
 
     /**
      * Returns true if an aRecord with the same identity as {@code person} exists in the book.
