@@ -4,8 +4,10 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 
@@ -27,6 +29,12 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<AppointmentHistory> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
 
     /**
      * Returns the user prefs.
@@ -151,6 +159,30 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredInsuranceList(Predicate<Insurance> predicate);
+
+    //=========== HistoryBook ============================================================================
+    /**
+     * Returns the HistoryBook
+     */
+    ReadOnlyAppointmentHistoryBook getHistoryBook();
+
+    /**
+     * Returns true if history exists in the book.
+     */
+    boolean hasHistory(AppointmentHistory history);
+
+    /**
+     * Returns an unmodifiable view of the filtered history list
+     * @return
+     */
+    FilteredList<Appointment> getFilteredAppointmentHistoryList();
+
+    /**
+     * Updates the filter of the filtered history list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate);
 
     //=========== AppointmentBook ============================================================================
     /**

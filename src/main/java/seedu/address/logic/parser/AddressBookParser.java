@@ -6,21 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddAppointmentCommand;
-import seedu.address.logic.commands.AddInsuranceCommand;
-import seedu.address.logic.commands.AddPersonCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteAppointmentCommand;
-import seedu.address.logic.commands.DeleteInsuranceCommand;
-import seedu.address.logic.commands.DeletePersonCommand;
-import seedu.address.logic.commands.EditPersonCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindPersonCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListAppointmentCommand;
-import seedu.address.logic.commands.ListInsuranceCommand;
-import seedu.address.logic.commands.ListPersonCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -66,6 +52,8 @@ public class AddressBookParser {
             //TODO: parse record
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
+        case Command.COMMAND_APPOINTMENT_HISTORY:
+            return this.parseAppointmentHistoryCommand();
         case SINGLE_COMMAND_FORMAT:
             return this.parseGeneralCommand(commandWord);
         default:
@@ -102,7 +90,7 @@ public class AddressBookParser {
     }
 
     /**
-     * Parse person command command.
+     * Parse person command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -132,7 +120,7 @@ public class AddressBookParser {
     }
 
     /**
-     * Parse insurance command command.
+     * Parse insurance command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -174,6 +162,15 @@ public class AddressBookParser {
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    /**
+     * Parse appointment history command.
+     *
+     * @return the command based on the user input
+     */
+    public Command parseAppointmentHistoryCommand() {
+        return new ListAppointmentHistoryCommand();
     }
 
 }

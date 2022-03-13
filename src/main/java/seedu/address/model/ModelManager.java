@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.history.AppointmentHistory;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
@@ -24,10 +25,13 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final InsuranceBook insuranceBook;
     private final AppointmentBook appointmentBook;
+    private final AppointmentHistoryBook historyBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Insurance> filteredInsurances;
     private final FilteredList<Appointment> filteredAppointments;
+    private final FilteredList<Appointment> filteredAppointmentHistory;
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -42,10 +46,13 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.insuranceBook = new InsuranceBook(insuranceBook);
         this.appointmentBook = new AppointmentBook(appointmentBook);
+        this.historyBook = new AppointmentHistoryBook(appointmentBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
         this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
+        this.filteredAppointmentHistory = new FilteredList<>(this.historyBook.getAppointmentHistoryList());
+
     }
 
     public ModelManager() {
@@ -196,7 +203,7 @@ public class ModelManager implements Model {
     //=========== Filtered Appointment List Accessors ========================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Appointment} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
@@ -210,6 +217,32 @@ public class ModelManager implements Model {
         this.filteredAppointments.setPredicate(predicate);
     }
 
+    //=========== HistoryBook ============================================================================
+    @Override
+    public ReadOnlyAppointmentHistoryBook getHistoryBook() { return this.historyBook;
+    }
+
+    @Override
+    public boolean hasHistory(AppointmentHistory history) {
+        return true;
+    }
+
+    //=========== Filtered History List Accessors ========================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code History} backed by the internal list of
+     * {@code versionedAddressBook}
+     * @return
+     */
+    @Override
+    public FilteredList<Appointment> getFilteredAppointmentHistoryList() {
+        return this.filteredAppointmentHistory;
+    }
+
+    @Override
+    public void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate) {
+
+    }
 
     //=========== Filtered Person List Accessors =============================================================
 

@@ -72,4 +72,8 @@ public class DateTime {
     public int hashCode() {
         return dateTime.hashCode();
     }
+
+    public boolean isBefore(LocalDateTime now) {
+        return this.dateTime.isBefore(now);
+    }
 }
