@@ -7,8 +7,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
-import seedu.address.model.record.Record;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * The API of the Model component.
@@ -209,9 +209,9 @@ public interface Model {
     ReadOnlyRecordBook getRecordBook();
 
     /**
-     * Replaces address book data with the data in {@code Recordook}.
+     * Replaces address book data with the data in {@code RecorBook}.
      */
-    void setRecordBook(ReadOnlyRecordBook RecordBook);
+    void setRecordBook(ReadOnlyRecordBook recordBook);
 
     /**
      * Returns true if an aRecord with the same identity as {@code person} exists in the book.

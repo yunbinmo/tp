@@ -22,7 +22,7 @@ import seedu.address.model.record.exceptions.RecordNotFoundException;
  *
  * @see Record#isSameRecord(Record)
  */
-public class UniqueRecordList implements Iterable<Record>{
+public class UniqueRecordList implements Iterable<Record> {
 
     private final ObservableList<Record> internalList = FXCollections.observableArrayList();
     private final ObservableList<Record> internalUnmodifiableList =

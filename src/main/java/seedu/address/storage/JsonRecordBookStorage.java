@@ -17,7 +17,7 @@ import seedu.address.model.ReadOnlyRecordBook;
 /**
  * A class to access Record data stored as a json file on the hard disk.
  */
-public class JsonRecordBookStorage implements RecordBookStorage{
+public class JsonRecordBookStorage implements RecordBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonRecordBookStorage.class);
 

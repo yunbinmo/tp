@@ -18,10 +18,10 @@ public class InsuranceID {
      *
      * @param insurance_id A valid price number.
      */
-    public InsuranceID(String insurance_id) {
-        requireNonNull(insurance_id);
-        checkArgument(isValidInsuranceID(insurance_id), MESSAGE_CONSTRAINTS);
-        id = insurance_id;
+    public InsuranceID(String insuranceID) {
+        requireNonNull(insuranceID);
+        checkArgument(isValidInsuranceID(insuranceID), MESSAGE_CONSTRAINTS);
+        id = insuranceID;
     }
 
     /**

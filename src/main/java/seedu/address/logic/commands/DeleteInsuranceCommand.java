@@ -36,7 +36,7 @@ public class DeleteInsuranceCommand extends Command {
         List<Insurance> lastShownList = model.getFilteredInsuranceList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX);
         }
 
         Insurance insuranceToDelete = lastShownList.get(targetIndex.getZeroBased());
