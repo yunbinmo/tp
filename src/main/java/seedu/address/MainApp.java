@@ -23,7 +23,9 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
+import seedu.address.model.ReadOnlyRecordBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.RecordBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
@@ -32,7 +34,9 @@ import seedu.address.storage.InsuranceBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonAppointmentBookStorage;
 import seedu.address.storage.JsonInsuranceBookStorage;
+import seedu.address.storage.JsonRecordBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.RecordBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -71,8 +75,11 @@ public class MainApp extends Application {
 
         InsuranceBookStorage insuranceBookStorage = new JsonInsuranceBookStorage(userPrefs.getInsuranceBookFilePath());
 
+        RecordBookStorage recordBookStorage =
+                new JsonRecordBookStorage(userPrefs.getRecordBookFilePath());
+
         this.storage = new StorageManager(addressBookStorage, insuranceBookStorage,
-                appointmentBookStorage, userPrefsStorage);
+                appointmentBookStorage, recordBookStorage, userPrefsStorage);
 
         this.initLogging(this.config);
 
@@ -138,12 +145,29 @@ public class MainApp extends Application {
             initialAppointmentData = new AppointmentBook();
         }
 
+        Optional<ReadOnlyRecordBook> recordBookOptional;
+        ReadOnlyRecordBook initialRecordData;
+        try {
+            recordBookOptional = storage.readRecordBook();
+            if (!recordBookOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample RecordBook");
+            }
+            initialRecordData = recordBookOptional.orElseGet(SampleDataUtil::getSampleRecordBook);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty RecordBook");
+            initialRecordData = new RecordBook();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty RecordBook");
+            initialRecordData = new RecordBook();
+        }
+
         System.out.println(initialAppointmentData.toString());
         System.out.println(initialAddressBookData.toString());
         System.out.println(initialInsuranceBookData.toString());
+        System.out.println(initialRecordData.toString());
         
         return new ModelManager(initialAddressBookData, initialInsuranceBookData,
-                initialAppointmentData, userPrefs);
+                initialAppointmentData, initialRecordData, userPrefs);
     }
 
     private void initLogging(Config config) {

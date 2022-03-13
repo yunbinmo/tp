@@ -10,6 +10,7 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
+import seedu.address.model.ReadOnlyRecordBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -23,19 +24,22 @@ public class StorageManager implements Storage {
     private InsuranceBookStorage insuranceBookStorage;
     private UserPrefsStorage userPrefsStorage;
     private AppointmentBookStorage appointmentBookStorage;
+    private RecordBookStorage recordBookStorage;
 
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage, InsuranceBookStorage insuranceBookStorage,
-                          AppointmentBookStorage appointmentBookStorage,
+                          AppointmentBookStorage appointmentBookStorage, RecordBookStorage recordBookStorage,
                           UserPrefsStorage userPrefsStorage) {
         this.addressBookStorage = addressBookStorage;
         this.insuranceBookStorage = insuranceBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.appointmentBookStorage = appointmentBookStorage;
+        this.recordBookStorage = recordBookStorage;
     }
+
 
     // ================ UserPrefs methods ==============================
 
@@ -139,6 +143,36 @@ public class StorageManager implements Storage {
     public void saveInsuranceBook(ReadOnlyInsuranceBook insuranceBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         insuranceBookStorage.saveInsuranceBook(insuranceBook, filePath);
+    }
+
+    // ================ RecordBook methods ==============================
+
+    @Override
+    public Path getRecordBookFilePath() {
+        return recordBookStorage.getRecordBookFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyRecordBook> readRecordBook() throws DataConversionException, IOException {
+        return readRecordBook(recordBookStorage.getRecordBookFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyRecordBook> readRecordBook(Path filePath)
+            throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return recordBookStorage.readRecordBook(filePath);
+    }
+
+    @Override
+    public void saveRecordBook(ReadOnlyRecordBook recordBook) throws IOException {
+        saveRecordBook(recordBook, recordBookStorage.getRecordBookFilePath());
+    }
+
+    @Override
+    public void saveRecordBook(ReadOnlyRecordBook recordBook, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        recordBookStorage.saveRecordBook(recordBook, filePath);
     }
 
 }

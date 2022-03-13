@@ -28,6 +28,9 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonAppointmentBookStorage;
+import seedu.address.storage.JsonInsuranceBookStorage;
+import seedu.address.storage.JsonRecordBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
@@ -46,7 +49,10 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonInsuranceBookStorage insuranceBookStorage = new JsonInsuranceBookStorage(temporaryFolder.resolve("insuranceBook.json"));
+        JsonAppointmentBookStorage appointmentBookStorage = new JsonAppointmentBookStorage(temporaryFolder.resolve("appointmentBook"));
+        JsonRecordBookStorage recordBookStorage = new JsonRecordBookStorage(temporaryFolder.resolve("recordBook"));
+        StorageManager storage = new StorageManager(addressBookStorage, insuranceBookStorage, appointmentBookStorage, recordBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -75,7 +81,10 @@ public class LogicManagerTest {
                 new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonInsuranceBookStorage insuranceBookStorage = new JsonInsuranceBookStorage(temporaryFolder.resolve("ioExceptionInsuranceBook.json"));
+        JsonAppointmentBookStorage appointmentBookStorage = new JsonAppointmentBookStorage(temporaryFolder.resolve("ioExceptionAppointmentBook"));
+        JsonRecordBookStorage recordBookStorage = new JsonRecordBookStorage(temporaryFolder.resolve("ioExceptionRecordBook"));
+        StorageManager storage = new StorageManager(addressBookStorage, insuranceBookStorage, appointmentBookStorage, recordBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -129,7 +138,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), model.getInsuranceBook(), model.getAppointmentBook(), model.getRecordBook(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

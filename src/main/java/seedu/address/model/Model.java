@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
+import seedu.address.model.record.Record;
 import seedu.address.model.person.Person;
 
 /**
@@ -27,6 +28,11 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Record> PREDICATE_SHOW_ALL_RECORDS = unused -> true;
 
     /**
      * Returns the user prefs.
@@ -194,4 +200,48 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+
+    //=========== RecordBook ============================================================================
+    /**
+     * Returns the RecordBook
+     */
+    ReadOnlyRecordBook getRecordBook();
+
+    /**
+     * Replaces address book data with the data in {@code Recordook}.
+     */
+    void setRecordBook(ReadOnlyRecordBook RecordBook);
+
+    /**
+     * Returns true if an aRecord with the same identity as {@code person} exists in the book.
+     */
+    boolean hasRecord(Record record);
+
+    /**
+     * Adds the given record.
+     */
+    void addRecord(Record record);
+
+    void deleteRecord(Record record);
+
+    /**
+     * Replaces the given record {@code target} with {@code editedRecord}.
+     * {@code target} must exist in the record book.
+     * The record identity of {@code editedRecord} must not be the same as another
+     * existing record in the record book.
+     */
+    void setRecord(Record target, Record editedRecord);
+
+    /**
+     * Returns an unmodifiable view of the filtered record list
+     */
+    ObservableList<Record> getFilteredRecordList();
+
+    /**
+     * Updates the filter of the filtered record list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredRecordList(Predicate<Record> predicate);
 }
