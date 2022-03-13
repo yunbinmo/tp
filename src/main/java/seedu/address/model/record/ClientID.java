@@ -16,12 +16,12 @@ public class ClientID {
     /**
      * Constructs a {@code Price}.
      *
-     * @param client_id A valid price number.
+     * @param clientId A valid price number.
      */
-    public ClientID(String client_id) {
-        requireNonNull(client_id);
-        checkArgument(isValidClientID(client_id), MESSAGE_CONSTRAINTS);
-        id = client_id;
+    public ClientID(String clientID) {
+        requireNonNull(clientID);
+        checkArgument(isValidClientID(clientID), MESSAGE_CONSTRAINTS);
+        id = clientID;
     }
 
     /**

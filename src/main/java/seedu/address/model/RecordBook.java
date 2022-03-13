@@ -6,13 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.appointment.Appointment;
-import seedu.address.model.appointment.UniqueAppointmentList;
-import seedu.address.model.insurance.UniqueInsuranceList;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.UniqueRecordList;
 
-public class RecordBook implements ReadOnlyRecordBook{
+public class RecordBook implements ReadOnlyRecordBook {
 
     private final UniqueRecordList records;
 
