@@ -10,6 +10,7 @@ import seedu.address.model.appointment.Appointment;
 import seedu.address.model.history.AppointmentHistory;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * The API of the Model component.
@@ -35,6 +36,11 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<AppointmentHistory> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Record> PREDICATE_SHOW_ALL_RECORDS = unused -> true;
 
     /**
      * Returns the user prefs.
@@ -164,7 +170,7 @@ public interface Model {
     /**
      * Returns the HistoryBook
      */
-    ReadOnlyAppointmentHistoryBook getHistoryBook();
+    ReadOnlyAppointmentHistoryBook getAppointmentHistoryBook();
 
     /**
      * Returns true if history exists in the book.
@@ -172,10 +178,10 @@ public interface Model {
     boolean hasHistory(AppointmentHistory history);
 
     /**
-     * Returns an unmodifiable view of the filtered history list
+     * Returns an unmodifiable view of the filtered appointment history list
      * @return
      */
-    FilteredList<Appointment> getFilteredAppointmentHistoryList();
+    ObservableList<Appointment> getFilteredAppointmentHistoryList();
 
     /**
      * Updates the filter of the filtered history list to filter by the given {@code predicate}.
@@ -226,4 +232,49 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+
+    //=========== RecordBook ============================================================================
+    /**
+     * Returns the RecordBook
+     */
+    ReadOnlyRecordBook getRecordBook();
+
+    /**
+     * Replaces address book data with the data in {@code RecorBook}.
+     */
+    void setRecordBook(ReadOnlyRecordBook recordBook);
+
+    /**
+     * Returns true if an aRecord with the same identity as {@code person} exists in the book.
+     */
+    boolean hasRecord(Record record);
+
+    /**
+     * Adds the given record.
+     */
+    void addRecord(Record record);
+
+    void deleteRecord(Record record);
+
+    /**
+     * Replaces the given record {@code target} with {@code editedRecord}.
+     * {@code target} must exist in the record book.
+     * The record identity of {@code editedRecord} must not be the same as another
+     * existing record in the record book.
+     */
+    void setRecord(Record target, Record editedRecord);
+
+    /**
+     * Returns an unmodifiable view of the filtered record list
+     */
+    ObservableList<Record> getFilteredRecordList();
+
+    /**
+     * Updates the filter of the filtered record list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredRecordList(Predicate<Record> predicate);
+
 }

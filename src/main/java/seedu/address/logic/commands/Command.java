@@ -15,6 +15,7 @@ public abstract class Command {
     public static final String COMMAND_APPOINTMENT_HISTORY = "-h";
 
 
+
     /**
      * Executes the command and returns the result message.
      *

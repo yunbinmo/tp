@@ -16,4 +16,5 @@ public interface ReadOnlyUserPrefs {
     Path getAppointmentBookFilePath();
     Path getInsuranceBookFilePath();
 
+    Path getRecordBookFilePath();
 }

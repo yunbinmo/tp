@@ -49,7 +49,7 @@ public class AddressBookParser {
         case Command.COMMAND_INSURANCE:
             return this.parseInsuranceCommand(commandWord, arguments);
         case Command.COMMAND_RECORD:
-            //TODO: parse record
+            return this.parseRecordCommand(commandWord, arguments);
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
         case Command.COMMAND_APPOINTMENT_HISTORY:
@@ -90,7 +90,7 @@ public class AddressBookParser {
     }
 
     /**
-     * Parse person command.
+     * Parse person command command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -120,7 +120,7 @@ public class AddressBookParser {
     }
 
     /**
-     * Parse insurance command.
+     * Parse insurance command command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -169,8 +169,28 @@ public class AddressBookParser {
      *
      * @return the command based on the user input
      */
-    public Command parseAppointmentHistoryCommand() {
+    private Command parseAppointmentHistoryCommand() {
         return new ListAppointmentHistoryCommand();
     }
 
+    /**
+     * Parse appointment command.
+     *
+     * @param commandWord the command word
+     * @param arguments   the argument
+     * @return the command based on the user input
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public Command parseRecordCommand(String commandWord, String arguments) throws ParseException {
+        switch (commandWord) {
+        case AddRecordCommand.COMMAND_WORD:
+            return new AddRecordCommandParser().parse(arguments);
+        case DeleteRecordCommand.COMMAND_WORD:
+            return new DeleteRecordCommandParser().parse(arguments);
+        case ListRecordCommand.COMMAND_WORD:
+            return new ListRecordCommand();
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
 }

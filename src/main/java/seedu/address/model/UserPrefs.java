@@ -15,9 +15,10 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
 
-    private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
-    private Path appointmentBookFilePath = Paths.get("data" , "appointmentbook.json");
+    private Path addressBookFilePath = Paths.get("data", "addressbook.json");
+    private Path appointmentBookFilePath = Paths.get("data", "appointmentbook.json");
     private Path insuranceBookFilePath = Paths.get("data", "insurancebook.json");
+    private Path recordBookFilePath = Paths.get("data", "recordbook.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -42,6 +43,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
         setAppointmentBookFilePath(newUserPrefs.getAppointmentBookFilePath());
         setInsuranceBookFilePath(newUserPrefs.getInsuranceBookFilePath());
+        setRecordBookFilePath(newUserPrefs.getRecordBookFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -57,18 +59,28 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return addressBookFilePath;
     }
 
-    public Path getAppointmentBookFilePath() {
-        return appointmentBookFilePath;
-    }
-
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         this.addressBookFilePath = addressBookFilePath;
     }
 
+    public Path getAppointmentBookFilePath() {
+        return appointmentBookFilePath;
+    }
+
     public void setAppointmentBookFilePath(Path appointmentBookFilePath) {
         requireNonNull(appointmentBookFilePath);
         this.appointmentBookFilePath = appointmentBookFilePath;
+
+    }
+
+    public Path getRecordBookFilePath() {
+        return recordBookFilePath;
+    }
+
+    public void setRecordBookFilePath(Path recordBookFilePath) {
+        requireNonNull(recordBookFilePath);
+        this.recordBookFilePath = recordBookFilePath;
 
     }
 
@@ -95,12 +107,14 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return guiSettings.equals(o.guiSettings)
                 && addressBookFilePath.equals(o.addressBookFilePath)
                 && appointmentBookFilePath.equals((o.appointmentBookFilePath))
-                && insuranceBookFilePath.equals((o.insuranceBookFilePath));
+                && insuranceBookFilePath.equals((o.insuranceBookFilePath))
+                && recordBookFilePath.equals((o.insuranceBookFilePath));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, addressBookFilePath, insuranceBookFilePath, appointmentBookFilePath);
+        return Objects.hash(guiSettings, addressBookFilePath, insuranceBookFilePath,
+                appointmentBookFilePath, recordBookFilePath);
     }
 
     @Override
@@ -111,6 +125,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         sb.append("\nLocal data file location : " + appointmentBookFilePath);
         sb.append("\nLocal addressBook data file location : " + addressBookFilePath);
         sb.append("\nLocal insuranceBook data file location : " + insuranceBookFilePath);
+        sb.append("\nLocal recordBook data file location : " + recordBookFilePath);
+
         return sb.toString();
     }
 }

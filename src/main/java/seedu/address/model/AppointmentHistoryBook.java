@@ -1,25 +1,22 @@
 package seedu.address.model;
 
-import static java.util.Objects.requireNonNull;
-
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
-import seedu.address.model.history.UniqueAppointmentHistoryList;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+
 
 /**
  * Wraps all data at the history-book level
  * Duplicates are not allowed (by .isSameHistory comparison)
  */
 public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
-    private final UniqueAppointmentHistoryList history;
+    private final ObservableList<Appointment> history;
 
     {
-        this.history = new UniqueAppointmentHistoryList();
+        this.history = FXCollections.observableArrayList();
     }
 
     public AppointmentHistoryBook() {}
@@ -42,7 +39,7 @@ public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
 
     @Override
     public ObservableList<Appointment> getAppointmentHistoryList() {
-        return this.history.asUnmodifiableObservableList();
+        return this.history;
     }
 
 }

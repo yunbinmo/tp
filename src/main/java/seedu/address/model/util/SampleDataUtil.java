@@ -10,6 +10,8 @@ import seedu.address.model.InsuranceBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
+import seedu.address.model.ReadOnlyRecordBook;
+import seedu.address.model.RecordBook;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
@@ -21,6 +23,11 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.record.ClientID;
+import seedu.address.model.record.EndDate;
+import seedu.address.model.record.InsuranceID;
+import seedu.address.model.record.Record;
+import seedu.address.model.record.StartDate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -61,6 +68,13 @@ public class SampleDataUtil {
         };
     }
 
+    public static Record[] getSampleRecords() {
+        return new Record[]{
+            new Record(new ClientID(("1")), new InsuranceID("1"),
+                        new StartDate("02-03-2022 18:00"), new EndDate("02-03-2025 18:00"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -85,6 +99,14 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
+    public static ReadOnlyRecordBook getSampleRecordBook() {
+        RecordBook sampleRb = new RecordBook();
+        for (Record sampleRecord : getSampleRecords()) {
+            sampleRb.addRecord(sampleRecord);
+        }
+        return sampleRb;
+    }
+
     /**
      * Returns a tag set containing the list of strings given.
      */
@@ -93,5 +115,4 @@ public class SampleDataUtil {
                 .map(Tag::new)
                 .collect(Collectors.toSet());
     }
-
 }
