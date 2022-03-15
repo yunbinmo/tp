@@ -19,8 +19,7 @@ public class ListInsuranceCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
-        //TODO: delete this debug comment
-        System.out.println(model.getInsuranceBook().toString());
-        return new CommandResult(MESSAGE_SUCCESS, false, true, false, false, false,false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, true, false,
+                false, false, false, false, false);
     }
 }
