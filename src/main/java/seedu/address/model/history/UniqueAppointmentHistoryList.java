@@ -9,7 +9,7 @@ import java.util.Iterator;
 import static java.util.Objects.requireNonNull;
 
 /**
- * A list of history that enforces uniqueness between its elements and does not allow nulls.
+ * A list of appointment history that enforces uniqueness between its elements and does not allow nulls.
  * History is considered unique by comparing using {@code History#isSameHistory(History)}. As such,
  * adding and updating of history uses History#isSameHistory(History) for equality so as to ensure
  * that the history being added or updated is unique in terms of identity in the UniqueHistoryList.
@@ -18,7 +18,6 @@ import static java.util.Objects.requireNonNull;
  * <p>
  * Supports a minimal set of list operations.
  *
- * @see AppointmentHistory#isSameHistory(AppointmentHistory)
  */
 public class UniqueAppointmentHistoryList implements Iterable<Appointment> {
 

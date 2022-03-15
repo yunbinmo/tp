@@ -104,4 +104,9 @@ public class LogicManager implements Logic {
     public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
         return model.getFilteredAppointmentHistoryList();
     }
+
+    @Override
+    public ObservableList<Record> getFilteredExpiredRecordList() {
+        return model.getFilteredExpiredRecordList();
+    }
 }

@@ -8,6 +8,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
@@ -36,6 +37,11 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<AppointmentHistory> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<ExpiredRecord> PREDICATE_SHOW_ALL_EXPIRED_RECORD = unused -> true;
 
     /**
      * {@code Predicate} that always evaluate to true
@@ -166,7 +172,7 @@ public interface Model {
      */
     void updateFilteredInsuranceList(Predicate<Insurance> predicate);
 
-    //=========== HistoryBook ============================================================================
+    //=========== AppointmentHistoryBook ============================================================================
     /**
      * Returns the HistoryBook
      */
@@ -189,6 +195,30 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate);
+
+    //=========== ExpiredRecordBook ============================================================================
+    /**
+     * Returns the ExpiredRecord
+     */
+    ReadOnlyExpiredRecordBook getExpiredRecordBook();
+
+    /**
+     * Returns true if record exists in the book.
+     */
+    boolean hasRecord(ExpiredRecord record);
+
+    /**
+     * Returns an unmodifiable view of the filtered appointment record list
+     * @return
+     */
+    ObservableList<Record> getFilteredExpiredRecordList();
+
+    /**
+     * Updates the filter of the filtered record list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate);
 
     //=========== AppointmentBook ============================================================================
     /**
@@ -276,5 +306,4 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredRecordList(Predicate<Record> predicate);
-
 }

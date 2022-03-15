@@ -37,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private InsuranceListPanel insuranceListPanel;
     private AppointmentListPanel appointmentListPanel;
     private AppointmentListPanel appointmentHistoryPanel;
+    private ExpiredRecordPanel expiredRecordPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -60,6 +61,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane appointmentListPanelPlaceholder;
+
+    @FXML
+    private StackPane expiredRecordPanelPlaceholder;
 
     @FXML
     private StackPane appointmentHistoryPanelPlaceholder;
@@ -135,6 +139,7 @@ public class MainWindow extends UiPart<Stage> {
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
 
         appointmentHistoryPanel = new AppointmentListPanel(logic.getFilteredAppointmentHistoryList());
+        expiredRecordPanel = new ExpiredRecordPanel(logic.getFilteredExpiredRecordList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -233,9 +238,14 @@ public class MainWindow extends UiPart<Stage> {
                 //TODO: replace Panel with Records
             }
 
-            if (commandResult.isListHistory()) {
+            if (commandResult.isListAppointmentHistory()) {
                 objectListPanelPlaceholder.getChildren().clear();
-                objectListPanelPlaceholder.getChildren().add(appointmentHistoryPanel.getRoot());            }
+                objectListPanelPlaceholder.getChildren().add(appointmentHistoryPanel.getRoot());
+            }
+            if (commandResult.isListExpiredRecord()) {
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(expiredRecordPanel.getRoot());
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

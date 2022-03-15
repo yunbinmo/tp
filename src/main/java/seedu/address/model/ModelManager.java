@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
@@ -27,6 +28,7 @@ public class ModelManager implements Model {
     private final InsuranceBook insuranceBook;
     private final AppointmentBook appointmentBook;
     private final AppointmentHistoryBook appointmentHistoryBook;
+    private final ExpiredRecordBook expiredRecordBook;
     private final RecordBook recordBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
@@ -34,6 +36,7 @@ public class ModelManager implements Model {
     private final FilteredList<Appointment> filteredAppointments;
     private final FilteredList<Appointment> filteredAppointmentHistory;
     private final FilteredList<Record> filteredRecords;
+    private final FilteredList<Record> filteredExpiredRecord;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -51,12 +54,15 @@ public class ModelManager implements Model {
         this.appointmentBook = new AppointmentBook(appointmentBook);
         this.appointmentHistoryBook = new AppointmentHistoryBook(appointmentBook);
         this.recordBook = new RecordBook(recordBook);
+        this.expiredRecordBook = new ExpiredRecordBook(recordBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
         this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
-        this.filteredAppointmentHistory = new FilteredList<>(this.appointmentHistoryBook.getAppointmentHistoryList()); //
+        this.filteredAppointmentHistory = new FilteredList<>(this.appointmentHistoryBook.getAppointmentHistoryList());
         this.filteredRecords = new FilteredList<>(this.recordBook.getRecordList());
+        this.filteredExpiredRecord = new FilteredList<>(this.expiredRecordBook.getExpiredRecordList());
+
     }
 
     public ModelManager() {
@@ -274,6 +280,26 @@ public class ModelManager implements Model {
         this.filteredPersons.setPredicate(predicate);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ModelManager)) {
+            return false;
+        }
+
+        // state check
+        ModelManager other = (ModelManager) obj;
+        return this.addressBook.equals(other.addressBook)
+                && this.userPrefs.equals(other.userPrefs)
+                && this.filteredPersons.equals(other.filteredPersons);
+    }
+
+
     //=========== Filtered Insurance List Accessors =============================================================
 
     /**
@@ -294,7 +320,7 @@ public class ModelManager implements Model {
     //=========== Filtered Appointment History List Accessors ========================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code AppointmentHistory} backed by the internal list of
      * {@code versionedAddressBook}
      */
 
@@ -318,24 +344,6 @@ public class ModelManager implements Model {
 
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        // short circuit if same object
-        if (obj == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(obj instanceof ModelManager)) {
-            return false;
-        }
-
-        // state check
-        ModelManager other = (ModelManager) obj;
-        return this.addressBook.equals(other.addressBook)
-                && this.userPrefs.equals(other.userPrefs)
-                && this.filteredPersons.equals(other.filteredPersons);
-    }
 
     //=========== Filtered Record List Accessors =============================================================
 
@@ -353,6 +361,31 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         this.filteredRecords.setPredicate(predicate);
     }
+
+    //=========== Filtered Expired Record List Accessors ========================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ExpiredRecord} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+
+    @Override
+    public ReadOnlyExpiredRecordBook getExpiredRecordBook() {
+        return this.expiredRecordBook;
+    }
+
+    @Override
+    public boolean hasRecord(ExpiredRecord record) {
+        return false;
+    }
+
+    @Override
+    public ObservableList<Record> getFilteredExpiredRecordList() {
+        return this.filteredExpiredRecord;
+    }
+
+    @Override
+    public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {}
 
 
 }

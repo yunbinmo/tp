@@ -7,7 +7,6 @@ import seedu.address.model.appointment.DateTime;
 
 import java.time.LocalDateTime;
 
-
 /**
  * Wraps all data at the history-book level
  * Duplicates are not allowed (by .isSameHistory comparison)
@@ -23,7 +22,6 @@ public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
 
     public AppointmentHistoryBook(ReadOnlyAppointmentBook appointmentBook) {
         ObservableList<Appointment> appointments = appointmentBook.getAppointmentList();
-        // todo add filter here before printing
         LocalDateTime now = LocalDateTime.now();
         for(Appointment a : appointments) {
             DateTime appointmentDate = a.getDateTime();
@@ -32,9 +30,7 @@ public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
             {
                 this.history.add(a);
             }
-            System.out.println("done");
         }
-
     }
 
     @Override

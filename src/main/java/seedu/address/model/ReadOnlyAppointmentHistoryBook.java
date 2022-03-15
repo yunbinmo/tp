@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
 
 /**
- * Unmodifiable view of history book
+ * Unmodifiable view of appointment history book
  */
 public interface ReadOnlyAppointmentHistoryBook {
     /**
