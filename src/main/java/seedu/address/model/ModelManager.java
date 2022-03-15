@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -114,6 +116,19 @@ public class ModelManager implements Model {
 
     @Override
     public void deletePerson(Person target) {
+        List<Record> records = this.getRecordBook().getRecordList();
+        List<Record> toBeDeleted = new ArrayList<>();
+
+        for (Record record : records) {
+            if (target.getName().toString().equals(record.getClientID().toString())) {
+                toBeDeleted.add(record);
+            }
+        }
+
+        for (Record record : toBeDeleted) {
+            this.deleteRecord(record);
+        }
+
         this.addressBook.removePerson(target);
     }
 

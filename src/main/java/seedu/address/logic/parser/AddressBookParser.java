@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +26,8 @@ import seedu.address.logic.commands.ListInsuranceCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.commands.ListRecordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Person;
 
 /**
  * Parses user input.
@@ -44,7 +47,7 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseCommand(String userInput) throws ParseException {
+    public Command parseCommand(Model model, String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -66,7 +69,7 @@ public class AddressBookParser {
         case Command.COMMAND_INSURANCE:
             return this.parseInsuranceCommand(commandWord, arguments);
         case Command.COMMAND_RECORD:
-            return this.parseRecordCommand(commandWord, arguments);
+            return this.parseRecordCommand(commandWord, arguments, model.getAddressBook().getPersonList());
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
         case SINGLE_COMMAND_FORMAT:
@@ -187,10 +190,10 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseRecordCommand(String commandWord, String arguments) throws ParseException {
+    public Command parseRecordCommand(String commandWord, String arguments, List<Person> personList) throws ParseException {
         switch (commandWord) {
         case AddRecordCommand.COMMAND_WORD:
-            return new AddRecordCommandParser().parse(arguments);
+            return new AddRecordCommandParser().parse(personList, arguments);
         case DeleteRecordCommand.COMMAND_WORD:
             return new DeleteRecordCommandParser().parse(arguments);
         case ListRecordCommand.COMMAND_WORD:

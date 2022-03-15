@@ -64,7 +64,7 @@ class JsonAdaptedRecord {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     ClientID.class.getSimpleName()));
         }
-        final ClientID modelClientID = new ClientID(clientID);
+        final ClientID modelClientID = new ClientID(clientID, true);
 
         if (insuranceID == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
