@@ -45,7 +45,7 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = addressBookParser.parseCommand(model, commandText);
         commandResult = command.execute(model);
 
         try {
@@ -98,5 +98,15 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
+        return model.getFilteredAppointmentHistoryList();
+    }
+
+    @Override
+    public ObservableList<Record> getFilteredExpiredRecordList() {
+        return model.getFilteredExpiredRecordList();
     }
 }

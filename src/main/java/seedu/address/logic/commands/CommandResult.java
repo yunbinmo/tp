@@ -33,9 +33,14 @@ public class CommandResult {
     private final boolean record;
 
     /**
-     * The application should list history.
+     * The application should list appointment history.
      */
-    private final boolean history;
+    private final boolean appointmentHistory;
+
+    /**
+     * The application should list expired records.
+     */
+    private final boolean expiredRecord;
 
     /**
      * Help information should be shown to the user.
@@ -52,13 +57,14 @@ public class CommandResult {
      * Constructs a {@code CommandResult} with the specified fields.
      */
     public CommandResult(String feedbackToUser, boolean person, boolean insurance, boolean appointment,
-                         boolean record, boolean history, boolean showHelp, boolean exit) {
+                         boolean record, boolean appointmentHistory, boolean expiredRecord, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.person = person;
         this.insurance = insurance;
         this.appointment = appointment;
         this.record = record;
-        this.history = history;
+        this.appointmentHistory = appointmentHistory;
+        this.expiredRecord = expiredRecord;
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -90,10 +96,13 @@ public class CommandResult {
         return record;
     }
 
-    public boolean isListHistory() {
-        return history;
+    public boolean isListAppointmentHistory() {
+        return appointmentHistory;
     }
 
+    public boolean isListExpiredRecord() {
+        return expiredRecord;
+    }
 
     public boolean isShowHelp() {
         return showHelp;
@@ -120,15 +129,16 @@ public class CommandResult {
                 && insurance == otherCommandResult.insurance
                 && appointment == otherCommandResult.appointment
                 && record == otherCommandResult.record
-                && history == otherCommandResult.showHelp
+                && appointmentHistory == otherCommandResult.appointmentHistory
+                && expiredRecord == otherCommandResult.expiredRecord
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, person,
-                insurance, appointment, record, history, showHelp, exit);
+        return Objects.hash(feedbackToUser, person, insurance, appointment,
+                            record, appointmentHistory, expiredRecord, showHelp, exit);
     }
 
 }

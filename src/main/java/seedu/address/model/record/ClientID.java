@@ -14,14 +14,24 @@ public class ClientID {
     public final String id;
 
     /**
-     * Constructs a {@code Price}.
+     * Constructs a {@code ClientId}.
      *
-     * @param clientId A valid price number.
+     * @param clientID A valid price number.
      */
     public ClientID(String clientID) {
         requireNonNull(clientID);
         checkArgument(isValidClientID(clientID), MESSAGE_CONSTRAINTS);
         id = clientID;
+    }
+
+    /**
+     * Constructs a {@code Price}.
+     *
+     * @param clientName A valid price number.
+     */
+    public ClientID(String clientName, Boolean yes) {
+        requireNonNull(clientName);
+        id = clientName;
     }
 
     /**

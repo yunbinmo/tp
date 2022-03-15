@@ -7,10 +7,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_INSURANCEID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_STARTDATE;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddRecordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Person;
 import seedu.address.model.record.ClientID;
 import seedu.address.model.record.EndDate;
 import seedu.address.model.record.InsuranceID;
@@ -36,7 +38,7 @@ public class AddRecordCommandParser {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddRecordCommand parse(String args) throws ParseException {
+    public AddRecordCommand parse(List<Person> personList, String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_REC_CLIENTID, PREFIX_REC_INSURANCEID,
@@ -51,6 +53,9 @@ public class AddRecordCommandParser {
 
         ClientID clientID =
                 RecordParserUtil.parseClientID(argMultimap.getValue(PREFIX_REC_CLIENTID).get());
+        int index = Integer.parseInt(clientID.toString());
+
+        clientID = new ClientID(personList.get(index - 1).getName().toString(), true);
         InsuranceID insuranceID =
                 RecordParserUtil.parseInsuranceID(argMultimap.getValue(PREFIX_REC_INSURANCEID).get());
         StartDate startDate = RecordParserUtil.parseStartDate(argMultimap.getValue(PREFIX_REC_STARTDATE).get());
