@@ -45,6 +45,12 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of records */
     ObservableList<Record> getFilteredRecordList();
 
+    /** Returns an unmodifiable view of the filtered list of appointment history */
+    ObservableList<Appointment> getFilteredAppointmentHistoryList();
+
+    /** Returns an unmodifiable view of the filtered list of expired record */
+    ObservableList<Record> getFilteredExpiredRecordList();
+
     /**
      * Returns the user prefs' address book file path.
      */

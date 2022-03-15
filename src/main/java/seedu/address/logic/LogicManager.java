@@ -99,4 +99,14 @@ public class LogicManager implements Logic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
+        return model.getFilteredAppointmentHistoryList();
+    }
+
+    @Override
+    public ObservableList<Record> getFilteredExpiredRecordList() {
+        return model.getFilteredExpiredRecordList();
+    }
 }
