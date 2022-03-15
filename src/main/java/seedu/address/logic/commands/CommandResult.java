@@ -22,6 +22,12 @@ public class CommandResult {
     private final boolean insurance;
 
     /**
+     * The application should list insurance.
+     */
+    private final boolean appointment;
+
+
+    /**
      * The application should list record.
      */
     private final boolean record;
@@ -45,11 +51,12 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean person, boolean insurance,
+    public CommandResult(String feedbackToUser, boolean person, boolean insurance, boolean appointment,
                          boolean record, boolean history, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.person = person;
         this.insurance = insurance;
+        this.appointment = appointment;
         this.record = record;
         this.history = history;
         this.showHelp = showHelp;
@@ -61,7 +68,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false, false, false);
+        this(feedbackToUser, false, false, false, false, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -74,6 +81,9 @@ public class CommandResult {
 
     public boolean isListInsurance() {
         return insurance;
+    }
+    public boolean isListAppointment() {
+        return appointment;
     }
 
     public boolean isListRecord() {
@@ -108,6 +118,7 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && person == otherCommandResult.person
                 && insurance == otherCommandResult.insurance
+                && appointment == otherCommandResult.appointment
                 && record == otherCommandResult.record
                 && history == otherCommandResult.showHelp
                 && showHelp == otherCommandResult.showHelp
@@ -116,7 +127,8 @@ public class CommandResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, person, insurance, record, history, showHelp, exit);
+        return Objects.hash(feedbackToUser, person,
+                insurance, appointment, record, history, showHelp, exit);
     }
 
 }
