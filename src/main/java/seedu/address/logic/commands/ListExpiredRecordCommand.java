@@ -22,7 +22,7 @@ public class ListExpiredRecordCommand extends Command {
         model.updateFilteredExpiredRecordList(PREDICATE_SHOW_ALL_EXPIRED_RECORD);
         System.out.println(model.getExpiredRecordBook().toString());
 
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false, true, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false, false, true, false, false);
 
     }
 }

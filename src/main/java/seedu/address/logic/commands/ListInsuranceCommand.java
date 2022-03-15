@@ -19,6 +19,6 @@ public class ListInsuranceCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
-        return new CommandResult(MESSAGE_SUCCESS, false, true, false, false, false, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, true, false, false,  false, false, false, false);
     }
 }
