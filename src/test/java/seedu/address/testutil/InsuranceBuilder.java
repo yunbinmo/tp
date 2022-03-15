@@ -17,25 +17,31 @@ public class InsuranceBuilder {
     private Title title;
     private Price price;
 
-    private InsuranceBook addressBook;
+    private InsuranceBook insurance;
 
+    /**
+     * Creates a {@code InsuranceBuilder} with the default details.
+     */
     public InsuranceBuilder() {
         title = new Title(DEFAULT_DESCRIPTION);
         price = new Price(DEFAULT_DATETIME);
     }
 
-    public InsuranceBuilder(InsuranceBook addressBook) {
-        this.addressBook = addressBook;
+    public InsuranceBuilder(InsuranceBook insurance) {
+        this.insurance = insurance;
     }
 
     /**
-     * Adds a new {@code Insurance} to the {@code InsuranceBook} that we are building.
+     * Sets the {@code Title} of the {@code Insurance} that we are building.
      */
     public InsuranceBuilder withTitle(String title) {
         this.title = new Title(title);
         return this;
     }
 
+    /**
+     * Sets the {@code Price} of the {@code Insurance} that we are building.
+     */
     public InsuranceBuilder withPrice(String price) {
         this.price = new Price(price);
         return this;

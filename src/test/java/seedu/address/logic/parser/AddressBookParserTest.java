@@ -37,13 +37,13 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Person person = new PersonBuilder().build();
-        AddPersonCommand command = (AddPersonCommand) parser.parseCommand(null,PersonUtil.getAddCommand(person));
+        AddPersonCommand command = (AddPersonCommand) parser.parseCommand(null, PersonUtil.getAddCommand(person));
         assertEquals(new AddPersonCommand(person), command);
     }
 
     @Test
     public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(null,ClearCommand.COMMAND_WORD) instanceof ClearCommand);
+        assertTrue(parser.parseCommand(null, ClearCommand.COMMAND_WORD) instanceof ClearCommand);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class AddressBookParserTest {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
         EditPersonCommand command =
-                (EditPersonCommand) parser.parseCommand(null,EditPersonCommand.COMMAND_WORD
+                (EditPersonCommand) parser.parseCommand(null, EditPersonCommand.COMMAND_WORD
                         + " " + Command.COMMAND_PERSON
                         + INDEX_FIRST_PERSON.getOneBased() + " "
                         + PersonUtil.getEditPersonDescriptorDetails(descriptor));
@@ -68,7 +68,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_exit() throws Exception {
-        assertTrue(parser.parseCommand(null,ExitCommand.COMMAND_WORD) instanceof ExitCommand);
+        assertTrue(parser.parseCommand(null, ExitCommand.COMMAND_WORD) instanceof ExitCommand);
     }
 
     @Test
@@ -82,23 +82,23 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_help() throws Exception {
-        assertTrue(parser.parseCommand(null,HelpCommand.COMMAND_WORD) instanceof HelpCommand);
+        assertTrue(parser.parseCommand(null, HelpCommand.COMMAND_WORD) instanceof HelpCommand);
     }
 
     @Test
     public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(null,ListPersonCommand.COMMAND_WORD
+        assertTrue(parser.parseCommand(null, ListPersonCommand.COMMAND_WORD
                 + " " + Command.COMMAND_PERSON) instanceof ListPersonCommand);
     }
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(null,""));
+                -> parser.parseCommand(null, ""));
     }
 
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand(null,"unknownCommand"));
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand(null, "unknownCommand"));
     }
 }
