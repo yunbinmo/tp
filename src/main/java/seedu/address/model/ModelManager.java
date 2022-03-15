@@ -43,9 +43,30 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, userPrefs);
+        this.addressBook = new AddressBook(addressBook);
+        this.insuranceBook = null;
+        this.appointmentBook = null;
+        this.appointmentHistoryBook = null;
+        this.recordBook = null;
+        this.expiredRecordBook = null;
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.filteredInsurances = null;
+        this.filteredAppointments = null;
+        this.filteredAppointmentHistory = null;
+        this.filteredRecords = null;
+        this.filteredExpiredRecord = null;
+    }
+
+    /**
+     * Initializes a ModelManager with the given addressBook and userPrefs.
+     */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInsuranceBook insuranceBook,
-                        ReadOnlyAppointmentBook appointmentBook, ReadOnlyRecordBook recordBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, insuranceBook, recordBook, userPrefs);
+                        ReadOnlyAppointmentBook appointmentBook, ReadOnlyRecordBook recordBook,
+                        ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, insuranceBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook
                 + "and insurance book" + insuranceBook + "and record book" + recordBook
@@ -126,18 +147,20 @@ public class ModelManager implements Model {
 
     @Override
     public void deletePerson(Person target) {
-        List<Record> records = this.getRecordBook().getRecordList();
-        List<Record> toBeDeleted = new ArrayList<>();
+        if (this.recordBook != null) {
+            List<Record> records = this.getRecordBook().getRecordList();
+            List<Record> toBeDeleted = new ArrayList<>();
+            for (Record record : records) {
+                if (target.getName().toString().equals(record.getClientID().toString())) {
+                    toBeDeleted.add(record);
+                }
+            }
 
-        for (Record record : records) {
-            if (target.getName().toString().equals(record.getClientID().toString())) {
-                toBeDeleted.add(record);
+            for (Record record : toBeDeleted) {
+                this.deleteRecord(record);
             }
         }
 
-        for (Record record : toBeDeleted) {
-            this.deleteRecord(record);
-        }
 
         this.addressBook.removePerson(target);
     }
@@ -389,10 +412,10 @@ public class ModelManager implements Model {
         return this.expiredRecordBook;
     }
 
-    @Override
-    public boolean hasRecord(ExpiredRecord record) {
-        return false;
-    }
+    //    @Override
+    //    public boolean hasRecord(ExpiredRecord record) {
+    //        return false;
+    //    }
 
     @Override
     public ObservableList<Record> getFilteredExpiredRecordList() {
@@ -400,7 +423,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {}
+    public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {
+    }
 
 
 }
