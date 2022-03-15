@@ -68,4 +68,8 @@ public class EndDate {
     public int hashCode() {
         return date.hashCode();
     }
+
+    public LocalDateTime getDate() {
+        return this.date;
+    }
 }

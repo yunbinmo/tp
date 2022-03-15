@@ -2,16 +2,13 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.appointment.DateTime;
-import seedu.address.model.appointment.Description;
-import seedu.address.model.record.Record;
 import seedu.address.model.record.ClientID;
-import seedu.address.model.record.InsuranceID;
-import seedu.address.model.record.StartDate;
 import seedu.address.model.record.EndDate;
+import seedu.address.model.record.InsuranceID;
+import seedu.address.model.record.Record;
+import seedu.address.model.record.StartDate;
 
 
 /**
@@ -20,8 +17,8 @@ import seedu.address.model.record.EndDate;
 class JsonAdaptedRecord {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Record's %s field is missing!";
 
-    private final String client_id;
-    private final String insurance_id;
+    private final String clientID;
+    private final String insuranceID;
     private final String startDate;
     private final String endDate;
 
@@ -29,12 +26,12 @@ class JsonAdaptedRecord {
      * Constructs a {@code JsonAdaptedRecord} with the given insurance details.
      */
     @JsonCreator
-    public JsonAdaptedRecord(@JsonProperty("client_id") String client_id,
-                                  @JsonProperty("insurance_id") String insurance_id,
-                                  @JsonProperty("startDate") String startDate,
-                                  @JsonProperty("endDate") String endDate) {
-        this.client_id = client_id;
-        this.insurance_id = insurance_id;
+    public JsonAdaptedRecord(@JsonProperty("clientID") String clientID,
+                             @JsonProperty("insuranceID") String insuranceID,
+                             @JsonProperty("startDate") String startDate,
+                             @JsonProperty("endDate") String endDate) {
+        this.clientID = clientID;
+        this.insuranceID = insuranceID;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -44,8 +41,8 @@ class JsonAdaptedRecord {
      * Converts a given {@code Record} into this class for Jackson use.
      */
     public JsonAdaptedRecord(Record source) {
-        client_id = source.getClientID().toString();
-        insurance_id = source.getInsuranceID().toString();
+        clientID = source.getClientID().toString();
+        insuranceID = source.getInsuranceID().toString();
         startDate = source.getStartDate().toString();
         endDate = source.getEndDate().toString();
     }
@@ -56,7 +53,6 @@ class JsonAdaptedRecord {
     }*/
 
 
-
     /**
      * Converts this Jackson-friendly adapted record object into the model's {@code Record} object.
      *
@@ -64,19 +60,19 @@ class JsonAdaptedRecord {
      */
     public Record toModelType() throws IllegalValueException {
         //TODO: validate Record object
-        if(client_id==null){
+        if (clientID == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     ClientID.class.getSimpleName()));
         }
-        final ClientID model_clientID = new ClientID(client_id);
+        final ClientID modelClientID = new ClientID(clientID, true);
 
-        if(insurance_id==null){
+        if (insuranceID == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     InsuranceID.class.getSimpleName()));
         }
-        final InsuranceID model_insuranceID = new InsuranceID(insurance_id);
+        final InsuranceID modelInsuranceID = new InsuranceID(insuranceID);
 
-        if(startDate==null){
+        if (startDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     StartDate.class.getSimpleName()));
         }
@@ -85,7 +81,7 @@ class JsonAdaptedRecord {
         }
         final StartDate modelStartDate = new StartDate(startDate);
 
-        if(endDate==null){
+        if (endDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     EndDate.class.getSimpleName()));
         }
@@ -96,7 +92,7 @@ class JsonAdaptedRecord {
         final EndDate modelEndDate = new EndDate(endDate);
 
 
-        return new Record(model_clientID,model_insuranceID,modelStartDate,modelEndDate);
+        return new Record(modelClientID, modelInsuranceID, modelStartDate, modelEndDate);
     }
 
 }

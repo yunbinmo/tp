@@ -4,15 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.insurance.Insurance;
+import seedu.address.model.record.Record;
 
-
-/**
- * An UI component that displays information of a {@code Insurance}.
- */
-public class InsuranceDetailCard extends UiPart<Region> {
-
-    private static final String FXML = "InsuranceDetailCard.fxml";
+public class ExpiredRecordCard extends UiPart<Region> {
+    private static final String FXML = "ExpiredRecordCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -21,25 +16,25 @@ public class InsuranceDetailCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-
-    public final Insurance insurance;
-
+    public final Record record;
     @FXML
     private HBox cardPane;
     @FXML
     private Label title;
     @FXML
-    private Label id;
+    private Label startDate;
+    @FXML
+    private Label endDate;
 
     /**
-     * Creates a {@code InsuranceCode} with the given {@code Insurance} and index to display.
+     * Creates a {@code RecordCode} with the given {@code record} and index to display.
      */
-    public InsuranceDetailCard(Insurance insurance, int displayedIndex) {
+    public ExpiredRecordCard(Record record, int displayedIndex) {
         super(FXML);
-        this.insurance = insurance;
-        id.setText(displayedIndex + ". ");
-        title.setText(insurance.getTitle().toString());
-
+        this.record = record;
+        title.setText( "Record ID: " + record.getRecordId() + " // Client ID: "  + record.getClientID());
+        startDate.setText("Start: " +record.getStartDate().toString());
+        endDate.setText("End: " + record.getEndDate().toString());
     }
 
     @Override
@@ -50,13 +45,13 @@ public class InsuranceDetailCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof InsuranceDetailCard)) {
+        if (!(other instanceof ExpiredRecordCard)) {
             return false;
         }
 
         // state check
-        InsuranceDetailCard card = (InsuranceDetailCard) other;
-        return id.getText().equals(card.id.getText())
-                && insurance.equals(card.insurance);
+        ExpiredRecordCard card = (ExpiredRecordCard) other;
+        return title.getText().equals(card.title.getText())
+                && record.equals(card.record);
     }
 }

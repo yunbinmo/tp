@@ -165,7 +165,7 @@ public class MainApp extends Application {
         System.out.println(initialAddressBookData.toString());
         System.out.println(initialInsuranceBookData.toString());
         System.out.println(initialRecordData.toString());
-        
+
         return new ModelManager(initialAddressBookData, initialInsuranceBookData,
                 initialAppointmentData, initialRecordData, userPrefs);
     }

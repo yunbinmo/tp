@@ -4,11 +4,14 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
-import seedu.address.model.record.Record;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * The API of the Model component.
@@ -28,6 +31,17 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<AppointmentHistory> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<ExpiredRecord> PREDICATE_SHOW_ALL_EXPIRED_RECORD = unused -> true;
 
     /**
      * {@code Predicate} that always evaluate to true
@@ -158,6 +172,54 @@ public interface Model {
      */
     void updateFilteredInsuranceList(Predicate<Insurance> predicate);
 
+    //=========== AppointmentHistoryBook ============================================================================
+    /**
+     * Returns the HistoryBook
+     */
+    ReadOnlyAppointmentHistoryBook getAppointmentHistoryBook();
+
+    /**
+     * Returns true if history exists in the book.
+     */
+    boolean hasHistory(AppointmentHistory history);
+
+    /**
+     * Returns an unmodifiable view of the filtered appointment history list
+     * @return
+     */
+    ObservableList<Appointment> getFilteredAppointmentHistoryList();
+
+    /**
+     * Updates the filter of the filtered history list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate);
+
+    //=========== ExpiredRecordBook ============================================================================
+    /**
+     * Returns the ExpiredRecord
+     */
+    ReadOnlyExpiredRecordBook getExpiredRecordBook();
+
+    /**
+     * Returns true if record exists in the book.
+     */
+    boolean hasRecord(ExpiredRecord record);
+
+    /**
+     * Returns an unmodifiable view of the filtered appointment record list
+     * @return
+     */
+    ObservableList<Record> getFilteredExpiredRecordList();
+
+    /**
+     * Updates the filter of the filtered record list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate);
+
     //=========== AppointmentBook ============================================================================
     /**
      * Returns the AppointmentBook
@@ -209,7 +271,7 @@ public interface Model {
     ReadOnlyRecordBook getRecordBook();
 
     /**
-     * Replaces address book data with the data in {@code Recordook}.
+     * Replaces address book data with the data in {@code RecorBook}.
      */
     void setRecordBook(ReadOnlyRecordBook recordBook);
 

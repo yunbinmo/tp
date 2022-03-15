@@ -9,36 +9,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.ReadOnlyAppointmentHistoryBook;
 import seedu.address.model.AppointmentBook;
+import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
 
 /**
- * An Immutable AppointmentBook that is serializable to JSON format.
+ * An Immutable HistoryBook that is serializable to JSON format.
  */
-@JsonRootName(value = "appointmentbook")
-public class JsonSerializableAppointmentBook {
+@JsonRootName(value = "appointmenthistorybook")
+public class JsonSerializableAppointmentHistoryBook {
 
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "Appointments list contains duplicate appointment(s).";
-    private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "History list contains duplicate history(s).";
+    private final List<JsonAdaptedAppointmentHistory> history = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAppointmentBook} with the given appointments.
      */
     @JsonCreator
-    public JsonSerializableAppointmentBook(@JsonProperty("appointments") List<JsonAdaptedAppointment> appointments) {
-        this.appointments.addAll(appointments);
+    public JsonSerializableAppointmentHistoryBook(@JsonProperty("history") List<JsonAdaptedAppointmentHistory> history) {
+        this.history.addAll(history);
     }
-
-    /**
-     * Converts a given {@code ReadOnlyAppointmentBook} into this class for Jackson use.
-     *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAppointmentBook}.
-     */
-    public JsonSerializableAppointmentBook(ReadOnlyAppointmentBook source) {
-        appointments.addAll(source.getAppointmentList().stream().map(JsonAdaptedAppointment::new)
-                .collect(Collectors.toList()));
-    }
+//
+//    /**
+//     * Converts a given {@code ReadOnlyAppointmentBook} into this class for Jackson use.
+//     *
+//     * @param source future changes to this will not affect the created {@code JsonSerializableAppointmentBook}.
+//     */
+//    public JsonSerializableAppointmentHistoryBook(ReadOnlyAppointmentHistoryBook source) {
+//        history.addAll(source.getAppointmentHistoryList().stream().map(JsonAdaptedAppointmentHistory::new)
+//                .collect(Collectors.toList()));
+//    }
 
     /**
      * Converts this appointment book into the model's {@code AppointmentBook} object.
@@ -47,7 +50,7 @@ public class JsonSerializableAppointmentBook {
      */
     public AppointmentBook toModelType() throws IllegalValueException {
         AppointmentBook appointmentBook = new AppointmentBook();
-        for (JsonAdaptedAppointment jsonAdaptedAppointment : appointments) {
+        for (JsonAdaptedAppointmentHistory jsonAdaptedAppointment : history) {
             Appointment appointment = jsonAdaptedAppointment.toModelType();
             if (appointmentBook.hasAppointment(appointment)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_APPOINTMENT);

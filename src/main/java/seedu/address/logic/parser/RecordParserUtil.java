@@ -4,17 +4,15 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
 import seedu.address.model.record.ClientID;
+import seedu.address.model.record.EndDate;
 import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.StartDate;
-import seedu.address.model.record.EndDate;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -26,6 +24,7 @@ public class RecordParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -51,6 +50,13 @@ public class RecordParserUtil {
         return new ClientID(trimmedClientID);
     }
 
+
+    /**
+     * Parses a {@code String description} into an {@code Description}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code description} is invalid.
+     */
     public static InsuranceID parseInsuranceID(String insuranceID) throws ParseException {
         requireNonNull(insuranceID);
         String trimmedInsuranceID = insuranceID.trim();

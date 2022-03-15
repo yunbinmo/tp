@@ -1,4 +1,4 @@
-package seedu.address.model.record;
+package seedu.address.model.history;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -8,11 +8,12 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.record.Record;
 import seedu.address.model.record.exceptions.DuplicateRecordException;
 import seedu.address.model.record.exceptions.RecordNotFoundException;
 
 /**
- * A list of records that enforces uniqueness between its elements and does not allow nulls.
+ * A list of expired records that enforce uniqueness between its elements and does not allow nulls.
  * A record is considered unique by comparing using {@code Record#isSameRecord(Record)}. As such, adding
  * and updating of records uses Record#isSameRecord(Record) for equality so as to ensure that the record
  * being added or updated is unique in terms of identity in the UniqueRecordList. However, the removal of a insurance
@@ -20,9 +21,8 @@ import seedu.address.model.record.exceptions.RecordNotFoundException;
  * <p>
  * Supports a minimal set of list operations.
  *
- * @see Record#isSameRecord(Record)
  */
-public class UniqueRecordList implements Iterable<Record> {
+public class UniqueExpiredRecordList implements Iterable<Record> {
 
     private final ObservableList<Record> internalList = FXCollections.observableArrayList();
     private final ObservableList<Record> internalUnmodifiableList =
@@ -79,7 +79,7 @@ public class UniqueRecordList implements Iterable<Record> {
         }
     }
 
-    public void setRecords(UniqueRecordList replacement) {
+    public void setRecords(UniqueExpiredRecordList replacement) {
         requireNonNull(replacement);
         this.internalList.setAll(replacement.internalList);
     }
@@ -112,8 +112,8 @@ public class UniqueRecordList implements Iterable<Record> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniqueRecordList // instanceof handles nulls
-                && this.internalList.equals(((UniqueRecordList) other).internalList));
+                || (other instanceof UniqueExpiredRecordList // instanceof handles nulls
+                && this.internalList.equals(((UniqueExpiredRecordList) other).internalList));
     }
 
     @Override

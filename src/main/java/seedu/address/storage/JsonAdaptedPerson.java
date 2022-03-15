@@ -15,7 +15,6 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.record.Record;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,7 +29,6 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private final List<JsonAdaptedRecord> records = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -38,17 +36,13 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-                             @JsonProperty("records") List<JsonAdaptedRecord> records) {
+                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         if (tagged != null) {
             this.tagged.addAll(tagged);
-        }
-        if (records != null) {
-            this.records.addAll(records);
         }
     }
 
@@ -63,9 +57,6 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        records.addAll(source.getRecords().stream()
-                .map(JsonAdaptedRecord::new)
-                .collect(Collectors.toList()));
 
     }
 
@@ -78,11 +69,6 @@ class JsonAdaptedPerson {
         final List<Tag> personTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
-        }
-
-        final List<Record> personRecords = new ArrayList<>();
-        for (JsonAdaptedRecord record : records) {
-            personRecords.add(record.toModelType());
         }
 
         if (name == null) {
@@ -118,8 +104,8 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        final Set<Record> modelRecords = new HashSet<>(personRecords);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRecords);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
     }
 
 }
