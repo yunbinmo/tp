@@ -56,8 +56,8 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean person, boolean insurance, boolean appointment,
-                         boolean record, boolean appointmentHistory, boolean expiredRecord, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean person, boolean insurance, boolean appointment, boolean record,
+                         boolean appointmentHistory, boolean expiredRecord, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.person = person;
         this.insurance = insurance;
@@ -74,7 +74,8 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false, false, false, false, false);
+        this(feedbackToUser, false, false, false, false, false,
+                false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -88,6 +89,7 @@ public class CommandResult {
     public boolean isListInsurance() {
         return insurance;
     }
+
     public boolean isListAppointment() {
         return appointment;
     }
@@ -125,12 +127,12 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && person == otherCommandResult.person
-                && insurance == otherCommandResult.insurance
-                && appointment == otherCommandResult.appointment
-                && record == otherCommandResult.record
-                && appointmentHistory == otherCommandResult.appointmentHistory
-                && expiredRecord == otherCommandResult.expiredRecord
+                && (person == otherCommandResult.person
+                || insurance == otherCommandResult.insurance
+                || appointment == otherCommandResult.appointment
+                || record == otherCommandResult.record
+                || appointmentHistory == otherCommandResult.appointmentHistory
+                || expiredRecord == otherCommandResult.expiredRecord)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit;
     }
@@ -138,7 +140,7 @@ public class CommandResult {
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, person, insurance, appointment,
-                            record, appointmentHistory, expiredRecord, showHelp, exit);
+                record, appointmentHistory, expiredRecord, showHelp, exit);
     }
 
 }

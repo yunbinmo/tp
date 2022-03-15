@@ -20,10 +20,14 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyAppointmentBook;
+import seedu.address.model.ReadOnlyAppointmentHistoryBook;
+import seedu.address.model.ReadOnlyExpiredRecordBook;
 import seedu.address.model.ReadOnlyInsuranceBook;
 import seedu.address.model.ReadOnlyRecordBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
@@ -275,6 +279,48 @@ public class AddPersonCommandTest {
         public void updateFilteredRecordList(Predicate<Record> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+
+        @Override
+        public ReadOnlyAppointmentHistoryBook getAppointmentHistoryBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasHistory(AppointmentHistory history) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyExpiredRecordBook getExpiredRecordBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //        @Override
+        //        public boolean hasRecord(ExpiredRecord record) {
+        //            throw new AssertionError("This method should not be called.");
+        //        }
+
+        @Override
+        public ObservableList<Record> getFilteredExpiredRecordList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

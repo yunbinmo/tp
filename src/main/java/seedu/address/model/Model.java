@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.history.AppointmentHistory;
@@ -202,10 +201,10 @@ public interface Model {
      */
     ReadOnlyExpiredRecordBook getExpiredRecordBook();
 
-    /**
-     * Returns true if record exists in the book.
-     */
-    boolean hasRecord(ExpiredRecord record);
+    //    /**
+    //     * Returns true if record exists in the book.
+    //     */
+    //    boolean hasRecord(ExpiredRecord record);
 
     /**
      * Returns an unmodifiable view of the filtered appointment record list

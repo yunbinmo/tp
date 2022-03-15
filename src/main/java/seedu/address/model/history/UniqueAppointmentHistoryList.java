@@ -1,12 +1,11 @@
 package seedu.address.model.history;
 
+import java.util.Iterator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
 
-import java.util.Iterator;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * A list of appointment history that enforces uniqueness between its elements and does not allow nulls.

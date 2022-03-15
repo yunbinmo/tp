@@ -105,10 +105,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && addressBookFilePath.equals(o.addressBookFilePath)
-                && appointmentBookFilePath.equals((o.appointmentBookFilePath))
-                && insuranceBookFilePath.equals((o.insuranceBookFilePath))
-                && recordBookFilePath.equals((o.insuranceBookFilePath));
+                && addressBookFilePath.equals(o.addressBookFilePath);
     }
 
     @Override
@@ -121,9 +118,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + addressBookFilePath);
-        sb.append("\nLocal data file location : " + appointmentBookFilePath);
-        sb.append("\nLocal addressBook data file location : " + addressBookFilePath);
+        sb.append("\nLocal address file location : " + addressBookFilePath);
+        sb.append("\nLocal appointment file location : " + appointmentBookFilePath);
         sb.append("\nLocal insuranceBook data file location : " + insuranceBookFilePath);
         sb.append("\nLocal recordBook data file location : " + recordBookFilePath);
 
