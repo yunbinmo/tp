@@ -22,7 +22,7 @@ public class CommandResult {
     private final boolean insurance;
 
     /**
-     * The application should list insurance.
+     * The application should list appointment.
      */
     private final boolean appointment;
 
@@ -74,7 +74,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false, false, false, false);
+        this(feedbackToUser, false, false, false, false, false, false, false, false);
     }
 
     public String getFeedbackToUser() {

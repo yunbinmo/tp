@@ -22,7 +22,7 @@ public class ListAppointmentHistoryCommand extends Command {
         model.updateFilteredAppointmentHistoryList(PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY);
         System.out.println(model.getAppointmentHistoryBook().toString());
 
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, true, false, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, false, false, true, false, false, false);
 
     }
 }
