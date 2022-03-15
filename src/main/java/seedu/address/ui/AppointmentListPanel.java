@@ -21,6 +21,7 @@ public class AppointmentListPanel extends UiPart<Region> {
 
     /**
      * Creates a {@code AppointmentListPanel} with the given {@code ObservableList}.
+     * @param appointmentList
      */
     public AppointmentListPanel(ObservableList<Appointment> appointmentList) {
         super(FXML);
