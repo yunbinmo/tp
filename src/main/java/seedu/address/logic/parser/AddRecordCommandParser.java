@@ -1,7 +1,9 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.*;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_CLIENTID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_INSURANCEID;
@@ -40,7 +42,8 @@ public class AddRecordCommandParser {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddRecordCommand parse(List<Person> personList, ObservableList<Insurance> insuranceList, String args) throws ParseException {
+    public AddRecordCommand parse(List<Person> personList, ObservableList<Insurance> insuranceList,
+                                  String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_REC_CLIENTID, PREFIX_REC_INSURANCEID,
@@ -58,16 +61,18 @@ public class AddRecordCommandParser {
         ClientID clientID =
                 RecordParserUtil.parseClientID(argMultimap.getValue(PREFIX_REC_CLIENTID).get());
         int clientIndex = Integer.parseInt(clientID.toString());
-        if(clientIndex>personList.size()){
-            throw new ParseException(String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,AddRecordCommand.MESSAGE_USAGE));
+        if (clientIndex > personList.size()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                    AddRecordCommand.MESSAGE_USAGE));
         }
         clientID = new ClientID(personList.get(clientIndex - 1).getName().toString(), true);
 
         InsuranceID insuranceID =
                 RecordParserUtil.parseInsuranceID(argMultimap.getValue(PREFIX_REC_INSURANCEID).get());
         int insuranceIndex = Integer.parseInt(insuranceID.toString());
-        if(insuranceIndex > insuranceList.size()){
-            throw new ParseException(String.format(MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX, AddRecordCommand.MESSAGE_USAGE));
+        if (insuranceIndex > insuranceList.size()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX,
+                    AddRecordCommand.MESSAGE_USAGE));
         }
 
         StartDate startDate = RecordParserUtil.parseStartDate(argMultimap.getValue(PREFIX_REC_STARTDATE).get());
