@@ -28,8 +28,10 @@ public class FindInsuranceCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredInsuranceList(predicate);
-        return new CommandResult(
-                String.format(Messages.MESSAGE_INSURANCES_LISTED_OVERVIEW, model.getFilteredInsuranceList().size()));
+        String message =    String.format(Messages.MESSAGE_INSURANCES_LISTED_OVERVIEW, model.getFilteredInsuranceList().size());
+        return new CommandResult(message, false, true, false,
+                false, false, false, false, false);
+
     }
 
     @Override
