@@ -2,14 +2,13 @@ package seedu.address.ui;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.record.Record;
 
-public class RecordCard extends UiPart<Region>{
+public class RecordCard extends UiPart<Region> {
 
     private static final String FXML = "RecordListCard.fxml";
     /**
@@ -30,14 +29,6 @@ public class RecordCard extends UiPart<Region>{
     /**
      * Creates a {@code RecordCode} with the given {@code Record} and index to display.
      */
-    /*public RecordCard(Record record, int displayedIndex) {
-        super(FXML);
-        this.record = record;
-        title.setText(displayedIndex + ". " + record.getRecordId() + "client id: " + record.getClientID());
-        dateTime.setText("Insurance type: " + record.getInsuranceID() + "valid from " + record.getStartDate()
-                + " to " + record.getEndDate());
-    }*/
-
     public RecordCard(Record record, int displayedIndex, MainWindow main) {
         super(FXML);
         this.record = record;

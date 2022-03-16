@@ -10,7 +10,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.record.Record;
 
-public class RecordListPanel extends UiPart<Region>{
+public class RecordListPanel extends UiPart<Region> {
 
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(RecordListPanel.class);

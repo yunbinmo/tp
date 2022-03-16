@@ -17,6 +17,6 @@ public class ListRecordCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredRecordList(PREDICATE_SHOW_ALL_RECORDS);
-        return new CommandResult(MESSAGE_SUCCESS, false, false, true, false, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, true, false, false, false, false, false);
     }
 }

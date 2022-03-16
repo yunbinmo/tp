@@ -4,10 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.insurance.Insurance;
 import seedu.address.model.record.Record;
 
-public class RecordDetailCard extends UiPart<Region>{
+public class RecordDetailCard extends UiPart<Region> {
 
     private static final String FXML = "RecordDetailCard.fxml";
 
@@ -22,6 +21,9 @@ public class RecordDetailCard extends UiPart<Region>{
     @FXML
     private Label datetime;
 
+    /**
+     * Creates a {@code RecordCode} with the given {@code Record} and index to display.
+     */
     public RecordDetailCard(Record record, int displayedIndex) {
         super(FXML);
         this.record = record;

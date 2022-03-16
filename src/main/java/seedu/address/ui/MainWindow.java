@@ -15,7 +15,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.RecordParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
@@ -190,6 +189,9 @@ public class MainWindow extends UiPart<Stage> {
         detailPanel.getChildren().add(new PersonDetailCard(person, 1).getRoot());
     }
 
+    /**
+     * update DetailPanel for clicked record card
+     */
     public void updateRecordDetailPanel(Record record) {
         detailPanel.getChildren().clear();
         detailPanel.getChildren().add(new RecordDetailCard(record, 1).getRoot());
