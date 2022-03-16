@@ -167,6 +167,9 @@ public class AddressBookParser {
         case ListInsuranceCommand.COMMAND_WORD:
             return new ListInsuranceCommand();
 
+        case FindInsuranceCommand.COMMAND_WORD:
+            return new FindInsuranceCommandParser().parse(arguments);
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
