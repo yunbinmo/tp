@@ -1,14 +1,10 @@
 package seedu.address.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.record.Record;
-
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class ExpiredRecordBook implements ReadOnlyExpiredRecordBook {
 
@@ -28,7 +24,7 @@ public class ExpiredRecordBook implements ReadOnlyExpiredRecordBook {
         ObservableList<Record> records = recordBook.getRecordList();
 
         LocalDate now = LocalDate.now();
-        for(Record r : records) {
+        for (Record r : records) {
             LocalDate endDate = r.getEndDate().getDate();
 
             assert false;
