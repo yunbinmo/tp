@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+import javafx.collections.ObservableList;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddInsuranceCommand;
 import seedu.address.logic.commands.AddPersonCommand;
@@ -30,6 +32,7 @@ import seedu.address.logic.commands.ListRecordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.insurance.Insurance;
 
 /**
  * Parses user input.
@@ -71,7 +74,7 @@ public class AddressBookParser {
         case Command.COMMAND_INSURANCE:
             return this.parseInsuranceCommand(commandWord, arguments);
         case Command.COMMAND_RECORD:
-            return this.parseRecordCommand(commandWord, arguments, model.getAddressBook().getPersonList());
+            return this.parseRecordCommand(commandWord, arguments, model.getAddressBook().getPersonList(),model.getFilteredInsuranceList());
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
         case Command.COMMAND_APPOINTMENT_HISTORY:
@@ -215,11 +218,12 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseRecordCommand(String commandWord, String arguments, List<Person> personList)
-            throws ParseException {
+
+    public Command parseRecordCommand(String commandWord, String arguments, List<Person> personList, ObservableList<Insurance> insuranceList) throws ParseException {
+
         switch (commandWord) {
         case AddRecordCommand.COMMAND_WORD:
-            return new AddRecordCommandParser().parse(personList, arguments);
+            return new AddRecordCommandParser().parse(personList, insuranceList, arguments);
         case DeleteRecordCommand.COMMAND_WORD:
             return new DeleteRecordCommandParser().parse(arguments);
         case ListRecordCommand.COMMAND_WORD:
