@@ -51,4 +51,3 @@ public class RecordDetailCard extends UiPart<Region> {
                 && record.equals(card.record);
     }
 }
-
