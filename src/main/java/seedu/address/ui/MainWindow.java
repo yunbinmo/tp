@@ -143,6 +143,8 @@ public class MainWindow extends UiPart<Stage> {
 
         insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList(), this);
 
+        recordListPanel = new RecordListPanel(logic.getFilteredRecordList(), this);
+
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
 
