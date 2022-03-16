@@ -19,8 +19,18 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyAppointmentBook;
+import seedu.address.model.ReadOnlyAppointmentHistoryBook;
+import seedu.address.model.ReadOnlyExpiredRecordBook;
+import seedu.address.model.ReadOnlyInsuranceBook;
+import seedu.address.model.ReadOnlyRecordBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
+import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddPersonCommandTest {
@@ -47,7 +57,8 @@ public class AddPersonCommandTest {
         AddPersonCommand addPersonCommand = new AddPersonCommand(validPerson);
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
-        assertThrows(CommandException.class, AddPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> addPersonCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> addPersonCommand.execute(modelStub));
     }
 
     @Test
@@ -147,6 +158,169 @@ public class AddPersonCommandTest {
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        // Methods from new components
+        @Override
+        public ReadOnlyInsuranceBook getInsuranceBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setInsuranceBook(ReadOnlyInsuranceBook insuranceBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasInsurance(Insurance insurance) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteInsurance(Insurance target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addInsurance(Insurance insurance) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setInsurance(Insurance target, Insurance editedInsurance) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Insurance> getFilteredInsuranceList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredInsuranceList(Predicate<Insurance> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyAppointmentBook getAppointmentBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointmentBook(ReadOnlyAppointmentBook appointmentBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointment(Appointment target, Appointment editedInsurance) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyRecordBook getRecordBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setRecordBook(ReadOnlyRecordBook recordBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasRecord(Record record) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addRecord(Record record) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRecord(Record record) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setRecord(Record target, Record editedRecord) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Record> getFilteredRecordList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRecordList(Predicate<Record> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+
+        @Override
+        public ReadOnlyAppointmentHistoryBook getAppointmentHistoryBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasHistory(AppointmentHistory history) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyExpiredRecordBook getExpiredRecordBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //        @Override
+        //        public boolean hasRecord(ExpiredRecord record) {
+        //            throw new AssertionError("This method should not be called.");
+        //        }
+
+        @Override
+        public ObservableList<Record> getFilteredExpiredRecordList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
