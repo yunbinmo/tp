@@ -50,5 +50,5 @@ public class RecordDetailCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && record.equals(card.record);
     }
-
 }
+
