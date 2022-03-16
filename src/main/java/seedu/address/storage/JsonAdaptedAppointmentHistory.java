@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.history.AppointmentHistory;
-
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
+import seedu.address.model.history.AppointmentHistory;
 
 /**
  * Jackson-friendly version of {@link AppointmentHistory}.

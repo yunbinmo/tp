@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -15,7 +14,7 @@ import java.time.format.DateTimeParseException;
 public class EndDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 ";
+            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022";
 
     private static final String DATE_FORMAT = "dd-MM-yyyy";
 
@@ -69,7 +68,7 @@ public class EndDate {
         return date.hashCode();
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 }
