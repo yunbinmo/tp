@@ -18,6 +18,7 @@ import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeleteInsuranceCommand;
 import seedu.address.logic.commands.DeletePersonCommand;
 import seedu.address.logic.commands.DeleteRecordCommand;
+import seedu.address.logic.commands.EditInsuranceCommand;
 import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindInsuranceCommand;
@@ -166,6 +167,9 @@ public class AddressBookParser {
 
         case ListInsuranceCommand.COMMAND_WORD:
             return new ListInsuranceCommand();
+
+        case EditInsuranceCommand.COMMAND_WORD:
+            return new EditInsuranceCommandParser().parse(arguments);
 
         case FindInsuranceCommand.COMMAND_WORD:
             return new FindInsuranceCommandParser().parse(arguments);
