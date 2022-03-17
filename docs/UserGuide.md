@@ -189,7 +189,7 @@ Adds a new appointment with client
 Format: `add -a d/DESCRIPTION dt/DATETIME`
 
 Examples:
-* `add -a 1 d/Meet James dt/20-02-2022 1800` 
+* `add -a d/Meet James dt/20-02-2022 18:00` 
 
 ### Listing all appointment: `list -a`
 
