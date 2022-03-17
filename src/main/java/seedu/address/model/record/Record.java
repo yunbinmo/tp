@@ -87,9 +87,7 @@ public class Record {
      */
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Record ")
-                .append(this.getRecordId())
-                .append(" Client ")
+        builder.append(" Client ")
                 .append(this.getClientID())
                 .append(" bought insurance ")
                 .append(this.getInsuranceID())

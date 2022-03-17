@@ -2,12 +2,14 @@ package seedu.address.ui;
 
 import java.util.Comparator;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -39,12 +41,14 @@ public class PersonDetailCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label record;
+    @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PersonDetailCard(Person person, int displayedIndex) {
+    public PersonDetailCard(Person person, ObservableList<Record> records, int displayedIndex) {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
@@ -56,6 +60,18 @@ public class PersonDetailCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
+        String clientName = person.getName().fullName.toString();
+        final StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < records.size(); i++) {
+            String recordName = records.get(i).getClientID().toString();
+            if (recordName.equals(clientName)) {
+                builder.append(i + 1);
+                builder.append(". ");
+                builder.append(records.get(i));
+                builder.append("\n");
+            }
+        }
+        record.setText(builder.toString());
     }
 
     @Override

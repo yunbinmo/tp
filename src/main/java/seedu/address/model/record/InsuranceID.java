@@ -16,12 +16,22 @@ public class InsuranceID {
     /**
      * Constructs a {@code Price}.
      *
-     * @param insurance_id A valid price number.
+     * @param insuranceID A valid price number.
      */
     public InsuranceID(String insuranceID) {
         requireNonNull(insuranceID);
         checkArgument(isValidInsuranceID(insuranceID), MESSAGE_CONSTRAINTS);
         id = insuranceID;
+    }
+
+    /**
+     * Constructs a {@code Name}.
+     *
+     * @param insuranceName A valid name.
+     */
+    public InsuranceID(String insuranceName, Boolean yes) {
+        requireNonNull(insuranceName);
+        id = insuranceName;
     }
 
     /**
