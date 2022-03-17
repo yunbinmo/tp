@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.appointment.Description;
 import seedu.address.model.record.ClientID;
 import seedu.address.model.record.EndDate;
 import seedu.address.model.record.InsuranceID;
@@ -44,7 +43,10 @@ public class RecordParserUtil {
         requireNonNull(clientID);
         String trimmedClientID = clientID.trim();
         if (!ClientID.isValidClientID(clientID)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ClientID.MESSAGE_CONSTRAINTS);
+        }
+        if (!ClientID.isNotZeroClientID(clientID)) {
+            throw new ParseException(ClientID.MESSAGE_INDEX_CONSTRAINT);
         }
         return new ClientID(trimmedClientID);
     }
@@ -60,8 +62,12 @@ public class RecordParserUtil {
         requireNonNull(insuranceID);
         String trimmedInsuranceID = insuranceID.trim();
         if (!InsuranceID.isValidInsuranceID(insuranceID)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+            throw new ParseException(InsuranceID.MESSAGE_CONSTRAINTS);
         }
+        if (!InsuranceID.isNotZeroInsuranceID(insuranceID)) {
+            throw new ParseException(InsuranceID.MESSAGE_INDEX_CONSTRAINT);
+        }
+
         return new InsuranceID(trimmedInsuranceID);
     }
 
