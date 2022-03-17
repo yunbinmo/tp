@@ -70,7 +70,7 @@ class JsonAdaptedRecord {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     InsuranceID.class.getSimpleName()));
         }
-        final InsuranceID modelInsuranceID = new InsuranceID(insuranceID);
+        final InsuranceID modelInsuranceID = new InsuranceID(insuranceID, true);
 
         if (startDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

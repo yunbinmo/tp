@@ -25,9 +25,9 @@ public class ClientID {
     }
 
     /**
-     * Constructs a {@code Price}.
+     * Constructs a {@code Name}.
      *
-     * @param clientName A valid price number.
+     * @param clientName A valid name.
      */
     public ClientID(String clientName, Boolean yes) {
         requireNonNull(clientName);

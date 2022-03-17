@@ -22,7 +22,7 @@ public class Description {
     /**
      * Constructs a {@code DateTime}.
      *
-     * @param input A valid client date time string.
+     * @param description A valid client date time string.
      */
     public Description(String description) {
         requireNonNull(description);

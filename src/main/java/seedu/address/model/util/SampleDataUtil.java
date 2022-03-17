@@ -64,14 +64,15 @@ public class SampleDataUtil {
 
     public static Appointment[] getSampleAppointments() {
         return new Appointment[]{
+
             new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
         };
     }
 
     public static Record[] getSampleRecords() {
         return new Record[]{
-            new Record(new ClientID(("1")), new InsuranceID("1"),
-                        new StartDate("02-03-2022"), new EndDate("02-03-2025"))
+            new Record(new ClientID(("Alice Yeoh"), true), new InsuranceID(("Health"), true),
+                    new StartDate("02-03-2022"), new EndDate("02-03-2025"))
         };
     }
 

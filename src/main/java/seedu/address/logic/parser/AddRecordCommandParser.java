@@ -75,6 +75,8 @@ public class AddRecordCommandParser {
                     AddRecordCommand.MESSAGE_USAGE));
         }
 
+        insuranceID = new InsuranceID(insuranceList.get(insuranceIndex - 1).getTitle().toString(), true);
+
         StartDate startDate = RecordParserUtil.parseStartDate(argMultimap.getValue(PREFIX_REC_STARTDATE).get());
         EndDate endDate = RecordParserUtil.parseEndDate(argMultimap.getValue(PREFIX_REC_ENDDATE).get());
 
