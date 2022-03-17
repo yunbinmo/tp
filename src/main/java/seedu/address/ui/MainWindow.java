@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -187,8 +188,9 @@ public class MainWindow extends UiPart<Stage> {
      * update DetailPanel for clicked insurance card
      */
     public void updatePersonDetailPanel(Person person) {
+        ObservableList<Record> records = logic.getFilteredRecordList();
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new PersonDetailCard(person, 1).getRoot());
+        detailPanel.getChildren().add(new PersonDetailCard(person, records, 1).getRoot());
     }
 
     /**
