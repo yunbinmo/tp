@@ -20,6 +20,7 @@ import seedu.address.logic.commands.DeletePersonCommand;
 import seedu.address.logic.commands.DeleteRecordCommand;
 import seedu.address.logic.commands.EditPersonCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindInsuranceCommand;
 import seedu.address.logic.commands.FindPersonCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppointmentCommand;
@@ -32,7 +33,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
-
 
 /**
  * Parses user input.
@@ -166,6 +166,9 @@ public class AddressBookParser {
 
         case ListInsuranceCommand.COMMAND_WORD:
             return new ListInsuranceCommand();
+
+        case FindInsuranceCommand.COMMAND_WORD:
+            return new FindInsuranceCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -137,6 +137,12 @@ Deletes the specified insurance from the Mr. Agent.
 
 Format: `delete -i INDEX`
 
+### Locating insurance by title: `find -i`
+
+Finds insurance which titles contain any of the given keywords.
+
+Format: `find -i KEYWORD [MORE_KEYWORDS]`
+
 ### Editing an Insurance: `edit -i` (***coming soon***)
 
 ### Adding a record to a client: `add -r`
@@ -162,17 +168,17 @@ Format: `delete -r RECORD_INDEX`
 ### Editing a record : `edit -r` (***coming soon***)
 ### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
 
-### Listing appointment history: `history -a`
+### Listing appointment history: `list -h`
 
 Shows a list of all passed appointments.
 
-Format: `history -a`
+Format: `list -h`
 
-### Listing expired records: `history -r`
+### Listing expired records: `list -e`
 
 Shows a list of all expired records.
 
-Format: `history -r`
+Format: `list -e`
 
 ### List history by client (***coming soon***)
 
