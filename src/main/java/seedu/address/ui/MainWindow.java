@@ -187,10 +187,10 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * update DetailPanel for clicked insurance card
      */
-    public void updatePersonDetailPanel(Person person) {
+    public void updatePersonDetailPanel(Person person, int displayedIndex) {
         ObservableList<Record> records = logic.getFilteredRecordList();
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new PersonDetailCard(person, records, 1).getRoot());
+        detailPanel.getChildren().add(new PersonDetailCard(person, records, displayedIndex, this).getRoot());
     }
 
     /**

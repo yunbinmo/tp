@@ -1,13 +1,17 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
 
@@ -27,6 +31,7 @@ public class PersonDetailCard extends UiPart<Region> {
      */
 
     public final Person person;
+    private RecordUnderPersonPanel recordUnderPersonPanel;
 
     @FXML
     private HBox cardPane;
@@ -44,34 +49,41 @@ public class PersonDetailCard extends UiPart<Region> {
     private Label record;
     @FXML
     private FlowPane tags;
+    @FXML
+    private StackPane recordListPanelPlaceholder;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
-    public PersonDetailCard(Person person, ObservableList<Record> records, int displayedIndex) {
+    public PersonDetailCard(Person person, ObservableList<Record> records, int displayedIndex, MainWindow main) {
         super(FXML);
+
+
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
+
+        List<Record> newRecords = new ArrayList<>();
         String clientName = person.getName().fullName.toString();
-        final StringBuilder builder = new StringBuilder();
         for (int i = 0; i < records.size(); i++) {
             String recordName = records.get(i).getClientID().toString();
+
             if (recordName.equals(clientName)) {
-                builder.append(i + 1);
-                builder.append(". ");
-                builder.append(records.get(i));
-                builder.append("\n");
+                newRecords.add(records.get(i));
             }
         }
-        record.setText(builder.toString());
+        ObservableList<Record> observableList = FXCollections.observableList(newRecords);
+        recordUnderPersonPanel = new RecordUnderPersonPanel(observableList);
+        recordListPanelPlaceholder.getChildren().add(recordUnderPersonPanel.getRoot());
+        record.setText("Insurance:");
     }
 
     @Override
