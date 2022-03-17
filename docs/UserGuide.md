@@ -153,6 +153,7 @@ Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 * Each client index can only own 1 insurance of each type
+* Client index and Insurance index starts from 1
 
 Examples: (***todo***)
 * `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024
@@ -165,8 +166,40 @@ Deletes the specified record from the Mr. Agent.
 
 Format: `delete -r RECORD_INDEX`
 
-### Editing a record : `edit -r` (***coming soon***)
-### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
+## Listing all records : `list -r`
+
+Shows a list of all records in the Mr. Agent.
+
+Format: `list -r`
+
+### Editing a record : `edit -r` 
+
+Edits an existing record in the Mr. Agent.
+
+Format: `edit -r INDEX [c/CLIENT_INDEX] [i/INSURANCE_INDEX] [sd/START_DATE] [ed/END_DATE]`
+
+* Edits the record at the specified `INDEX`. The index refers to the index number shown in the displayed record list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+
+Examples:
+*  `edit -r 1 c/2 i/2` Edits the client and the type of insurance of the 1st record to be client 2 and insurance 2 respectively.
+
+### Locating record by keyword (insurance name): `find -r`
+
+Finds records whose insurance name contains any of the given keyword
+
+Format: `find -r KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `health` will match `Health`
+* The order of the keywords does not matter. e.g. `critical illness ` will match `illnes critical`
+* Only the insurance name is searched.
+* Only full words will be matched e.g. `hea` will not match `health`
+* Records matching at least one keyword will be returned (i.e. `OR` search).
+
+Examples: 
+* `find -r health` 
 
 ### Listing appointment history: `list -h`
 
