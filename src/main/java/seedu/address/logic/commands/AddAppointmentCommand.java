@@ -14,11 +14,12 @@ import seedu.address.model.appointment.Appointment;
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -a "
+            + ": Adds an appointment to the address book. "
             + "Parameters: "
             + PREFIX_APPT_DESCRIPTION + "DESCRIPTION "
             + PREFIX_APPT_DATETIME + "DATETIME "
-            + "Example: " + COMMAND_WORD + " "
+            + "Example: " + COMMAND_WORD + " -a "
             + PREFIX_APPT_DESCRIPTION + "Meet James at UTown "
             + PREFIX_APPT_DATETIME + "20-03-2022 18:00 ";
     public static final String MESSAGE_DUPLICATE_APPOINTMENT =
