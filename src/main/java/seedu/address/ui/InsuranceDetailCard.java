@@ -30,6 +30,8 @@ public class InsuranceDetailCard extends UiPart<Region> {
     private Label title;
     @FXML
     private Label id;
+    @FXML
+    private Label price;
 
     /**
      * Creates a {@code InsuranceCode} with the given {@code Insurance} and index to display.
@@ -39,6 +41,7 @@ public class InsuranceDetailCard extends UiPart<Region> {
         this.insurance = insurance;
         id.setText(displayedIndex + ". ");
         title.setText(insurance.getTitle().toString());
+        price.setText(insurance.getPrice().toString());
 
     }
 

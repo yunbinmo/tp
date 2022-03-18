@@ -80,10 +80,13 @@ public class PersonDetailCard extends UiPart<Region> {
                 newRecords.add(records.get(i));
             }
         }
+
         ObservableList<Record> observableList = FXCollections.observableList(newRecords);
         recordUnderPersonPanel = new RecordUnderPersonPanel(observableList);
         recordListPanelPlaceholder.getChildren().add(recordUnderPersonPanel.getRoot());
         record.setText("Insurance:");
+
+
     }
 
     @Override
