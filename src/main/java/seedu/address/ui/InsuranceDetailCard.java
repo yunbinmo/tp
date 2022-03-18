@@ -41,7 +41,7 @@ public class InsuranceDetailCard extends UiPart<Region> {
         this.insurance = insurance;
         id.setText(displayedIndex + ". ");
         title.setText(insurance.getTitle().toString());
-        price.setText(insurance.getPrice().toString());
+        price.setText("Price: " + insurance.getPrice().toString());
 
     }
 

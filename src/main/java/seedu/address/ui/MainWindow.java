@@ -179,9 +179,9 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * update DetailPanel for clicked insurance card
      */
-    public void updateInsuranceDetailPanel(Insurance insurance) {
+    public void updateInsuranceDetailPanel(Insurance insurance, int displayedIndex) {
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new InsuranceDetailCard(insurance, 1).getRoot());
+        detailPanel.getChildren().add(new InsuranceDetailCard(insurance, displayedIndex).getRoot());
     }
 
     /**
