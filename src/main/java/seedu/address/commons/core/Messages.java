@@ -16,6 +16,6 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_INSURANCES_LISTED_OVERVIEW = "%1$d insurances listed!";
     public static final String MESSAGE_RECORDS_LISTED_OVERVIEW = "%1$d records listed!";
-
+    public static final String MESSAGE_APPOINTMENT_LISTED_OVERVIEW = "%1$d appointments listed!";
 
 }
