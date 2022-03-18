@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.insurance.Insurance;
-import seedu.address.model.insurance.TitleContainsKeywordsPredicate;
 
 /**
  * Tests that a {@code Record}'s {@code InsuranceID} matches any of the keywords given.
@@ -21,7 +19,8 @@ public class RecordContainsKeywordsPredicate implements Predicate<Record> {
     @Override
     public boolean test(Record record) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(String.valueOf(record.getInsuranceID()), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(
+                        String.valueOf(record.getInsuranceID()), keyword));
     }
 
     @Override
