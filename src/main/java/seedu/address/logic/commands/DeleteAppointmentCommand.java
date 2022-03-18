@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DATETIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DESCRIPTION;
 
 import java.util.List;
 
