@@ -26,8 +26,11 @@
                 </Label>
                 <Label fx:id="title" text="\$title" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;" />
 
-                <Label fx:id="price" text="\$price" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;" />
             </HBox>
+            <padding>
+                <Insets top="5" right="5" bottom="5" left="10"/>
+            </padding>
+            <Label fx:id="price" text="\$price" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;" />
         </VBox>
     </GridPane>
 </HBox>
