@@ -2,36 +2,62 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8">
+    <VBox>
+        <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.1" VBox.vgrow="ALWAYS">
+            <GridPane HBox.hgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
+                </columnConstraints>
+                <VBox alignment="CENTER_LEFT" GridPane.columnIndex="0">
+                    <padding>
+                        <Insets top="5" right="5" bottom="5" left="15"/>
+                    </padding>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Label fx:id="id" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;">
+                            <minWidth>
+                                <!-- Ensures that the label text is never truncated -->
+                                <Region fx:constant="USE_PREF_SIZE"/>
+                            </minWidth>
+                        </Label>
+                        <Label fx:id="name" text="\$first" styleClass="cell_big_label"
+                               style="-fx-text-fill: #FFFFFF; -fx-font: 30 arial;"/>
+                    </HBox>
+                    <FlowPane fx:id="tags"/>
+                    <Label fx:id="phone" styleClass="cell_small_label" text="\$phone"
+                           style="-fx-text-fill: #FFFFFF; -fx-font: 15 arial;"/>
+                    <padding>
+                        <Insets top="5" right="5" bottom="5" left="0"/>
+                    </padding>
+                    <Label fx:id="address" styleClass="cell_small_label" text="\$address"
+                           style="-fx-text-fill: #FFFFFF; -fx-font: 15 arial;"/>
+                    <padding>
+                        <Insets top="5" right="5" bottom="5" left="0"/>
+                    </padding>
+                    <Label fx:id="email" styleClass="cell_small_label" text="\$email"
+                           style="-fx-text-fill: #FFFFFF; -fx-font: 15 arial;"/>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
-        </columnConstraints>
-        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+                </VBox>
+            </GridPane>
+
+        </SplitPane>
+        <VBox alignment="CENTER_LEFT" GridPane.columnIndex="0">
             <padding>
-                <Insets top="5" right="5" bottom="5" left="15" />
+                <Insets top="5" right="5" bottom="5" left="15"/>
             </padding>
-            <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;">
-                    <minWidth>
-                        <!-- Ensures that the label text is never truncated -->
-                        <Region fx:constant="USE_PREF_SIZE" />
-                    </minWidth>
-                </Label>
-                <Label fx:id="name" text="\$first" styleClass="cell_big_label" style="-fx-text-fill: #FFFFFF;" />
-            </HBox>
-            <FlowPane fx:id="tags" />
-            <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" style="-fx-text-fill: #FFFFFF;" />
-            <Label fx:id="address" styleClass="cell_small_label" text="\$address" style="-fx-text-fill: #FFFFFF;" />
-            <Label fx:id="email" styleClass="cell_small_label" text="\$email" style="-fx-text-fill: #FFFFFF;" />
-            <Label fx:id="record" styleClass="cell_small_label" text="\$record" style="-fx-text-fill: #FFFFFF;" />
+            <Label fx:id="record" styleClass="cell_small_label" text="\$record"
+                   style="-fx-text-fill: #FFFFFF; -fx-font: 18 arial;"/>
+            <StackPane fx:id="recordListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
-    </GridPane>
+
+
+    </VBox>
 </HBox>
