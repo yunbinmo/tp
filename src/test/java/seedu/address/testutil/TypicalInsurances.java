@@ -26,14 +26,14 @@ public class TypicalInsurances {
     private TypicalInsurances() {} // prevents instantiation
 
     /**
-     * Returns an {@code InsuranceBook} with all the typical persons.
+     * Returns an {@code InsuranceBook} with all the typical insurances.
      */
     public static InsuranceBook getTypicalInsuranceBook() {
-        InsuranceBook ab = new InsuranceBook();
-        for (Insurance appointment : getTypicalInsurances()) {
-            ab.addInsurance(appointment);
+        InsuranceBook ib = new InsuranceBook();
+        for (Insurance insurance : getTypicalInsurances()) {
+            ib.addInsurance(insurance);
         }
-        return ab;
+        return ib;
     }
 
     public static List<Insurance> getTypicalInsurances() {
