@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
-import seedu.address.model.record.Record;
 import seedu.address.model.record.ClientID;
 import seedu.address.model.record.EndDate;
 import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.StartDate;
+import seedu.address.model.record.Record;
 
 /**
  * A utility class to help with building Record objects.
