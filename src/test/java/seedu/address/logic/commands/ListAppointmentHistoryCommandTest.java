@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,12 +28,14 @@ public class ListAppointmentHistoryCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListAppointmentHistoryCommand(), model, ListAppointmentHistoryCommand.MESSAGE_SUCCESS, expectedModel);
+        String expectedMessage = ListAppointmentHistoryCommand.MESSAGE_SUCCESS;
+        assertCommandSuccess(new ListAppointmentHistoryCommand(), model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        assertCommandSuccess(new ListAppointmentHistoryCommand(), model, ListAppointmentHistoryCommand.MESSAGE_SUCCESS, expectedModel);
+        String expectedMessage = ListAppointmentHistoryCommand.MESSAGE_SUCCESS;
+        assertCommandSuccess(new ListAppointmentHistoryCommand(), model, expectedMessage, expectedModel);
     }
 }

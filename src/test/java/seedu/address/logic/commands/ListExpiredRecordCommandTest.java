@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,12 +28,14 @@ public class ListExpiredRecordCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListExpiredRecordCommand(), model, ListExpiredRecordCommand.MESSAGE_SUCCESS, expectedModel);
+        String expectedMessage = ListExpiredRecordCommand.MESSAGE_SUCCESS;
+        assertCommandSuccess(new ListExpiredRecordCommand(), model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        assertCommandSuccess(new ListExpiredRecordCommand(), model, ListExpiredRecordCommand.MESSAGE_SUCCESS, expectedModel);
+        String expectedMessage = ListExpiredRecordCommand.MESSAGE_SUCCESS;
+        assertCommandSuccess(new ListExpiredRecordCommand(), model, expectedMessage, expectedModel);
     }
 }
