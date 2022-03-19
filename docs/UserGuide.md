@@ -236,7 +236,12 @@ Deletes an unneeded appointment
 
 Format: `delete -a APPOINTMENT_INDEX`
 
-### Editing a appointment: `edit -a` (***coming soon***)
+### Editing a appointment: `edit -a`
+
+Edits an existing appointment
+
+Format: `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]` 
+
 ### Locating appointment by keyword: `find -a`
 
 Searches for an appointment using keyword(s)
