@@ -31,59 +31,58 @@ import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
-import seedu.address.testutil.InsuranceBuilder;
+import seedu.address.testutil.RecordBuilder;
 
-public class AddInsuranceCommandTest {
+public class AddRecordCommandTest {
 
     @Test
-    public void constructor_nullInsurance_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddInsuranceCommand(null));
+    public void constructor_nullRecord_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddRecordCommand(null));
     }
 
     @Test
-    public void execute_insuranceAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingInsuranceAdded modelStub = new ModelStubAcceptingInsuranceAdded();
-        Insurance validInsurance = new InsuranceBuilder().build();
+    public void execute_recordAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingRecordAdded modelStub = new ModelStubAcceptingRecordAdded();
+        Record validRecord = new RecordBuilder().build();
 
-        CommandResult commandResult = new AddInsuranceCommand(validInsurance).execute(modelStub);
+        CommandResult commandResult = new AddRecordCommand(validRecord).execute(modelStub);
 
-        String expected = String.format(AddInsuranceCommand.MESSAGE_SUCCESS, validInsurance);
-        assertEquals(expected, commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validInsurance), modelStub.insurancesAdded);
+        assertEquals(String.format(AddRecordCommand.MESSAGE_SUCCESS, validRecord), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validRecord), modelStub.recordsAdded);
     }
 
     @Test
-    public void execute_duplicateInsurance_throwsCommandException() {
-        Insurance validInsurance = new InsuranceBuilder().build();
-        AddInsuranceCommand addInsuranceCommand = new AddInsuranceCommand(validInsurance);
-        ModelStub modelStub = new ModelStubWithInsurance(validInsurance);
+    public void execute_duplicateRecord_throwsCommandException() {
+        Record validRecord = new RecordBuilder().build();
+        AddRecordCommand addRecordCommand = new AddRecordCommand(validRecord);
+        ModelStub modelStub = new ModelStubWithRecord(validRecord);
 
         assertThrows(CommandException.class,
-                AddInsuranceCommand.MESSAGE_DUPLICATE_INSURANCE, () -> addInsuranceCommand.execute(modelStub));
+                AddRecordCommand.MESSAGE_DUPLICATE_RECORD, () -> addRecordCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Insurance heart = new InsuranceBuilder().withTitle("Heart").build();
-        Insurance life = new InsuranceBuilder().withTitle("Life").build();
-        AddInsuranceCommand addHeartCommand = new AddInsuranceCommand(heart);
-        AddInsuranceCommand addLifeCommand = new AddInsuranceCommand(life);
+        Record alice = new RecordBuilder().withClientID("1").build();
+        Record bob = new RecordBuilder().withClientID("2").build();
+        AddRecordCommand addAliceCommand = new AddRecordCommand(alice);
+        AddRecordCommand addBobCommand = new AddRecordCommand(bob);
 
         // same object -> returns true
-        assertTrue(addHeartCommand.equals(addHeartCommand));
+        assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddInsuranceCommand addHeartCommandCopy = new AddInsuranceCommand(heart);
-        assertTrue(addHeartCommand.equals(addHeartCommandCopy));
+        AddRecordCommand addAliceCommandCopy = new AddRecordCommand(alice);
+        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
-        assertFalse(addHeartCommand.equals(1));
+        assertFalse(addAliceCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addHeartCommand.equals(null));
+        assertFalse(addAliceCommand.equals(null));
 
-        // different insurance -> returns false
-        assertFalse(addHeartCommand.equals(addLifeCommand));
+        // different record -> returns false
+        assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
     /**
@@ -325,39 +324,39 @@ public class AddInsuranceCommandTest {
     }
 
     /**
-     * A Model stub that contains a single insurance.
+     * A Model stub that contains a single record.
      */
-    private class ModelStubWithInsurance extends ModelStub {
-        private final Insurance insurance;
+    private class ModelStubWithRecord extends ModelStub {
+        private final Record record;
 
-        ModelStubWithInsurance(Insurance insurance) {
-            requireNonNull(insurance);
-            this.insurance = insurance;
+        ModelStubWithRecord(Record record) {
+            requireNonNull(record);
+            this.record = record;
         }
 
         @Override
-        public boolean hasInsurance(Insurance insurance) {
-            requireNonNull(insurance);
-            return this.insurance.isSameInsurance(insurance);
+        public boolean hasRecord(Record record) {
+            requireNonNull(record);
+            return this.record.isSameRecord(record);
         }
     }
 
     /**
-     * A Model stub that always accept the insurance being added.
+     * A Model stub that always accept the record being added.
      */
-    private class ModelStubAcceptingInsuranceAdded extends ModelStub {
-        final ArrayList<Insurance> insurancesAdded = new ArrayList<>();
+    private class ModelStubAcceptingRecordAdded extends ModelStub {
+        final ArrayList<Record> recordsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasInsurance(Insurance insurance) {
-            requireNonNull(insurance);
-            return insurancesAdded.stream().anyMatch(insurance::isSameInsurance);
+        public boolean hasRecord(Record record) {
+            requireNonNull(record);
+            return recordsAdded.stream().anyMatch(record::isSameRecord);
         }
 
         @Override
-        public void addInsurance(Insurance insurance) {
-            requireNonNull(insurance);
-            insurancesAdded.add(insurance);
+        public void addRecord(Record record) {
+            requireNonNull(record);
+            recordsAdded.add(record);
         }
 
         @Override
