@@ -12,6 +12,7 @@ import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddInsuranceCommand;
 import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.AddRecordCommand;
+import seedu.address.logic.commands.ClearAppointmentCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ClearInsuranceCommand;
 import seedu.address.logic.commands.ClearPersonCommand;
@@ -117,13 +118,12 @@ public class AddressBookParser {
         if (arguments.trim().length() == 0) {
             return SINGLE_COMMAND_FORMAT;
         }
-
         if (arguments.trim().length() < 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
-
-
-
+        if (arguments.trim().split(" ")[0].length() != 2) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        }
         return arguments.trim().substring(0, 2);
     }
 
@@ -213,6 +213,8 @@ public class AddressBookParser {
             return new EditAppointmentCommandParser().parse(arguments);
         case FindAppointmentCommand.COMMAND_WORD:
             return new FindAppointmentCommandParser().parse(arguments);
+        case ClearAppointmentCommand.COMMAND_WORD:
+            return new ClearAppointmentCommand();
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
