@@ -13,9 +13,9 @@ import seedu.address.model.record.Record;
 public class DeleteRecordCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_DELETE_RECORD_SUCCESS = "Record deleted: %1$s";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an record from the address book. "
-            + "Parameters: "
-            + "RECORD INDEX";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -r : Deletes an record from the address book. "
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " -r 1";
     private final Index targetIndex;
 
     /**

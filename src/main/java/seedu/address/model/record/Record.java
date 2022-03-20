@@ -1,6 +1,9 @@
 package seedu.address.model.record;
 
-
+/**
+ * Represents an Record in Mr. Agent.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Record {
     //TODO
 

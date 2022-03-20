@@ -15,12 +15,12 @@ public class AddInsuranceCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a insurance to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -i : Adds a insurance to the insurance book. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
-            + PREFIX_PRICE + "PRICE "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TITLE + "Health "
+            + PREFIX_PRICE + "PRICE \n"
+            + "Example: " + COMMAND_WORD + " -i "
+            + PREFIX_TITLE + "Health Care "
             + PREFIX_PRICE + "200 ";
 
 
@@ -46,8 +46,6 @@ public class AddInsuranceCommand extends Command {
         }
 
         model.addInsurance(toAdd);
-        //TODO: delete this debug comment
-        System.out.println(model.getInsuranceBook().toString());
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

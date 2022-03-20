@@ -13,21 +13,20 @@ import seedu.address.model.record.Record;
 
 public class AddRecordCommand extends Command {
     public static final String COMMAND_WORD = "add";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an record to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an record to the record book. "
             + "Parameters: "
-            + PREFIX_REC_CLIENTID + "CLIENTID "
-            + PREFIX_REC_INSURANCEID + "INSURANCEID "
-            + PREFIX_REC_INSURANCEID + "INSURANCEID "
-            + PREFIX_REC_STARTDATE + "STARTDATE "
-            + PREFIX_REC_ENDDATE + "ENDDATE "
+            + PREFIX_REC_CLIENTID + "CLIENT ID "
+            + PREFIX_REC_INSURANCEID + "INSURANCE ID "
+            + PREFIX_REC_STARTDATE + "START DATE "
+            + PREFIX_REC_ENDDATE + "END DATE \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_REC_CLIENTID + "10 "
             + PREFIX_REC_INSURANCEID + "2 "
-            + PREFIX_REC_STARTDATE + "23-02-2022"
-            + PREFIX_REC_ENDDATE + "23-02-2024";
+            + PREFIX_REC_STARTDATE + "23-02-2022 "
+            + PREFIX_REC_ENDDATE + "23-02-2024 ";
 
     public static final String MESSAGE_SUCCESS = "New record added: %1$s";
-    public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the record book";
 
     private final Record toAdd;
 

@@ -3,14 +3,10 @@ package seedu.address.model.insurance;
 import java.util.Objects;
 
 /**
- * Represents an insurance in Mr. Pay.
+ * Represents an insurance in Mr. Agent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Insurance {
-    // Identity fields
-    private static int globalId = 0;
-
-    private final int id;
     private final Title title;
     private final Price price;
 
@@ -18,13 +14,8 @@ public class Insurance {
      * Every field must be present and not null.
      */
     public Insurance(Title title, Price price) {
-        this.id = globalId++;
         this.title = title;
         this.price = price;
-    }
-
-    public int getId() {
-        return this.id;
     }
 
     public Title getTitle() {
@@ -36,8 +27,8 @@ public class Insurance {
     }
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both insurances have the same name.
+     * This defines a weaker notion of equality between two insurances.
      */
     public boolean isSameInsurance(Insurance otherInsurance) {
         if (otherInsurance == this) {
@@ -49,8 +40,8 @@ public class Insurance {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both insurances have the same identity and data fields.
+     * This defines a stronger notion of equality between two insurances.
      */
     @Override
     public boolean equals(Object other) {
@@ -63,23 +54,20 @@ public class Insurance {
         }
 
         Insurance otherInsurance = (Insurance) other;
-        return otherInsurance.getId() == this.getId()
-                && otherInsurance.getTitle().equals(this.getTitle())
+        return otherInsurance.getTitle().equals(this.getTitle())
                 && otherInsurance.getPrice().equals(this.getPrice());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(this.id, this.title, this.price);
+        return Objects.hash(this.title, this.price);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(this.getId())
-                .append(". ")
-                .append(this.getTitle())
+        builder.append(this.getTitle())
                 .append("; Price: ")
                 .append(this.getPrice());
 

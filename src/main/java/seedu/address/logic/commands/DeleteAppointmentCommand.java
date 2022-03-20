@@ -17,7 +17,7 @@ public class DeleteAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Appointment deleted: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " -a "
-            + ": Deletes an appointment from the address book. "
+            + ": Deletes an appointment from the appointment book. "
             + "Parameters: "
             + "APPOINTMENT INDEX"
             + "Example: " + COMMAND_WORD + " -a " + " 1";
