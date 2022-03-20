@@ -22,7 +22,7 @@ public class DeleteInsuranceCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " " + COMMAND_INSURANCE + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Insurance: %1$s";
+    public static final String MESSAGE_DELETE_INSURANCE_SUCCESS = "Deleted Insurance: %1$s";
 
     private final Index targetIndex;
 
@@ -43,7 +43,7 @@ public class DeleteInsuranceCommand extends Command {
         model.deleteInsurance(insuranceToDelete);
 
         System.out.println(model.getInsuranceBook().toString());
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, insuranceToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_INSURANCE_SUCCESS, insuranceToDelete));
     }
 
     @Override
