@@ -349,6 +349,11 @@ public class ModelManager implements Model {
         this.recordBook.setRecord(target, editedRecord);
     }
 
+    @Override
+    public void sortRecordBook(Comparator<Record> comparator) {
+        this.recordBook.sortRecord(comparator);
+    }
+
 
     //=========== Filtered Appointment List Accessors ========================================================
 

@@ -45,6 +45,10 @@ public class EndDate {
         this.date = date;
     }
 
+    public LocalDate getEndDate() {
+        return date;
+    }
+
     /**
      * Returns a valid LocalDateTime object if a given string is valid date and time.
      */

@@ -57,6 +57,10 @@ public class StartDate {
         }
     }
 
+    public LocalDate getStartDate() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return date.format(DATE_FORMATTER);

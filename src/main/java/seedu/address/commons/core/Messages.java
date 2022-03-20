@@ -19,5 +19,13 @@ public class Messages {
     public static final String MESSAGE_APPOINTMENT_LISTED_OVERVIEW = "%1$d appointments listed!";
     public static final String MESSAGE_APPOINTMENT_SORTED_ASCENDING = "%1$d appointments sorted ascendingly by time!";
     public static final String MESSAGE_APPOINTMENT_SORTED_DESCENDING = "%1$d appointments sorted descendingly by time!";
+    public static final String MESSAGE_RECORD_SORTED_START_TIME_ASCENDING =
+            "%1$d records sorted ascendingly by start time!";
+    public static final String MESSAGE_RECORD_SORTED_START_TIME_DESCENDING =
+            "%1$d records sorted descendingly by start time!";
+    public static final String MESSAGE_RECORD_SORTED_END_TIME_ASCENDING =
+            "%1$d records sorted ascendingly by end time!";
+    public static final String MESSAGE_RECORD_SORTED_END_TIME_DESCENDING =
+            "%1$d records sorted descendingly by end time!";
 
 }

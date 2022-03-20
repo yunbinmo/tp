@@ -276,7 +276,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                                       | see usage instructions           | refer to instructions when I forget how to use the App                 |
 | `* * *`  | insurance agent                                | add a new client                 | manage clients in the application                                      |
 | `* * *`  | insurance agent                                | delete a client                  | remove entries that I no longer need                                   |
-| `* * *`  | insurance agent                                | find a client by name            | locate details of persons without having to go through the entire list |
+| `* * *`  | insurance agent                                | find a client by name            | locate details of clients without having to go through the entire list |
 | `* * *`  | insurance agent                                | list all clients                 | view clients that are in my contact                                    |
 | `* * *`  | insurance agent                                | add an insurance                 | manage all insurances in the apllication                                            
 | `* * *`  | insurance agent                                | edit an insurance                | make changes to insurance saved in the application                     
@@ -284,7 +284,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                    | add a record to client           | keep a record of the insurances that the client have                   |
 | `* * *`  | insurance agent                                | delete a client insurance record | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                    | make changes to record saved in the application                     
-| `*`      | user with many persons in the address book     | sort persons by name             | locate a person easily                                                 |
+| `*`      | insurance agent want to check records     | sort record by start/end date            | locate a almost expired/newest record easily                                               |
 | `***`    | insurance agent frequently having appointments | view all appointments            | be reminded of all the meetings I have with my clients           |
 | `***`    | insurance agent frequently having appointments | add new appointments             | note down any future meetings I have with my client                    |
 | `***`    | insurance agent frequently having appointments | delete an appointment            | get rid of any canceled/completed appointments to avoid confusion      |
@@ -296,7 +296,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Mr Agent` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Add a client**
 
@@ -385,7 +385,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  No network connection needed.
 
@@ -429,19 +429,19 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a client
 
-1. Deleting a person while all persons are being shown
+1. Deleting a person while all clients are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all clients using the `list` command. Multiple clients in the list.
 
-   1. Test case: `delete 1`<br>
+   1. Test case: `delete -c 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
+   1. Test case: `delete -c 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect delete commands to try: `delete -c`, `delete -c x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_

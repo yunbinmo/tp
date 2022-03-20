@@ -273,6 +273,11 @@ public class AddAppointmentCommandTest {
         }
 
         @Override
+        public void sortRecordBook(Comparator<Record> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setRecord(Record target, Record editedRecord) {
             throw new AssertionError("This method should not be called.");
         }

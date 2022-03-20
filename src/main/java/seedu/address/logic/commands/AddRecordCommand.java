@@ -19,7 +19,7 @@ public class AddRecordCommand extends Command {
             + PREFIX_REC_INSURANCEID + "INSURANCE ID "
             + PREFIX_REC_STARTDATE + "START DATE "
             + PREFIX_REC_ENDDATE + "END DATE \n"
-            + "Example: " + COMMAND_WORD + " "
+            + "Example: " + COMMAND_WORD + " -r "
             + PREFIX_REC_CLIENTID + "10 "
             + PREFIX_REC_INSURANCEID + "2 "
             + PREFIX_REC_STARTDATE + "23-02-2022 "
