@@ -14,7 +14,7 @@ public class FindInsuranceCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all insurances whose names contain any of "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -i : Finds all insurances whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Example: " + COMMAND_WORD + " -i car";
 

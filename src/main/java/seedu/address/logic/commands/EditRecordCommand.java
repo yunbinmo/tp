@@ -29,7 +29,7 @@ public class EditRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the record identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -r : Edits the details of the record identified "
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "

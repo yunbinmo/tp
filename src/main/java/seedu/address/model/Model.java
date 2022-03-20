@@ -293,6 +293,11 @@ public interface Model {
     void deleteRecord(Record record);
 
     /**
+     * Sorts record book data.
+     */
+    void sortRecordBook(Comparator<Record> comparator);
+
+    /**
      * Replaces the given record {@code target} with {@code editedRecord}.
      * {@code target} must exist in the record book.
      * The record identity of {@code editedRecord} must not be the same as another

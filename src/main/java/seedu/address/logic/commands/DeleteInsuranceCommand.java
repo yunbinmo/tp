@@ -18,11 +18,11 @@ public class DeleteInsuranceCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the insurance identified by the index number used in the displayed insurance list.\n"
+            + " -i : Deletes the insurance identified by the index number used in the displayed insurance list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Example: " + COMMAND_WORD + " " + COMMAND_INSURANCE + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Insurance: %1$s";
+    public static final String MESSAGE_DELETE_INSURANCE_SUCCESS = "Deleted Insurance: %1$s";
 
     private final Index targetIndex;
 
@@ -42,9 +42,8 @@ public class DeleteInsuranceCommand extends Command {
         Insurance insuranceToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteInsurance(insuranceToDelete);
 
-        //TODO: delete this debug comment
         System.out.println(model.getInsuranceBook().toString());
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, insuranceToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_INSURANCE_SUCCESS, insuranceToDelete));
     }
 
     @Override

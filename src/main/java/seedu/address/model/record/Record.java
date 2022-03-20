@@ -1,6 +1,11 @@
 package seedu.address.model.record;
 
+import java.time.LocalDate;
 
+/**
+ * Represents an Record in Mr. Agent.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Record {
     //TODO
 
@@ -40,8 +45,16 @@ public class Record {
         return this.startDate;
     }
 
+    public LocalDate getStartLocalDate() {
+        return this.startDate.getStartDate();
+    }
+
     public EndDate getEndDate() {
         return this.endDate;
+    }
+
+    public LocalDate getEndLocalDate() {
+        return this.endDate.getEndDate();
     }
 
     /**

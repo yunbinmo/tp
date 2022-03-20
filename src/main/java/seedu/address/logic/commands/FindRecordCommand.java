@@ -14,7 +14,8 @@ public class FindRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all records whose insurance type contain any of "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + " -r : Finds all records whose insurance type contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " -r health";

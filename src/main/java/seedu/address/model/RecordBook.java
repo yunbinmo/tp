@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -82,6 +83,14 @@ public class RecordBook implements ReadOnlyRecordBook {
      */
     public void removeRecord(Record key) {
         this.records.remove(key);
+    }
+
+    /**
+     * Sorts the record list.
+     * @param comparator Criteria for sorting.
+     */
+    public void sortRecord(Comparator<Record> comparator) {
+        this.records.sort(comparator);
     }
 
     //// util methods

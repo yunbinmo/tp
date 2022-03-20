@@ -25,13 +25,13 @@ public class EditInsuranceCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the insurance identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " -i : Edits the details of the insurance identified "
             + "by the index number used in the displayed insurance list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_PRICE + "PRICE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "Example: " + COMMAND_WORD + " -i 1 "
             + PREFIX_TITLE + "House 1 ";
 
     public static final String MESSAGE_EDIT_INSURANCE_SUCCESS = "Edited Insurance: %1$s";

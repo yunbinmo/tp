@@ -3,6 +3,7 @@ package seedu.address.model.record;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -95,6 +96,13 @@ public class UniqueRecordList implements Iterable<Record> {
         }
 
         this.internalList.setAll(records);
+    }
+
+    /**
+     * Sorts the record list
+     */
+    public void sort(Comparator<Record> comparator) {
+        FXCollections.sort(this.internalList, comparator);
     }
 
     /**

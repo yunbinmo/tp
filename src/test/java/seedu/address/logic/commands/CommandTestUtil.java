@@ -16,13 +16,18 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.AppointmentBook;
+import seedu.address.model.InsuranceBook;
 import seedu.address.model.Model;
+import seedu.address.model.RecordBook;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DescriptionContainsKeywordsPredicate;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.insurance.TitleContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
+import seedu.address.model.record.RecordContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -79,7 +84,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -94,7 +99,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -115,6 +120,59 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the insurance book, filtered insurance list and selected insurance in {@code actualModel} remain unchanged
+     */
+    public static void assertInsuranceCommandFailure(Command command, Model actualModel, String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        InsuranceBook expectedInsuranceBook = new InsuranceBook(actualModel.getInsuranceBook());
+        List<Insurance> expectedFilteredList = new ArrayList<>(actualModel.getFilteredInsuranceList());
+
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedInsuranceBook, actualModel.getInsuranceBook());
+        assertEquals(expectedFilteredList, actualModel.getFilteredInsuranceList());
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the record book, filtered record list and selected record in {@code actualModel} remain unchanged
+     */
+    public static void assertRecordCommandFailure(Command command, Model actualModel, String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        RecordBook expectedRecordBook = new RecordBook(actualModel.getRecordBook());
+        List<Record> expectedFilteredList = new ArrayList<>(actualModel.getFilteredRecordList());
+
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedRecordBook, actualModel.getRecordBook());
+        assertEquals(expectedFilteredList, actualModel.getFilteredRecordList());
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the CommandException message matches {@code expectedMessage} <br>
+     * - the appointment book, filtered appointment list
+     * and selected appointment in {@code actualModel} remain unchanged
+     */
+    public static void assertAppointmentCommandFailure(Command command, Model actualModel, String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        AppointmentBook expectedAppointmentBook = new AppointmentBook(actualModel.getAppointmentBook());
+        List<Appointment> expectedFilteredList = new ArrayList<>(actualModel.getFilteredAppointmentList());
+
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedAppointmentBook, actualModel.getAppointmentBook());
+        assertEquals(expectedFilteredList, actualModel.getFilteredAppointmentList());
+    }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -128,6 +186,7 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the appointment at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -141,8 +200,9 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredAppointmentList().size());
     }
+
     /**
-     * Updates {@code model}'s filtered list to show only the appointment at the given {@code targetIndex} in the
+     * Updates {@code model}'s filtered list to show only the Insurance at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
     public static void showInsuranceAtIndex(Model model, Index targetIndex) {
@@ -153,5 +213,19 @@ public class CommandTestUtil {
         model.updateFilteredInsuranceList(new TitleContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredInsuranceList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the Record at the given {@code targetIndex} in the
+     * {@code model}'s address book.
+     */
+    public static void showRecordAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredRecordList().size());
+
+        Record record = model.getFilteredRecordList().get(targetIndex.getZeroBased());
+        final String[] splitName = record.getInsuranceID().id.split("\\s+");
+        model.updateFilteredRecordList(new RecordContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredRecordList().size());
     }
 }
