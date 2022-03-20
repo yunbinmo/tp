@@ -9,7 +9,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -32,58 +31,59 @@ import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.InsuranceBuilder;
 
-public class AddPersonCommandTest {
+public class AddInsuranceCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddPersonCommand(null));
+    public void constructor_nullInsurance_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddInsuranceCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Person validPerson = new PersonBuilder().build();
+    public void execute_insuranceAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingInsuranceAdded modelStub = new ModelStubAcceptingInsuranceAdded();
+        Insurance validInsurance = new InsuranceBuilder().build();
 
-        CommandResult commandResult = new AddPersonCommand(validPerson).execute(modelStub);
+        CommandResult commandResult = new AddInsuranceCommand(validInsurance).execute(modelStub);
 
-        assertEquals(String.format(AddPersonCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+        String expected = String.format(AddInsuranceCommand.MESSAGE_SUCCESS, validInsurance);
+        assertEquals(expected, commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validInsurance), modelStub.insurancesAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        AddPersonCommand addPersonCommand = new AddPersonCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+    public void execute_duplicateInsurance_throwsCommandException() {
+        Insurance validInsurance = new InsuranceBuilder().build();
+        AddInsuranceCommand addInsuranceCommand = new AddInsuranceCommand(validInsurance);
+        ModelStub modelStub = new ModelStubWithInsurance(validInsurance);
 
         assertThrows(CommandException.class,
-                AddPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> addPersonCommand.execute(modelStub));
+                AddInsuranceCommand.MESSAGE_DUPLICATE_INSURANCE, () -> addInsuranceCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new PersonBuilder().withName("Alice").build();
-        Person bob = new PersonBuilder().withName("Bob").build();
-        AddPersonCommand addAliceCommand = new AddPersonCommand(alice);
-        AddPersonCommand addBobCommand = new AddPersonCommand(bob);
+        Insurance heart = new InsuranceBuilder().withTitle("Heart").build();
+        Insurance life = new InsuranceBuilder().withTitle("Life").build();
+        AddInsuranceCommand addHeartCommand = new AddInsuranceCommand(heart);
+        AddInsuranceCommand addLifeCommand = new AddInsuranceCommand(life);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addHeartCommand.equals(addHeartCommand));
 
         // same values -> returns true
-        AddPersonCommand addAliceCommandCopy = new AddPersonCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddInsuranceCommand addHeartCommandCopy = new AddInsuranceCommand(heart);
+        assertTrue(addHeartCommand.equals(addHeartCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addHeartCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addHeartCommand.equals(null));
 
-        // different person -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        // different insurance -> returns false
+        assertFalse(addHeartCommand.equals(addLifeCommand));
     }
 
     /**
@@ -212,11 +212,6 @@ public class AddPersonCommandTest {
         }
 
         @Override
-        public void sortAppointmentBook(Comparator<Appointment> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public boolean hasAppointment(Appointment appointment) {
             throw new AssertionError("This method should not be called.");
         }
@@ -330,39 +325,39 @@ public class AddPersonCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single insurance.
      */
-    private class ModelStubWithPerson extends ModelStub {
-        private final Person person;
+    private class ModelStubWithInsurance extends ModelStub {
+        private final Insurance insurance;
 
-        ModelStubWithPerson(Person person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithInsurance(Insurance insurance) {
+            requireNonNull(insurance);
+            this.insurance = insurance;
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
+        public boolean hasInsurance(Insurance insurance) {
+            requireNonNull(insurance);
+            return this.insurance.isSameInsurance(insurance);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the insurance being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Person> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingInsuranceAdded extends ModelStub {
+        final ArrayList<Insurance> insurancesAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
+        public boolean hasInsurance(Insurance insurance) {
+            requireNonNull(insurance);
+            return insurancesAdded.stream().anyMatch(insurance::isSameInsurance);
         }
 
         @Override
-        public void addPerson(Person person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addInsurance(Insurance insurance) {
+            requireNonNull(insurance);
+            insurancesAdded.add(insurance);
         }
 
         @Override

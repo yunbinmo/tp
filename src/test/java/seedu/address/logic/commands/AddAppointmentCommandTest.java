@@ -9,7 +9,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -32,48 +31,49 @@ import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.AppointmentBuilder;
 
-public class AddPersonCommandTest {
+public class AddAppointmentCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddPersonCommand(null));
+    public void constructor_nullAppointment_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddAppointmentCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Person validPerson = new PersonBuilder().build();
+    public void execute_appointmentAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
+        Appointment validAppointment = new AppointmentBuilder().build();
 
-        CommandResult commandResult = new AddPersonCommand(validPerson).execute(modelStub);
+        CommandResult commandResult = new AddAppointmentCommand(validAppointment).execute(modelStub);
 
-        assertEquals(String.format(AddPersonCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+        String expected = String.format(AddAppointmentCommand.MESSAGE_SUCCESS, validAppointment);
+        assertEquals(expected, commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validAppointment), modelStub.appointmentsAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        AddPersonCommand addPersonCommand = new AddPersonCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+    public void execute_duplicateAppointment_throwsCommandException() {
+        Appointment validAppointment = new AppointmentBuilder().build();
+        AddAppointmentCommand addAppointmentCommand = new AddAppointmentCommand(validAppointment);
+        ModelStub modelStub = new ModelStubWithAppointment(validAppointment);
 
         assertThrows(CommandException.class,
-                AddPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> addPersonCommand.execute(modelStub));
+                AddAppointmentCommand.MESSAGE_DUPLICATE_APPOINTMENT, () -> addAppointmentCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new PersonBuilder().withName("Alice").build();
-        Person bob = new PersonBuilder().withName("Bob").build();
-        AddPersonCommand addAliceCommand = new AddPersonCommand(alice);
-        AddPersonCommand addBobCommand = new AddPersonCommand(bob);
+        Appointment alice = new AppointmentBuilder().withDescription("Meet Alice at Found cafe").build();
+        Appointment bob = new AppointmentBuilder().withDescription("Meet Bob at HVALA cafe").build();
+        AddAppointmentCommand addAliceCommand = new AddAppointmentCommand(alice);
+        AddAppointmentCommand addBobCommand = new AddAppointmentCommand(bob);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddPersonCommand addAliceCommandCopy = new AddPersonCommand(alice);
+        AddAppointmentCommand addAliceCommandCopy = new AddAppointmentCommand(alice);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -82,7 +82,7 @@ public class AddPersonCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different person -> returns false
+        // different appointment -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
@@ -212,11 +212,6 @@ public class AddPersonCommandTest {
         }
 
         @Override
-        public void sortAppointmentBook(Comparator<Appointment> comparator) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public boolean hasAppointment(Appointment appointment) {
             throw new AssertionError("This method should not be called.");
         }
@@ -330,39 +325,39 @@ public class AddPersonCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single appointment.
      */
-    private class ModelStubWithPerson extends ModelStub {
-        private final Person person;
+    private class ModelStubWithAppointment extends ModelStub {
+        private final Appointment appointment;
 
-        ModelStubWithPerson(Person person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithAppointment(Appointment appointment) {
+            requireNonNull(appointment);
+            this.appointment = appointment;
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
+        public boolean hasAppointment(Appointment appointment) {
+            requireNonNull(appointment);
+            return this.appointment.isSameAppointment(appointment);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the appointment being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Person> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingAppointmentAdded extends ModelStub {
+        final ArrayList<Appointment> appointmentsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
+        public boolean hasAppointment(Appointment appointment) {
+            requireNonNull(appointment);
+            return appointmentsAdded.stream().anyMatch(appointment::isSameAppointment);
         }
 
         @Override
-        public void addPerson(Person person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addAppointment(Appointment appointment) {
+            requireNonNull(appointment);
+            appointmentsAdded.add(appointment);
         }
 
         @Override

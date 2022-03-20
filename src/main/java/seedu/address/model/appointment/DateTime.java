@@ -43,6 +43,9 @@ public class DateTime {
     public DateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+    public LocalDateTime getLocalDateTime() {
+        return this.dateTime;
+    }
 
     /**
      * Returns a valid LocalDateTime object if a given string is valid date and time.

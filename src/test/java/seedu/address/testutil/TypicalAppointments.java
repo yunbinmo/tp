@@ -26,7 +26,7 @@ public class TypicalAppointments {
     private TypicalAppointments() {} // prevents instantiation
 
     /**
-     * Returns an {@code AppointmentBook} with all the typical persons.
+     * Returns an {@code AppointmentBook} with all the typical appointments.
      */
     public static AppointmentBook getTypicalAppointmentBook() {
         AppointmentBook ab = new AppointmentBook();

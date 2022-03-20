@@ -27,7 +27,6 @@ public class ExpiredRecordBook implements ReadOnlyExpiredRecordBook {
         for (Record r : records) {
             LocalDate endDate = r.getEndDate().getDate();
 
-            assert false;
             if (endDate.isBefore(now)) {
                 this.record.add(r);
             }
