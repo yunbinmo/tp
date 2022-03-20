@@ -37,6 +37,7 @@ import seedu.address.logic.commands.ListExpiredRecordCommand;
 import seedu.address.logic.commands.ListInsuranceCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.commands.ListRecordCommand;
+import seedu.address.logic.commands.SortAppointmentCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.insurance.Insurance;
@@ -215,6 +216,8 @@ public class AddressBookParser {
             return new FindAppointmentCommandParser().parse(arguments);
         case ClearAppointmentCommand.COMMAND_WORD:
             return new ClearAppointmentCommand();
+        case SortAppointmentCommand.COMMAND_WORD:
+            return new SortAppointmentCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

@@ -17,5 +17,7 @@ public class Messages {
     public static final String MESSAGE_INSURANCES_LISTED_OVERVIEW = "%1$d insurances listed!";
     public static final String MESSAGE_RECORDS_LISTED_OVERVIEW = "%1$d records listed!";
     public static final String MESSAGE_APPOINTMENT_LISTED_OVERVIEW = "%1$d appointments listed!";
+    public static final String MESSAGE_APPOINTMENT_SORTED_ASCENDING = "%1$d appointments sorted ascendingly by time!";
+    public static final String MESSAGE_APPOINTMENT_SORTED_DESCENDING = "%1$d appointments sorted descendingly by time!";
 
 }

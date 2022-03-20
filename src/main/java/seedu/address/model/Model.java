@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -229,6 +230,11 @@ public interface Model {
      * Replaces address book data with the data in {@code AppointmentBook}.
      */
     void setAppointmentBook(ReadOnlyAppointmentBook appointmentBook);
+
+    /**
+     * Sorts appointment book data.
+     */
+    void sortAppointmentBook(Comparator<Appointment> comparator);
 
     /**
      * Returns true if an appointment with the same identity as {@code person} exists in the book.

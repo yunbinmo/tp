@@ -3,6 +3,7 @@ package seedu.address.model.appointment;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -81,7 +82,14 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         }
     }
 
-    public void setAppointments(seedu.address.model.appointment.UniqueAppointmentList replacement) {
+    /**
+     * Sorts the appointment list
+     */
+    public void sort(Comparator<Appointment> comparator) {
+        FXCollections.sort(this.internalList, comparator);
+    }
+
+    public void setAppointments(UniqueAppointmentList replacement) {
         requireNonNull(replacement);
         this.internalList.setAll(replacement.internalList);
     }
