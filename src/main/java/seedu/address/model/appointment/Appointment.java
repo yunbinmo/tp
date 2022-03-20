@@ -1,5 +1,6 @@
 package seedu.address.model.appointment;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -23,6 +24,9 @@ public class Appointment {
     }
     public DateTime getDateTime() {
         return this.dateTime;
+    }
+    public LocalDateTime getLocalDateTime() {
+        return this.dateTime.getLocalDateTime();
     }
 
     /**
