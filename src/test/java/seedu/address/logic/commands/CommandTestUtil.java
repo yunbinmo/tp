@@ -29,6 +29,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.RecordContainsKeywordsPredicate;
 import seedu.address.testutil.EditAppointmentDescriptorBuilder;
+import seedu.address.testutil.EditInsuranceDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -78,6 +79,14 @@ public class CommandTestUtil {
     public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_FELIX;
     public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_TED;
 
+    public static final String VALID_TITLE_HEART = "Heart";
+    public static final String VALID_TITLE_LIFE = "Life";
+    public static final String VALID_PRICE_HEART = "300";
+    public static final String VALID_PRICE_LIFE = "500";
+
+    public static final EditInsuranceCommand.EditInsuranceDescriptor DESC_HEART;
+    public static final EditInsuranceCommand.EditInsuranceDescriptor DESC_LIFE;
+
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -89,6 +98,10 @@ public class CommandTestUtil {
                 .withDateTime(VALID_DATETIME_FELIX).build();
         DESC_TED = new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_TED)
                 .withDateTime(VALID_DATETIME_TED).build();
+        DESC_HEART = new EditInsuranceDescriptorBuilder().withTitle(VALID_TITLE_HEART)
+                .withPrice(VALID_PRICE_HEART).build();
+        DESC_LIFE = new EditInsuranceDescriptorBuilder().withTitle(VALID_TITLE_LIFE)
+                .withPrice(VALID_PRICE_LIFE).build();
     }
 
     /**

@@ -6,7 +6,7 @@ import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
 
 /**
- * A utility class to help with building EditPersonDescriptor objects.
+ * A utility class to help with building EditAppointmentDescriptor objects.
  */
 public class EditAppointmentDescriptorBuilder {
 

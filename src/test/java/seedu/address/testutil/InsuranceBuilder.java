@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.InsuranceBook;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.insurance.Price;
 import seedu.address.model.insurance.Title;
@@ -29,6 +30,14 @@ public class InsuranceBuilder {
 
     public InsuranceBuilder(InsuranceBook insurance) {
         this.insurance = insurance;
+    }
+
+    /**
+     * Initializes the InsuranceBuilder with the data of {@code insuranceToCopy}.
+     */
+    public InsuranceBuilder(Insurance insuranceToCopy) {
+        title = insuranceToCopy.getTitle();
+        price = insuranceToCopy.getPrice();
     }
 
     /**
