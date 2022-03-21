@@ -40,9 +40,6 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 ## Features (***todo***)
 
-
-
-
 ### Adding a client: `add -c`
 
 Adds a client to Mr. Agent.
@@ -106,12 +103,12 @@ Format: `find -c KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Le` will not match `Lee`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Lee Junjie` will return `Wong Junjie`, `Lee Yang`
-
-Examples: 
+* 
+Examples:
 * `find -c John` returns `john` and `John Doe`
 * `find -c alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
-  
+
 ### Adding an Insurance: `add -i`
 
 Adds a type of insurance 
@@ -273,11 +270,11 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add a client** | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`
-**Edit a client** | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find a client** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List all client** | `list -c`
+| Action              | Format, Examples                                                                                                                                                         |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add a client**    | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit a client**   | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find a client**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
+| **List all client** | `list -c`                                                                                                                                                                |
 

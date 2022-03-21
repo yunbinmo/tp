@@ -39,7 +39,6 @@ public class EditAppointmentDescriptorTest {
         // different datetime -> returns false
         editedAmy = new EditAppointmentDescriptorBuilder(DESC_FELIX).withDateTime(VALID_DATETIME_TED).build();
         assertFalse(DESC_FELIX.equals(editedAmy));
-
  
     }
 }
