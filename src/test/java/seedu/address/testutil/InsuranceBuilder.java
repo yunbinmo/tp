@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
 import seedu.address.model.InsuranceBook;
-import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.insurance.Price;
 import seedu.address.model.insurance.Title;
