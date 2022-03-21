@@ -57,14 +57,16 @@ public class EditAppointmentCommandTest {
         Appointment lastAppointment = model.getFilteredAppointmentList().get(indexLastAppointment.getZeroBased());
 
         AppointmentBuilder appointmentInList = new AppointmentBuilder(lastAppointment);
-        Appointment editedAppointment = appointmentInList.withDescription(VALID_DESCRIPTION_FELIX).withDateTime(VALID_DATETIME_FELIX)
+        Appointment editedAppointment = appointmentInList.withDescription(VALID_DESCRIPTION_FELIX)
+                .withDateTime(VALID_DATETIME_FELIX)
                 .build();
 
-        EditAppointmentDescriptor descriptor = new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_FELIX)
-                .withDateTime(VALID_DATETIME_FELIX).build();
+        EditAppointmentDescriptor descriptor = new EditAppointmentDescriptorBuilder()
+                .withDescription(VALID_DESCRIPTION_FELIX).withDateTime(VALID_DATETIME_FELIX).build();
         EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(indexLastAppointment, descriptor);
 
-        String expectedMessage = String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
+        String expectedMessage =
+                String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
 
         Model expectedModel = new ModelManager(new AppointmentBook(model.getAppointmentBook()), new UserPrefs());
         expectedModel.setAppointment(lastAppointment, editedAppointment);
@@ -74,10 +76,12 @@ public class EditAppointmentCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(INDEX_FIRST_OBJECT, new EditAppointmentDescriptor());
+        EditAppointmentCommand editAppointmentCommand =
+                new EditAppointmentCommand(INDEX_FIRST_OBJECT, new EditAppointmentDescriptor());
         Appointment editedAppointment = model.getFilteredAppointmentList().get(INDEX_FIRST_OBJECT.getZeroBased());
 
-        String expectedMessage = String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
+        String expectedMessage =
+                String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
 
         Model expectedModel = new ModelManager(new AppointmentBook(model.getAppointmentBook()), new UserPrefs());
 
@@ -88,12 +92,15 @@ public class EditAppointmentCommandTest {
     public void execute_filteredList_success() {
         showAppointmentAtIndex(model, INDEX_FIRST_OBJECT);
 
-        Appointment appointmentInFilteredList = model.getFilteredAppointmentList().get(INDEX_FIRST_OBJECT.getZeroBased());
-        Appointment editedAppointment = new AppointmentBuilder(appointmentInFilteredList).withDescription(VALID_DESCRIPTION_FELIX).build();
+        Appointment appointmentInFilteredList = model.getFilteredAppointmentList()
+                .get(INDEX_FIRST_OBJECT.getZeroBased());
+        Appointment editedAppointment = new AppointmentBuilder(appointmentInFilteredList)
+                .withDescription(VALID_DESCRIPTION_FELIX).build();
         EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(INDEX_FIRST_OBJECT,
                 new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_FELIX).build());
 
-        String expectedMessage = String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
+        String expectedMessage =
+                String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
 
         Model expectedModel = new ModelManager(new AppointmentBook(model.getAppointmentBook()), new UserPrefs());
         expectedModel.setAppointment(model.getFilteredAppointmentList().get(0), editedAppointment);
@@ -115,7 +122,8 @@ public class EditAppointmentCommandTest {
         showAppointmentAtIndex(model, INDEX_FIRST_OBJECT);
 
         // edit appointment in filtered list into a duplicate in address book
-        Appointment appointmentInList = model.getAppointmentBook().getAppointmentList().get(INDEX_SECOND_OBJECT.getZeroBased());
+        Appointment appointmentInList = model.getAppointmentBook().getAppointmentList()
+                .get(INDEX_SECOND_OBJECT.getZeroBased());
         EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(INDEX_FIRST_OBJECT,
                 new EditAppointmentDescriptorBuilder(appointmentInList).build());
 
