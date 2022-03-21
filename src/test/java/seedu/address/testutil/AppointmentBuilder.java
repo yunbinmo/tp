@@ -3,9 +3,6 @@ package seedu.address.testutil;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
-import seedu.address.model.person.Person;
-
-import java.util.HashSet;
 
 /**
  * A utility class to help with building Appointment objects.

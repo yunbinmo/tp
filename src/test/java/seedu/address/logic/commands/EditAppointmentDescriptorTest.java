@@ -33,7 +33,8 @@ public class EditAppointmentDescriptorTest {
         assertFalse(DESC_FELIX.equals(DESC_TED));
 
         // different description -> returns false
-        EditAppointmentDescriptor editedAmy = new EditAppointmentDescriptorBuilder(DESC_FELIX).withDescription(VALID_NAME_BOB).build();
+        EditAppointmentDescriptor editedAmy = new EditAppointmentDescriptorBuilder(DESC_FELIX)
+                .withDescription(VALID_NAME_BOB).build();
         assertFalse(DESC_FELIX.equals(editedAmy));
 
         // different datetime -> returns false
