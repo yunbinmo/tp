@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_FELIX;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_TED;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATETIME_TED;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_TED;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,12 +33,12 @@ public class EditAppointmentDescriptorTest {
         assertFalse(DESC_FELIX.equals(DESC_TED));
 
         // different description -> returns false
-        EditAppointmentDescriptor editedAmy = new EditAppointmentDescriptorBuilder(DESC_FELIX)
-                .withDescription(VALID_NAME_BOB).build();
-        assertFalse(DESC_FELIX.equals(editedAmy));
+        EditAppointmentDescriptor editedFelix = new EditAppointmentDescriptorBuilder(DESC_FELIX)
+                .withDescription(VALID_DESCRIPTION_TED).build();
+        assertFalse(DESC_FELIX.equals(editedFelix));
 
         // different datetime -> returns false
-        editedAmy = new EditAppointmentDescriptorBuilder(DESC_FELIX).withDateTime(VALID_DATETIME_TED).build();
-        assertFalse(DESC_FELIX.equals(editedAmy));
+        editedFelix = new EditAppointmentDescriptorBuilder(DESC_FELIX).withDateTime(VALID_DATETIME_TED).build();
+        assertFalse(DESC_FELIX.equals(editedFelix));
     }
 }

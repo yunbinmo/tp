@@ -32,6 +32,14 @@ public class InsuranceBuilder {
     }
 
     /**
+     * Initializes the InsuranceBuilder with the data of {@code insuranceToCopy}.
+     */
+    public InsuranceBuilder(Insurance insuranceToCopy) {
+        title = insuranceToCopy.getTitle();
+        price = insuranceToCopy.getPrice();
+    }
+
+    /**
      * Sets the {@code Title} of the {@code Insurance} that we are building.
      */
     public InsuranceBuilder withTitle(String title) {
