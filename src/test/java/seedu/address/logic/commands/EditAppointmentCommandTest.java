@@ -34,7 +34,7 @@ import seedu.address.testutil.EditAppointmentDescriptorBuilder;
  */
 public class EditAppointmentCommandTest {
 
-    private Model  model = new ModelManager(getTypicalAddressBook(), getTypicalInsuranceBook(),
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalInsuranceBook(),
             getTypicalAppointmentBook(), getTypicalRecordBook(), new UserPrefs());
 
     @Test
@@ -43,7 +43,8 @@ public class EditAppointmentCommandTest {
         EditAppointmentDescriptor descriptor = new EditAppointmentDescriptorBuilder(editedAppointment).build();
         EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(INDEX_FIRST_OBJECT, descriptor);
 
-        String expectedMessage = String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
+        String expectedMessage =
+                String.format(EditAppointmentCommand.MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment);
 
         Model expectedModel = new ModelManager(new AppointmentBook(model.getAppointmentBook()), new UserPrefs());
         expectedModel.setAppointment(model.getFilteredAppointmentList().get(0), editedAppointment);
@@ -133,7 +134,8 @@ public class EditAppointmentCommandTest {
     @Test
     public void execute_invalidAppointmentIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredAppointmentList().size() + 1);
-        EditAppointmentDescriptor descriptor = new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_FELIX).build();
+        EditAppointmentDescriptor descriptor = new EditAppointmentDescriptorBuilder()
+                .withDescription(VALID_DESCRIPTION_FELIX).build();
         EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editAppointmentCommand, model, Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
