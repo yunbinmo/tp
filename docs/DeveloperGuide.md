@@ -135,14 +135,16 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-<img src="images/StorageClassDiagram.png" width="550" />
+<img src="images/StorageClassDiagram.jpg" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in json format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+
+* can save address book data, insurance book data, record book data, appointment book data and user preference data in json format, and read them back into corresponding objects.
+* inherits from both `AddressBookStorage`, `InsuranceBookStorage`, `RecordBookStorage`, `AppointmentBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* note that for history related features will only read from existing storage and will not create new json file. For example, list expired reocrd command will search in RecordBookStorage to find expired records.
 
 ### Common classes
 
@@ -153,6 +155,81 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+## Sort Records Feature
+
+#### Implementation
+
+The Sort Records Feature is facilitated by `SortReocrdCommand`. It extends `Command` with it own excution logic. It support follwoing commands:
+
+* `sort -r sa` — Sort the records by start date in ascending order.
+* `sort -r sd` — Sort the records by start date in descending order.
+* `sort -r ea` — Sort the records by end date in ascending order.
+* `sort -r ed` — Sort the records by end date in descending order.
+
+These commands will be parsed by the `AddressBookParser` and `SortReocrdCommandPasrser`. `ModelManger` will override `sortRecordBook()` from `Model` which take in an `Comparator<Record>` object as input. Then `ReocrdBook` will sort the `UniqueRecordList` base on the Comparator given.
+
+Given below is an example usage scenario and how the Sort Records Command behaves at each step.
+
+Step 1. The user launches the application and executes `sort -r sa` command to sort the records by start date in ascending order.
+
+Step 2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, casusing the user input being parsed and an object of `SortRecordCommand` returns.
+
+Step 3. `LogicManager` executes object of `SortRecordCommand`. `SortRecordCommand` will invoke `ModelManager#sortRecordBook()` with different Comparator base on user input.
+
+Step 4. `ModelManger` will invoke `RecordBook#sortRecord()` with the comparator as input to sort the `UniqueRecordList`.
+
+Strp 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableList` of records.
+
+#### Design considerations
+
+**Aspect: How sort records executes:**
+
+* **Alternative 1 (current choice):** Saves the sorted records to RecordBook.
+  * Pros: Easy to implement.
+  * Cons: The original order of record List is not preserved.
+
+* **Alternative 2:** Creates a temporary sorted records List.
+  * Pros: The original order of record List is preserved.
+  * Cons:  May have performance issues in terms of memory usage.
+
+## Click event on objectListPlaceholder feature
+
+![UIStructure](images/UIstructure.jpg)
+#### Implementation
+
+The `objectListPanel` will be updated according to user command. It support follwoing commands:
+
+* `list -c` — List all clients.
+* `list -i` — List all insurances.
+* `list -r` — List all records.
+* `list -e` — List all expired records.
+* `list -h` — List histroy of appointments.
+  
+The content in `detailPane` will be updated with details of the object base on the click event.
+
+![MainWindow](images/MainWindow.jpg)
+
+Step 1. The user launches the application and executes `list -c` command to list all clients.
+
+Step 2.  Then `personListPanel` (filled by `ObservableList` of client) will be added into `objectListPanel` as children component.
+
+Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail information of `Davia Li`) will be added into `detailPanel` as children component.
+
+#### Design considerations
+
+**Aspect: How to arrage all components:**
+
+* **Alternative 1 (current choice):** Update the panel base on command and click event.
+  * Pros:
+      1. The UI looks more clean and clear.
+      2. The cells of `objectListPanel` only contians important information like client name and tags.
+  * Cons: User need to click on certain cell to look into deatils.
+
+* **Alternative 2:** Display everything with details in the `objectListPanel`.
+  * Pros: User no need to click to look into details.
+  * Cons: All information are squeeze together and the list can only contains maximum 3-5 cells.
+  User still to scroll down to check other items in the list.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -280,11 +357,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | list all clients                 | view clients that are in my contact                                    |
 | `* * *`  | insurance agent                                | add an insurance                 | manage all insurances in the apllication                               |
 | `* * *`  | insurance agent                                | edit an insurance                | make changes to insurance saved in the application                     |
-| `* * *`  | insurance agent                                | list all insurance               | view all that i have stored in the application                         |
+| `* * *`  | insurance agent                                | list all insurance               | view all that I have stored in the application                         |
 | `* * *`  | insurance agent                                    | add a record to client           | keep a record of the insurances that the client have              |
-| `* * *`  | insurance agent                                | delete a client insurance record | remove entries that I no longer need                                   |
+| `* * *`  | insurance agent                                | delete a record | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                    | make changes to record saved in the application                     |
-| `*`      | insurance agent want to check records     | sort record by start/end date            | locate a almost expired/newest record easily                         |
+| `*`      | insurance agent want to check records     | sort record by start/end date            | locate almost expired/newest records easily                         |
 | `***`    | insurance agent frequently having appointments | view all appointments            | be reminded of all the meetings I have with my clients           |
 | `***`    | insurance agent frequently having appointments | add new appointments             | note down any future meetings I have with my client                    |
 | `***`    | insurance agent frequently having appointments | delete an appointment            | get rid of any canceled/completed appointments to avoid confusion      |
