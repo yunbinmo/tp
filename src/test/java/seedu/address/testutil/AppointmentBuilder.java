@@ -3,6 +3,9 @@ package seedu.address.testutil;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.DateTime;
 import seedu.address.model.appointment.Description;
+import seedu.address.model.person.Person;
+
+import java.util.HashSet;
 
 /**
  * A utility class to help with building Appointment objects.
@@ -10,6 +13,7 @@ import seedu.address.model.appointment.Description;
 public class AppointmentBuilder {
     public static final String DEFAULT_DESCRIPTION = "Meet James at UTown";
     public static final String DEFAULT_DATETIME = "08-08-2022 19:00";
+
     private Description description;
     private DateTime dateTime;
 
@@ -20,7 +24,13 @@ public class AppointmentBuilder {
         description = new Description(DEFAULT_DESCRIPTION);
         dateTime = new DateTime(DEFAULT_DATETIME);
     }
-
+    /**
+     * Initializes the AppointmentBuilder with the data of {@code appointmentToCopy}.
+     */
+    public AppointmentBuilder(Appointment appointmentToCopy) {
+        description = appointmentToCopy.getDescription();
+        dateTime = appointmentToCopy.getDateTime();
+    }
     /**
      * Sets the {@code Description} of the {@code Appointment} that we are building.
      */

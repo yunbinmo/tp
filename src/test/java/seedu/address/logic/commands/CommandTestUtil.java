@@ -28,6 +28,7 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.RecordContainsKeywordsPredicate;
+import seedu.address.testutil.EditAppointmentDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -69,6 +70,14 @@ public class CommandTestUtil {
     public static final EditPersonCommand.EditPersonDescriptor DESC_AMY;
     public static final EditPersonCommand.EditPersonDescriptor DESC_BOB;
 
+    public static final String VALID_DESCRIPTION_FELIX = "Meet Felix at Orchard";
+    public static final String VALID_DESCRIPTION_TED = "Meet Ted at Chinatown";
+    public static final String VALID_DATETIME_FELIX = "06-12-2022 18:00";
+    public static final String VALID_DATETIME_TED = "02-04-2022 12:00";
+
+    public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_FELIX;
+    public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_TED;
+
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -76,6 +85,10 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_FELIX = new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_FELIX)
+                .withDateTime(VALID_DATETIME_FELIX).build();
+        DESC_TED = new EditAppointmentDescriptorBuilder().withDescription(VALID_DESCRIPTION_TED)
+                .withDateTime(VALID_DATETIME_TED).build();
     }
 
     /**
