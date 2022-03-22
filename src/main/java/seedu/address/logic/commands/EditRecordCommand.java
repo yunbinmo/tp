@@ -42,7 +42,8 @@ public class EditRecordCommand extends Command {
     public static final String MESSAGE_EDIT_RECORD_SUCCESS = "Edited Record: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the address book.";
-    public static final String MESSAGE_STARTDATE_BEFORE_ENDATE = "Record start date must be before end date! Please check Start date/ end date entered!";
+    public static final String MESSAGE_STARTDATE_BEFORE_ENDATE = "Record start date must be before end date! "
+            + "Please check Start date/ end date entered!";
 
     private final Index index;
     private final EditRecordDescriptor editRecordDescriptor;
