@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_INSURANCEID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_STARTDATE;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,7 @@ public class EditRecordCommand extends Command {
     public static final String MESSAGE_EDIT_RECORD_SUCCESS = "Edited Record: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the address book.";
+    public static final String MESSAGE_STARTDATE_BEFORE_ENDATE = "Record's start date must be before end date! Please check Start date/ end date entered!";
 
     private final Index index;
     private final EditRecordDescriptor editRecordDescriptor;
@@ -105,6 +107,15 @@ public class EditRecordCommand extends Command {
             InsuranceID insuranceIdName =
                     new InsuranceID(lastInsuranceList.get(recordIndex - 1).getTitle().title, true);
             editRecordDescriptor.setInsuranceID(insuranceIdName);
+        }
+
+        if (editRecordDescriptor.getStartDate().isPresent()) {
+
+            LocalDate startDate = editRecordDescriptor.getStartDate().get().getStartDate();
+            LocalDate endDate = lastRecordShownList.get(index.getZeroBased()).getEndDate().getEndDate();
+            if (startDate.isAfter(endDate)) {
+                throw new CommandException(MESSAGE_STARTDATE_BEFORE_ENDATE);
+            }
         }
 
         Record recordToEdit = lastRecordShownList.get(index.getZeroBased());
