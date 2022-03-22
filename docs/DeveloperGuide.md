@@ -274,12 +274,41 @@ The command format is `add -r c/ClientIndex i/InsuranceIndex sd/StartDate ed/End
 
 The relevant methods are:
 
-1. `AddCommandParser -> parse(List<Person> personList, ObservableList<Insurance> insuranceList,
-   String args)` ----- Parse the relevant detailed information 
+1. `AddCommandParser#parse(List<Person> personList, ObservableList<Insurance> insuranceList,
+   String args)` --> Parse the relevant detailed information 
    
-2. `AddCommand -> execute(Model model)` ----- Checks for duplication , validate each information and store to library
+2. `AddCommand#execute(Model model)` --> Checks for duplication , validate each information and store to library
 
 Given below is an example usage scenerio and how the AddCommand behaves at each step.
+
+Step1. The user launches the application and execute `add -r c/1 i/1 sd/22-03-2022 ed/ 22-03-2032`
+
+Step2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, 
+and determine that it is an Add Command.
+
+Step3. AddCommandParser would check if the `ClientIndex` and `InsuranceIndex` exist in the library. Then it will continue to check if the `StartDate` is before the `EndDate`
+
+Step4. Execution of Add would take place and the result will be updated in the filtered record list Model.
+
+Important Features to take note:
+
+1. The `add record` command takes in the `ClientIndex` and `InsuranceIndex` but stores the the Client's `Name` and Insurance's `Title` in the RecordBook.
+2. The `sd/STARTDATE` entered must strictly be before the `sd/ENDDATE`, else `ParseException` will be thrown
+
+#### Design considerations
+
+**Aspect: How to add record to recordBook:**
+
+* **Alternative 1 (current choice):** User input all required information at once
+    * Pros:
+        1. Faster response rate as system does not need to prompt and wait for the user to key in the information needed
+        2. User which are fast-typing can enter information at once, increasing efficiency
+    * Cons: User may make mistakes when keying in information more frequently
+
+
+* **Alternative 2:** System prompts and user input information one at a time
+    * Pros: Easier for user to view their input, reducing typing errors
+    * Cons: Less responsive as user needs to wait for the system to validate the information entered one at a time before prompting the user to key in the next information.
 
 ### \[Proposed\] Undo/redo feature
 
