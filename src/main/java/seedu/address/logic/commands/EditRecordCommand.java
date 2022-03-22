@@ -22,9 +22,6 @@ import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.StartDate;
 
-
-
-
 public class EditRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
@@ -46,8 +43,6 @@ public class EditRecordCommand extends Command {
     public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the address book.";
 
     private final Index index;
-    //private final ClientID clientID;
-    //private final InsuranceID insuranceID;
     private final EditRecordDescriptor editRecordDescriptor;
 
     /**
