@@ -436,10 +436,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | list all clients              | view clients that are in my contact                                    |
 | `* * *`  | insurance agent                                | add an insurance              | manage all insurances in the apllication                               |
 | `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     |
-| `* * *`  | insurance agent                                | list all insurance            | view all that I have stored in the application                         |
+| `* * *`  | insurance agent                                | list all insurances            | view all that I have stored in the application                         |
 | `* * *`  | insurance agent                                    | add a record to client        | keep a record of the insurances that the client have                   |
 | `* * *`  | insurance agent                                | delete a record               | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
+| `* * *`  | insurance agent                                | list all records              | view records that are I have with my clients                                    |
 | `*`      | insurance agent want to check records     | sort record by start/end date | locate almost expired/newest records easily                            |
 | `***`    | insurance agent frequently having appointments | view all appointments         | be reminded of all the meetings I have with my clients                 |
 | `***`    | insurance agent frequently having appointments | add new appointments          | note down any future meetings I have with my client                    |
@@ -550,7 +551,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Mr Agent shows an error message and correct command usage.
 
       Use case resumes at step 1.
-
+    
 *{More to be added}*
 
 ### Non-Functional Requirements
