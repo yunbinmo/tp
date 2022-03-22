@@ -110,13 +110,14 @@ public class EditRecordCommand extends Command {
             editRecordDescriptor.setInsuranceID(insuranceIdName);
         }
 
-        if (editRecordDescriptor.getStartDate().isPresent()) {
+        if (editRecordDescriptor.getStartDate().isPresent() || editRecordDescriptor.getEndDate().isPresent()) {
 
-            LocalDate startDate = editRecordDescriptor.getStartDate().get().getStartDate();
-            LocalDate endDate = lastRecordShownList.get(index.getZeroBased()).getEndDate().getEndDate();
-            if (startDate.isAfter(endDate)) {
+            StartDate startDate = editRecordDescriptor.getStartDate().orElse(lastRecordShownList.get(index.getZeroBased()).getStartDate());
+            EndDate endDate = editRecordDescriptor.getEndDate().orElse(lastRecordShownList.get(index.getZeroBased()).getEndDate());
+            if (startDate.getStartDate().isAfter(endDate.getEndDate())) {
                 throw new CommandException(MESSAGE_STARTDATE_BEFORE_ENDATE);
             }
+
         }
 
         Record recordToEdit = lastRecordShownList.get(index.getZeroBased());

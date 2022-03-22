@@ -30,7 +30,7 @@ import seedu.address.model.record.StartDate;
 public class AddRecordCommandParser {
 
     public static final String MESSAGE_END_CONSTRAINTS =
-            "End date of a record should be after the start date!";
+            "Record start date must be before end date!";
 
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
