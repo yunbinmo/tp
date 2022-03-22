@@ -23,10 +23,14 @@ import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.StartDate;
 
+
 /**
  * Parses input arguments and creates a new AddRecordCommand object
  */
 public class AddRecordCommandParser {
+
+    public static final String MESSAGE_END_CONSTRAINTS =
+            "Record start date must be before end date!";
 
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
@@ -56,8 +60,6 @@ public class AddRecordCommandParser {
                     AddRecordCommand.MESSAGE_USAGE));
         }
 
-
-
         ClientID clientID =
                 RecordParserUtil.parseClientID(argMultimap.getValue(PREFIX_REC_CLIENTID).get());
         int clientIndex = Integer.parseInt(clientID.toString());
@@ -74,11 +76,15 @@ public class AddRecordCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX,
                     AddRecordCommand.MESSAGE_USAGE));
         }
-
         insuranceID = new InsuranceID(insuranceList.get(insuranceIndex - 1).getTitle().toString(), true);
 
         StartDate startDate = RecordParserUtil.parseStartDate(argMultimap.getValue(PREFIX_REC_STARTDATE).get());
+
         EndDate endDate = RecordParserUtil.parseEndDate(argMultimap.getValue(PREFIX_REC_ENDDATE).get());
+        if (endDate.getEndDate().isBefore(startDate.getStartDate())
+                || endDate.getEndDate().isEqual(startDate.getStartDate())) {
+            throw new ParseException(String.format(MESSAGE_END_CONSTRAINTS, AddRecordCommand.MESSAGE_USAGE));
+        }
 
         Record record = new Record(clientID, insuranceID, startDate, endDate);
         return new AddRecordCommand(record);

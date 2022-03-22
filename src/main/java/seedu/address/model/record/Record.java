@@ -68,9 +68,10 @@ public class Record {
 
         return otherRecord != null
                 && otherRecord.getClientID().equals(this.clientID)
-                && otherRecord.getInsuranceID().equals(this.insuranceID);
-
+                && otherRecord.getInsuranceID().equals(this.insuranceID)
+                && otherRecord.getStartDate().getStartDate().isBefore(this.getEndDate().getEndDate());
     }
+
 
     /**
      * Returns true if both records have the same identity and data fields.
