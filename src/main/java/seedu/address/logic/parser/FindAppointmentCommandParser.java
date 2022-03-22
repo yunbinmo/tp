@@ -11,7 +11,7 @@ import seedu.address.model.appointment.DescriptionContainsKeywordsPredicate;
 /**
  * Parses input arguments and creates a new FindAppointmentCommandParser object
  */
-public class FindAppointmentCommandParser {
+public class FindAppointmentCommandParser implements Parser<FindAppointmentCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the FindAppointmentCommandParser
      * and returns a FindAppointmentCommandParser object for execution.
