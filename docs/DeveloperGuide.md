@@ -71,9 +71,9 @@ The sections below give more details of each component.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/UiClassDiagramUpdated.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `AppointmentListPanel`, `InsuranceListPanel`, `RecordListPanel`, `ExpiredRecordPanel`, `ObejctDEtailedPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -82,7 +82,11 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`
+* does not replace the right panel - `AppointmentListPanel` at any time  
+* based on the user commands, left panel changes accordingly. Eg. when list -r is entered, `RecordListPanel` will replace the existing panel
+* listens for user click on `PersonListPanel` and will update the `ObjectDetailedPanel` to show respective client's information
+
 
 ### Logic component
 
@@ -260,6 +264,52 @@ Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail 
   * Cons: All information are squeeze together and the list can only contains maximum 3-5 cells.
   User still to scroll down to check other items in the list.
 
+## Add Records Feature
+
+#### Implementation
+
+The Add Records Feature will be facilitated by `AddRecordCommand` which implements `Parser` and `AddCommand` which extends `Command`. 
+
+The command format is `add -r c/ClientIndex i/InsuranceIndex sd/StartDate ed/EndDate` - add a record to the client at `ClientIndex` with insurance of `InsuranceIndex` valid from `StartDate` to `EndDate`
+
+The relevant methods are:
+
+1. `AddCommandParser#parse(List<Person> personList, ObservableList<Insurance> insuranceList,
+   String args)` --> Parse the relevant detailed information 
+   
+2. `AddCommand#execute(Model model)` --> Checks for duplication , validate each information and store to library
+
+Given below is an example usage scenerio and how the AddCommand behaves at each step.
+
+Step1. The user launches the application and execute `add -r c/1 i/1 sd/22-03-2022 ed/ 22-03-2032`
+
+Step2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, 
+and determine that it is an Add Command.
+
+Step3. AddCommandParser would check if the `ClientIndex` and `InsuranceIndex` exist in the library. Then it will continue to check if the `StartDate` is before the `EndDate`
+
+Step4. Execution of Add would take place and the result will be updated in the filtered record list Model.
+
+Important Features to take note:
+
+1. The `add record` command takes in the `ClientIndex` and `InsuranceIndex` but stores the the Client's `Name` and Insurance's `Title` in the RecordBook.
+2. The `sd/STARTDATE` entered must strictly be before the `sd/ENDDATE`, else `ParseException` will be thrown
+
+#### Design considerations
+
+**Aspect: How to add record to recordBook:**
+
+* **Alternative 1 (current choice):** User input all required information at once
+    * Pros:
+        1. Faster response rate as system does not need to prompt and wait for the user to key in the information needed
+        2. User which are fast-typing can enter information at once, increasing efficiency
+    * Cons: User may make mistakes when keying in information more frequently
+
+
+* **Alternative 2:** System prompts and user input information one at a time
+    * Pros: Easier for user to view their input, reducing typing errors
+    * Cons: Less responsive as user needs to wait for the system to validate the information entered one at a time before prompting the user to key in the next information.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -386,10 +436,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | list all clients              | view clients that are in my contact                                    |
 | `* * *`  | insurance agent                                | add an insurance              | manage all insurances in the apllication                               |
 | `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     |
-| `* * *`  | insurance agent                                | list all insurance            | view all that I have stored in the application                         |
+| `* * *`  | insurance agent                                | list all insurances            | view all that I have stored in the application                         |
 | `* * *`  | insurance agent                                    | add a record to client        | keep a record of the insurances that the client have                   |
 | `* * *`  | insurance agent                                | delete a record               | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
+| `* * *`  | insurance agent                                | list all records              | view records that are I have with my clients                                    |
 | `*`      | insurance agent want to check records     | sort record by start/end date | locate almost expired/newest records easily                            |
 | `***`    | insurance agent frequently having appointments | view all appointments         | be reminded of all the meetings I have with my clients                 |
 | `***`    | insurance agent frequently having appointments | add new appointments          | note down any future meetings I have with my client                    |
@@ -500,7 +551,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. Mr Agent shows an error message and correct command usage.
 
       Use case resumes at step 1.
-
+    
 *{More to be added}*
 
 ### Non-Functional Requirements
