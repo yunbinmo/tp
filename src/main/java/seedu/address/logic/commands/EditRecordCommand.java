@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_INSURANCEID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_STARTDATE;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,8 +111,10 @@ public class EditRecordCommand extends Command {
 
         if (editRecordDescriptor.getStartDate().isPresent() || editRecordDescriptor.getEndDate().isPresent()) {
 
-            StartDate startDate = editRecordDescriptor.getStartDate().orElse(lastRecordShownList.get(index.getZeroBased()).getStartDate());
-            EndDate endDate = editRecordDescriptor.getEndDate().orElse(lastRecordShownList.get(index.getZeroBased()).getEndDate());
+            StartDate startDate = editRecordDescriptor.getStartDate().orElse(
+                    lastRecordShownList.get(index.getZeroBased()).getStartDate());
+            EndDate endDate = editRecordDescriptor.getEndDate().orElse(
+                    lastRecordShownList.get(index.getZeroBased()).getEndDate());
             if (startDate.getStartDate().isAfter(endDate.getEndDate())) {
                 throw new CommandException(MESSAGE_STARTDATE_BEFORE_ENDATE);
             }
