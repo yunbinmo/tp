@@ -118,19 +118,19 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
+<img src="images/ModelClassDiagram.png" width="700" />
 
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores different kinds of  address book data i.e., all `Person`, `Appointment`, `Record`, and `Insurance` objects (which are contained in a `UniquePersonList`, `UniqueAppointmentList`, `UniqueRecordList` and `UniqueInsuranceList` object respectively).
+* for example, stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The same mechanism applies to `Appointment`, `Record`, and `Insurance` objects as well.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model (containing `Person` object only for simplicity) is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
@@ -160,11 +160,13 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-## Sort Records Feature
+## Sort Data Entries Feature
+
+###Sort Records
 
 #### Implementation
 
-The Sort Records Feature is facilitated by `SortReocrdCommand`. It extends `Command` with it own excution logic. It support follwoing commands:
+The Sort Records Feature is facilitated by `SortReocrdCommand`. It extends `Command` with it own execution logic. It supports the following commands:
 
 * `sort -r sa` — Sort the records by start date in ascending order.
 * `sort -r sd` — Sort the records by start date in descending order.
@@ -177,13 +179,13 @@ Given below is an example usage scenario and how the Sort Records Command behave
 
 Step 1. The user launches the application and executes `sort -r sa` command to sort the records by start date in ascending order.
 
-Step 2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, casusing the user input being parsed and an object of `SortRecordCommand` returns.
+Step 2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, causing the user input being parsed and an object of `SortRecordCommand` returns.
 
 Step 3. `LogicManager` executes object of `SortRecordCommand`. `SortRecordCommand` will invoke `ModelManager#sortRecordBook()` with different Comparator base on user input.
 
 Step 4. `ModelManger` will invoke `RecordBook#sortRecord()` with the comparator as input to sort the `UniqueRecordList`.
 
-Strp 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableList` of records.
+Step 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableList` of records.
 
 #### Design considerations
 
@@ -196,6 +198,33 @@ Strp 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableLi
 * **Alternative 2:** Creates a temporary sorted records List.
   * Pros: The original order of record List is preserved.
   * Cons:  May have performance issues in terms of memory usage.
+
+### Sort Appointments Feature
+
+#### Implementation
+
+The Sort Appointments Feature is facilitated by `SortAppointmentCommand`. It extends `Command` with it own execution logic. It supports the following commands:
+
+* `sort -a a` — Sort the appointments by appointment time in ascending order.
+* `sort -a d` — Sort the records by appointment time in descending order.
+
+These commands will be parsed by the `AddressBookParser` and `SortAppointmentCommandPasrser`. `ModelManger` will override `sortAppointmentBook()` from `Model` which take in an `Comparator<Appointment>` object as input. Then `AppointmentBook` will sort the `UniqueAppointmentList` base on the Comparator given.
+
+Given below is an example usage scenario and how the Sort Appointments Command behaves at each step.
+
+Step 1. The user launches the application and executes `sort -a a` command to sort the appointments by time in ascending order.
+
+Step 2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, causing the user input being parsed and an object of `SortAppointmentCommand` returns.
+
+Step 3. `LogicManager` executes object of `SortAppointmentCommand`. `SortAppointmentCommand` will invoke `ModelManager#sortAppointmentBook()` with the stated Comparator base on user input.
+
+Step 4. `ModelManger` will invoke `AppointmentBook#sortAppointment()` with the comparator as input to sort the `UniqueAppointmentList`.
+
+Step 5. `MainWindow` will update the `AppointmentListPanel` with sorted `ObservableList` of records.
+
+#### Design considerations
+
+Considerations for sort record command also apply here.
 
 ## Click event on objectListPlaceholder feature
 
@@ -369,25 +398,28 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                        | I want to …​                     | So that I can…​                                                        |
-|----------|------------------------------------------------|----------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                       | see usage instructions           | refer to instructions when I forget how to use the App                 |
-| `* * *`  | insurance agent                                | add a new client                 | manage clients in the application                                      |
-| `* * *`  | insurance agent                                | delete a client                  | remove entries that I no longer need                                   |
-| `* * *`  | insurance agent                                | find a client by name            | locate details of clients without having to go through the entire list |
-| `* * *`  | insurance agent                                | list all clients                 | view clients that are in my contact                                    |
-| `* * *`  | insurance agent                                | add an insurance                 | manage all insurances in the apllication                               |
-| `* * *`  | insurance agent                                | edit an insurance                | make changes to insurance saved in the application                     |
-| `* * *`  | insurance agent                                | list all insurance               | view all that I have stored in the application                         |
-| `* * *`  | insurance agent                                    | add a record to client           | keep a record of the insurances that the client have              |
-| `* * *`  | insurance agent                                | delete a record | remove entries that I no longer need                                   |
-| `* * *`  | insurance agent                                | edit a record                    | make changes to record saved in the application                     |
-| `*`      | insurance agent want to check records     | sort record by start/end date            | locate almost expired/newest records easily                         |
-| `***`    | insurance agent frequently having appointments | view all appointments            | be reminded of all the meetings I have with my clients           |
-| `***`    | insurance agent frequently having appointments | add new appointments             | note down any future meetings I have with my client                    |
-| `***`    | insurance agent frequently having appointments | delete an appointment            | get rid of any canceled/completed appointments to avoid confusion      |
-| `* * *`  | insurance agent                                | view passed appointments         | know account my meetups with my clients|
-| `* * *`  | insurance agent                                | view expired records                   | refer to passed records in case clients want to know/renew insurance|
+| Priority | As a …​                                        | I want to …​                  | So that I can…​                                                        |
+|----------|------------------------------------------------|-------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                       | see usage instructions        | refer to instructions when I forget how to use the App                 |
+| `* * *`  | insurance agent                                | add a new client              | manage clients in the application                                      |
+| `* * *`  | insurance agent                                | delete a client               | remove entries that I no longer need                                   |
+| `* * *`  | insurance agent                                | find a client by name         | locate details of clients without having to go through the entire list |
+| `* * *`  | insurance agent                                | list all clients              | view clients that are in my contact                                    |
+| `* * *`  | insurance agent                                | add an insurance              | manage all insurances in the apllication                               |
+| `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     |
+| `* * *`  | insurance agent                                | list all insurance            | view all that I have stored in the application                         |
+| `* * *`  | insurance agent                                    | add a record to client        | keep a record of the insurances that the client have                   |
+| `* * *`  | insurance agent                                | delete a record               | remove entries that I no longer need                                   |
+| `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
+| `*`      | insurance agent want to check records     | sort record by start/end date | locate almost expired/newest records easily                            |
+| `***`    | insurance agent frequently having appointments | view all appointments         | be reminded of all the meetings I have with my clients                 |
+| `***`    | insurance agent frequently having appointments | add new appointments          | note down any future meetings I have with my client                    |
+| `***`    | insurance agent frequently having appointments | delete an appointment         | get rid of any canceled/completed appointments to avoid confusion      |
+| `***`    | insurance agent frequently having appointments | edit an appointment           | amend appointment details to suit clients' needs                       |
+| `***`    | insurance agent frequently having appointments | find an appointment           | quickly locate a related appointment                                   |
+| `***`    | insurance agent frequently having appointments | sort appointments             | prioritize more urgent appointments                                    |
+| `* * *`  | insurance agent                                | view passed appointments      | know account my meetups with my clients                                |
+| `* * *`  | insurance agent                                | view expired records          | refer to passed records in case clients want to know/renew insurance   |
 
 
 *{More to be added}*
@@ -476,6 +508,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. Mr Agent shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Sort appointments**
+
+**MSS**
+1. User enters command and arguments to sort appointments ascendingly.
+2. Mr Agent shows success message for sorting appointments.
+
+**Extensions**
+* 1a. The argument(s) are incomplete.
+
+    * 1a1. Mr Agent shows an error message and correct command usage.
+
+      Use case resumes at step 1.
 
 *{More to be added}*
 
