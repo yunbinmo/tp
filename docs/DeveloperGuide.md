@@ -71,9 +71,9 @@ The sections below give more details of each component.
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/UiClassDiagramUpdated.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `AppointmentListPanel`, `InsuranceListPanel`, `RecordListPanel`, `ExpiredRecordPanel`, `ObejctDEtailedPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -82,7 +82,11 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`
+* does not replace the right panel - `AppointmentListPanel` at any time  
+* based on the user commands, left panel changes accordingly. Eg. when list -r is entered, `RecordListPanel` will replace the existing panel
+* listens for user click on `PersonListPanel` and will update the `ObjectDetailedPanel` to show respective client's information
+
 
 ### Logic component
 
@@ -230,6 +234,23 @@ Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail 
   * Pros: User no need to click to look into details.
   * Cons: All information are squeeze together and the list can only contains maximum 3-5 cells.
   User still to scroll down to check other items in the list.
+
+## Add Records Feature
+
+#### Implementation
+
+The Add Records Feature will be facilitated by `AddRecordCommand` which implements `Parser` and `AddCommand` which extends `Command`. 
+
+The command format is `add -r c/ClientIndex i/InsuranceIndex sd/StartDate ed/EndDate` - add a record to the client at `ClientIndex` with insurance of `InsuranceIndex` valid from `StartDate` to `EndDate`
+
+The relevant methods are:
+
+1. `AddCommandParser -> parse(List<Person> personList, ObservableList<Insurance> insuranceList,
+   String args)` ----- Parse the relevant detailed information 
+   
+2. `AddCommand -> execute(Model model)` ----- Checks for duplication , validate each information and store to library
+
+Given below is an example usage scenerio and how the AddCommand behaves at each step.
 
 ### \[Proposed\] Undo/redo feature
 
