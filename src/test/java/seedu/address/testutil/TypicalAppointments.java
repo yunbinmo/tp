@@ -1,5 +1,12 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATETIME_APPOINTMENT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATETIME_APPOINTMENT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATETIME_APPOINTMENT3;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_APPOINTMENT1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_APPOINTMENT2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_APPOINTMENT3;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,16 +19,16 @@ import seedu.address.model.appointment.Appointment;
  */
 public class TypicalAppointments {
     public static final Appointment APPOINTMENT1 = new AppointmentBuilder()
-            .withDescription("Meet James for health insurance")
-            .withDateTime("02-03-2022 15:00").build();
+            .withDescription(VALID_DESC_APPOINTMENT1)
+            .withDateTime(VALID_DATETIME_APPOINTMENT1).build();
 
     public static final Appointment APPOINTMENT2 = new AppointmentBuilder()
-            .withDescription("Meet Alice for car insurance")
-            .withDateTime("02-04-2022 19:00").build();
+            .withDescription(VALID_DESC_APPOINTMENT2)
+            .withDateTime(VALID_DATETIME_APPOINTMENT2).build();
 
     public static final Appointment APPOINTMENT3 = new AppointmentBuilder()
-            .withDescription("Meet Tom for insurance renewal")
-            .withDateTime("04-03-2022 18:00").build();
+            .withDescription(VALID_DESC_APPOINTMENT3)
+            .withDateTime(VALID_DATETIME_APPOINTMENT3).build();
 
     private TypicalAppointments() {} // prevents instantiation
 
