@@ -8,7 +8,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -95,6 +97,17 @@ public class CommandTestUtil {
     public static final String DATETIME_APPOINTMENT2 = " " + PREFIX_APPT_DATETIME + VALID_DATETIME_APPOINTMENT2;
     public static final String DESC_APPOINTMENT3 = " " + PREFIX_APPT_DESCRIPTION + VALID_DESC_APPOINTMENT3;
     public static final String DATETIME_APPOINTMENT3 = " " + PREFIX_APPT_DATETIME + VALID_DATETIME_APPOINTMENT3;
+
+    public static final String VALID_TITLE_INSURANCE1 = "Health";
+    public static final String VALID_TITLE_INSURANCE2 = "Car";
+    public static final String VALID_PRICE_INSURANCE1 = "123";
+    public static final String VALID_PRICE_INSURANCE2 = "111";
+    public static final String INVALID_TITLE_INSURANCE = " " + PREFIX_TITLE + " ";
+    public static final String INVALID_PRICE_INSURANCE = " " + PREFIX_PRICE + "two";
+    public static final String TITLE_INSURANCE1 = " " + PREFIX_TITLE + VALID_TITLE_INSURANCE1;
+    public static final String PRICE_INSURANCE1 = " " + PREFIX_PRICE + VALID_PRICE_INSURANCE1;
+    public static final String TITLE_INSURANCE2 = " " + PREFIX_TITLE + VALID_TITLE_INSURANCE2;
+    public static final String PRICE_INSURANCE2 = " " + PREFIX_PRICE + VALID_PRICE_INSURANCE2;
 
     public static final String VALID_TITLE_HEART = "Heart";
     public static final String VALID_TITLE_LIFE = "Life";
