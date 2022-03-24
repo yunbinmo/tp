@@ -245,6 +245,14 @@ Searches for an appointment using keyword(s)
 
 Format: `find -a KEYWORD [MORE_KEYWORDS]`
 
+### Sort appointment: `sort -a`
+
+Sorts the appointment list ascendingly/descendingly by time
+
+Format: `sort -a SORT_OPTION`
+* To sort ascendingly, replace SORT_OPTION with `a`
+* To sort descendingly, replace SORT_OPTION with `d`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the Mr. Agent.
