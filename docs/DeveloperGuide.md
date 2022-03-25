@@ -166,7 +166,7 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Implementation
 
-The Sort Records Feature is facilitated by `SortReocrdCommand`. It extends `Command` with it own execution logic. It supports the following commands:
+The Sort Records Feature is facilitated by `SortRecordCommand`. It extends `Command` with its own execution logic. It supports the following commands:
 
 * `sort -r sa` — Sort the records by start date in ascending order.
 * `sort -r sd` — Sort the records by start date in descending order.
@@ -226,6 +226,41 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` with sorted `Observa
 
 Considerations for sort record command also apply here.
 
+## List history feature
+
+#### Implementation
+There are 2 commands in the history features, one for listing appointment history and one for expired records:
+The feature is facilitated by:
+* `ListAppointmentHistoryCommand` which extends `Command`, for listing appointment history. 
+The command format is `list -h`.
+* `ListExpiredRecordsCommand` which extends `Command`, for listing expired records. The command format is `list -e`.
+
+Given below is an example usage scenario and how the list appointment history command behaves at each step.
+
+Step 1. The user launches the application and executes `list -h` command to list the appointment history.
+
+Step 2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, causing the user input being parsed and an object of `ListAppointmentHistoryCommand` returns.
+
+Step 3. `LogicManager` executes object of `ListAppointmentHistoryCommand`. `ListAppointmentHistoryCommand` will invoke `ModelManager#getAppointmentHistoryBook()`.
+
+Step 4. `ModelManger` will invoke `AppointmentHistoryBook#getAppointmentHistoryList()`.
+
+Step 5. `MainWindow` will update the `AppointmentListPanel` with appointment histories.
+
+#### Design considerations
+
+**Aspect: How to store the appointment history data:**
+
+* **Alternative 1 (current choice):** Creates a temporary appointment history list.
+    * Pros: Saves storage.
+    * Cons: Harder to implement as separate methods has to be created to check passed appointments everytime the application is launched.
+
+* **Alternative 2:** Saves the appointment history to a separate json file.
+    * Pros: Easier to implement.
+    * Cons: Code is longer and harder to maintain.
+
+**Note**: how list expired records behaves and its design considerations are the same as list appointment history
+
 ## Click event on objectListPlaceholder feature
 
 ![UIStructure](images/UIstructure.jpg)
@@ -237,7 +272,7 @@ The `objectListPanel` will be updated according to user command. It support foll
 * `list -i` — List all insurances.
 * `list -r` — List all records.
 * `list -e` — List all expired records.
-* `list -h` — List histroy of appointments.
+* `list -h` — List all passed appointments.
   
 The content in `detailPane` will be updated with details of the object base on the click event.
 
