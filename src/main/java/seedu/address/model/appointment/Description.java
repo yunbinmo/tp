@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Appointment's associated description in the address book.
+ * Represents an Appointment's associated description in the appointment book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {
@@ -22,7 +22,7 @@ public class Description {
     /**
      * Constructs a {@code DateTime}.
      *
-     * @param input A valid client date time string.
+     * @param description A valid client date time string.
      */
     public Description(String description) {
         requireNonNull(description);

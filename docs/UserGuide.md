@@ -40,9 +40,6 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 ## Features (***todo***)
 
-
-
-
 ### Adding a client: `add -c`
 
 Adds a client to Mr. Agent.
@@ -106,12 +103,12 @@ Format: `find -c KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Le` will not match `Lee`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Lee Junjie` will return `Wong Junjie`, `Lee Yang`
-
-Examples: 
+* 
+Examples:
 * `find -c John` returns `john` and `John Doe`
 * `find -c alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
-  
+
 ### Adding an Insurance: `add -i`
 
 Adds a type of insurance 
@@ -137,6 +134,12 @@ Deletes the specified insurance from the Mr. Agent.
 
 Format: `delete -i INDEX`
 
+### Locating insurance by title: `find -i`
+
+Finds insurance which titles contain any of the given keywords.
+
+Format: `find -i KEYWORD [MORE_KEYWORDS]`
+
 ### Editing an Insurance: `edit -i` (***coming soon***)
 
 ### Adding a record to a client: `add -r`
@@ -147,6 +150,7 @@ Format: `add -r CLIENT_INDEX INSURANCE_INDEX [sd/START_DATE] [ed/END_DATE]
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 * Each client index can only own 1 insurance of each type
+* Client index and Insurance index starts from 1
 
 Examples: (***todo***)
 * `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024
@@ -159,8 +163,40 @@ Deletes the specified record from the Mr. Agent.
 
 Format: `delete -r RECORD_INDEX`
 
-### Editing a record : `edit -r` (***coming soon***)
-### Locating record by keyword (client id/name,insurance id/name): `find -r` (***coming soon***)
+## Listing all records : `list -r`
+
+Shows a list of all records in the Mr. Agent.
+
+Format: `list -r`
+
+### Editing a record : `edit -r` 
+
+Edits an existing record in the Mr. Agent.
+
+Format: `edit -r INDEX [c/CLIENT_INDEX] [i/INSURANCE_INDEX] [sd/START_DATE] [ed/END_DATE]`
+
+* Edits the record at the specified `INDEX`. The index refers to the index number shown in the displayed record list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+
+Examples:
+*  `edit -r 1 c/2 i/2` Edits the client and the type of insurance of the 1st record to be client 2 and insurance 2 respectively.
+
+### Locating record by keyword (insurance name): `find -r`
+
+Finds records whose insurance name contains any of the given keyword
+
+Format: `find -r KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `health` will match `Health`
+* The order of the keywords does not matter. e.g. `critical illness ` will match `illnes critical`
+* Only the insurance name is searched.
+* Only full words will be matched e.g. `hea` will not match `health`
+* Records matching at least one keyword will be returned (i.e. `OR` search).
+
+Examples: 
+* `find -r health` 
 
 ### Listing appointment history: `list -h`
 
@@ -174,6 +210,8 @@ Shows a list of all expired records.
 
 Format: `list -e`
 
+### List history by client (***coming soon***)
+
 ### Adding an appointment: `add -a`
 
 Adds a new appointment with client
@@ -181,7 +219,7 @@ Adds a new appointment with client
 Format: `add -a d/DESCRIPTION dt/DATETIME`
 
 Examples:
-* `add -a 1 d/Meet James dt/20-02-2022 1800` 
+* `add -a d/Meet James dt/20-02-2022 18:00` 
 
 ### Listing all appointment: `list -a`
 
@@ -195,8 +233,25 @@ Deletes an unneeded appointment
 
 Format: `delete -a APPOINTMENT_INDEX`
 
-### Editing a appointment: `edit -a` (***coming soon***)
-### Locating appointment by keyword: `find -a` (***coming soon***)
+### Editing a appointment: `edit -a`
+
+Edits an existing appointment
+
+Format: `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]` 
+
+### Locating appointment by keyword: `find -a`
+
+Searches for an appointment using keyword(s)
+
+Format: `find -a KEYWORD [MORE_KEYWORDS]`
+
+### Sort appointment: `sort -a`
+
+Sorts the appointment list ascendingly/descendingly by time
+
+Format: `sort -a SORT_OPTION`
+* To sort ascendingly, replace SORT_OPTION with `a`
+* To sort descendingly, replace SORT_OPTION with `d`
 
 ### Clearing all entries : `clear`
 
@@ -223,11 +278,11 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add a client** | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`
-**Edit a client** | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find a client** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List all client** | `list -c`
+| Action              | Format, Examples                                                                                                                                                         |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add a client**    | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit a client**   | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find a client**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
+| **List all client** | `list -c`                                                                                                                                                                |
 

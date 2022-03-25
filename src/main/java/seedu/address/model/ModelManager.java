@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +15,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.history.AppointmentHistory;
+import seedu.address.model.history.ExpiredRecord;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
@@ -25,20 +30,25 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final InsuranceBook insuranceBook;
     private final AppointmentBook appointmentBook;
+    private final AppointmentHistoryBook appointmentHistoryBook;
+    private final ExpiredRecordBook expiredRecordBook;
     private final RecordBook recordBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Insurance> filteredInsurances;
     private final FilteredList<Appointment> filteredAppointments;
+    private final FilteredList<Appointment> filteredAppointmentHistory;
     private final FilteredList<Record> filteredRecords;
+    private final FilteredList<Record> filteredExpiredRecord;
+
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given storage book and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyInsuranceBook insuranceBook,
                         ReadOnlyAppointmentBook appointmentBook, ReadOnlyRecordBook recordBook,
                         ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, insuranceBook, recordBook, userPrefs);
+        requireAllNonNull(addressBook, insuranceBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook
                 + "and insurance book" + insuranceBook + "and record book" + recordBook
@@ -47,12 +57,97 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.insuranceBook = new InsuranceBook(insuranceBook);
         this.appointmentBook = new AppointmentBook(appointmentBook);
+        this.appointmentHistoryBook = new AppointmentHistoryBook(appointmentBook);
         this.recordBook = new RecordBook(recordBook);
+        this.expiredRecordBook = new ExpiredRecordBook(recordBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
         this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
+        this.filteredAppointmentHistory = new FilteredList<>(this.appointmentHistoryBook.getAppointmentHistoryList());
         this.filteredRecords = new FilteredList<>(this.recordBook.getRecordList());
+        this.filteredExpiredRecord = new FilteredList<>(this.expiredRecordBook.getExpiredRecordList());
+
+    }
+
+    /**
+     * Initializes a ModelManager with the given addressBook and userPrefs.
+     */
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, userPrefs);
+        this.addressBook = new AddressBook(addressBook);
+        this.insuranceBook = null;
+        this.appointmentBook = null;
+        this.appointmentHistoryBook = null;
+        this.recordBook = null;
+        this.expiredRecordBook = null;
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.filteredInsurances = null;
+        this.filteredAppointments = null;
+        this.filteredAppointmentHistory = null;
+        this.filteredRecords = null;
+        this.filteredExpiredRecord = null;
+    }
+
+    /**
+     * Initializes a ModelManager with the given insuranceBook and userPrefs.
+     */
+    public ModelManager(ReadOnlyInsuranceBook insuranceBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(insuranceBook, userPrefs);
+        this.addressBook = null;
+        this.insuranceBook = new InsuranceBook(insuranceBook);
+        this.appointmentBook = null;
+        this.appointmentHistoryBook = null;
+        this.recordBook = null;
+        this.expiredRecordBook = null;
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.filteredPersons = null;
+        this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
+        this.filteredAppointments = null;
+        this.filteredAppointmentHistory = null;
+        this.filteredRecords = null;
+        this.filteredExpiredRecord = null;
+    }
+
+    /**
+     * Initializes a ModelManager with the given insuranceBook and userPrefs.
+     */
+    public ModelManager(ReadOnlyRecordBook recordBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(recordBook, userPrefs);
+        this.addressBook = null;
+        this.insuranceBook = null;
+        this.appointmentBook = null;
+        this.appointmentHistoryBook = null;
+        this.recordBook = new RecordBook(recordBook);
+        this.expiredRecordBook = null;
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.filteredPersons = null;
+        this.filteredInsurances = null;
+        this.filteredAppointments = null;
+        this.filteredAppointmentHistory = null;
+        this.filteredRecords = new FilteredList<>(this.recordBook.getRecordList());
+        this.filteredExpiredRecord = null;
+    }
+
+    /**
+     * Initializes a ModelManager with the given insuranceBook and userPrefs.
+     */
+    public ModelManager(ReadOnlyAppointmentBook appointmentBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(appointmentBook, userPrefs);
+        this.addressBook = null;
+        this.insuranceBook = null;
+        this.appointmentBook = new AppointmentBook(appointmentBook);
+        this.appointmentHistoryBook = null;
+        this.recordBook = null;
+        this.expiredRecordBook = null;
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.filteredPersons = null;
+        this.filteredInsurances = null;
+        this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
+        this.filteredAppointmentHistory = null;
+        this.filteredRecords = null;
+        this.filteredExpiredRecord = null;
     }
 
     public ModelManager() {
@@ -114,6 +209,21 @@ public class ModelManager implements Model {
 
     @Override
     public void deletePerson(Person target) {
+        if (this.recordBook != null) {
+            List<Record> records = this.getRecordBook().getRecordList();
+            List<Record> toBeDeleted = new ArrayList<>();
+            for (Record record : records) {
+                if (target.getName().toString().equals(record.getClientID().toString())) {
+                    toBeDeleted.add(record);
+                }
+            }
+
+            for (Record record : toBeDeleted) {
+                this.deleteRecord(record);
+            }
+        }
+
+
         this.addressBook.removePerson(target);
     }
 
@@ -178,6 +288,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void sortAppointmentBook(Comparator<Appointment> comparator) {
+        this.appointmentBook.sortAppointment(comparator);
+    }
+
+    @Override
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
         return this.appointmentBook.hasAppointment(appointment);
@@ -234,6 +349,11 @@ public class ModelManager implements Model {
         this.recordBook.setRecord(target, editedRecord);
     }
 
+    @Override
+    public void sortRecordBook(Comparator<Record> comparator) {
+        this.recordBook.sortRecord(comparator);
+    }
+
 
     //=========== Filtered Appointment List Accessors ========================================================
 
@@ -270,23 +390,6 @@ public class ModelManager implements Model {
         this.filteredPersons.setPredicate(predicate);
     }
 
-    //=========== Filtered Insurance List Accessors =============================================================
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Insurance> getFilteredInsuranceList() {
-        return this.filteredInsurances;
-    }
-
-    @Override
-    public void updateFilteredInsuranceList(Predicate<Insurance> predicate) {
-        requireNonNull(predicate);
-        this.filteredInsurances.setPredicate(predicate);
-    }
-
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -306,6 +409,52 @@ public class ModelManager implements Model {
                 && this.filteredPersons.equals(other.filteredPersons);
     }
 
+
+    //=========== Filtered Insurance List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Insurance> getFilteredInsuranceList() {
+        return this.filteredInsurances;
+    }
+
+    @Override
+    public void updateFilteredInsuranceList(Predicate<Insurance> predicate) {
+        requireNonNull(predicate);
+        this.filteredInsurances.setPredicate(predicate);
+    }
+
+    //=========== Filtered Appointment History List Accessors ========================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code AppointmentHistory} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+
+    @Override
+    public ReadOnlyAppointmentHistoryBook getAppointmentHistoryBook() {
+        return this.appointmentHistoryBook;
+    }
+
+    @Override
+    public boolean hasHistory(AppointmentHistory history) {
+        return false;
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentHistoryList() {
+        return this.filteredAppointmentHistory;
+    }
+
+    @Override
+    public void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate) {
+
+    }
+
+
     //=========== Filtered Record List Accessors =============================================================
 
     /**
@@ -321,6 +470,32 @@ public class ModelManager implements Model {
     public void updateFilteredRecordList(Predicate<Record> predicate) {
         requireNonNull(predicate);
         this.filteredRecords.setPredicate(predicate);
+    }
+
+    //=========== Filtered Expired Record List Accessors ========================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ExpiredRecord} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+
+    @Override
+    public ReadOnlyExpiredRecordBook getExpiredRecordBook() {
+        return this.expiredRecordBook;
+    }
+
+    //    @Override
+    //    public boolean hasRecord(ExpiredRecord record) {
+    //        return false;
+    //    }
+
+    @Override
+    public ObservableList<Record> getFilteredExpiredRecordList() {
+        return this.filteredExpiredRecord;
+    }
+
+    @Override
+    public void updateFilteredExpiredRecordList(Predicate<ExpiredRecord> predicate) {
     }
 
 

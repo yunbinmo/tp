@@ -19,6 +19,6 @@ public class ListPersonCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(MESSAGE_SUCCESS, true, false, false, false, false, false);
+        return new CommandResult(MESSAGE_SUCCESS, true, false, false, false, false, false, false, false);
     }
 }

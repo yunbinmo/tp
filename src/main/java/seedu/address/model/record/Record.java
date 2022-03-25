@@ -1,6 +1,11 @@
 package seedu.address.model.record;
 
+import java.time.LocalDate;
 
+/**
+ * Represents an Record in Mr. Agent.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Record {
     //TODO
 
@@ -40,8 +45,16 @@ public class Record {
         return this.startDate;
     }
 
+    public LocalDate getStartLocalDate() {
+        return this.startDate.getStartDate();
+    }
+
     public EndDate getEndDate() {
         return this.endDate;
+    }
+
+    public LocalDate getEndLocalDate() {
+        return this.endDate.getEndDate();
     }
 
     /**
@@ -55,9 +68,10 @@ public class Record {
 
         return otherRecord != null
                 && otherRecord.getClientID().equals(this.clientID)
-                && otherRecord.getInsuranceID().equals(this.insuranceID);
-
+                && otherRecord.getInsuranceID().equals(this.insuranceID)
+                && otherRecord.getStartDate().getStartDate().isBefore(this.getEndDate().getEndDate());
     }
+
 
     /**
      * Returns true if both records have the same identity and data fields.
@@ -87,9 +101,7 @@ public class Record {
      */
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Record ")
-                .append(this.getRecordId())
-                .append(" Client ")
+        builder.append(" Client ")
                 .append(this.getClientID())
                 .append(" bought insurance ")
                 .append(this.getInsuranceID())

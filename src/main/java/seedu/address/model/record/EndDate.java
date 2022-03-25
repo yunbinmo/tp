@@ -3,7 +3,7 @@ package seedu.address.model.record;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -14,13 +14,13 @@ import java.time.format.DateTimeParseException;
 public class EndDate {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022 18:00";
+            "End Date should be in this format: dd-MM-yyyy e.g. 02-03-2022";
 
-    private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm";
+    private static final String DATE_FORMAT = "dd-MM-yyyy";
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-    public final LocalDateTime date;
+    public final LocalDate date;
 
     /**
      * Constructs a {@code DateTime}.
@@ -29,7 +29,7 @@ public class EndDate {
      */
     public EndDate(String input) {
         requireNonNull(input);
-        LocalDateTime result = validateDateTime(input);
+        LocalDate result = validateDateTime(input);
         if (result == null) {
             checkArgument(false, MESSAGE_CONSTRAINTS);
         }
@@ -41,16 +41,20 @@ public class EndDate {
      *
      * @param date A valid LocalDateTime object.
      */
-    public EndDate(LocalDateTime date) {
+    public EndDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getEndDate() {
+        return date;
     }
 
     /**
      * Returns a valid LocalDateTime object if a given string is valid date and time.
      */
-    public static LocalDateTime validateDateTime(String test) {
+    public static LocalDate validateDateTime(String test) {
         try {
-            LocalDateTime date = LocalDateTime.parse(test, DATE_FORMATTER);
+            LocalDate date = LocalDate.parse(test, DATE_FORMATTER);
             return date;
         } catch (DateTimeParseException e) {
             return null;
@@ -66,5 +70,9 @@ public class EndDate {
     @Override
     public int hashCode() {
         return date.hashCode();
+    }
+
+    public LocalDate getDate() {
+        return this.date;
     }
 }

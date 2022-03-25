@@ -3,28 +3,47 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.collections.ObservableList;
 import seedu.address.logic.commands.AddAppointmentCommand;
 import seedu.address.logic.commands.AddInsuranceCommand;
 import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.AddRecordCommand;
+import seedu.address.logic.commands.ClearAppointmentCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.ClearInsuranceCommand;
+import seedu.address.logic.commands.ClearPersonCommand;
+import seedu.address.logic.commands.ClearRecordCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteAppointmentCommand;
 import seedu.address.logic.commands.DeleteInsuranceCommand;
 import seedu.address.logic.commands.DeletePersonCommand;
 import seedu.address.logic.commands.DeleteRecordCommand;
+import seedu.address.logic.commands.EditAppointmentCommand;
+import seedu.address.logic.commands.EditInsuranceCommand;
 import seedu.address.logic.commands.EditPersonCommand;
+import seedu.address.logic.commands.EditRecordCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindAppointmentCommand;
+import seedu.address.logic.commands.FindInsuranceCommand;
 import seedu.address.logic.commands.FindPersonCommand;
+import seedu.address.logic.commands.FindRecordCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppointmentCommand;
+import seedu.address.logic.commands.ListAppointmentHistoryCommand;
+import seedu.address.logic.commands.ListExpiredRecordCommand;
 import seedu.address.logic.commands.ListInsuranceCommand;
 import seedu.address.logic.commands.ListPersonCommand;
 import seedu.address.logic.commands.ListRecordCommand;
+import seedu.address.logic.commands.SortAppointmentCommand;
+import seedu.address.logic.commands.SortRecordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Model;
+import seedu.address.model.insurance.Insurance;
+import seedu.address.model.person.Person;
 
 /**
  * Parses user input.
@@ -44,7 +63,7 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseCommand(String userInput) throws ParseException {
+    public Command parseCommand(Model model, String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -66,15 +85,21 @@ public class AddressBookParser {
         case Command.COMMAND_INSURANCE:
             return this.parseInsuranceCommand(commandWord, arguments);
         case Command.COMMAND_RECORD:
-            return this.parseRecordCommand(commandWord, arguments);
+            return this.parseRecordCommand(commandWord, arguments, model.getAddressBook().getPersonList(),
+                    model.getFilteredInsuranceList());
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
+        case Command.COMMAND_APPOINTMENT_HISTORY:
+            return this.parseAppointmentHistoryCommand();
+        case Command.COMMAND_EXPIRED_RECORD:
+            return this.parseExpiredRecordCommand();
         case SINGLE_COMMAND_FORMAT:
             return this.parseGeneralCommand(commandWord);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
+
 
     private Command parseGeneralCommand(String commandWord) throws ParseException {
         switch (commandWord) {
@@ -96,16 +121,17 @@ public class AddressBookParser {
         if (arguments.trim().length() == 0) {
             return SINGLE_COMMAND_FORMAT;
         }
-
         if (arguments.trim().length() < 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
-
+        if (arguments.trim().split(" ")[0].length() != 2) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        }
         return arguments.trim().substring(0, 2);
     }
 
     /**
-     * Parse person command command.
+     * Parse person command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -129,13 +155,16 @@ public class AddressBookParser {
         case ListPersonCommand.COMMAND_WORD:
             return new ListPersonCommand();
 
+        case ClearPersonCommand.COMMAND_WORD:
+            return new ClearPersonCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
     /**
-     * Parse insurance command command.
+     * Parse insurance command.
      *
      * @param commandWord the command word
      * @param arguments   the argument
@@ -152,6 +181,15 @@ public class AddressBookParser {
 
         case ListInsuranceCommand.COMMAND_WORD:
             return new ListInsuranceCommand();
+
+        case EditInsuranceCommand.COMMAND_WORD:
+            return new EditInsuranceCommandParser().parse(arguments);
+
+        case FindInsuranceCommand.COMMAND_WORD:
+            return new FindInsuranceCommandParser().parse(arguments);
+
+        case ClearInsuranceCommand.COMMAND_WORD:
+            return new ClearInsuranceCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -174,9 +212,35 @@ public class AddressBookParser {
             return new DeleteAppointmentCommandParser().parse(arguments);
         case ListAppointmentCommand.COMMAND_WORD:
             return new ListAppointmentCommand();
+        case EditAppointmentCommand.COMMAND_WORD:
+            return new EditAppointmentCommandParser().parse(arguments);
+        case FindAppointmentCommand.COMMAND_WORD:
+            return new FindAppointmentCommandParser().parse(arguments);
+        case ClearAppointmentCommand.COMMAND_WORD:
+            return new ClearAppointmentCommand();
+        case SortAppointmentCommand.COMMAND_WORD:
+            return new SortAppointmentCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    /**
+     * Parse appointment history command.
+     *
+     * @return the command based on the user input
+     */
+    private Command parseAppointmentHistoryCommand() {
+        return new ListAppointmentHistoryCommand();
+    }
+
+    /**
+     * Parse expired record command.
+     *
+     * @return the command based on the user input
+     */
+    private Command parseExpiredRecordCommand() {
+        return new ListExpiredRecordCommand();
     }
 
     /**
@@ -187,14 +251,32 @@ public class AddressBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseRecordCommand(String commandWord, String arguments) throws ParseException {
+
+    public Command parseRecordCommand(String commandWord, String arguments, List<Person> personList,
+                                      ObservableList<Insurance> insuranceList) throws ParseException {
+
         switch (commandWord) {
         case AddRecordCommand.COMMAND_WORD:
-            return new AddRecordCommandParser().parse(arguments);
+            return new AddRecordCommandParser().parse(personList, insuranceList, arguments);
+
         case DeleteRecordCommand.COMMAND_WORD:
             return new DeleteRecordCommandParser().parse(arguments);
+
         case ListRecordCommand.COMMAND_WORD:
             return new ListRecordCommand();
+
+        case EditRecordCommand.COMMAND_WORD:
+            return new EditRecordCommandParser().parse(arguments);
+
+        case FindRecordCommand.COMMAND_WORD:
+            return new FindRecordCommandParser().parse(arguments);
+
+        case ClearRecordCommand.COMMAND_WORD:
+            return new ClearRecordCommand();
+
+        case SortRecordCommand.COMMAND_WORD:
+            return new SortRecordCommandParser().parse(arguments);
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

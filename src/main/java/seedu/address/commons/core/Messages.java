@@ -14,5 +14,18 @@ public class Messages {
     public static final String MESSAGE_INVALID_RECORD_DISPLAYED_INDEX =
             "The record index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_INSURANCES_LISTED_OVERVIEW = "%1$d insurances listed!";
+    public static final String MESSAGE_RECORDS_LISTED_OVERVIEW = "%1$d records listed!";
+    public static final String MESSAGE_APPOINTMENT_LISTED_OVERVIEW = "%1$d appointments listed!";
+    public static final String MESSAGE_APPOINTMENT_SORTED_ASCENDING = "%1$d appointments sorted ascendingly by time!";
+    public static final String MESSAGE_APPOINTMENT_SORTED_DESCENDING = "%1$d appointments sorted descendingly by time!";
+    public static final String MESSAGE_RECORD_SORTED_START_TIME_ASCENDING =
+            "%1$d records sorted ascendingly by start time!";
+    public static final String MESSAGE_RECORD_SORTED_START_TIME_DESCENDING =
+            "%1$d records sorted descendingly by start time!";
+    public static final String MESSAGE_RECORD_SORTED_END_TIME_ASCENDING =
+            "%1$d records sorted ascendingly by end time!";
+    public static final String MESSAGE_RECORD_SORTED_END_TIME_DESCENDING =
+            "%1$d records sorted descendingly by end time!";
 
 }

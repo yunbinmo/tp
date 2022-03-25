@@ -43,6 +43,9 @@ public class DateTime {
     public DateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+    public LocalDateTime getLocalDateTime() {
+        return this.dateTime;
+    }
 
     /**
      * Returns a valid LocalDateTime object if a given string is valid date and time.
@@ -71,5 +74,9 @@ public class DateTime {
     @Override
     public int hashCode() {
         return dateTime.hashCode();
+    }
+
+    public boolean isBefore(LocalDateTime now) {
+        return this.dateTime.isBefore(now);
     }
 }

@@ -58,20 +58,28 @@ public class SampleDataUtil {
 
     public static Insurance[] getSampleInsurances() {
         return new Insurance[]{
-            new Insurance(new Title("Health"), new Price("123")), new Insurance(new Title("Car"), new Price("300"))
+            new Insurance(new Title("MOTOR INSURANCE"), new Price("700")),
+            new Insurance(new Title("Home Contents Insurance"), new Price("1000")),
+            new Insurance(new Title("Travel Insurance(Annual Cover)"), new Price("200")),
+            new Insurance(new Title("Travel Insurance(Family Plan)"), new Price("7000")),
+            new Insurance(new Title("Work Injury Compensation Insurance"), new Price("9000")),
+            new Insurance(new Title("Aviation Insurance"), new Price("120")),
+            new Insurance(new Title("Business Insurance"), new Price("300")),
+            new Insurance(new Title("Reinsurance"), new Price("3030"))
         };
     }
 
     public static Appointment[] getSampleAppointments() {
         return new Appointment[]{
+
             new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
         };
     }
 
     public static Record[] getSampleRecords() {
         return new Record[]{
-            new Record(new ClientID(("1")), new InsuranceID("1"),
-                        new StartDate("02-03-2022 18:00"), new EndDate("02-03-2025 18:00"))
+            new Record(new ClientID(("Alice Yeoh"), true), new InsuranceID(("Health"), true),
+                    new StartDate("02-03-2022"), new EndDate("02-03-2025"))
         };
     }
 

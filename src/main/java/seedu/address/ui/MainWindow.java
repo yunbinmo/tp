@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -18,6 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
+import seedu.address.model.record.Record;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -36,6 +38,10 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private InsuranceListPanel insuranceListPanel;
     private AppointmentListPanel appointmentListPanel;
+
+    private RecordListPanel recordListPanel;
+    private AppointmentListPanel appointmentHistoryPanel;
+    private ExpiredRecordPanel expiredRecordPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -59,6 +65,17 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane appointmentListPanelPlaceholder;
+
+
+    //@FXML
+    //private StackPane recordListPanelPlaceholder;
+
+    @FXML
+    private StackPane expiredRecordPanelPlaceholder;
+
+    @FXML
+    private StackPane appointmentHistoryPanelPlaceholder;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -125,12 +142,16 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList(), this);
         objectListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-
         insuranceListPanel = new InsuranceListPanel(logic.getFilteredInsuranceList(), this);
 
+        recordListPanel = new RecordListPanel(logic.getFilteredRecordList(), this);
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
+
+
+        appointmentHistoryPanel = new AppointmentListPanel(logic.getFilteredAppointmentHistoryList());
+        expiredRecordPanel = new ExpiredRecordPanel(logic.getFilteredExpiredRecordList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -158,17 +179,26 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * update DetailPanel for clicked insurance card
      */
-    public void updateInsuranceDetailPanel(Insurance insurance) {
+    public void updateInsuranceDetailPanel(Insurance insurance, int displayedIndex) {
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new InsuranceDetailCard(insurance, 1).getRoot());
+        detailPanel.getChildren().add(new InsuranceDetailCard(insurance, displayedIndex).getRoot());
     }
 
     /**
      * update DetailPanel for clicked insurance card
      */
-    public void updatePersonDetailPanel(Person person) {
+    public void updatePersonDetailPanel(Person person, int displayedIndex) {
+        ObservableList<Record> records = logic.getFilteredRecordList();
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new PersonDetailCard(person, 1).getRoot());
+        detailPanel.getChildren().add(new PersonDetailCard(person, records, displayedIndex, this).getRoot());
+    }
+
+    /**
+     * update DetailPanel for clicked record card
+     */
+    public void updateRecordDetailPanel(Record record) {
+        detailPanel.getChildren().clear();
+        detailPanel.getChildren().add(new RecordDetailCard(record, 1).getRoot());
     }
 
     /**
@@ -227,10 +257,17 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isListRecord()) {
                 //TODO: replace Panel with Records
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(recordListPanel.getRoot());
             }
 
-            if (commandResult.isListHistory()) {
-                //TODO: replace Panel with Hisotry
+            if (commandResult.isListAppointmentHistory()) {
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(appointmentHistoryPanel.getRoot());
+            }
+            if (commandResult.isListExpiredRecord()) {
+                objectListPanelPlaceholder.getChildren().clear();
+                objectListPanelPlaceholder.getChildren().add(expiredRecordPanel.getRoot());
             }
 
             if (commandResult.isShowHelp()) {

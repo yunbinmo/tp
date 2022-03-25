@@ -22,14 +22,25 @@ public class CommandResult {
     private final boolean insurance;
 
     /**
+     * The application should list appointment.
+     */
+    private final boolean appointment;
+
+
+    /**
      * The application should list record.
      */
     private final boolean record;
 
     /**
-     * The application should list history.
+     * The application should list appointment history.
      */
-    private final boolean history;
+    private final boolean appointmentHistory;
+
+    /**
+     * The application should list expired records.
+     */
+    private final boolean expiredRecord;
 
     /**
      * Help information should be shown to the user.
@@ -45,13 +56,15 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean person, boolean insurance,
-                         boolean record, boolean history, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean person, boolean insurance, boolean appointment, boolean record,
+                         boolean appointmentHistory, boolean expiredRecord, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.person = person;
         this.insurance = insurance;
+        this.appointment = appointment;
         this.record = record;
-        this.history = history;
+        this.appointmentHistory = appointmentHistory;
+        this.expiredRecord = expiredRecord;
         this.showHelp = showHelp;
         this.exit = exit;
     }
@@ -61,7 +74,8 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false, false, false);
+        this(feedbackToUser, false, false, false, false, false,
+                false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -76,14 +90,21 @@ public class CommandResult {
         return insurance;
     }
 
+    public boolean isListAppointment() {
+        return appointment;
+    }
+
     public boolean isListRecord() {
         return record;
     }
 
-    public boolean isListHistory() {
-        return history;
+    public boolean isListAppointmentHistory() {
+        return appointmentHistory;
     }
 
+    public boolean isListExpiredRecord() {
+        return expiredRecord;
+    }
 
     public boolean isShowHelp() {
         return showHelp;
@@ -106,17 +127,20 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && person == otherCommandResult.person
-                && insurance == otherCommandResult.insurance
-                && record == otherCommandResult.record
-                && history == otherCommandResult.showHelp
+                && (person == otherCommandResult.person
+                || insurance == otherCommandResult.insurance
+                || appointment == otherCommandResult.appointment
+                || record == otherCommandResult.record
+                || appointmentHistory == otherCommandResult.appointmentHistory
+                || expiredRecord == otherCommandResult.expiredRecord)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, person, insurance, record, history, showHelp, exit);
+        return Objects.hash(feedbackToUser, person, insurance, appointment,
+                record, appointmentHistory, expiredRecord, showHelp, exit);
     }
 
 }
