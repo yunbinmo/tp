@@ -162,7 +162,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ## Sort Data Entries Feature
 
-###Sort Records
+### Sort Records Feature
 
 #### Implementation
 
