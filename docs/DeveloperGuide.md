@@ -1,32 +1,50 @@
----
-layout: page
-title: Developer Guide
----
-* Table of Contents
-{:toc}
+# Mr. Agent - Developer Guide
+By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
+
+- [1. Acknowledgements](#Acknowledgements)
+- [2. Setting up](#Settingup)
+- [3. Design](#Design)
+  - [3.1. Architecture](#Architecture)
+  - [3.2. UI component](#UI)
+  - [3.3. Logic component](#Logic)
+  - [3.4. Model component](#Model)
+  - [3.5. Storage component](#Storage)
+  - [3.6. Common classes](#Common)
+- [4. Implementation](#Implementation)
+    - [4.1. Sort Records Feature](#SortRecords)
+    - [4.2. Sort Appointment Feature](#SortAppointments)
+    - [4.3. List history feature](#ListHistory)
+    - [4.4. Click event feature](#Click)
+    - [4.5. Add Records Feature](#AddRecord)
+- [5. Documentation](#Documentation)
+- [Appendix A: Product Scope](#scope)
+- [Appendix B: User Stories](#userStories)
+- [Appendix C: Use Cases](#usecases)
+- [Appendix D: Non Functional Requirements](#Non-Functional)
+- [Appendix E: Glossary](#Glossary)
+- [Appendix F: Instructions for Manual Testing](#manual)
+
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Acknowledgements**
+## <a id="Acknowledgements"></a>**1. Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3)
+* [se-edu/addressbook-level4](https://github.com/se-edu/addressbook-level4)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+## <a id="Settingup"></a>**2. Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## <a id="Settingup"></a>**3. Design**
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
-</div>
-
-### Architecture
+### <a id="Architecture"></a>3.1. Architecture
 
 <img src="images/Arch.png" width="280" />
 
@@ -67,7 +85,7 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-### UI component
+### <a id="UI"></a>3.2. UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
@@ -84,11 +102,11 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`
 * does not replace the right panel - `AppointmentListPanel` at any time  
-* based on the user commands, left panel changes accordingly. Eg. when list -r is entered, `RecordListPanel` will replace the existing panel
+* based on the user commands, left panel changes accordingly. Eg. when `list -r` is entered, `RecordListPanel` will replace the existing panel
 * listens for user click on `PersonListPanel` and will update the `ObjectDetailedPanel` to show respective client's information
 
 
-### Logic component
+### <a id="Logic"></a>3.3. Logic component
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
@@ -117,7 +135,7 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### <a id="Model"></a>3.4. Model component
 **API** : [`Model.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="1200" />
@@ -137,7 +155,7 @@ The `Model` component,
 </div>
 
 
-### Storage component
+### <a id="Storage"></a>3.5. Storage component
 
 **API** : [`Storage.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -150,19 +168,17 @@ The `Storage` component,
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 * note that for history related features will only read from existing storage and will not create new json file. For example, list expired record command will search in RecordBookStorage to find expired records.
 
-### Common classes
+### <a id="Common"></a>3.6. Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **4. Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
-## Sort Data Entries Feature
-
-### Sort Records Feature
+### <a id="SortRecords"></a>4.1. Sort Records Feature
 
 #### Implementation
 
@@ -199,7 +215,7 @@ Step 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableLi
   * Pros: The original order of record list is preserved.
   * Cons:  May have performance issues in terms of memory usage.
 
-### Sort Appointments Feature
+### <a id="SortAppointments"></a>4.2. Sort Appointments Feature
 
 #### Implementation
 
@@ -226,7 +242,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` with sorted `Observa
 
 Considerations for sort record command also apply here.
 
-## List history feature
+### <a id="ListHistory"></a>4.3. List history feature
 
 #### Implementation
 There are 2 commands in the history features, one for listing appointment history and one for expired records:
@@ -261,7 +277,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` with appointment his
 
 **Note**: how list expired records behaves and its design considerations are the same as list appointment history
 
-## Click event on objectListPlaceholder feature
+### <a id="Click"></a>4.4. Click event feature
 
 ![UIStructure](images/UIstructure.jpg)
 #### Implementation
@@ -299,7 +315,7 @@ Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail 
   * Cons: All information are squeezed together and the list can only contain a maximum of 3-5 cells.
   User needs to scroll down to check other items in the list.
 
-## Add Records Feature
+### <a id="AddRecord"></a>4.5. Add Records Feature
 
 #### Implementation
 
@@ -345,94 +361,9 @@ Important Features to take note:
     * Pros: Easier for user to view their input, reducing typing errors.
     * Cons: Less responsive as user needs to wait for the system to validate the information entered one at a time before prompting the user to key in the next information.
 
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## <a id="doc"></a>**5. Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -444,7 +375,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## **Appendix: Requirements**
 
-### Product scope
+### <a id="scope"></a>Product scope
 
 **Target user profile**:
 
@@ -458,7 +389,7 @@ _{Explain here how the data archiving feature will be implemented}_
 **Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
 
 
-### User stories
+### <a id="userStories"></a>User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -489,7 +420,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use cases
+### <a id="usecases"></a>Use cases
 
 (For all use cases below, the **System** is the `Mr Agent` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -589,7 +520,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
 *{More to be added}*
 
-### Non-Functional Requirements
+### <a id="Non-Functional"></a>Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
@@ -598,7 +529,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Glossary
+### <a id="Glossary"></a>Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Client**: Contacts that needs to be managed by user
@@ -610,7 +541,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## <a id="manual"></a>Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
