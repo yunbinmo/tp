@@ -100,9 +100,9 @@ How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to add a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+1. The result of the command execution is encapsulated as a `CommandResult` object which is returned from `Logic`.
 
-The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("delete 1")` API call.
+The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("delete -c 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete -c 1` Command](images/DeleteSequenceDiagram.png)
 
@@ -125,7 +125,7 @@ How the parsing works:
 
 The `Model` component,
 
-* stores different kinds of  address book data i.e., all `Person`, `Appointment`, `Record`, and `Insurance` objects (which are contained in a `UniquePersonList`, `UniqueAppointmentList`, `UniqueRecordList` and `UniqueInsuranceList` object respectively).
+* stores different kinds of address book data i.e., all `Person`, `Appointment`, `Record`, and `Insurance` objects (which are contained in a `UniquePersonList`, `UniqueAppointmentList`, `UniqueRecordList` and `UniqueInsuranceList` object respectively).
 * for example, stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The same mechanism applies to `Appointment`, `Record`, and `Insurance` objects as well.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -148,7 +148,7 @@ The `Storage` component,
 * can save address book data, insurance book data, record book data, appointment book data and user preference data in json format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage`, `InsuranceBookStorage`, `RecordBookStorage`, `AppointmentBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
-* note that for history related features will only read from existing storage and will not create new json file. For example, list expired reocrd command will search in RecordBookStorage to find expired records.
+* note that for history related features will only read from existing storage and will not create new json file. For example, list expired record command will search in RecordBookStorage to find expired records.
 
 ### Common classes
 
@@ -193,10 +193,10 @@ Step 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableLi
 
 * **Alternative 1 (current choice):** Saves the sorted records to RecordBook.
   * Pros: Easy to implement.
-  * Cons: The original order of record List is not preserved.
+  * Cons: The original order of record list is not preserved.
 
 * **Alternative 2:** Creates a temporary sorted records List.
-  * Pros: The original order of record List is preserved.
+  * Pros: The original order of record list is preserved.
   * Cons:  May have performance issues in terms of memory usage.
 
 ### Sort Appointments Feature
@@ -266,7 +266,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` with appointment his
 ![UIStructure](images/UIstructure.jpg)
 #### Implementation
 
-The `objectListPanel` will be updated according to user command. It support follwoing commands:
+The `objectListPanel` will be updated according to user command. It supports the following commands:
 
 * `list -c` — List all clients.
 * `list -i` — List all insurances.
@@ -286,18 +286,18 @@ Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail 
 
 #### Design considerations
 
-**Aspect: How to arrage all components:**
+**Aspect: How to arrange all components:**
 
 * **Alternative 1 (current choice):** Update the panel base on command and click event.
   * Pros:
       1. The UI looks more clean and clear.
-      2. The cells of `objectListPanel` only contians important information like client name and tags.
-  * Cons: User need to click on certain cell to look into deatils.
+      2. The cells of `objectListPanel` only contains important information like client name and tags.
+  * Cons: User needs to click on certain cell to look into details.
 
 * **Alternative 2:** Display everything with details in the `objectListPanel`.
-  * Pros: User no need to click to look into details.
-  * Cons: All information are squeeze together and the list can only contains maximum 3-5 cells.
-  User still to scroll down to check other items in the list.
+  * Pros: User does not need to click to look into details.
+  * Cons: All information are squeezed together and the list can only contain a maximum of 3-5 cells.
+  User needs to scroll down to check other items in the list.
 
 ## Add Records Feature
 
@@ -314,9 +314,9 @@ The relevant methods are:
    
 2. `AddCommand#execute(Model model)` --> Checks for duplication , validate each information and store to library
 
-Given below is an example usage scenerio and how the AddCommand behaves at each step.
+Given below is an example usage scenario and how the AddCommand behaves at each step.
 
-Step1. The user launches the application and execute `add -r c/1 i/1 sd/22-03-2022 ed/ 22-03-2032`
+Step1. The user launches the application and executes `add -r c/1 i/1 sd/22-03-2022 ed/ 22-03-2032`
 
 Step2. The `LogicManager` receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, 
 and determine that it is an Add Command.
@@ -327,22 +327,22 @@ Step4. Execution of Add would take place and the result will be updated in the f
 
 Important Features to take note:
 
-1. The `add record` command takes in the `ClientIndex` and `InsuranceIndex` but stores the the Client's `Name` and Insurance's `Title` in the RecordBook.
+1. The `add record` command takes in the `ClientIndex` and `InsuranceIndex` but stores the Client's `Name` and Insurance's `Title` in the RecordBook.
 2. The `sd/STARTDATE` entered must strictly be before the `sd/ENDDATE`, else `ParseException` will be thrown
 
 #### Design considerations
 
 **Aspect: How to add record to recordBook:**
 
-* **Alternative 1 (current choice):** User input all required information at once
+* **Alternative 1 (current choice):** User inputs all required information at once
     * Pros:
-        1. Faster response rate as system does not need to prompt and wait for the user to key in the information needed
-        2. User which are fast-typing can enter information at once, increasing efficiency
-    * Cons: User may make mistakes when keying in information more frequently
+        1. Faster response rate as system does not need to prompt and wait for the user to key in the information needed.
+        2. Users, who are fast-typers, can enter information at once, increasing efficiency.
+    * Cons: More prone to typo errors.
 
 
 * **Alternative 2:** System prompts and user input information one at a time
-    * Pros: Easier for user to view their input, reducing typing errors
+    * Pros: Easier for user to view their input, reducing typing errors.
     * Cons: Less responsive as user needs to wait for the system to validate the information entered one at a time before prompting the user to key in the next information.
 
 ### \[Proposed\] Undo/redo feature
