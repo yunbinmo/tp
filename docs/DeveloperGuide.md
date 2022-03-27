@@ -12,10 +12,11 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
   - [3.6. Common classes](#Common)
 - [4. Implementation](#Implementation)
     - [4.1. Sort Records Feature](#SortRecords)
-    - [4.2. Sort Appointment Feature](#SortAppointments)
+    - [4.2. Sort Appointments Feature](#SortAppointments)
     - [4.3. List history feature](#ListHistory)
     - [4.4. Click event feature](#Click)
     - [4.5. Add Records Feature](#AddRecord)
+    - [4.6. Find Appointments Feature](#FindAppointments)
 - [5. Documentation](#Documentation)
 - [Appendix A: Product Scope](#scope)
 - [Appendix B: User Stories](#userStories)
@@ -142,8 +143,7 @@ How the parsing works:
 
 
 The `Model` component,
-
-* stores different kinds of address book data i.e., all `Person`, `Appointment`, `Record`, and `Insurance` objects (which are contained in a `UniquePersonList`, `UniqueAppointmentList`, `UniqueRecordList` and `UniqueInsuranceList` object respectively).
+* stores different kinds of  address book data i.e., all `Person`, `Appointment`, `Record`, and `Insurance` objects (which are contained in an `UniquePersonList`, an `UniqueAppointmentList`, an `UniqueRecordList` and an `UniqueInsuranceList` respectively).
 * for example, stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. The same mechanism applies to `Appointment`, `Record`, and `Insurance` objects as well.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -222,9 +222,9 @@ Step 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableLi
 The Sort Appointments Feature is facilitated by `SortAppointmentCommand`. It extends `Command` with it own execution logic. It supports the following commands:
 
 * `sort -a a` — Sort the appointments by appointment time in ascending order.
-* `sort -a d` — Sort the records by appointment time in descending order.
+* `sort -a d` — Sort the appointments by appointment time in descending order.
 
-These commands will be parsed by the `AddressBookParser` and `SortAppointmentCommandPasrser`. `ModelManger` will override `sortAppointmentBook()` from `Model` which take in an `Comparator<Appointment>` object as input. Then `AppointmentBook` will sort the `UniqueAppointmentList` base on the Comparator given.
+These commands will be parsed by the `AddressBookParser` and `SortAppointmentCommandPasrser`. `ModelManger` will override `sortAppointmentBook()` from `Model` which takes in an `Comparator<Appointment>` object as input. Then `AppointmentBook` will sort the `UniqueAppointmentList` base on the Comparator given.
 
 Given below is an example usage scenario and how the Sort Appointments Command behaves at each step.
 
@@ -236,11 +236,21 @@ Step 3. `LogicManager` executes object of `SortAppointmentCommand`. `SortAppoint
 
 Step 4. `ModelManger` will invoke `AppointmentBook#sortAppointment()` with the comparator as input to sort the `UniqueAppointmentList`.
 
-Step 5. `MainWindow` will update the `AppointmentListPanel` with sorted `ObservableList` of records.
+Step 5. `MainWindow` will update the `AppointmentListPanel` with sorted `ObservableList` of appointments.
 
 #### Design considerations
 
-Considerations for sort record command also apply here.
+**Aspect: What is a good sorting order to use:**
+
+* **Alternative 1 (current choice):** Sorts solely based on appointment date and time.
+    * Pros: Makes more sense for the target user as appointments are time-sensitive.
+    * Cons: Users have limited option of sorting order.
+
+* **Alternative 2:** Sorting options for each attribute of appointment.
+    * Pros: More flexible sorting options.
+    * Cons:  Sorting by other attributes might not be useful and not even used frequently.
+
+Moreover, design considerations for sort record command also apply here.
 
 ### <a id="ListHistory"></a>4.3. List history feature
 
@@ -360,6 +370,42 @@ Important Features to take note:
 * **Alternative 2:** System prompts and user input information one at a time
     * Pros: Easier for user to view their input, reducing typing errors.
     * Cons: Less responsive as user needs to wait for the system to validate the information entered one at a time before prompting the user to key in the next information.
+
+### <a id="FindAppointments"></a>4.6. Find Appointments Feature
+
+#### Implementation
+
+The Find Appointments Feature will be facilitated by `FindAppointmentCommand` which extends `Command` with its own execution logic, the following command is supported:
+* find -a KEYWORD [MORE_KEYWORDS]
+
+This command will be parsed by the `AddressBookParser` and then handled by the `FindAppointmentCommandParser`, which then returns an executable FindAppointmentCommand if the input is valid.
+
+Given below is an example usage scenario and how the `FindAppointmentCommand` is processed at each step.
+
+Step 1. The user launches the application and executes `find -a Bugis`
+
+Step 2. The LogicManager receives the input from `UI#MainWindow` and calls `AddressBookParser#parseCommand()`, and determines that it is a command related to `Appointment`.
+
+Step 3. The inputs are directed to `AddressBookParser#parseAppointmentCommand` where the `FindAppointmentCommandParser` is invoked.
+
+Step 4. A `FindAppointmentCommand` object is returned to `LogicManager`, it then gets executed where `ModelManager` will update the `filteredAppointmentList` using the keyword.
+
+Step 5. `MainWindow` will update the `AppointmentListPanel` to show the appointments whose description contains the keyword.
+
+#### Design considerations
+
+**Aspect: How to filter the appointment list:**
+
+* **Alternative 1 (current choice):** Finds appointments by keyword
+    * Pros: The filtered result tends to be more relevant.
+    * Cons: User must enter the keyword correctly and completely to locate the desired appointments (partial words would not be matched).
+
+
+* **Alternative 2:** Finds appointment by partial/complete keyword or date and time
+    * Pros: More friendly to use when user cannot remember the full search term to use.
+    * Cons: 
+      * Filtering by date and time does not add much value since `sort -a` command already exists.
+      * User might get less relevant filtered result.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -535,6 +581,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Client**: Contacts that needs to be managed by user
 * **Insurance category:** Types of insurance, e.g. health, financial, life
 * **Insurance code:** Unique IDs attached to each insurance
+* **Appointment:** To-dos created by user, with description, data and time specified
 * **Record:** Insurances that are bought by the client. The insurances are saved as records in the database
 
 
