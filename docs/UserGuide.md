@@ -291,7 +291,7 @@ Format: `sort -a SORT_OPTION`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the Mr. Agent.
+Clears all entries from the Mr. Agent. Use with caution.
 
 Format: `clear`
 
