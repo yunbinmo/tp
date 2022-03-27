@@ -40,6 +40,30 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 ## Features (***todo***)
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the command format:**<br>
+
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+
+* Items in square brackets are optional.<br>
+  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+
+* Items with `…`​ after them can be used multiple times including zero times.<br>
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+
+* Parameters can be in any order.<br>
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+
+* If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.<br>
+  e.g. if you specify `p/12341234 p/56785678`, only `p/56785678` will be taken.
+
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) are not allowed.<br>
+
+</div>
+
+## Client Management
 ### Adding a client: `add -c`
 
 Adds a client to Mr. Agent.
@@ -109,6 +133,10 @@ Examples:
 * `find -c alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+
+
+## Insurance
+
 ### Adding an Insurance: `add -i`
 
 Adds a type of insurance 
@@ -142,6 +170,8 @@ Format: `find -i KEYWORD [MORE_KEYWORDS]`
 
 ### Editing an Insurance: `edit -i` (***coming soon***)
 
+## Record
+
 ### Adding a record to a client: `add -r`
 
 Adds an insurance to a client
@@ -163,7 +193,7 @@ Deletes the specified record from the Mr. Agent.
 
 Format: `delete -r RECORD_INDEX`
 
-## Listing all records : `list -r`
+### Listing all records : `list -r`
 
 Shows a list of all records in the Mr. Agent.
 
@@ -198,6 +228,8 @@ Format: `find -r KEYWORD [MORE_KEYWORDS]`
 Examples: 
 * `find -r health` 
 
+## History
+
 ### Listing appointment history: `list -h`
 
 Shows a list of all passed appointments.
@@ -212,6 +244,8 @@ Format: `list -e`
 
 ### List history by client (***coming soon***)
 
+## Appointment
+
 ### Adding an appointment: `add -a`
 
 Adds a new appointment with client
@@ -221,31 +255,31 @@ Format: `add -a d/DESCRIPTION dt/DATETIME`
 Examples:
 * `add -a d/Meet James dt/20-02-2022 18:00` 
 
-### Listing all appointment: `list -a`
+### Listing all appointments: `list -a`
 
 Lists all appointments with clients
 
 Format: `list -a`
 
-### Deleting a appointment: `delete -a`
+### Deleting an appointment: `delete -a`
 
 Deletes an unneeded appointment
 
 Format: `delete -a APPOINTMENT_INDEX`
 
-### Editing a appointment: `edit -a`
+### Editing an appointment: `edit -a`
 
 Edits an existing appointment
 
 Format: `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]` 
 
-### Locating appointment by keyword: `find -a`
+### Locating appointments by keyword: `find -a`
 
-Searches for an appointment using keyword(s)
+Find appointment(s) using keyword(s)
 
 Format: `find -a KEYWORD [MORE_KEYWORDS]`
 
-### Sort appointment: `sort -a`
+### Sort appointments: `sort -a`
 
 Sorts the appointment list ascendingly/descendingly by time
 
@@ -253,9 +287,11 @@ Format: `sort -a SORT_OPTION`
 * To sort ascendingly, replace SORT_OPTION with `a`
 * To sort descendingly, replace SORT_OPTION with `d`
 
+## Others
+
 ### Clearing all entries : `clear`
 
-Clears all entries from the Mr. Agent.
+Clears all entries from the Mr. Agent. Use with caution.
 
 Format: `clear`
 
@@ -278,11 +314,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action              | Format, Examples                                                                                                                                                         |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add a client**    | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Delete a client** | `delete -c INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit a client**   | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find a client**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
-| **List all client** | `list -c`                                                                                                                                                                |
+| Action                                            | Format, Examples                                                                                                                                                         |
+|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add a client**                                  | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Delete a client**                               | `delete -c INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit a client**                                 | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find a client**                                 | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
+| **List all client**                               | `list -c`                                                                                                                                                                |
+| **Add an appointment**                            | `add -a d/DESCRIPTION dt/DATETIME`                                                                                                                                       |
+| **List all appointments**                         | `list -a`                                                                                                                                                                |
+| **Delete an appointment**                         | `delete -a APPOINTMENT_INDEX`                                                                                                                                            |
+| **Edit an appointment**                           | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                                |
+| **Find appointment(s)**                           | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                                |
+| **Sort appointments in ascending order by time**  | `sort -a a`                                                                                                                                                              |
+| **Sort appointments in descending order by time** | `sort -a d`                                                                                                                                                              |
 
