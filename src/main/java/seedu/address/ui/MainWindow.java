@@ -256,7 +256,6 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isListRecord()) {
-                //TODO: replace Panel with Records
                 objectListPanelPlaceholder.getChildren().clear();
                 objectListPanelPlaceholder.getChildren().add(recordListPanel.getRoot());
             }

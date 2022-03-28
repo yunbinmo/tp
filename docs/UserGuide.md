@@ -1,16 +1,30 @@
----
-layout: page
-title: User Guide
----
+# Mr. Agent - User Guide
+By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
+
+- [1. Introduction](#Introduction)
+- [2. Quick Start](#Quick)
+- [3. Features](#Features)
+  - [3.1. Adding a client: `add -c`](#add-client)
+  - [3.2. Listing all persons : `list -c`](#list-client)
+  - [3.3. Deleting a client : `delete -c`](#delete-client)
+  - [3.4. Editing a client: `edit -c`](#edit-client)
+  - [3.5. Locating persons by name: `find -c`](#find-client)
+  - [3.6. Adding an insurance: `add -i`](#add-insurance)
+  - [3.7. Listing all insurances : `list -i`](#list-insurance)
+  - [3.8. Deleting an insurance : `delete -i`](#delete-insurance)
+  - [3.9. Editing an insurance : `edit -i`](#edit-insurance)
+  - [3.10. Finding an insurances: `find -i`](#find-insurance)
+- [4. FAQ](#FAQ)
+- [5. Command Summary](#Summary)
+
+--------------------------------------------------------------------------------------------------------------------
+## <a id="Introduction"></a>**1. Introduction**
 
 Mr. Agent is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
-* Table of Contents
-{:toc}
-
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start (***todo***)
+## <a id="Quick"></a>**2. Quick start**
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -38,7 +52,7 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features (***todo***)
+## <a id="Features"></a>**3. Features**
 
 <div markdown="block" class="alert alert-info">
 
@@ -64,27 +78,27 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 </div>
 
 ## Client Management
-### Adding a client: `add -c`
+### <a id="add-client"></a> 3.1. Adding a client: `add -c`
 
 Adds a client to Mr. Agent.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DESCRIPTION [t/TAG]…​`
+Format: `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DESCRIPTION [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A client can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01 d/come from China`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 d/like to coffee t/NUS`
+* `add -c n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01 d/come from China`
+* `add -c n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 d/like to coffee t/NUS`
 
-### Listing all client : `list -c`
+### <a id="list-client"></a> 3.2. Listing all client : `list -c`
 
 Shows a list of all clients in the Mr. Agent.
 
 Format: `list -c`
 
-### Deleting a client : `delete -c`
+###<a id="delete-client"></a> 3.3. Deleting a client : `delete -c`
 
 Deletes the specified client from the Mr. Agent.
 
@@ -98,7 +112,7 @@ Examples:
 * `list -c` followed by `delete -c 2` deletes the 2nd person in the Mr. Agent.
 * `find -c Junjie` followed by `delete -c 1` deletes the 1st person in the results of the `find` command.
 
-### Editing a client : `edit -c`
+###<a id="edit-client"></a> 3.4. Editing a client : `edit -c`
 
 Edits an existing client in the Mr. Agent.
 
@@ -112,10 +126,10 @@ Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DESCRIPTION] 
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the title of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit -c 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit -c 2 n/Betsy Crower t/` Edits the title of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating client by name: `find -c`
+### <a id="find-client"></a> 3.5. Locating client by name: `find -c`
 
 Finds client whose names contain any of the given keywords.
 
@@ -137,38 +151,50 @@ Examples:
 
 ## Insurance
 
-### Adding an Insurance: `add -i`
+### <a id="add-insurance"></a> 3.6. Adding an Insurance: `add -i`
 
 Adds a type of insurance 
 
-Format: `add -i KEYWORD`
+Format: `add -i  n/TITLE p/PRICE`
 
-* Adds a insurance type as specified in the `KEYWORD`
-* The keyword will be case insensitve
+* Adds an insurance type as specified in the `TITLE` with its `PRICE`
+* The price must be positive integer
 
-Examples: (***todo***)
-* `add -i hosipitalision`
-* `add -i terminal_illness`
+Examples:
+* `add -i t/hosipitalision p/1999`
+* `add -i t/terminal_illness p/200`
 
-### Listing all Insurance: `list -i`
+### <a id="list-insurance"></a> 3.7. Listing all Insurance: `list -i`
 
 Shows a list of all insurances in the Mr. Agent.
 
 Format: `list -i`
 
-### Deleting an Insurance: `delete -i`
+### <a id="delete-insurance"></a> 3.8. Deleting an Insurance: `delete -i`
 
 Deletes the specified insurance from the Mr. Agent.
 
 Format: `delete -i INDEX`
 
-### Locating insurance by title: `find -i`
+### <a id="edit-insurance"></a> 3.9. Editing an Insurance: `edit -i`
+
+Edits an existing insurance in the Mr. Agent.
+
+Format: `edit -i INDEX [t/TITLE] [p/PRICE]`
+
+* Edits the insurance at the specified `INDEX`. The index refers to the index number shown in the displayed insurance list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit -i 1 t/MOTOR INSURANCE V2` Edits the title of the 1st insurance to be `MOTOR INSURANCE V2`.
+*  `edit -i 2 p/1999` Edits the price of the 2nd insurance to be `1999`.
+
+### <a id="find-insurance"></a> 3.10. Locating insurance by title: `find -i`
 
 Finds insurance which titles contain any of the given keywords.
 
 Format: `find -i KEYWORD [MORE_KEYWORDS]`
-
-### Editing an Insurance: `edit -i` (***coming soon***)
 
 ## Record
 
@@ -227,6 +253,19 @@ Format: `find -r KEYWORD [MORE_KEYWORDS]`
 
 Examples: 
 * `find -r health` 
+
+### Sort records: `sort -r`
+
+Sorts the record list ascendingly/descendingly by start/emd date
+
+Format: `sort -r SORT_OPTION`
+* To sort ascendingly by start date, replace SORT_OPTION with `sa`
+* To sort descendingly by start date, replace SORT_OPTION with `sd`
+* To sort ascendingly by end date, replace SORT_OPTION with `ea`
+* To sort descendingly by end date, replace SORT_OPTION with `ed`
+
+Examples:
+*  `sort -r sa` Sorts the records list by start date in ascending order.
 
 ## History
 
@@ -305,27 +344,34 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## <a id="FAQ"></a>**4. FAQ**
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## <a id="Summary"></a>**5. Command Summary**
 
 | Action                                            | Format, Examples                                                                                                                                                         |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add a client**                                  | `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
 | **Delete a client**                               | `delete -c INDEX`<br> e.g., `delete 3`                                                                                                                                   |
 | **Edit a client**                                 | `edit -c INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find a client**                                 | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
+| **Find a client**                                 | `find -c KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                               |
 | **List all client**                               | `list -c`                                                                                                                                                                |
+| **Add an insurance**                            | `add -i t/TITLE p/price`                                                                                                                                       |
+| **List all insurance**                         | `list -i`                                                                                                                                                                |
+| **Delete an insurance**                         | `delete -i INSURANCE_INDEX`                                                                                                                                            |
+| **Edit an insurance**                           | `edit -i Insurance_INDEX [t/TITLE] [p/price]`                                                                                                                |
+| **Find insurance(s)**                           | `find -i KEYWORD [MORE_KEYWORDS]`                                                                                                                |
+| **Sort insurance in ascending order by start/end date**  | `sort -i sa`/ `sort -i ea`                                                                                                                                                |
+| **Sort insurance in descending order by start/end date** | `sort -i sd`/ `sort -i ed`                                                                                                                                                              |
 | **Add an appointment**                            | `add -a d/DESCRIPTION dt/DATETIME`                                                                                                                                       |
 | **List all appointments**                         | `list -a`                                                                                                                                                                |
 | **Delete an appointment**                         | `delete -a APPOINTMENT_INDEX`                                                                                                                                            |
 | **Edit an appointment**                           | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                                |
-| **Find appointment(s)**                           | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                                |
+| **Find appointment(s)**                           | `find -a KEYWORD [MORE_KEYWORDS]`                                                                                                             |
 | **Sort appointments in ascending order by time**  | `sort -a a`                                                                                                                                                              |
 | **Sort appointments in descending order by time** | `sort -a d`                                                                                                                                                              |
 
