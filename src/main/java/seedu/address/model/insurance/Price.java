@@ -10,8 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Price {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Price should only contain numbers, and it should be at least 2 digits long";
-    public static final String VALIDATION_REGEX = "\\d{2,}";
+            "Price should only contain positive integer, and it should be at least 1 digits long";
+    public static final String VALIDATION_REGEX = "\\d{1,}";
     public final String value;
 
     /**
