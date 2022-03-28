@@ -4,22 +4,34 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
 - [1. Introduction](#Introduction)
 - [2. Quick Start](#Quick)
 - [3. Features](#Features)
-  - [3.1. Adding a client: `add -c`](#add-client)
-  - [3.2. Listing all persons : `list -c`](#list-client)
-  - [3.3. Deleting a client : `delete -c`](#delete-client)
-  - [3.4. Editing a client: `edit -c`](#edit-client)
-  - [3.5. Locating persons by name: `find -c`](#find-client)
-  - [3.6. Adding an insurance: `add -i`](#add-insurance)
-  - [3.7. Listing all insurances : `list -i`](#list-insurance)
-  - [3.8. Deleting an insurance : `delete -i`](#delete-insurance)
-  - [3.9. Editing an insurance : `edit -i`](#edit-insurance)
-  - [3.10. Finding an insurances: `find -i`](#find-insurance)
-  - [3.11. Adding a record: `add -r`](#add-record)  
-  - [3.12 Deleting a record: `delete -r`](#delete-record)
-  - [3.13 Listing all records: `list -r`](#list-record)
-  - [3.14 Editing a record: `edit -r`](#edit-record)
-  - [3.15 Finding a record by insurance name: `find -r`](#find-record)
-  - [3.16 Sorting records: `sort -r`](#sort-record)  
+  - [3.1. Client Management](#client-management)
+    - [Adding a client: `add -c`](#add-client)
+    - [Listing all clients : `list -c`](#list-client)
+    - [Deleting a client : `delete -c`](#delete-client)
+    - [Editing a client: `edit -c`](#edit-client)
+    - [Locating clients by name: `find -c`](#find-client)
+  - [3.2. Insurance](#insurance)
+    - [Adding an insurance: `add -i`](#add-insurance)
+    - [Listing all insurances : `list -i`](#list-insurance)
+    - [Deleting an insurance : `delete -i`](#delete-insurance)
+    - [Editing an insurance : `edit -i`](#edit-insurance)
+    - [Finding an insurances: `find -i`](#find-insurance)
+  - [3.3. Record](#record)
+    - [Adding a record: `add -r`](#add-record)  
+    - [Deleting a record: `delete -r`](#delete-record)
+    - [Listing all records: `list -r`](#list-record)
+    - [Editing a record: `edit -r`](#edit-record)
+    - [Finding a record by insurance name: `find -r`](#find-record)
+    - [Sorting records: `sort -r`](#sort-record)  
+  - [3.4. History](#history)
+  - [3.5. Appointment](#appointment)
+    - [Adding an appointment: `add -a`](#add-appointment)
+    - [Listing all appointments: `list -a`](#list-appointment)
+    - [Deleting an appointment: `delete -a`](#delete-appointment)
+    - [Editing an appointment: `edit -a`](#edit-appointment)
+    - [Locating appointments by keyword: `find -a`](#find-appointment)
+    - [Sorting appointments: `sort -a`](#sort-appointment)
+  - [3.6. Others](#others)
 - [4. FAQ](#FAQ)
 - [5. Command Summary](#Summary)
 
@@ -58,7 +70,7 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 --------------------------------------------------------------------------------------------------------------------
 
-## <a id="Features"></a>**3. Features**
+## <a id="features"></a>**3. Features**
 
 <div markdown="block" class="alert alert-info">
 
@@ -83,7 +95,7 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 </div>
 
-## Client Management
+## <a id="client-management"></a>Client Management
 ### <a id="add-client"></a> 3.1. Adding a client: `add -c`
 
 Adds a client to Mr. Agent.
@@ -155,7 +167,7 @@ Examples:
 
 
 
-## Insurance
+## <a id="insurance"></a>Insurance
 
 ### <a id="add-insurance"></a> 3.6. Adding an Insurance: `add -i`
 
@@ -202,7 +214,7 @@ Finds insurance which titles contain any of the given keywords.
 
 Format: `find -i KEYWORD [MORE_KEYWORDS]`
 
-## Record
+## <a id="record"></a>Record
 ### <a id="add-record"></a> 3.11. Adding a Record: `add -r`
 
 Adds a record to a client
@@ -272,7 +284,7 @@ Format: `sort -r SORT_OPTION`
 Examples:
 *  `sort -r sa` Sorts the records list by start date in ascending order.
 
-## History
+## <a id="history"></a>History
 
 ### Listing appointment history: `list -h`
 
@@ -288,9 +300,9 @@ Format: `list -e`
 
 ### List history by client (***coming soon***)
 
-## Appointment
+## <a id="appointment"></a>Appointment
 
-### Adding an appointment: `add -a`
+### <a id="add-appointment"></a>Adding an appointment: `add -a`
 
 Adds a new appointment with client
 
@@ -299,31 +311,31 @@ Format: `add -a d/DESCRIPTION dt/DATETIME`
 Examples:
 * `add -a d/Meet James dt/20-02-2022 18:00` 
 
-### Listing all appointments: `list -a`
+### <a id="list-appointment"></a>Listing all appointments: `list -a`
 
 Lists all appointments with clients
 
 Format: `list -a`
 
-### Deleting an appointment: `delete -a`
+### <a id="delete-appointment"></a>Deleting an appointment: `delete -a`
 
 Deletes an unneeded appointment
 
 Format: `delete -a APPOINTMENT_INDEX`
 
-### Editing an appointment: `edit -a`
+### <a id="edit-appointment"></a>Editing an appointment: `edit -a`
 
 Edits an existing appointment
 
 Format: `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]` 
 
-### Locating appointments by keyword: `find -a`
+### <a id="find-appointment"></a>Locating appointments by keyword: `find -a`
 
 Find appointment(s) using keyword(s)
 
 Format: `find -a KEYWORD [MORE_KEYWORDS]`
 
-### Sort appointments: `sort -a`
+### <a id="sort-appointment"></a>Sorting appointments: `sort -a`
 
 Sorts the appointment list ascendingly/descendingly by time
 
@@ -331,7 +343,7 @@ Format: `sort -a SORT_OPTION`
 * To sort ascendingly, replace SORT_OPTION with `a`
 * To sort descendingly, replace SORT_OPTION with `d`
 
-## Others
+## <a id="others"></a>Others
 
 ### Clearing all entries : `clear`
 
