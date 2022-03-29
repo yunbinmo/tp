@@ -88,6 +88,8 @@ public class MainApp extends Application {
         this.logic = new LogicManager(this.model, this.storage);
 
         this.ui = new UiManager(this.logic);
+
+        logic.setUi((UiManager) this.ui);
     }
 
     /**

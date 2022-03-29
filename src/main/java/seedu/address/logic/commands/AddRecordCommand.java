@@ -31,11 +31,18 @@ public class AddRecordCommand extends Command {
     private final Record toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Record}
+     * Creates an AddCommand to add the specified {@code Record}.
      */
     public AddRecordCommand(Record record) {
         requireNonNull(record);
         toAdd = record;
+    }
+
+    /**
+     * Returns toAdd.
+     */
+    public Record getToAdd() {
+        return toAdd;
     }
 
     @Override

@@ -40,9 +40,11 @@ public class EditInsuranceCommand extends Command {
 
     private final Index index;
     private final EditInsuranceDescriptor editInsuranceDescriptor;
+    private Insurance editedInsurance;
+    private Insurance insuranceToEdit;
 
     /**
-     * @param index                of the insurance in the filtered insurance list to edit
+     * @param index                   of the insurance in the filtered insurance list to edit
      * @param editInsuranceDescriptor details to edit the insurance with
      */
     public EditInsuranceCommand(Index index, EditInsuranceDescriptor editInsuranceDescriptor) {
@@ -76,8 +78,8 @@ public class EditInsuranceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX);
         }
 
-        Insurance insuranceToEdit = lastShownList.get(index.getZeroBased());
-        Insurance editedInsurance = createEditedInsurance(insuranceToEdit, editInsuranceDescriptor);
+        insuranceToEdit = lastShownList.get(index.getZeroBased());
+        editedInsurance = createEditedInsurance(insuranceToEdit, editInsuranceDescriptor);
 
         if (!insuranceToEdit.isSameInsurance(editedInsurance) && model.hasInsurance(editedInsurance)) {
             throw new CommandException(MESSAGE_DUPLICATE_INSURANCE);
@@ -86,6 +88,27 @@ public class EditInsuranceCommand extends Command {
         model.setInsurance(insuranceToEdit, editedInsurance);
         model.updateFilteredInsuranceList(PREDICATE_SHOW_ALL_INSURANCES);
         return new CommandResult(String.format(MESSAGE_EDIT_INSURANCE_SUCCESS, editedInsurance));
+    }
+
+    /**
+     * Returns the edited Insurance.
+     */
+    public Insurance getEditedInsurance() {
+        return editedInsurance;
+    }
+
+    /**
+     * Returns the insuranceToEdit.
+     */
+    public Insurance getInsuranceToEdit() {
+        return insuranceToEdit;
+    }
+
+    /**
+     * Returns the edited Insurance index.
+     */
+    public int getEditedInsuranceIndex() {
+        return index.getOneBased();
     }
 
     @Override

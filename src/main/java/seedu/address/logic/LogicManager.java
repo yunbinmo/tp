@@ -7,8 +7,12 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.AddRecordCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.EditInsuranceCommand;
+import seedu.address.logic.commands.EditPersonCommand;
+import seedu.address.logic.commands.EditRecordCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -19,6 +23,7 @@ import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
 import seedu.address.storage.Storage;
+import seedu.address.ui.UiManager;
 
 /**
  * The main LogicManager of the app.
@@ -30,6 +35,7 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private UiManager ui;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -40,6 +46,14 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
+    /**
+     * Set Ui.
+     */
+    @Override
+    public void setUi(UiManager ui) {
+        this.ui = ui;
+    }
+
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -47,6 +61,7 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(model, commandText);
         commandResult = command.execute(model);
+        updateDetail(command);
 
         try {
             storage.saveAddressBook(model.getAddressBook());
@@ -58,6 +73,62 @@ public class LogicManager implements Logic {
         }
 
         return commandResult;
+    }
+
+    private void updateDetail(Command command) throws CommandException, ParseException {
+        if (command instanceof AddRecordCommand) {
+            AddRecordCommand addRecordCommand = (AddRecordCommand) command;
+            Record editedRecord = addRecordCommand.getToAdd();
+            int index = this.model.getFilteredRecordList().size();
+            this.ui.updateDetailPanel(editedRecord, index);
+        }
+
+        if (command instanceof EditInsuranceCommand) {
+            EditInsuranceCommand editInsuranceCommand = (EditInsuranceCommand) command;
+            Insurance editedInsurance = editInsuranceCommand.getEditedInsurance();
+            int index = editInsuranceCommand.getEditedInsuranceIndex();
+            this.ui.updateDetailPanel(editedInsurance, index);
+
+            ObservableList<Record> records = this.model.getFilteredRecordList();
+            for (int i = 0; i < records.size(); i++) {
+                Record record = records.get(i);
+                if (record.getInsuranceID().toString()
+                        .equals(editInsuranceCommand.getInsuranceToEdit().getTitle().toString())) {
+                    int recordIndex = i + 1;
+                    String text = "edit -r " + recordIndex + " i/" + index;
+                    Command updateCommand = addressBookParser.parseCommand(model, text);
+                    updateCommand.execute(model);
+                }
+            }
+        }
+
+        if (command instanceof EditRecordCommand) {
+            EditRecordCommand editRecordCommand = (EditRecordCommand) command;
+            Record editedRecord = editRecordCommand.getEditedRecord();
+            int index = editRecordCommand.getEditedRecordIndex();
+            this.ui.updateDetailPanel(editedRecord, index);
+        }
+
+        if (command instanceof EditPersonCommand) {
+            EditPersonCommand editPersonCommand = (EditPersonCommand) command;
+            Person editedPerson = editPersonCommand.getEditedPerson();
+            int index = editPersonCommand.getEditedPersonIndex();
+
+
+            ObservableList<Record> records = this.model.getFilteredRecordList();
+            for (int i = 0; i < records.size(); i++) {
+                Record record = records.get(i);
+                if (record.getClientID().toString()
+                        .equals(editPersonCommand.getPersonToEdit().getName().toString())) {
+                    int recordIndex = i + 1;
+                    String text = "edit -r " + recordIndex + " c/" + index;
+                    Command updateCommand = addressBookParser.parseCommand(model, text);
+                    updateCommand.execute(model);
+                }
+            }
+
+            this.ui.updateDetailPanel(editedPerson, index);
+        }
     }
 
     @Override

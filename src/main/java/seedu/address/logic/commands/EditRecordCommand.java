@@ -34,7 +34,7 @@ public class EditRecordCommand extends Command {
             + "[" + PREFIX_REC_INSURANCEID + "INSURANCE INDEX] "
             + "[" + PREFIX_REC_STARTDATE + "START DATE] "
             + "[" + PREFIX_REC_ENDDATE + "END DATE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "Example: " + COMMAND_WORD + "-r 1 "
             + PREFIX_REC_CLIENTID + "2 "
             + PREFIX_REC_INSURANCEID + "3 ";
 
@@ -46,6 +46,7 @@ public class EditRecordCommand extends Command {
 
     private final Index index;
     private final EditRecordDescriptor editRecordDescriptor;
+    private Record editedRecord;
 
     /**
      * @param index                of the record in the filtered record list to edit
@@ -89,7 +90,6 @@ public class EditRecordCommand extends Command {
             int clientIndex = Integer.parseInt(editRecordDescriptor.getClientID().get().toString());
 
             if (clientIndex >= lastPersonShownList.size()) {
-                System.out.println("person list: " + lastPersonShownList.size());
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
             ClientID clientIdName = new ClientID(lastPersonShownList.get(clientIndex - 1).getName().fullName, true);
@@ -100,7 +100,6 @@ public class EditRecordCommand extends Command {
             int recordIndex = Integer.parseInt(editRecordDescriptor.getInsuranceID().get().toString());
 
             if (recordIndex >= lastInsuranceList.size()) {
-                System.out.println("insurance list: " + lastInsuranceList.size());
                 throw new CommandException(Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX);
             }
 
@@ -122,7 +121,7 @@ public class EditRecordCommand extends Command {
         }
 
         Record recordToEdit = lastRecordShownList.get(index.getZeroBased());
-        Record editedRecord = createEditedRecord(recordToEdit, editRecordDescriptor);
+        editedRecord = createEditedRecord(recordToEdit, editRecordDescriptor);
 
         if (!recordToEdit.isSameRecord(editedRecord) && model.hasRecord(editedRecord)) {
             throw new CommandException(MESSAGE_DUPLICATE_RECORD);
@@ -132,6 +131,20 @@ public class EditRecordCommand extends Command {
         model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_RECORDS);
         return new CommandResult(String.format(MESSAGE_EDIT_RECORD_SUCCESS, editedRecord));
 
+    }
+
+    /**
+     * Returns the edited Person.
+     */
+    public Record getEditedRecord() {
+        return editedRecord;
+    }
+
+    /**
+     * Returns the edited Record index.
+     */
+    public int getEditedRecordIndex() {
+        return index.getOneBased();
     }
 
     @Override
