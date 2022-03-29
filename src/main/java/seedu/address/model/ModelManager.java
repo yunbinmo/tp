@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -63,7 +64,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredInsurances = new FilteredList<>(this.insuranceBook.getInsuranceList());
-        this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList());
+        this.filteredAppointments = new FilteredList<>(this.appointmentBook.getAppointmentList())
+                        .filtered(a -> a.getLocalDateTime().isAfter(LocalDateTime.now()));
         this.filteredAppointmentHistory = new FilteredList<>(this.appointmentHistoryBook.getAppointmentHistoryList());
         this.filteredRecords = new FilteredList<>(this.recordBook.getRecordList());
         this.filteredExpiredRecord = new FilteredList<>(this.expiredRecordBook.getExpiredRecordList());
@@ -301,7 +303,7 @@ public class ModelManager implements Model {
     @Override
     public void addAppointment(Appointment appointment) {
         this.appointmentBook.addAppointment(appointment);
-        this.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
+        this.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_VALID_APPOINTMENTS);
     }
 
     @Override

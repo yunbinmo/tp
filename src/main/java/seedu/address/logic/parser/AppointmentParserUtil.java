@@ -54,7 +54,7 @@ public class AppointmentParserUtil {
         requireNonNull(dateTime);
         String trimmedDateTime = dateTime.trim();
         LocalDateTime result = DateTime.validateDateTime(trimmedDateTime);
-        if (result == null) {
+        if (result == null || result.isBefore(LocalDateTime.now())) {
             throw new ParseException(DateTime.MESSAGE_CONSTRAINTS);
         }
         return new DateTime(result);

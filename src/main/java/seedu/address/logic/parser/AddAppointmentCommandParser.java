@@ -36,6 +36,7 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
                 AppointmentParserUtil.parseDescription(argMultimap.getValue(PREFIX_APPT_DESCRIPTION).get());
         DateTime dateTime = AppointmentParserUtil.parseDateTime(argMultimap.getValue(PREFIX_APPT_DATETIME).get());
 
+
         Appointment appointment = new Appointment(description, dateTime);
         return new AddAppointmentCommand(appointment);
     }

@@ -83,12 +83,12 @@ public class CommandTestUtil {
     public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_FELIX;
     public static final EditAppointmentCommand.EditAppointmentDescriptor DESC_TED;
     public static final String VALID_DESC_APPOINTMENT1 = "Meet James for health insurance";
-    public static final String VALID_DATETIME_APPOINTMENT1 = "02-03-2022 15:00";
+    public static final String VALID_DATETIME_APPOINTMENT1 = "02-03-2023 15:00";
     public static final String VALID_DESC_APPOINTMENT2 = "Meet Alice for car insurance";
-    public static final String VALID_DATETIME_APPOINTMENT2 = "02-04-2022 19:00";
+    public static final String VALID_DATETIME_APPOINTMENT2 = "02-04-2023 19:00";
     public static final String VALID_DESC_APPOINTMENT3 = "Meet Tom for insurance renewal";
-    public static final String VALID_DATETIME_APPOINTMENT3 = "04-03-2022 18:00";
-    public static final String INVALID_DATETIME_APPOINTMENT = " " + PREFIX_APPT_DATETIME + "04-03-2022 1800";
+    public static final String VALID_DATETIME_APPOINTMENT3 = "04-03-2023 18:00";
+    public static final String INVALID_DATETIME_APPOINTMENT = " " + PREFIX_APPT_DATETIME + "04-03-2023 1800";
     public static final String INVALID_DESC_APPOINTMENT = " " + PREFIX_APPT_DESCRIPTION + " ";
 
     public static final String DESC_APPOINTMENT1 = " " + PREFIX_APPT_DESCRIPTION + VALID_DESC_APPOINTMENT1;
