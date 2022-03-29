@@ -71,8 +71,15 @@ public class SampleDataUtil {
 
     public static Appointment[] getSampleAppointments() {
         return new Appointment[]{
-
-            new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2022 18:00"))
+            new Appointment(new Description("Meet James at UTown"), new DateTime("02-03-2023 18:00")),
+            new Appointment(new Description("Discuss contract details with Jessie"),
+                    new DateTime("23-04-2023 15:00")),
+            new Appointment(new Description("Sign contract with Tony at Bugis Junction"),
+                    new DateTime("12-05-2023 09:00")),
+            new Appointment(new Description("First meeting with Alex at office"),
+                    new DateTime("28-02-2023 10:00")),
+            new Appointment(new Description("Finalize paperwork with Sherlock"),
+                    new DateTime("22-03-2023 11:00"))
         };
     }
 

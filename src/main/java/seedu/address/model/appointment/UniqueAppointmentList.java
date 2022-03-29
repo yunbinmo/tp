@@ -111,6 +111,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Appointment> asUnmodifiableObservableList() {
+        // return this.internalUnmodifiableList.filtered(a -> a.getLocalDateTime().isAfter(LocalDateTime.now()));
         return this.internalUnmodifiableList;
     }
 
