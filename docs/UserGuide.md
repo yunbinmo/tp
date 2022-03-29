@@ -3,7 +3,7 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
 
 - [1. Introduction](#Introduction)
 - [2. Quick Start](#Quick)
-- [3. Features](#Features)
+- [3. Features](#features)
   - [3.1. Client Management](#client-management)
     - [Adding a client: `add -c`](#add-client)
     - [Listing all clients : `list -c`](#list-client)
@@ -97,8 +97,8 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 </div>
 
-## <a id="client-management"></a>Client Management
-### <a id="add-client"></a> 3.1. Adding a Client: `add -c`
+## <a id="client-management"></a>3.1. Client Management
+### <a id="add-client"></a>Adding a Client: `add -c`
 
 Adds a client to Mr. Agent.
 
@@ -112,13 +112,13 @@ Examples:
 * `add -c n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01 d/come from China`
 * `add -c n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 d/like to coffee t/NUS`
 
-### <a id="list-client"></a> 3.2. Listing all Client : `list -c`
+### <a id="list-client"></a>Listing all Client : `list -c`
 
 Shows a list of all clients in the Mr. Agent.
 
 Format: `list -c`
 
-###<a id="delete-client"></a> 3.3. Deleting a Client : `delete -c`
+### <a id="delete-client"></a>Deleting a Client : `delete -c`
 
 Deletes the specified client from the Mr. Agent.
 
@@ -132,7 +132,7 @@ Examples:
 * `list -c` followed by `delete -c 2` deletes the 2nd person in the Mr. Agent.
 * `find -c Junjie` followed by `delete -c 1` deletes the 1st person in the results of the `find` command.
 
-###<a id="edit-client"></a> 3.4. Editing a Client : `edit -c`
+### <a id="edit-client"></a>Editing a Client : `edit -c`
 
 Edits an existing client in the Mr. Agent.
 
@@ -149,7 +149,7 @@ Examples:
 *  `edit -c 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit -c 2 n/Betsy Crower t/` Edits the title of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### <a id="find-client"></a> 3.5. Locating Clients by Name: `find -c`
+### <a id="find-client"></a>Locating Clients by Name: `find -c`
 
 Finds client whose name contain any of the given keywords.
 
@@ -169,9 +169,9 @@ Examples:
 
 
 
-## <a id="insurance"></a>Insurance
+## <a id="insurance"></a>3.2. Insurance
 
-### <a id="add-insurance"></a> 3.6. Adding an insurance : `add -i`
+### <a id="add-insurance"></a>Adding an insurance : `add -i`
 
 Adds a new type of insurance to Mr. Agent.
 
@@ -184,19 +184,19 @@ Examples:
 * `add -i t/hosipitalision p/1999`
 * `add -i t/terminal_illness p/200`
 
-### <a id="list-insurance"></a> 3.7. Listing all insurances : `list -i`
+### <a id="list-insurance"></a>Listing all insurances : `list -i`
 
 Shows a list of all insurances in Mr. Agent.
 
 Format: `list -i`
 
-### <a id="delete-insurance"></a> 3.8. Deleting an insurance : `delete -i`
+### <a id="delete-insurance"></a>Deleting an insurance : `delete -i`
 
 Deletes the specified insurance from Mr. Agent.
 
 Format: `delete -i INDEX`
 
-### <a id="edit-insurance"></a> 3.9. Editing an insurance : `edit -i`
+### <a id="edit-insurance"></a>Editing an insurance : `edit -i`
 
 Edits an existing insurance in the Mr. Agent.
 
@@ -210,14 +210,14 @@ Examples:
 *  `edit -i 1 t/MOTOR INSURANCE V2` Edits the title of the 1st insurance to be `MOTOR INSURANCE V2`.
 *  `edit -i 2 p/1999` Edits the price of the 2nd insurance to be `1999`.
 
-### <a id="find-insurance"></a> 3.10. Locating insurances by title : `find -i`
+### <a id="find-insurance"></a>Locating insurances by title : `find -i`
 
 Finds insurance which titles contain any of the given keywords.
 
 Format: `find -i KEYWORD [MORE_KEYWORDS]`
 
-## <a id="record"></a>Record
-### <a id="add-record"></a> 3.11. Adding a record : `add -r`
+## <a id="record"></a>3.3. Record
+### <a id="add-record"></a>Adding a record : `add -r`
 
 Adds a record to a client.
 
@@ -232,19 +232,19 @@ Examples:
 * `add -r c/25 i/2  sd/21-11-2021 ed/21-11-2023`
 
 
-### <a id="delete-record"></a> 3.12. Deleting a record : `delete -r`
+### <a id="delete-record"></a>Deleting a record : `delete -r`
 
 Deletes the specified record from Mr. Agent.
 
 Format: `delete -r RECORD_INDEX`
 
-### <a id="list-record"></a> 3.13. Listing all records : `list -r`
+### <a id="list-record"></a>Listing all records : `list -r`
 
 Shows a list of all records in Mr. Agent.
 
 Format: `list -r`
 
-### <a id="edit-record"></a> 3.14. Editing a record : `edit -r` 
+### <a id="edit-record"></a>Editing a record : `edit -r` 
 
 Edits an existing record in Mr. Agent.
 
@@ -258,7 +258,7 @@ Format: `edit -r INDEX [c/CLIENT_INDEX] [i/INSURANCE_INDEX] [sd/START_DATE] [ed/
 Example:
 *  `edit -r 1 c/2 i/2` Edits the client and the type of insurance of the 1st record to be client 2 and insurance 2 respectively.
 
-### <a id="find-record"></a> 3.15. Finding records by keyword : `find -r`
+### <a id="find-record"></a>Finding records by keyword : `find -r`
 
 Find records which insurance name contains any of the given keyword.
 
@@ -273,7 +273,7 @@ Format: `find -r KEYWORD [MORE_KEYWORDS]`
 Example: 
 * `find -r health` 
 
-### <a id="sort-record"></a> 3.16. Sort records : `sort -r`
+### <a id="sort-record"></a>Sort records : `sort -r`
 
 Sorts the record list in ascending or descending order by start/end date.
 
@@ -286,7 +286,7 @@ Format: `sort -r SORT_OPTION`
 Example:
 *  `sort -r sa` Sorts the records list by start date in ascending order.
 
-## <a id="history"></a>History
+## <a id="history"></a>3.4. History
 
 ### <a id="list-appointmentHistory"></a>Listing appointment history : `list -h`
 
@@ -302,7 +302,7 @@ Format: `list -e`
 
 [//]: # (### List history by client &#40;***coming soon***&#41;)
 
-## <a id="appointment"></a>Appointment
+## <a id="appointment"></a>3.5. Appointment
 
 ### <a id="add-appointment"></a>Adding an appointment : `add -a`
 
@@ -345,7 +345,7 @@ Format: `sort -a SORT_OPTION`
 * To sort in ascending order, replace SORT_OPTION with `a`
 * To sort in descending order, replace SORT_OPTION with `d`
 
-## <a id="others"></a>Others
+## <a id="others"></a>3.6. Others
 
 ### Clearing all entries : `clear`
 
