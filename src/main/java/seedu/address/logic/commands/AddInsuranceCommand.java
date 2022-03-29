@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.insurance.Insurance;
-import seedu.address.model.record.Record;
 
 /**
  * Adds a insurance to the address book.
