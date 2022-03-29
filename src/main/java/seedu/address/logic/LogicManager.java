@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.AddInsuranceCommand;
+import seedu.address.logic.commands.AddPersonCommand;
 import seedu.address.logic.commands.AddRecordCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -81,6 +83,20 @@ public class LogicManager implements Logic {
             Record editedRecord = addRecordCommand.getToAdd();
             int index = this.model.getFilteredRecordList().size();
             this.ui.updateDetailPanel(editedRecord, index);
+        }
+
+        if (command instanceof AddInsuranceCommand) {
+            AddInsuranceCommand addInsuranceCommand = (AddInsuranceCommand) command;
+            Insurance editedInsurance = addInsuranceCommand.getToAdd();
+            int index = this.model.getFilteredInsuranceList().size();
+            this.ui.updateDetailPanel(editedInsurance, index);
+        }
+
+        if (command instanceof AddPersonCommand) {
+            AddPersonCommand addPersonCommand = (AddPersonCommand) command;
+            Person editedPerson = addPersonCommand.getToAdd();
+            int index = this.model.getFilteredPersonList().size();
+            this.ui.updateDetailPanel(editedPerson, index);
         }
 
         if (command instanceof EditInsuranceCommand) {
