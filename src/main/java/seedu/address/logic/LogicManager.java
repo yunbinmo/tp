@@ -78,6 +78,10 @@ public class LogicManager implements Logic {
     }
 
     private void updateDetail(Command command) throws CommandException, ParseException {
+        if (this.ui == null) {
+            return;
+        }
+
         if (command instanceof AddRecordCommand) {
             AddRecordCommand addRecordCommand = (AddRecordCommand) command;
             Record editedRecord = addRecordCommand.getToAdd();
