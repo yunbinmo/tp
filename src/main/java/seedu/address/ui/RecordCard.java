@@ -38,7 +38,7 @@ public class RecordCard extends UiPart<Region> {
         cardPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 System.out.println("Mouse pressed box " + displayedIndex);
-                main.updateRecordDetailPanel(record);
+                main.updateRecordDetailPanel(record, displayedIndex);
             }
         });
     }

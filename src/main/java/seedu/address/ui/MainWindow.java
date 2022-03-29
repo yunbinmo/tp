@@ -196,9 +196,9 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * update DetailPanel for clicked record card
      */
-    public void updateRecordDetailPanel(Record record) {
+    public void updateRecordDetailPanel(Record record, int displayedIndex) {
         detailPanel.getChildren().clear();
-        detailPanel.getChildren().add(new RecordDetailCard(record, 1).getRoot());
+        detailPanel.getChildren().add(new RecordDetailCard(record, displayedIndex).getRoot());
     }
 
     /**
