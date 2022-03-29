@@ -53,6 +53,8 @@ public class EditPersonCommand extends Command {
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
+    private Person editedPerson;
+    private Person personToEdit;
 
     /**
      * @param index                of the person in the filtered person list to edit
@@ -86,6 +88,27 @@ public class EditPersonCommand extends Command {
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, originalRecords);
     }
 
+    /**
+     * Returns the edited Person.
+     */
+    public Person getEditedPerson() {
+        return editedPerson;
+    }
+
+    /**
+     * Returns the edited Person index.
+     */
+    public int getEditedPersonIndex() {
+        return index.getOneBased();
+    }
+
+    /**
+     * Returns the insuranceToEdit.
+     */
+    public Person getPersonToEdit() {
+        return personToEdit;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -95,8 +118,8 @@ public class EditPersonCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        personToEdit = lastShownList.get(index.getZeroBased());
+        editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);

@@ -12,6 +12,7 @@ import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
+import seedu.address.ui.UiManager;
 
 /**
  * API of the Logic component
@@ -65,6 +66,11 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Set the Ui.
+     */
+    void setUi(UiManager ui);
 
 
 }

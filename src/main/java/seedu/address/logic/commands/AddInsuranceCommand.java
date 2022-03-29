@@ -37,6 +37,13 @@ public class AddInsuranceCommand extends Command {
         toAdd = insurance;
     }
 
+    /**
+     * Returns toAdd.
+     */
+    public Insurance getToAdd() {
+        return toAdd;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
