@@ -47,7 +47,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### <a id="Architecture"></a>3.1. Architecture
 
-<img src="images/Arch.png" width="280" />
+<img src="images/Arch.png" width="300" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -71,14 +71,14 @@ The rest of the App consists of four components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete -c 1`.
 
 <img src="images/ArchSequenceDiagram.png" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* Defines its *API* in an `interface` with the same name as the Component.
+* Implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -98,13 +98,13 @@ The `UI` component uses the JavaFx UI framework. The layout of these UI parts ar
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`
-* does not replace the right panel - `AppointmentListPanel` at any time  
-* based on the user commands, left panel changes accordingly. Eg. when `list -r` is entered, `RecordListPanel` will replace the existing panel
-* listens for user click on `PersonListPanel` and will update the `ObjectDetailedPanel` to show respective client's information
+* Executes user commands using the `Logic` component.
+* Listens for changes to `Model` data so that the UI can be updated with the modified data.
+* Keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+* Depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* Does not replace the right panel - `AppointmentListPanel` at any time.
+* Based on the user commands, left panel changes accordingly. e.g. when `list -r` is entered, `RecordListPanel` will replace the existing panel.
+* Listens for user click on `PersonListPanel` and will update the `ObjectDetailedPanel` to show respective client's information.
 
 
 ### <a id="Logic"></a>3.3. Logic component
@@ -118,7 +118,7 @@ Here's a (partial) class diagram of the `Logic` component:
 How the `Logic` component works:
 1. When `Logic` is called upon to execute a command, it uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `AddCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to add a person).
+1. The command can communicate with the `Model` when it is executed (e.g. to add a client).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned from `Logic`.
 
 The Sequence Diagram below illustrates the interactions within the `Logic` component for the `execute("delete -c 1")` API call.
@@ -616,7 +616,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting a client
 
-1. Deleting a person while all clients are being shown
+1. Deleting a client while all clients are being shown
 
    1. Prerequisites: List all clients using the `list` command. Multiple clients in the list.
 
@@ -624,7 +624,7 @@ testers are expected to do more *exploratory* testing.
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete -c 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete -c`, `delete -c x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
