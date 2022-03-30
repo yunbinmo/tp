@@ -6,7 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_UNEXPIRED_RECORD;
 import seedu.address.model.Model;
 
 /**
- * Lists all records in the address book to the user.
+ * Lists all records in the record book to the user.
  */
 public class ListRecordCommand extends Command {
     public static final String COMMAND_WORD = "list";

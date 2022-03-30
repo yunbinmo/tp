@@ -7,7 +7,7 @@ import seedu.address.model.Model;
 import seedu.address.model.record.RecordContainsKeywordsPredicate;
 
 /**
- * Finds and lists all records in address book whose insurance type contains any of the argument keywords.
+ * Finds and lists all records in record book whose insurance type contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindRecordCommand extends Command {

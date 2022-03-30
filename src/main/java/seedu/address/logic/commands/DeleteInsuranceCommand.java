@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.insurance.Insurance;
 
 /**
- * Deletes a insurance identified using it's displayed index from the insurance book.
+ * Deletes an insurance identified using it's displayed index from the insurance book.
  */
 public class DeleteInsuranceCommand extends Command {
 
