@@ -128,7 +128,7 @@ public class EditRecordCommand extends Command {
         }
 
         model.setRecord(recordToEdit, editedRecord);
-        model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_RECORDS);
+        model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_UNEXPIRED_RECORD);
         return new CommandResult(String.format(MESSAGE_EDIT_RECORD_SUCCESS, editedRecord));
 
     }
