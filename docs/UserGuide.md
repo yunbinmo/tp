@@ -127,6 +127,7 @@ Format: `delete -c INDEX`
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* Note that if a client is deleted, the records belong to this client will be deleted at same time.
 
 Examples:
 * `list -c` followed by `delete -c 2` deletes the 2nd person in the Mr. Agent.
@@ -193,6 +194,8 @@ Format: `list -i`
 ### <a id="delete-insurance"></a>Deleting an insurance : `delete -i`
 
 Deletes the specified insurance from Mr. Agent.
+
+Note that if an insurance is deleted, the records related to this insurance will not be deleted. 
 
 Format: `delete -i INDEX`
 
