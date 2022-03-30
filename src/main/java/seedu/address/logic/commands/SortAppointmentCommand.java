@@ -17,8 +17,8 @@ public class SortAppointmentCommand extends Command {
     public static final String SORT_DESCENDING = "d";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sorts all appointment in address book in ascending/descending order in terms of appointment time.\n"
-            + "Example: " + COMMAND_WORD + " -a a " +
-            "('a' for sort in ascending order, 'd' for sort in descending order)";
+            + "Example: " + COMMAND_WORD + " -a a "
+            + "('a' for sort in ascending order, 'd' for sort in descending order)";
     private final String sortOption;
 
     public SortAppointmentCommand(String sortOption) {
