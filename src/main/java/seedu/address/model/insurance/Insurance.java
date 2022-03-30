@@ -3,7 +3,7 @@ package seedu.address.model.insurance;
 import java.util.Objects;
 
 /**
- * Represents an insurance in Mr. Agent.
+ * Represents an Insurance in Mr. Agent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Insurance {

@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents an Record's associated date and time in the address book.
+ * Represents a Record's associated date and time in the record book.
  * Guarantees: immutable; is valid as declared in {@link #validateDateTime(String)}
  */
 public class EndDate {

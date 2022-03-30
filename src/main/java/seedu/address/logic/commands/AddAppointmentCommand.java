@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
 
 /**
- * Adds an appointment to the address book.
+ * Adds an appointment to Mr. Agent.
  */
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "add";

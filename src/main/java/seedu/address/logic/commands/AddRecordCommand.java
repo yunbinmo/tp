@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.record.Record;
 
 /**
- * Adds a record to the address book.
+ * Adds a record to Mr. Agent.
  */
 public class AddRecordCommand extends Command {
     public static final String COMMAND_WORD = "add";
