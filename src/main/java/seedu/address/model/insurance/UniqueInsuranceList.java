@@ -15,8 +15,9 @@ import seedu.address.model.insurance.exceptions.InsuranceNotFoundException;
  * A list of insurances that enforces uniqueness between its elements and does not allow nulls.
  * An insurance is considered unique by comparing using {@code Insurance#isSameInsurance(Insurance)}. As such, adding
  * and updating of insurances uses Insurance#isSameInsurance(Insurance) for equality so as to ensure that the insurance
- * being added or updated is unique in terms of identity in the UniqueInsuranceList. However, the removal of an insurance
- * uses Insurance#equals(Object) so as to ensure that the insurance with exactly the same fields will be removed.
+ * being added or updated is unique in terms of identity in the UniqueInsuranceList. However, the removal of an
+ * insurance uses Insurance#equals(Object) so as to ensure that the insurance with exactly the same fields will be
+ * removed.
  * <p>
  * Supports a minimal set of list operations.
  *
