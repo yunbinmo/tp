@@ -14,13 +14,13 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 
 /**
- * Parses input arguments and creates a new EditCommand object
+ * Parses input arguments and creates a new EditRecordCommand object
  */
 public class EditRecordCommandParser implements Parser<EditRecordCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditRecordCommand
+     * and returns an EditRecordCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */

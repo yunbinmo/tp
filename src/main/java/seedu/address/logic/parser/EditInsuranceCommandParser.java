@@ -11,13 +11,13 @@ import seedu.address.logic.commands.EditInsuranceCommand.EditInsuranceDescriptor
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new EditCommand object
+ * Parses input arguments and creates a new EditInsuranceCommand object
  */
 public class EditInsuranceCommandParser implements Parser<EditInsuranceCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditInsuranceCommand
+     * and returns an EditInsuranceCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
