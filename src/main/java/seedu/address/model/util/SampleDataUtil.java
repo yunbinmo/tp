@@ -47,7 +47,7 @@ public class SampleDataUtil {
             new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
                     new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
                     getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
+            new Person(new Name("Sherlock Holmes"), new Phone("92492021"), new Email("irfan@example.com"),
                     new Address("Blk 47 Tampines Street 20, #17-35"),
                     getTagSet("classmates")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
@@ -58,7 +58,7 @@ public class SampleDataUtil {
 
     public static Insurance[] getSampleInsurances() {
         return new Insurance[]{
-            new Insurance(new Title("MOTOR INSURANCE"), new Price("700")),
+            new Insurance(new Title("Motor Insurance"), new Price("700")),
             new Insurance(new Title("Home Contents Insurance"), new Price("1000")),
             new Insurance(new Title("Travel Insurance(Annual Cover)"), new Price("200")),
             new Insurance(new Title("Travel Insurance(Family Plan)"), new Price("7000")),
@@ -86,7 +86,15 @@ public class SampleDataUtil {
     public static Record[] getSampleRecords() {
         return new Record[]{
             new Record(new ClientID(("Alice Yeoh"), true), new InsuranceID(("Health"), true),
-                    new StartDate("02-03-2022"), new EndDate("02-03-2025"))
+                    new StartDate("02-01-2021"), new EndDate("01-03-2026")),
+            new Record(new ClientID(("Felix Chan"), true), new InsuranceID(("Heart"), true),
+                    new StartDate("02-02-2010"), new EndDate("09-03-2012")),
+            new Record(new ClientID(("Sherlock Holmes"), true), new InsuranceID(("Life"), true),
+                    new StartDate("02-05-2020"), new EndDate("22-03-2023")),
+            new Record(new ClientID(("James Goh"), true), new InsuranceID(("Brain"), true),
+                    new StartDate("12-03-2019"), new EndDate("02-07-2020")),
+            new Record(new ClientID(("Akai Shuichi"), true), new InsuranceID(("Car"), true),
+                    new StartDate("22-03-2020"), new EndDate("02-04-2025"))
         };
     }
 
