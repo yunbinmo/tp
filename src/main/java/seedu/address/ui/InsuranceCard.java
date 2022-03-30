@@ -9,7 +9,7 @@ import javafx.scene.layout.Region;
 import seedu.address.model.insurance.Insurance;
 
 /**
- * An UI component that displays information of a {@code Insurance}.
+ * A UI component that displays information of a {@code Insurance}.
  */
 public class InsuranceCard extends UiPart<Region> {
 

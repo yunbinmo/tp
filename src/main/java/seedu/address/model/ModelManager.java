@@ -24,7 +24,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the Mr. Agent data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -362,7 +362,7 @@ public class ModelManager implements Model {
     //=========== Filtered Appointment List Accessors ========================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Appointment} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
@@ -417,7 +417,7 @@ public class ModelManager implements Model {
     //=========== Filtered Insurance List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Insurance} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
@@ -487,11 +487,6 @@ public class ModelManager implements Model {
     public ReadOnlyExpiredRecordBook getExpiredRecordBook() {
         return this.expiredRecordBook;
     }
-
-    //    @Override
-    //    public boolean hasRecord(ExpiredRecord record) {
-    //        return false;
-    //    }
 
     @Override
     public ObservableList<Record> getFilteredExpiredRecordList() {
