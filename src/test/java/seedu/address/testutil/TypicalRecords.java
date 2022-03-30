@@ -13,15 +13,15 @@ import seedu.address.model.record.Record;
 public class TypicalRecords {
     public static final Record RECORD1 = new RecordBuilder()
             .withClientID("1")
-            .withInsuranceID("1").withStartDate("12-12-2000").withEndDate("12-12-2020").build();
+            .withInsuranceID("1").withStartDate("12-12-2021").withEndDate("12-12-2029").build();
 
     public static final Record RECORD2 = new RecordBuilder()
             .withClientID("2")
-            .withInsuranceID("2").withStartDate("03-12-2000").withEndDate("03-12-2020").build();
+            .withInsuranceID("2").withStartDate("03-12-2021").withEndDate("03-12-2029").build();
 
     public static final Record RECORD3 = new RecordBuilder()
             .withClientID("3")
-            .withInsuranceID("3").withStartDate("01-12-2000").withEndDate("01-12-2020").build();
+            .withInsuranceID("3").withStartDate("01-12-2021").withEndDate("01-12-2029").build();
 
     private TypicalRecords() {} // prevents instantiation
 
