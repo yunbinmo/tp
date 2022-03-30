@@ -143,7 +143,7 @@ public class EditInsuranceCommand extends Command {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditInsuranceDescriptor(EditInsuranceDescriptor toCopy) {
             setTitle(toCopy.title);

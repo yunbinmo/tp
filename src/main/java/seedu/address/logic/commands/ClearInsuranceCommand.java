@@ -6,7 +6,7 @@ import seedu.address.model.InsuranceBook;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * Clears the insurance list.
  */
 public class ClearInsuranceCommand extends Command {
 

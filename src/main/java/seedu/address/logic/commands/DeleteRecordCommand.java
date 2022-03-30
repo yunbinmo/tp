@@ -10,6 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.record.Record;
 
+/**
+ * Deletes a record identified using it's displayed index from the record book.
+ */
 public class DeleteRecordCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_DELETE_RECORD_SUCCESS = "Record deleted: %1$s";
@@ -19,7 +22,7 @@ public class DeleteRecordCommand extends Command {
     private final Index targetIndex;
 
     /**
-     * Creates an DeleteAppointmentCommand to delete the specified {@code Appointment}
+     * Creates an DeleteRecordCommand to delete the specified {@code Record}
      */
     public DeleteRecordCommand(Index targetIndex) {
         requireNonNull(targetIndex);

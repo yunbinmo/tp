@@ -10,7 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.record.Record;
 
-
+/**
+ * Adds a record to the address book.
+ */
 public class AddRecordCommand extends Command {
     public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an record to the record book. "

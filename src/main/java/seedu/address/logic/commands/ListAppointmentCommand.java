@@ -6,7 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_VALID_APPOINTMENTS;
 import seedu.address.model.Model;
 
 /**
- * Lists all appointments in the address book to the user.
+ * Lists all appointments in the appointment book to the user.
  */
 public class ListAppointmentCommand extends Command {
 

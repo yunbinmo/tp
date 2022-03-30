@@ -22,6 +22,9 @@ import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.StartDate;
 
+/**
+ * Edits the details of an existing record in the record book.
+ */
 public class EditRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
@@ -134,7 +137,7 @@ public class EditRecordCommand extends Command {
     }
 
     /**
-     * Returns the edited Person.
+     * Returns the edited Record.
      */
     public Record getEditedRecord() {
         return editedRecord;
@@ -168,7 +171,7 @@ public class EditRecordCommand extends Command {
 
     /**
      * Stores the details to edit the record with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * corresponding field value of the record.
      */
     public static class EditRecordDescriptor {
         private ClientID clientID;
@@ -182,7 +185,7 @@ public class EditRecordCommand extends Command {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditRecordDescriptor(EditRecordDescriptor toCopy) {
             setClientID(toCopy.clientID);

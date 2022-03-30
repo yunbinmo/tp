@@ -9,15 +9,15 @@ import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
 
 /**
- * Sorts all appointment in address book ascendingly/descendingly in terms of appointment time
+ * Sorts all appointments in appointment book in ascending or descending order in terms of appointment time
  */
 public class SortAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "sort";
     public static final String SORT_ASCENDING = "a";
     public static final String SORT_DESCENDING = "d";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Sorts all appointment in address book ascendingly/descendingly in terms of appointment time.\n"
-            + "Example: " + COMMAND_WORD + " -a a " + "('a' for sort ascendingly, 'd' for sort descendingly)";
+            + ": Sorts all appointment in address book in ascending/descending order in terms of appointment time.\n"
+            + "Example: " + COMMAND_WORD + " -a a " + "('a' for sort in ascending order, 'd' for sort in descending order)";
     private final String sortOption;
 
     public SortAppointmentCommand(String sortOption) {
