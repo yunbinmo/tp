@@ -88,7 +88,6 @@ public class AddRecordCommandParser {
 
         Record record = new Record(clientID, insuranceID, startDate, endDate);
         return new AddRecordCommand(record);
-
     }
 
 }

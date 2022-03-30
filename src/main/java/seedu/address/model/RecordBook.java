@@ -50,7 +50,7 @@ public class RecordBook implements ReadOnlyRecordBook {
     //// record-level operations
 
     /**
-     * Returns true if an record with the same identity as {@code record} exists in the record book.
+     * Returns true if a record with the same identity as {@code record} exists in the record book.
      */
     public boolean hasRecord(Record record) {
         requireNonNull(record);

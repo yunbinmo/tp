@@ -16,7 +16,7 @@ import seedu.address.model.record.exceptions.RecordNotFoundException;
  * A list of records that enforces uniqueness between its elements and does not allow nulls.
  * A record is considered unique by comparing using {@code Record#isSameRecord(Record)}. As such, adding
  * and updating of records uses Record#isSameRecord(Record) for equality so as to ensure that the record
- * being added or updated is unique in terms of identity in the UniqueRecordList. However, the removal of a insurance
+ * being added or updated is unique in terms of identity in the UniqueRecordList. However, the removal of an insurance
  * uses Record#equals(Object) so as to ensure that the insurance with exactly the same fields will be removed.
  * <p>
  * Supports a minimal set of list operations.

@@ -8,7 +8,7 @@ import seedu.address.model.appointment.Appointment;
  */
 public interface ReadOnlyAppointmentBook {
     /**
-     * Returns an unmodifiable view of the appointment list.
+     * Returns an unmodifiable view of the appointments list.
      * This list will not contain any duplicate appointments.
      */
     ObservableList<Appointment> getAppointmentList();

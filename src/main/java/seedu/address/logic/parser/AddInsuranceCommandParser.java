@@ -14,7 +14,7 @@ import seedu.address.model.insurance.Title;
 
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddInsuranceCommand object
  */
 public class AddInsuranceCommandParser implements Parser<AddInsuranceCommand> {
 

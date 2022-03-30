@@ -3,7 +3,7 @@ package seedu.address.model.record;
 import java.time.LocalDate;
 
 /**
- * Represents an Record in Mr. Agent.
+ * Represents a Record in Mr. Agent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Record {
@@ -58,7 +58,7 @@ public class Record {
     }
 
     /**
-     * Returns true if both record have the same clientID
+     * Returns true if both record have the same clientID.
      * This defines a weaker notion of equality between two records.
      */
     public boolean isSameRecord(Record otherRecord) {

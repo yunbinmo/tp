@@ -11,12 +11,12 @@ import seedu.address.logic.commands.EditAppointmentCommand.EditAppointmentDescri
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new EditCommand object
+ * Parses input arguments and creates a new EditAppointmentCommand object
  */
 public class EditAppointmentCommandParser implements Parser<EditAppointmentCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditAppointmentCommand
+     * and returns an EditAppointmentCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditAppointmentCommand parse(String args) throws ParseException {

@@ -37,7 +37,7 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
 
-    /** Returns an unmodifiable view of the filtered list of insurance */
+    /** Returns an unmodifiable view of the filtered list of insurances */
     ObservableList<Insurance> getFilteredInsuranceList();
 
     /** Returns an unmodifiable view of the filtered list of appointments */
