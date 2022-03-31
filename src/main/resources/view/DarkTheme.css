@@ -77,8 +77,8 @@
 }
 
 .split-pane:horizontal .split-pane-divider {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+    -fx-background-color: derive(#B98B73, 20%);
+    -fx-border-color: transparent transparent transparent #B98B73;
 }
 
 .split-pane {
@@ -309,6 +309,7 @@
 
 #cardPane {
     -fx-background-color: transparent;
+    -fx-border-color: #dcbea9
     -fx-border-width: 0;
 }
 
