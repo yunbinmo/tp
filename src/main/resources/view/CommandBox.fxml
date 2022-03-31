@@ -4,5 +4,5 @@
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane style="-fx-border-color: transparent;" styleClass="stack-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <TextField fx:id="commandTextField" onAction="#handleCommandEntered" promptText="Enter command here..." style="-fx-border-color: transparent;" />
+    <TextField fx:id="commandTextField" onAction="#handleCommandEntered" promptText="Enter command here..."  style="-fx-border-color: transparent; -fx-prompt-text-fill: #b98b73;" />
 </StackPane>
