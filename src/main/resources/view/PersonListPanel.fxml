@@ -4,5 +4,5 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox style="-fx-background-color: #dcbea9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <ListView fx:id="personListView" style="-fx-background-color: #dcbea9;" VBox.vgrow="ALWAYS" />
+  <ListView fx:id="personListView" style="-fx-background-color: #dcbea9; -fx-border-radius: 16; -fx-background-radius: 16;" VBox.vgrow="ALWAYS" />
 </VBox>

@@ -102,10 +102,15 @@
 
 .list-cell:filled:even {
     -fx-background-color: #dcbea9;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
 }
 
 .list-cell:filled:odd {
     -fx-background-color: #ffe7d6;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+
 }
 
 .list-cell:filled:selected {

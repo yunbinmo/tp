@@ -12,30 +12,30 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" style="-fx-background-color: #dcbea9; -fx-border-color: #dcbea9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox style="-fx-background-color: #dcbea9 #dcbea9; -fx-border-color: #dcbea9 #dcbea9;">
-        <SplitPane id="splitPane" fx:id="splitPane" style="-fx-border-color: #dcbea9#dcbea9;" VBox.vgrow="ALWAYS">
-            <GridPane style="-fx-background-color: #dcbea9; -fx-border-color: #dcbea9;" HBox.hgrow="ALWAYS">
+<HBox id="cardPane" fx:id="cardPane" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox style="-fx-background-color: #dcbea9; -fx-border-color: transparent;">
+        <SplitPane id="splitPane" fx:id="splitPane" style="-fx-border-color: transparent; -fx-background-color: #dcbea9#dcbea9;" VBox.vgrow="ALWAYS">
+            <GridPane style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
                 </columnConstraints>
-                <VBox alignment="CENTER_LEFT" style="-fx-background-color: #dcbea9; -fx-border-color: #dcbea9;" GridPane.columnIndex="0">
+                <VBox alignment="CENTER_LEFT" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" GridPane.columnIndex="0">
                     <padding>
                         <Insets bottom="5" left="15" right="5" top="5" />
                     </padding>
-                    <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-background-color: #dcbea9; -fx-border-color: #dcbea9;">
-                        <Label fx:id="id" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9;" styleClass="cell_big_label">
+                    <HBox alignment="CENTER_LEFT" spacing="5" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;">
+                        <Label fx:id="id" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9;" styleClass="cell_big_label">
                             <minWidth>
                                 <!-- Ensures that the label text is never truncated -->
                                 <Region fx:constant="USE_PREF_SIZE" />
                             </minWidth>
                         </Label>
-                        <Label fx:id="name" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9; -fx-font: 30 arial;" styleClass="cell_big_label" text="\$first" />
+                        <Label fx:id="name" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9; -fx-font: 30 arial;" styleClass="cell_big_label" text="\$first" />
                     </HBox>
-                    <FlowPane fx:id="tags" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9;" />
-                    <Label fx:id="phone" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$phone" />
-                    <Label fx:id="address" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$address" />
-                    <Label fx:id="email" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$email" />
+                    <FlowPane fx:id="tags" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9;" />
+                    <Label fx:id="phone" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$phone" />
+                    <Label fx:id="address" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$address" />
+                    <Label fx:id="email" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9; -fx-font: 15 arial;" styleClass="cell_small_label" text="\$email" />
                     <padding>
                         <Insets bottom="5" left="0" right="5" top="5" />
                     </padding>
@@ -54,7 +54,7 @@
             <padding>
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
-            <Label fx:id="record" style="-fx-text-fill: #FFFFFF; -fx-background-color: #dcbea9; -fx-font: 18 arial;" styleClass="cell_small_label" text="\$record" />
+            <Label fx:id="record" style="-fx-text-fill: #3a2c1d; -fx-background-color: #dcbea9; -fx-font: 18 arial;" styleClass="cell_small_label" text="\$record" />
             <StackPane fx:id="recordListPanelPlaceholder" style="-fx-background-color: #dcbea9;" VBox.vgrow="ALWAYS" />
         </VBox>
 
