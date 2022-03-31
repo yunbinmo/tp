@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Record's insurance id.
+ * Represents a Record's insurance id.
  * Guarantees: immutable; is valid as declared in {@link #isValidInsuranceID(String)}
  */
 public class InsuranceID {
@@ -44,7 +44,7 @@ public class InsuranceID {
     }
 
     /**
-     * Returns true if a given insurance id is more than zero
+     * Returns true if a given insurance id is more than zero.
      */
     public static boolean isNotZeroInsuranceID(String test) {
 

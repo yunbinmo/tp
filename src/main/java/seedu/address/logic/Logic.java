@@ -12,6 +12,7 @@ import seedu.address.model.appointment.Appointment;
 import seedu.address.model.insurance.Insurance;
 import seedu.address.model.person.Person;
 import seedu.address.model.record.Record;
+import seedu.address.ui.UiManager;
 
 /**
  * API of the Logic component
@@ -36,7 +37,7 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
 
-    /** Returns an unmodifiable view of the filtered list of insurance */
+    /** Returns an unmodifiable view of the filtered list of insurances */
     ObservableList<Insurance> getFilteredInsuranceList();
 
     /** Returns an unmodifiable view of the filtered list of appointments */
@@ -65,6 +66,11 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Set the Ui.
+     */
+    void setUi(UiManager ui);
 
 
 }

@@ -14,10 +14,10 @@ import seedu.address.model.appointment.exceptions.DuplicateAppointmentException;
 
 /**
  * A list of appointments that enforces uniqueness between its elements and does not allow nulls.
- * A appointments is considered unique by comparing using {@code Appointment#isSameAppointment(Appointment)}. As such,
- * adding and updating of appointments uses Appointment#isSameAppointment(Appointment) for equality so as to ensure
+ * An appointment is considered unique by comparing using {@code Appointment#isSameAppointment(Appointment)}. As such,
+ * adding and updating of appointments uses Appointment#isSameAppointment(Appointment) for equality to ensure
  * that the appointment being added or updated is unique in terms of identity in the UniqueAppointmentList.
- * However, the removal of an appointment uses Appointment#equals(Object) so as to ensure that the insurance
+ * However, the removal of an appointment uses Appointment#equals(Object) to ensure that the insurance
  * with exactly the same fields will be removed.
  * <p>
  * Supports a minimal set of list operations.
@@ -83,7 +83,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
-     * Sorts the appointment list
+     * Sorts the appointment list.
      */
     public void sort(Comparator<Appointment> comparator) {
         FXCollections.sort(this.internalList, comparator);
@@ -111,6 +111,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Appointment> asUnmodifiableObservableList() {
+        // return this.internalUnmodifiableList.filtered(a -> a.getLocalDateTime().isAfter(LocalDateTime.now()));
         return this.internalUnmodifiableList;
     }
 

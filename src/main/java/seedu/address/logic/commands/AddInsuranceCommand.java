@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 import seedu.address.model.insurance.Insurance;
 
 /**
- * Adds a insurance to the address book.
+ * Adds an insurance to Mr. Agent.
  */
 public class AddInsuranceCommand extends Command {
 
@@ -35,6 +35,13 @@ public class AddInsuranceCommand extends Command {
     public AddInsuranceCommand(Insurance insurance) {
         requireNonNull(insurance);
         toAdd = insurance;
+    }
+
+    /**
+     * Returns toAdd.
+     */
+    public Insurance getToAdd() {
+        return toAdd;
     }
 
     @Override

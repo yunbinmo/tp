@@ -5,7 +5,9 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.model.Model;
 import seedu.address.model.RecordBook;
 
-
+/**
+ * Clears the record list.
+ */
 public class ClearRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";

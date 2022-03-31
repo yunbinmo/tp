@@ -3,7 +3,7 @@ package seedu.address.model.record;
 import java.time.LocalDate;
 
 /**
- * Represents an Record in Mr. Agent.
+ * Represents a Record in Mr. Agent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Record {
@@ -58,7 +58,7 @@ public class Record {
     }
 
     /**
-     * Returns true if both record have the same clientID
+     * Returns true if both record have the same clientID.
      * This defines a weaker notion of equality between two records.
      */
     public boolean isSameRecord(Record otherRecord) {
@@ -69,7 +69,8 @@ public class Record {
         return otherRecord != null
                 && otherRecord.getClientID().equals(this.clientID)
                 && otherRecord.getInsuranceID().equals(this.insuranceID)
-                && otherRecord.getStartDate().getStartDate().isBefore(this.getEndDate().getEndDate());
+                && otherRecord.getStartLocalDate().isBefore(this.getEndLocalDate())
+                && otherRecord.getEndLocalDate().isAfter(this.getEndLocalDate());
     }
 
 

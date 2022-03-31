@@ -22,6 +22,9 @@ import seedu.address.model.record.InsuranceID;
 import seedu.address.model.record.Record;
 import seedu.address.model.record.StartDate;
 
+/**
+ * Edits the details of an existing record in the record book.
+ */
 public class EditRecordCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
@@ -34,7 +37,7 @@ public class EditRecordCommand extends Command {
             + "[" + PREFIX_REC_INSURANCEID + "INSURANCE INDEX] "
             + "[" + PREFIX_REC_STARTDATE + "START DATE] "
             + "[" + PREFIX_REC_ENDDATE + "END DATE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "Example: " + COMMAND_WORD + "-r 1 "
             + PREFIX_REC_CLIENTID + "2 "
             + PREFIX_REC_INSURANCEID + "3 ";
 
@@ -46,6 +49,7 @@ public class EditRecordCommand extends Command {
 
     private final Index index;
     private final EditRecordDescriptor editRecordDescriptor;
+    private Record editedRecord;
 
     /**
      * @param index                of the record in the filtered record list to edit
@@ -89,7 +93,6 @@ public class EditRecordCommand extends Command {
             int clientIndex = Integer.parseInt(editRecordDescriptor.getClientID().get().toString());
 
             if (clientIndex >= lastPersonShownList.size()) {
-                System.out.println("person list: " + lastPersonShownList.size());
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
             ClientID clientIdName = new ClientID(lastPersonShownList.get(clientIndex - 1).getName().fullName, true);
@@ -100,7 +103,6 @@ public class EditRecordCommand extends Command {
             int recordIndex = Integer.parseInt(editRecordDescriptor.getInsuranceID().get().toString());
 
             if (recordIndex >= lastInsuranceList.size()) {
-                System.out.println("insurance list: " + lastInsuranceList.size());
                 throw new CommandException(Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX);
             }
 
@@ -122,16 +124,30 @@ public class EditRecordCommand extends Command {
         }
 
         Record recordToEdit = lastRecordShownList.get(index.getZeroBased());
-        Record editedRecord = createEditedRecord(recordToEdit, editRecordDescriptor);
+        editedRecord = createEditedRecord(recordToEdit, editRecordDescriptor);
 
         if (!recordToEdit.isSameRecord(editedRecord) && model.hasRecord(editedRecord)) {
             throw new CommandException(MESSAGE_DUPLICATE_RECORD);
         }
 
         model.setRecord(recordToEdit, editedRecord);
-        model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_RECORDS);
+        model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_UNEXPIRED_RECORD);
         return new CommandResult(String.format(MESSAGE_EDIT_RECORD_SUCCESS, editedRecord));
 
+    }
+
+    /**
+     * Returns the edited Record.
+     */
+    public Record getEditedRecord() {
+        return editedRecord;
+    }
+
+    /**
+     * Returns the edited Record index.
+     */
+    public int getEditedRecordIndex() {
+        return index.getOneBased();
     }
 
     @Override
@@ -155,7 +171,7 @@ public class EditRecordCommand extends Command {
 
     /**
      * Stores the details to edit the record with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * corresponding field value of the record.
      */
     public static class EditRecordDescriptor {
         private ClientID clientID;
@@ -169,7 +185,7 @@ public class EditRecordCommand extends Command {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * A defensive copy of {@code toCopy} is used internally.
          */
         public EditRecordDescriptor(EditRecordDescriptor toCopy) {
             setClientID(toCopy.clientID);

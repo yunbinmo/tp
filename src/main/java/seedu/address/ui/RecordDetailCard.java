@@ -27,8 +27,8 @@ public class RecordDetailCard extends UiPart<Region> {
     public RecordDetailCard(Record record, int displayedIndex) {
         super(FXML);
         this.record = record;
-        id.setText(displayedIndex + ". " + "Record ID is " + record.getRecordId());
-        title.setText("Client " + record.getClientID() + " bought insurance " + record.getInsuranceID());
+        id.setText(displayedIndex + ". " + record.getClientID());
+        title.setText("Insurance type: " + record.getInsuranceID());
         datetime.setText("Valid from " + record.getStartDate() + " to " + record.getEndDate());
 
     }

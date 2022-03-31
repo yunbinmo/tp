@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Record's client id.
+ * Represents a Record's clientID.
  * Guarantees: immutable; is valid as declared in {@link #isValidClientID(String)}
  */
 public class ClientID {
@@ -17,7 +17,7 @@ public class ClientID {
     /**
      * Constructs a {@code ClientId}.
      *
-     * @param clientID A valid price number.
+     * @param clientID A valid clientID.
      */
     public ClientID(String clientID) {
         requireNonNull(clientID);
@@ -37,14 +37,14 @@ public class ClientID {
     }
 
     /**
-     * Returns true if a given string is a valid Client id.
+     * Returns true if a given string is a valid clientID.
      */
     public static boolean isValidClientID(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     /**
-     * Returns true if a client Id is more than zero
+     * Returns true if a clientID is more than zero
      */
     public static boolean isNotZeroClientID(String test) {
 

@@ -1,6 +1,8 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
@@ -32,6 +34,11 @@ public interface Model {
      */
     Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
 
+    /**
+     * {@code Predicate} that shows only appointments not yet expire
+     */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_VALID_APPOINTMENTS =
+        a -> a.getLocalDateTime().isAfter(LocalDateTime.now());
 
     /**
      * {@code Predicate} that always evaluate to true
@@ -42,6 +49,12 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<ExpiredRecord> PREDICATE_SHOW_ALL_EXPIRED_RECORD = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Record> PREDICATE_SHOW_ALL_UNEXPIRED_RECORD =
+        r -> r.getEndLocalDate().isAfter(LocalDate.now());
 
     /**
      * {@code Predicate} that always evaluate to true

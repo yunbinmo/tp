@@ -6,7 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY;
 import seedu.address.model.Model;
 
 /**
- * Lists all history in the address book to the user.
+ * Lists all appointment history in the appointment book to the user.
  */
 public class ListAppointmentHistoryCommand extends Command {
 

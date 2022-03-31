@@ -32,13 +32,13 @@ public class RecordCard extends UiPart<Region> {
     public RecordCard(Record record, int displayedIndex, MainWindow main) {
         super(FXML);
         this.record = record;
-        id.setText(displayedIndex + ". " + " client id: " + record.getClientID());
-        title.setText("Insurance type: " + record.getInsuranceID());
+        id.setText(displayedIndex + ". " + record.getClientID());
+        title.setText(" - " + record.getInsuranceID());
 
         cardPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 System.out.println("Mouse pressed box " + displayedIndex);
-                main.updateRecordDetailPanel(record);
+                main.updateRecordDetailPanel(record, displayedIndex);
             }
         });
     }

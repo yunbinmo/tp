@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 import seedu.address.model.record.Record;
 
 /**
- * Sorts all appointment in address book ascendingly/descendingly in terms of appointment time
+ * Sorts all record in record book ascending/descending order in terms of start/end date
  */
 public class SortRecordCommand extends Command {
     public static final String COMMAND_WORD = "sort";
@@ -19,9 +19,9 @@ public class SortRecordCommand extends Command {
     public static final String SORT_END_DATE_DES = "ed";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Sorts all record in record book ascendingly/descendingly in terms of start date/end date.\n"
-            + "Example: " + COMMAND_WORD + " -r sa " + "('sa' for sort start date ascendingly). \n"
-            + COMMAND_WORD + " -r ed " + "('ed' for sort end date descendingly). \n";
+            + ": Sorts all record in record book in ascending or descending order in terms of start/end date.\n"
+            + "Example: " + COMMAND_WORD + " -r sa " + "('sa' for sort start date in ascending order). \n"
+            + COMMAND_WORD + " -r ed " + "('ed' for sort end date in descending order). \n";
 
     private final String sortOption;
 

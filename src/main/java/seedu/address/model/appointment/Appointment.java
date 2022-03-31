@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Represents an appointment in Mr. Agent.
+ * Represents an Appointment in Mr. Agent.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment {

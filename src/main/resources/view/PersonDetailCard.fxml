@@ -58,6 +58,5 @@
             <StackPane fx:id="recordListPanelPlaceholder" style="-fx-background-color: #dcbea9;" VBox.vgrow="ALWAYS" />
         </VBox>
 
-
     </VBox>
 </HBox>

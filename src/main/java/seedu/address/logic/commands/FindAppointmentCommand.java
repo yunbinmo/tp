@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.appointment.DescriptionContainsKeywordsPredicate;
 
 /**
- * Finds and lists all appointment in address book whose description contains any of the argument keywords.
+ * Finds and lists all appointment in appointment book whose description contains any of the argument keywords.
  * Keyword matching is case in-sensitive.
  */
 public class FindAppointmentCommand extends Command {

@@ -7,13 +7,13 @@ import seedu.address.logic.commands.DeleteInsuranceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new DeleteInsuranceCommand object
  */
 public class DeleteInsuranceCommandParser implements Parser<DeleteInsuranceCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns a DeleteCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the DeleteInsuranceCommand
+     * and returns a DeleteInsuranceCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteInsuranceCommand parse(String args) throws ParseException {

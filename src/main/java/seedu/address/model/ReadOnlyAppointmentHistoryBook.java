@@ -8,9 +8,8 @@ import seedu.address.model.appointment.Appointment;
  */
 public interface ReadOnlyAppointmentHistoryBook {
     /**
-     * Returns an unmodifiable view of the history list.
-     * This list will not contain any duplicate history.
-     * @return
+     * Returns an unmodifiable view of the appointment history list.
+     * This list will not contain any duplicate appointment history.
      */
     ObservableList<Appointment> getAppointmentHistoryList();
 }

@@ -13,7 +13,8 @@ import java.time.format.DateTimeParseException;
  */
 public class DateTime {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date and time should be in this format: dd-MM-yyyy HH:mm, e.g. 02-03-2022 18:00";
+            "Date and time should not be a past time"
+                    + "and should be in this format: dd-MM-yyyy HH:mm, e.g. 02-03-2022 18:00";
 
     private static final String DATE_TIME_FORMAT = "dd-MM-yyyy HH:mm";
 

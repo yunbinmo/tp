@@ -56,7 +56,7 @@ public class InsuranceBook implements ReadOnlyInsuranceBook {
     //// insurance-level operations
 
     /**
-     * Returns true if a insurance with the same identity as {@code insurance} exists in the insurance book.
+     * Returns true if n  insurance with the same identity as {@code insurance} exists in the insurance book.
      */
     public boolean hasInsurance(Insurance insurance) {
         requireNonNull(insurance);

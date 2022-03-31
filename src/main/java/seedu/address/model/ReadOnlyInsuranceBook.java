@@ -8,8 +8,8 @@ import seedu.address.model.insurance.Insurance;
  */
 public interface ReadOnlyInsuranceBook {
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the insurances list.
+     * This list will not contain any duplicate insurances.
      */
     ObservableList<Insurance> getInsuranceList();
 }
