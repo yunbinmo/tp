@@ -17,7 +17,7 @@
         <SplitPane id="splitPane" fx:id="splitPane" style="-fx-border-color: transparent; -fx-background-color: #dcbea9#dcbea9;" VBox.vgrow="ALWAYS">
             <GridPane style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="3000" />
                 </columnConstraints>
                 <VBox alignment="CENTER_LEFT" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" GridPane.columnIndex="0">
                     <padding>
