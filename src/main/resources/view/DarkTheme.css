@@ -1,6 +1,6 @@
 .background {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    background-color: #383838; /* Used in the default.html file */
+    -fx-background-color: derive(#dcbea9, 20%);
+    background-color: #dcbea9; /* Used in the default.html file */
 }
 
 .label {
@@ -42,7 +42,7 @@
 .table-view {
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #dcbea9;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -78,19 +78,19 @@
 
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: derive(#B98B73, 20%);
-    -fx-border-color: transparent transparent transparent #B98B73;
+    -fx-border-color: #B98B73;
 }
 
 .split-pane {
     -fx-border-radius: 1;
     -fx-border-width: 1;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#dcbea9, 20%);
 }
 
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#dcbea9, 20%);
 }
 
 .list-cell {
@@ -100,19 +100,20 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #3c3e3f;
+    -fx-background-color: #dcbea9;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #515658;
+    -fx-background-color: #ffe7d6;
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #424d5f;
+    -fx-border-color: #B98B73;
+    -fx-border-width: 1;
 }
 
 .list-cell:filled:selected #cardPane {
-    -fx-border-color: #3e7b91;
+    -fx-border-color: #B98B73;
     -fx-border-width: 1;
 }
 
@@ -133,17 +134,17 @@
 }
 
 .stack-pane {
-     -fx-background-color: derive(#1d1d1d, 20%);
+     -fx-background-color: derive(#dcbea9, 20%);
 }
 
 .pane-with-border {
-     -fx-background-color: derive(#1d1d1d, 20%);
-     -fx-border-color: derive(#1d1d1d, 10%);
+     -fx-background-color: derive(#dcbea9, 20%);
+     -fx-border-color: derive(#dcbea9, 10%);
      -fx-border-top-width: 1px;
 }
 
 .status-bar {
-    -fx-background-color: derive(#1d1d1d, 30%);
+    -fx-background-color: derive(#dcbea9, 30%);
 }
 
 .result-display {
@@ -157,35 +158,18 @@
     -fx-text-fill: black !important;
 }
 
-.status-bar .label {
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
-    -fx-padding: 4px;
-    -fx-pref-height: 30px;
-}
-
-.status-bar-with-border {
-    -fx-background-color: derive(#1d1d1d, 30%);
-    -fx-border-color: derive(#1d1d1d, 25%);
-    -fx-border-width: 1px;
-}
-
-.status-bar-with-border .label {
-    -fx-text-fill: white;
-}
-
 .grid-pane {
-    -fx-background-color: derive(#1d1d1d, 30%);
-    -fx-border-color: derive(#1d1d1d, 30%);
+    -fx-background-color: derive(#dcbea9, 30%);
+    -fx-border-color: derive(#dcbea9, 30%);
     -fx-border-width: 1px;
 }
 
 .grid-pane .stack-pane {
-    -fx-background-color: derive(#1d1d1d, 30%);
+    -fx-background-color: derive(#dcbea9, 30%);
 }
 
 .context-menu {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: derive(#dcbea9, 50%);
 }
 
 .context-menu .label {
@@ -193,7 +177,7 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#dcbea9, 20%);
 }
 
 .menu-bar .label {
@@ -257,11 +241,11 @@
 }
 
 .dialog-pane {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #dcbea9;
 }
 
 .dialog-pane > *.button-bar > *.container {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #dcbea9;
 }
 
 .dialog-pane > *.label.content {
@@ -271,7 +255,7 @@
 }
 
 .dialog-pane:header *.header-panel {
-    -fx-background-color: derive(#1d1d1d, 25%);
+    -fx-background-color: derive(#dcbea9, 25%);
 }
 
 .dialog-pane:header *.header-panel *.label {
@@ -282,11 +266,11 @@
 }
 
 .scroll-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#dcbea9, 20%);
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: derive(#dcbea9, 50%);
     -fx-background-insets: 3;
 }
 
@@ -309,7 +293,7 @@
 
 #cardPane {
     -fx-background-color: transparent;
-    -fx-border-color: #dcbea9
+    -fx-border-color: #dcbea9;
     -fx-border-width: 0;
 }
 
