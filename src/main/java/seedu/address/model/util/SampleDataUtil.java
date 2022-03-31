@@ -79,22 +79,41 @@ public class SampleDataUtil {
             new Appointment(new Description("First meeting with Alex at office"),
                     new DateTime("28-02-2023 10:00")),
             new Appointment(new Description("Finalize paperwork with Sherlock"),
-                    new DateTime("22-03-2023 11:00"))
+                    new DateTime("22-03-2023 11:00")),
+            new Appointment(new Description("Sign contract with James at Bugis Junction"),
+                        new DateTime("22-03-2019 11:00")),
+            new Appointment(new Description("Dinner with Roy Balakrishnan"),
+                        new DateTime("22-03-2018 11:00"))
         };
     }
 
     public static Record[] getSampleRecords() {
         return new Record[]{
-            new Record(new ClientID(("Alice Yeoh"), true), new InsuranceID(("Health"), true),
+            new Record(new ClientID(("Alex Yeoh"), true), new InsuranceID(("Motor Insurance"), true),
                     new StartDate("02-01-2021"), new EndDate("01-03-2026")),
-            new Record(new ClientID(("Felix Chan"), true), new InsuranceID(("Heart"), true),
+            new Record(new ClientID(("Bernice Yu"), true), new InsuranceID(("Home Contents Insurance"), true),
                     new StartDate("02-02-2010"), new EndDate("09-03-2012")),
-            new Record(new ClientID(("Sherlock Holmes"), true), new InsuranceID(("Life"), true),
+            new Record(new ClientID(("Bernice Yu"), true), new InsuranceID(("Aviation Insurance"), true),
                     new StartDate("02-05-2020"), new EndDate("22-03-2023")),
-            new Record(new ClientID(("James Goh"), true), new InsuranceID(("Brain"), true),
+            new Record(new ClientID(("Bernice Yu"), true), new InsuranceID(("Reinsurance"), true),
                     new StartDate("12-03-2019"), new EndDate("02-07-2020")),
-            new Record(new ClientID(("Akai Shuichi"), true), new InsuranceID(("Car"), true),
-                    new StartDate("22-03-2020"), new EndDate("02-04-2025"))
+            new Record(new ClientID(("Roy Balakrishnan"), true),
+                    new InsuranceID(("Home Contents Insurance"), true),
+                    new StartDate("22-03-2020"), new EndDate("02-04-2025")),
+            new Record(new ClientID(("Roy Balakrishnan"), true),
+                    new InsuranceID(("Travel Insurance(Family Plan)"), true),
+                        new StartDate("22-03-2020"), new EndDate("02-04-2025")),
+            new Record(new ClientID(("Sherlock Holmes"), true),
+                    new InsuranceID(("Travel Insurance(Annual Cover)"), true),
+                        new StartDate("22-03-2020"), new EndDate("12-04-2028")),
+            new Record(new ClientID(("Sherlock Holmes"), true), new InsuranceID(("Home Contents Insurance"), true),
+                        new StartDate("22-03-2020"), new EndDate("24-09-2025")),
+            new Record(new ClientID(("David Li"), true), new InsuranceID(("Travel Insurance(Annual Cover)"), true),
+                        new StartDate("22-06-2020"), new EndDate("02-04-2025")),
+            new Record(new ClientID(("David Li"), true), new InsuranceID(("Travel Insurance(Family Plan)"), true),
+                        new StartDate("22-09-2020"), new EndDate("02-04-2025")),
+            new Record(new ClientID(("David Li"), true), new InsuranceID(("Home Contents Insurance"), true),
+                        new StartDate("22-10-2020"), new EndDate("02-04-2025")),
         };
     }
 
