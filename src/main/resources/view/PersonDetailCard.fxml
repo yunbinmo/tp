@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="cardPane" fx:id="cardPane" style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <VBox style="-fx-background-color: #dcbea9; -fx-border-color: transparent;">
         <SplitPane id="splitPane" fx:id="splitPane" style="-fx-border-color: transparent; -fx-background-color: #dcbea9#dcbea9;" VBox.vgrow="ALWAYS">
             <GridPane style="-fx-background-color: #dcbea9; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
