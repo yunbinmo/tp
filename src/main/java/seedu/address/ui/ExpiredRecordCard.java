@@ -32,7 +32,7 @@ public class ExpiredRecordCard extends UiPart<Region> {
     public ExpiredRecordCard(Record record, int displayedIndex) {
         super(FXML);
         this.record = record;
-        title.setText("Record ID: " + record.getRecordId() + " // Client ID: " + record.getClientID());
+        title.setText(record.getClientID().toString());
         startDate.setText("Start: " + record.getStartDate().toString());
         endDate.setText("End: " + record.getEndDate().toString());
     }
