@@ -19,12 +19,7 @@
             </padding>
             <VBox><!---->
                 <children>
-                    <Label fx:id="id" styleClass="cell_big_label" wrapText="true">
-                        <!--                    <minWidth>-->
-                        <!--                        &lt;!&ndash; Ensures that the label text is never truncated &ndash;&gt;-->
-                        <!--                        <Region fx:constant="USE_PREF_SIZE" />-->
-                        <!--                    </minWidth>-->
-                    </Label>
+                    <Label fx:id="id" styleClass="cell_big_label" wrapText="true"/>
                     <Label fx:id="title" styleClass="cell_big_label" text="\$title" wrapText="true"/>
                 </children>
             </VBox>
