@@ -60,8 +60,8 @@ public class SampleDataUtil {
         return new Insurance[]{
             new Insurance(new Title("Motor Insurance"), new Price("700")),
             new Insurance(new Title("Home Contents Insurance"), new Price("1000")),
-            new Insurance(new Title("Travel Insurance(Annual Cover)"), new Price("200")),
-            new Insurance(new Title("Travel Insurance(Family Plan)"), new Price("7000")),
+            new Insurance(new Title("Travel Insurance Annual Cover"), new Price("200")),
+            new Insurance(new Title("Travel Insurance Family Plan"), new Price("7000")),
             new Insurance(new Title("Work Injury Compensation Insurance"), new Price("9000")),
             new Insurance(new Title("Aviation Insurance"), new Price("120")),
             new Insurance(new Title("Business Insurance"), new Price("300")),
