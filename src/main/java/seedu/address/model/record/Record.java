@@ -70,7 +70,7 @@ public class Record {
                 && otherRecord.getClientID().equals(this.clientID)
                 && otherRecord.getInsuranceID().equals(this.insuranceID)
                 && otherRecord.getStartLocalDate().isBefore(this.getEndLocalDate())
-                && otherRecord.getEndLocalDate().isAfter(this.getEndLocalDate());
+                && otherRecord.getEndLocalDate().isAfter(this.getStartLocalDate());
     }
 
 
