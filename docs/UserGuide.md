@@ -195,7 +195,7 @@ Format: `list -i`
 
 Deletes the specified insurance from Mr. Agent.
 
-Note that if an insurance is deleted, the records related to this insurance will not be deleted. 
+Note that if an insurance is deleted, the records related to this insurance will be deleted. 
 
 Format: `delete -i INDEX`
 
