@@ -30,6 +30,8 @@ public class InsuranceCard extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
+    private Label price;
+    @FXML
     private Label id;
 
 
@@ -41,6 +43,7 @@ public class InsuranceCard extends UiPart<Region> {
         this.insurance = insurance;
         id.setText(displayedIndex + ". ");
         title.setText(insurance.getTitle().toString());
+        price.setText("Price: " + insurance.getPrice().value);
         cardPane.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 System.out.println("Mouse pressed box " + displayedIndex);
