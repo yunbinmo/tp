@@ -215,7 +215,7 @@ Examples:
 
 ### <a id="find-insurance"></a>Locating insurances by title : `find -i`
 
-Finds insurance which titles contain any of the given keywords.
+Finds insurances whose title contain any of the given keywords.
 
 Format: `find -i KEYWORD [MORE_KEYWORDS]`
 
