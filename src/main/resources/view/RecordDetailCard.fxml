@@ -18,16 +18,20 @@
             <padding>
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
-            <HBox alignment="CENTER_LEFT" spacing="5">
-                <Label fx:id="id" prefHeight="17.0" style="-fx-text-fill: #3a2c1d;" styleClass="cell_big_label">
-                    <minWidth>
-                        <!-- Ensures that the label text is never truncated -->
-                        <Region fx:constant="USE_PREF_SIZE" />
-                    </minWidth>
-                </Label>
-                <Label fx:id="title" text="\$title" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
-            </HBox>
-            <Label fx:id="datetime" text="\$datetime" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
+            <VBox>
+                <children>
+                    <Label fx:id="id" prefHeight="17.0" style="-fx-text-fill: #3a2c1d;" styleClass="cell_big_label"
+                           wrapText="true">
+                        <minWidth>
+                            <!-- Ensures that the label text is never truncated -->
+                            <Region fx:constant="USE_PREF_SIZE"/>
+                        </minWidth>
+                    </Label>
+                    <Label fx:id="title" style="-fx-text-fill: #3a2c1d;" styleClass="cell_big_label" text="\$title"
+                           wrapText="true"/>
+                </children>
+            </VBox>
+            <Label fx:id="datetime" style="-fx-text-fill: #3a2c1d;" styleClass="cell_big_label" text="\$datetime" wrapText="true"/>
         </VBox>
       <rowConstraints>
          <RowConstraints />

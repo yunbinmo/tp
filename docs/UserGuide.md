@@ -179,7 +179,7 @@ Adds a new type of insurance to Mr. Agent.
 Format: `add -i  t/TITLE p/PRICE`
 
 * Adds an insurance type as specified in the `TITLE` with its `PRICE`
-* The price must be positive integer
+* The price must be positive decimal number including 0
 
 Examples:
 * `add -i t/hosipitalision p/1999`
@@ -195,7 +195,7 @@ Format: `list -i`
 
 Deletes the specified insurance from Mr. Agent.
 
-Note that if an insurance is deleted, the records related to this insurance will not be deleted. 
+Note that if an insurance is deleted, the records related to this insurance will be deleted. 
 
 Format: `delete -i INDEX`
 
@@ -219,6 +219,13 @@ Finds insurances whose title contain any of the given keywords.
 
 Format: `find -i KEYWORD [MORE_KEYWORDS]`
 
+* The search is case-insensitive. e.g `car` will match `Car`.
+* The order of the keywords does not matter. e.g. `car home` will match `home car`.
+* Only the insurance title is searched.
+* Only full words will be matched e.g. `insurance` will not match `reinsurance` 
+* Insurances matching at least one keyword will be returned (i.e. OR search). 
+e.g. `motor home` will return `Motor Insurance` and `Home Insurance`
+
 ## <a id="record"></a>3.3. Record
 ### <a id="add-record"></a>Adding a record : `add -r`
 
@@ -228,8 +235,11 @@ Format: `add -r c/CLIENT_INDEX i/INSURANCE_INDEX sd/START_DATE ed/END_DATE`
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
 * Each client can have mutiple same type of insurance where one `STARTDATE` is after another. For example, if `add -r c/1 i/1 sd/02-01-2021 ed/01-03-2026` exist in app,
-  user cannot `add -r c/1 i/1 sd/01-03-2025 ed/01-03-2026` as the `STARTDATE` of the second command is before the `ENDDATE` of the first command.  
-* Client index and Insurance index is based on the `list -c` and `list -i`
+  user cannot `add -r c/1 i/1 sd/01-03-2025 ed/01-03-2026` as the `STARTDATE` of the second command is before the `ENDDATE` of the first command.
+* Client index and Insurance index starts from 1 
+* Note that insurance/client index will be based on a filtered list. 
+So you can `find -i`/`find -c` to find insurance/client then add record base on the filtered result.
+
 
 Examples: 
 * `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024

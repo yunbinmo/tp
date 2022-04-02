@@ -19,7 +19,7 @@
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
             <HBox alignment="CENTER_LEFT" spacing="20">
-                <Label fx:id="title2" text="\$title" />
+                <Label fx:id="title2" wrapText="true" text="\$title" />
             </HBox>
                 <FlowPane fx:id="tags" />
         </VBox>

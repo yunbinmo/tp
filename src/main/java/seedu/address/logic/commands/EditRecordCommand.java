@@ -90,24 +90,24 @@ public class EditRecordCommand extends Command {
 
         if (editRecordDescriptor.getClientID().isPresent()) {
 
-            int clientIndex = Integer.parseInt(editRecordDescriptor.getClientID().get().toString());
+            int clientIndex = Integer.parseInt(editRecordDescriptor.getClientID().get().toString()) - 1;
 
             if (clientIndex >= lastPersonShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
-            ClientID clientIdName = new ClientID(lastPersonShownList.get(clientIndex - 1).getName().fullName, true);
+            ClientID clientIdName = new ClientID(lastPersonShownList.get(clientIndex).getName().fullName, true);
             editRecordDescriptor.setClientID(clientIdName);
         }
 
         if (editRecordDescriptor.getInsuranceID().isPresent()) {
-            int recordIndex = Integer.parseInt(editRecordDescriptor.getInsuranceID().get().toString());
+            int recordIndex = Integer.parseInt(editRecordDescriptor.getInsuranceID().get().toString()) - 1;
 
             if (recordIndex >= lastInsuranceList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_INSURANCE_DISPLAYED_INDEX);
             }
 
             InsuranceID insuranceIdName =
-                    new InsuranceID(lastInsuranceList.get(recordIndex - 1).getTitle().title, true);
+                    new InsuranceID(lastInsuranceList.get(recordIndex).getTitle().title, true);
             editRecordDescriptor.setInsuranceID(insuranceIdName);
         }
 
@@ -179,7 +179,7 @@ public class EditRecordCommand extends Command {
         private StartDate startDate;
         private EndDate endDate;
 
-        public EditRecordDescriptor(){
+        public EditRecordDescriptor() {
 
         }
 

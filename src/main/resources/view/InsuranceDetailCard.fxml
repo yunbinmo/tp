@@ -18,19 +18,19 @@
                 <Insets top="5" right="5" bottom="5" left="15" />
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" >
+                <Label fx:id="id" styleClass="cell_big_label"  wrapText="true"  style="-fx-text-fill: #3a2c1d;" >
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="title" text="\$title" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
+                <Label fx:id="title" text="\$title" wrapText="true" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
 
             </HBox>
             <padding>
                 <Insets top="5" right="5" bottom="5" left="10"/>
             </padding>
-            <Label fx:id="price" text="\$price" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
+            <Label fx:id="price" text="\$price"  wrapText="true" styleClass="cell_big_label"  style="-fx-text-fill: #3a2c1d;" />
         </VBox>
     </GridPane>
 </HBox>

@@ -28,7 +28,9 @@ public class AddRecordCommand extends Command {
             + PREFIX_REC_ENDDATE + "23-02-2024 ";
 
     public static final String MESSAGE_SUCCESS = "New record added: %1$s";
-    public static final String MESSAGE_DUPLICATE_RECORD = "This record already exists in the record book";
+    public static final String MESSAGE_DUPLICATE_RECORD =
+            "This record already exists in the record book, or the time interval overlaps with an existing record"
+                    + " with the same client name and insurance type";
 
     private final Record toAdd;
 
