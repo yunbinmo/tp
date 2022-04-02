@@ -319,7 +319,8 @@ public class ModelManager implements Model {
     @Override
     public void addAppointment(Appointment appointment) {
         this.appointmentBook.addAppointment(appointment);
-        this.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_VALID_APPOINTMENTS);
+        Predicate<Appointment> predicate = a -> a.getLocalDateTime().isAfter(LocalDateTime.now());
+        this.updateFilteredAppointmentList(predicate);
     }
 
     @Override
@@ -353,7 +354,8 @@ public class ModelManager implements Model {
     @Override
     public void addRecord(Record record) {
         this.recordBook.addRecord(record);
-        this.updateFilteredRecordList(PREDICATE_SHOW_ALL_UNEXPIRED_RECORD);
+        Predicate<Record> predicate = r -> r.getEndLocalDate().isAfter(LocalDate.now());
+        this.updateFilteredRecordList(predicate);
     }
 
     @Override
@@ -468,7 +470,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate) {
+    public void updateFilteredAppointmentHistoryList(Predicate<Appointment> predicate) {
 
     }
 

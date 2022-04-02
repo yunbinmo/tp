@@ -35,26 +35,14 @@ public interface Model {
     Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
 
     /**
-     * {@code Predicate} that shows only appointments not yet expire
-     */
-    Predicate<Appointment> PREDICATE_SHOW_ALL_VALID_APPOINTMENTS =
-        a -> a.getLocalDateTime().isAfter(LocalDateTime.now());
-
-    /**
      * {@code Predicate} that always evaluate to true
      */
-    Predicate<AppointmentHistory> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENT_HISTORY = unused -> true;
 
     /**
      * {@code Predicate} that always evaluate to true
      */
     Predicate<ExpiredRecord> PREDICATE_SHOW_ALL_EXPIRED_RECORD = unused -> true;
-
-    /**
-     * {@code Predicate} that always evaluate to true
-     */
-    Predicate<Record> PREDICATE_SHOW_ALL_UNEXPIRED_RECORD =
-        r -> r.getEndLocalDate().isAfter(LocalDate.now());
 
     /**
      * {@code Predicate} that always evaluate to true
@@ -207,7 +195,7 @@ public interface Model {
      *
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredAppointmentHistoryList(Predicate<AppointmentHistory> predicate);
+    void updateFilteredAppointmentHistoryList(Predicate<Appointment> predicate);
 
     //=========== ExpiredRecordBook ============================================================================
     /**

@@ -12,4 +12,10 @@ public interface ReadOnlyAppointmentHistoryBook {
      * This list will not contain any duplicate appointment history.
      */
     ObservableList<Appointment> getAppointmentHistoryList();
+
+    /**
+     * Updates the appointment history list.
+     * @param model The model object.
+     */
+    void updateAppointmentHistoryList(Model model);
 }

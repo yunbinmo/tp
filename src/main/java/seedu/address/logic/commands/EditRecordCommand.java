@@ -6,8 +6,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_ENDDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_INSURANCEID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REC_STARTDATE;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -131,7 +133,8 @@ public class EditRecordCommand extends Command {
         }
 
         model.setRecord(recordToEdit, editedRecord);
-        model.updateFilteredRecordList(Model.PREDICATE_SHOW_ALL_UNEXPIRED_RECORD);
+        Predicate<Record> predicate = r -> r.getEndLocalDate().isAfter(LocalDate.now());
+        model.updateFilteredRecordList(predicate);
         return new CommandResult(String.format(MESSAGE_EDIT_RECORD_SUCCESS, editedRecord));
 
     }

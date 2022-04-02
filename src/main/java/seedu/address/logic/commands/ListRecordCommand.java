@@ -1,9 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_UNEXPIRED_RECORD;
+
+import java.time.LocalDate;
+import java.util.function.Predicate;
 
 import seedu.address.model.Model;
+import seedu.address.model.record.Record;
 
 /**
  * Lists all records in the record book to the user.
@@ -16,7 +19,8 @@ public class ListRecordCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredRecordList(PREDICATE_SHOW_ALL_UNEXPIRED_RECORD);
+        Predicate<Record> predicate = r -> r.getEndLocalDate().isAfter(LocalDate.now());
+        model.updateFilteredRecordList(predicate);
         return new CommandResult(MESSAGE_SUCCESS, false, false, false, true, false, false, false, false);
     }
 }
