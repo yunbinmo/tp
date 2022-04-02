@@ -234,10 +234,12 @@ Adds a record to a client.
 Format: `add -r c/CLIENT_INDEX i/INSURANCE_INDEX sd/START_DATE ed/END_DATE`
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
-* Each client can only own 1 insurance of each type
+* Each client can have mutiple same type of insurance where one `STARTDATE` is after another. For example, if `add -r c/1 i/1 sd/02-01-2021 ed/01-03-2026` exist in app,
+  user cannot `add -r c/1 i/1 sd/01-03-2025 ed/01-03-2026` as the `STARTDATE` of the second command is before the `ENDDATE` of the first command.
 * Client index and Insurance index starts from 1 
 * Note that insurance/client index will be based on a filtered list. 
 So you can `find -i`/`find -c` to find insurance/client then add record base on the filtered result.
+
 
 Examples: 
 * `add -r c/10 i/2  sd/23-02-2022 ed/23-02-2024` , adds an insurance 2 to index 10 with start date from 23-02-2022 and end date at 23-02-2024
