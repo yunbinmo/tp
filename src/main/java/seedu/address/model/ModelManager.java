@@ -264,6 +264,20 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteInsurance(Insurance target) {
+        if (this.recordBook != null) {
+            List<Record> records = this.getRecordBook().getRecordList();
+            List<Record> toBeDeleted = new ArrayList<>();
+            for (Record record : records) {
+                if (target.getTitle().toString().equals(record.getInsuranceID().toString())) {
+                    toBeDeleted.add(record);
+                }
+            }
+
+            for (Record record : toBeDeleted) {
+                this.deleteRecord(record);
+            }
+        }
+
         this.insuranceBook.removeInsurance(target);
     }
 
