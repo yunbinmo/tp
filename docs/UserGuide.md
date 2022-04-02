@@ -263,7 +263,7 @@ Example:
 
 ### <a id="find-record"></a>Finding records by keyword : `find -r`
 
-Find records which insurance name contains any of the given keyword.
+Find records whose insurance name contains any of the given keyword.
 
 Format: `find -r KEYWORD [MORE_KEYWORDS]`
 
@@ -288,6 +288,8 @@ Format: `sort -r SORT_OPTION`
 
 Example:
 *  `sort -r sa` Sorts the records list by start date in ascending order.
+
+:information_source:The sort operation will be performed on the record list being displayed at that point of time. To sort the whole record list, issue a `list -r` command to list all the record first.
 
 ## <a id="history"></a>3.4. History
 
@@ -338,7 +340,7 @@ Format: `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`
 
 ### <a id="find-appointment"></a>Locating appointments by keyword : `find -a`
 
-Find appointments which title contains any of the given keyword
+Find appointments whose title contains any of the given keyword
 
 Format: `find -a KEYWORD [MORE_KEYWORDS]`
 
@@ -349,6 +351,8 @@ Sorts the appointment list ascending or descending order by time.
 Format: `sort -a SORT_OPTION`
 * To sort in ascending order, replace SORT_OPTION with `a`
 * To sort in descending order, replace SORT_OPTION with `d`
+
+:information_source:The sort operation will be performed on the appointment list being displayed at that point of time. To sort the whole appointment list, issue a `list -a` command to list all the appointment first.
 
 ## <a id="others"></a>3.6. Others
 
