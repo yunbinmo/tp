@@ -6,6 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents an Appointment's associated date and time in the address book.
@@ -16,9 +17,10 @@ public class DateTime {
             "Date and time should not be a past time"
                     + " and should be in this format: dd-MM-yyyy HH:mm, e.g. 02-03-2022 18:00";
 
-    private static final String DATE_TIME_FORMAT = "dd-MM-yyyy HH:mm";
+    private static final String DATE_TIME_FORMAT = "dd-MM-uuuu HH:mm";
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern(DATE_TIME_FORMAT).withResolverStyle(ResolverStyle.STRICT);
 
     public final LocalDateTime dateTime;
 
