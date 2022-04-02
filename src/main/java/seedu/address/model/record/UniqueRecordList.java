@@ -138,6 +138,7 @@ public class UniqueRecordList implements Iterable<Record> {
                 if (records.get(i).isSameRecord(records.get(j))) {
                     return false;
                 }
+
             }
         }
         return true;
