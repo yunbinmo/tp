@@ -81,9 +81,7 @@ public class EditPersonCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        // NOTE:
-        // use origin records
-        // record can not edit by edit person command
+        // use origin records, record can not edit by edit person command
         Set<Record> originalRecords = personToEdit.getRecords();
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, originalRecords);
     }
@@ -127,6 +125,7 @@ public class EditPersonCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
