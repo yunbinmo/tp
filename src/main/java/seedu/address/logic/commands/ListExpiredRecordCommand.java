@@ -18,6 +18,7 @@ public class ListExpiredRecordCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+        model.getExpiredRecordBook().updateExpiredRecordList(model);
         model.updateFilteredExpiredRecordList(PREDICATE_SHOW_ALL_EXPIRED_RECORD);
         return new CommandResult(MESSAGE_SUCCESS, false, false, false, false, false, true, false, false);
 

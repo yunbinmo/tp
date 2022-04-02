@@ -18,7 +18,7 @@ public class ExpiredRecordBook implements ReadOnlyExpiredRecordBook {
     }
 
     /**
-     * TODO
+     * Constructor using RecordBook
      */
     public ExpiredRecordBook(ReadOnlyRecordBook recordBook) {
         ObservableList<Record> records = recordBook.getRecordList();
@@ -28,6 +28,23 @@ public class ExpiredRecordBook implements ReadOnlyExpiredRecordBook {
             LocalDate endDate = r.getEndDate().getDate();
 
             if (endDate.isBefore(now)) {
+                this.record.add(r);
+            }
+        }
+    }
+
+    /**
+     * Updates the record history list.
+     * @param model The model object.
+     */
+    public void updateExpiredRecordList(Model model) {
+        ObservableList<Record> records = model.getRecordBook().getRecordList();
+
+        LocalDate now = LocalDate.now();
+        for (Record r : records) {
+            LocalDate endDate = r.getEndDate().getDate();
+
+            if (endDate.isBefore(now) && !this.record.contains(r)) {
                 this.record.add(r);
             }
         }

@@ -22,7 +22,7 @@ public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
     }
 
     /**
-     * TODO:
+     * Constructor using an AppointmentBook.
      */
     public AppointmentHistoryBook(ReadOnlyAppointmentBook appointmentBook) {
         ObservableList<Appointment> appointments = appointmentBook.getAppointmentList();
@@ -31,6 +31,22 @@ public class AppointmentHistoryBook implements ReadOnlyAppointmentHistoryBook {
             DateTime appointmentDate = a.getDateTime();
             // assert false;
             if (appointmentDate.isBefore(now)) {
+                this.history.add(a);
+            }
+        }
+    }
+
+    /**
+     * Updates the appointment history list.
+     * @param model The model object.
+     */
+    public void updateAppointmentHistoryList(Model model) {
+        ObservableList<Appointment> appointments = model.getAppointmentBook().getAppointmentList();
+        LocalDateTime now = LocalDateTime.now();
+        for (Appointment a : appointments) {
+            DateTime appointmentDate = a.getDateTime();
+            // assert false;
+            if (appointmentDate.isBefore(now) && !this.history.contains(a)) {
                 this.history.add(a);
             }
         }

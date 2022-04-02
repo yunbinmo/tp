@@ -12,4 +12,10 @@ public interface ReadOnlyExpiredRecordBook {
      * This list will not contain any duplicate expired records.
      */
     ObservableList<Record> getExpiredRecordList();
+
+    /**
+     * Updates the record history list.
+     * @param model The model object.
+     */
+    void updateExpiredRecordList(Model model);
 }

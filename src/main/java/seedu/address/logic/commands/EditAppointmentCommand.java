@@ -3,10 +3,11 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DATETIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_APPT_DESCRIPTION;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_VALID_APPOINTMENTS;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -85,7 +86,8 @@ public class EditAppointmentCommand extends Command {
         }
 
         model.setAppointment(appointmentToEdit, editedAppointment);
-        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_VALID_APPOINTMENTS);
+        Predicate<Appointment> predicate = a -> a.getLocalDateTime().isAfter(LocalDateTime.now());
+        model.updateFilteredAppointmentList(predicate);
         return new CommandResult(String.format(MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment));
     }
 
