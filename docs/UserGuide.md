@@ -179,7 +179,7 @@ Adds a new type of insurance to Mr. Agent.
 Format: `add -i  t/TITLE p/PRICE`
 
 * Adds an insurance type as specified in the `TITLE` with its `PRICE`
-* The price must be positive integer
+* The price must be positive decimal number including 0
 
 Examples:
 * `add -i t/hosipitalision p/1999`
