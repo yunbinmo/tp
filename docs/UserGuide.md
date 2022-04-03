@@ -183,7 +183,7 @@ Format: `add -i  t/TITLE p/PRICE`
 
 Examples:
 * `add -i t/hosipitalision p/1999`
-* `add -i t/terminal_illness p/200`
+* `add -i t/terminal_illness p/199.99`
 
 ### <a id="list-insurance"></a>Listing all insurances : `list -i`
 
@@ -379,7 +379,6 @@ Exits the program.
 
 Format: `exit`
 
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
