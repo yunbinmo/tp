@@ -205,7 +205,7 @@ Step 5. `MainWindow` will update the `RecordListPanel` with sorted `ObservableLi
 
 #### Design considerations
 
-**Aspect: How sort records executes:**
+**Aspect: How sort records stored:**
 
 * **Alternative 1 (current choice):** Saves the sorted records to RecordBook.
   * Pros: Easy to implement.
@@ -289,7 +289,6 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` with appointment his
 
 ### <a id="Click"></a>4.4. Click event feature
 
-![UIStructure](images/UIstructure.jpg)
 #### Implementation
 
 The `objectListPanel` will be updated according to user command. It supports the following commands:
@@ -320,7 +319,7 @@ Step 3. User click on `Davia Li`, then `PersonDetailCard` (filled by the detail 
       2. The cells of `objectListPanel` only contains important information like client name and tags.
   * Cons: User needs to click on certain cell to look into details.
 
-* **Alternative 2:** Display everything with details in the `objectListPanel`.
+* **Alternative 2:** Display everything with details(client and records information) in the `objectListPanel`.
   * Pros: User does not need to click to look into details.
   * Cons: All information are squeezed together and the list can only contain a maximum of 3-5 cells.
   User needs to scroll down to check other items in the list.
@@ -464,7 +463,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | view expired records          | refer to passed records in case clients want to know/renew insurance   |
 
 
-*{More to be added}*
 
 ### <a id="usecases"></a>Use cases
 

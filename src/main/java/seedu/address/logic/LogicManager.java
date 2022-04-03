@@ -77,6 +77,10 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+
+    /**
+     * Updates Detail of UI when certain command is executed.
+     */
     private void updateDetail(Command command) throws CommandException, ParseException {
         if (this.ui == null) {
             return;
@@ -134,7 +138,6 @@ public class LogicManager implements Logic {
             Person editedPerson = editPersonCommand.getEditedPerson();
             int index = editPersonCommand.getEditedPersonIndex();
 
-
             ObservableList<Record> records = this.model.getFilteredRecordList();
             for (int i = 0; i < records.size(); i++) {
                 Record record = records.get(i);
@@ -146,7 +149,6 @@ public class LogicManager implements Logic {
                     updateCommand.execute(model);
                 }
             }
-
             this.ui.updateDetailPanel(editedPerson, index);
         }
     }
