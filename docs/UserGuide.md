@@ -102,15 +102,15 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 Adds a client to Mr. Agent.
 
-Format: `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DESCRIPTION [t/TAG]…​`
+Format: `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A client can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add -c n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01 d/come from China`
-* `add -c n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 d/like to coffee t/NUS`
+* `add -c n/JunJie p/98765432 e/junjie@example.com a/John street, block 123, #01-01`
+* `add -c n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/NUS`
 
 ### <a id="list-client"></a>Listing all Client : `list -c`
 
@@ -137,7 +137,7 @@ Examples:
 
 Edits an existing client in the Mr. Agent.
 
-Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DESCRIPTION] [t/TAG]…​`
+Format: `edit -c INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
 * Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
