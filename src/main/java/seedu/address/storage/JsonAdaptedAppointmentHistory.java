@@ -18,7 +18,7 @@ public class JsonAdaptedAppointmentHistory {
     private final String dateTime;
 
     /**
-     * Constructs a {@code JsonAdaptedAppointment} with the given person details.
+     * Constructs a {@code JsonAdaptedAppointment} with the given appointment history details.
      */
     @JsonCreator
     public JsonAdaptedAppointmentHistory(@JsonProperty("description") String description,
@@ -28,7 +28,7 @@ public class JsonAdaptedAppointmentHistory {
     }
 
     /**
-     * Converts a given {@code Appointment} into this class for Jackson use.
+     * Converts a given {@code Appointment History} into this class for Jackson use.
      */
     public JsonAdaptedAppointmentHistory(Appointment source) {
         description = source.getDescription().toString();
@@ -36,9 +36,9 @@ public class JsonAdaptedAppointmentHistory {
     }
 
     /**
-     * Converts this Jackson-friendly adapted appointment object into the model's {@code Appointment} object.
+     * Converts this Jackson-friendly adapted appointment history object into the model's {@code Appointment History } object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted appointment.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted appointment history.
      */
     public Appointment toModelType() throws IllegalValueException {
 

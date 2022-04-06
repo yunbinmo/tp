@@ -12,7 +12,7 @@ import seedu.address.model.AppointmentBook;
 import seedu.address.model.appointment.Appointment;
 
 /**
- * An Immutable HistoryBook that is serializable to JSON format.
+ * An Immutable AppointmentHistoryBook that is serializable to JSON format.
  */
 @JsonRootName(value = "appointmenthistorybook")
 public class JsonSerializableAppointmentHistoryBook {
@@ -21,7 +21,7 @@ public class JsonSerializableAppointmentHistoryBook {
     private final List<JsonAdaptedAppointmentHistory> history = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAppointmentBook} with the given appointments.
+     * Constructs a {@code JsonSerializableAppointmentHistoryBook} with the given appointments.
      */
     @JsonCreator
     public JsonSerializableAppointmentHistoryBook(@JsonProperty("history")
@@ -32,7 +32,7 @@ public class JsonSerializableAppointmentHistoryBook {
     //    /**
     //     * Converts a given {@code ReadOnlyAppointmentBook} into this class for Jackson use.
     //     *
-    //     * @param source future changes to this will not affect the created {@code JsonSerializableAppointmentBook}.
+    //     * @param source future changes to this will not affect the created {@code JsonSerializableAppointmentHistoryBook}.
     //     */
     //    public JsonSerializableAppointmentHistoryBook(ReadOnlyAppointmentHistoryBook source) {
     //        history.addAll(source.getAppointmentHistoryList().stream().map(JsonAdaptedAppointmentHistory::new)
@@ -40,7 +40,7 @@ public class JsonSerializableAppointmentHistoryBook {
     //    }
 
     /**
-     * Converts this appointment book into the model's {@code AppointmentBook} object.
+     * Converts this appointment history book into the model's {@code AppointmentHistoryBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

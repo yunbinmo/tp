@@ -23,7 +23,7 @@ class JsonAdaptedRecord {
     private final String endDate;
 
     /**
-     * Constructs a {@code JsonAdaptedRecord} with the given insurance details.
+     * Constructs a {@code JsonAdaptedRecord} with the given record details.
      */
     @JsonCreator
     public JsonAdaptedRecord(@JsonProperty("clientID") String clientID,
