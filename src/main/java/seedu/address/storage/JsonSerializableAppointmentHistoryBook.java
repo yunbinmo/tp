@@ -29,16 +29,6 @@ public class JsonSerializableAppointmentHistoryBook {
         this.history.addAll(history);
     }
 
-    //    /**
-    //     * Converts a given {@code ReadOnlyAppointmentBook} into this class for Jackson use.
-    //     *
-    //     * @param source future changes to this will not affect the created {@code JsonSerializableAppointmentHistoryBook}.
-    //     */
-    //    public JsonSerializableAppointmentHistoryBook(ReadOnlyAppointmentHistoryBook source) {
-    //        history.addAll(source.getAppointmentHistoryList().stream().map(JsonAdaptedAppointmentHistory::new)
-    //                .collect(Collectors.toList()));
-    //    }
-
     /**
      * Converts this appointment history book into the model's {@code AppointmentHistoryBook} object.
      *

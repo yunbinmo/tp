@@ -36,7 +36,8 @@ public class JsonAdaptedAppointmentHistory {
     }
 
     /**
-     * Converts this Jackson-friendly adapted appointment history object into the model's {@code Appointment History } object.
+     * Converts this Jackson-friendly adapted appointment history object
+     * into the model's {@code Appointment History } object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted appointment history.
      */
