@@ -232,10 +232,12 @@ public class AddressBookParser {
      * @return the command based on the user input
      */
     private Command parseAppointmentHistoryCommand(String commandWord) throws ParseException {
-        if(commandWord.equals(ListAppointmentHistoryCommand.COMMAND_WORD))
+        if(commandWord.equals(ListAppointmentHistoryCommand.COMMAND_WORD)) {
             return new ListAppointmentHistoryCommand();
-        else
+        }
+        else {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
     }
 
     /**
@@ -245,10 +247,12 @@ public class AddressBookParser {
      * @return the command based on the user input
      */
     private Command parseExpiredRecordCommand(String commandWord) throws ParseException {
-        if(commandWord.equals(ListExpiredRecordCommand.COMMAND_WORD))
+        if(commandWord.equals(ListExpiredRecordCommand.COMMAND_WORD)) {
             return new ListExpiredRecordCommand();
-        else
+        }
+        else {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
     }
 
     /**
