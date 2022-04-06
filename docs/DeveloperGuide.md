@@ -575,14 +575,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### <a id="Glossary"></a>Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Appointment:** To-dos created by user, with description, data and time specified.
+* **Appointment History:** Appointments that have passed (before the current time).
 * **Client**: Contacts that needs to be managed by user.
+* **Expired Record:** Records that have passed its end date.
 * **Insurance category:** Types of insurance, e.g. health, financial, life.
 * **Insurance code:** Unique IDs attached to each insurance.
-* **Appointment:** To-dos created by user, with description, data and time specified.
+* **Mainstream OS**: Windows, Linux, Unix, OS-X.
 * **Record:** Record of insurance that is bought by a client, i.e. when a client purchase an insurance, a new record will be created and saved in the database with the client and insurance's IDs. Each record is unique.
-* **Appointment History:** Appointments that have passed (before the current time).
-* **Expired Record:** Records that have passed its end date.
 
 
 --------------------------------------------------------------------------------------------------------------------
