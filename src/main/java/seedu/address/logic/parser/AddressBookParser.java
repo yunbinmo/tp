@@ -90,7 +90,7 @@ public class AddressBookParser {
         case Command.COMMAND_APPOINTMENT:
             return this.parseAppointmentCommand(commandWord, arguments);
         case Command.COMMAND_APPOINTMENT_HISTORY:
-            return this.parseAppointmentHistoryCommand();
+            return this.parseAppointmentHistoryCommand(commandWord);
         case Command.COMMAND_EXPIRED_RECORD:
             return this.parseExpiredRecordCommand();
         case SINGLE_COMMAND_FORMAT:
@@ -228,10 +228,14 @@ public class AddressBookParser {
     /**
      * Parse appointment history command.
      *
+     * @param commandWord the command word
      * @return the command based on the user input
      */
-    private Command parseAppointmentHistoryCommand() {
-        return new ListAppointmentHistoryCommand();
+    private Command parseAppointmentHistoryCommand(String commandWord) throws ParseException {
+        if(commandWord.equals(ListAppointmentHistoryCommand.COMMAND_WORD))
+            return new ListAppointmentHistoryCommand();
+        else
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**
