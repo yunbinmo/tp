@@ -17,7 +17,7 @@ public class JsonAdaptedAppointment {
     private final String dateTime;
 
     /**
-     * Constructs a {@code JsonAdaptedAppointment} with the given person details.
+     * Constructs a {@code JsonAdaptedAppointment} with the given appointment details.
      */
     @JsonCreator
     public JsonAdaptedAppointment(@JsonProperty("description") String description,
