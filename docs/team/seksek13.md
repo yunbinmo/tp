@@ -1,46 +1,83 @@
 ---
-layout: page
-title: seksek13's Project Portfolio Page
+# Koh Su En's Project Portfolio Page
+- [1. New Feature](#NewFeature)
+- [2. Code contributed](#Codecontributed)
+- [3. Project management](#Projectmanagement)
+- [4. Enhancements to existing features](#existing)
+- [5. Documentation](#Documentation)
+- [6. Community](#Community)
 ---
 
-### Project: AddressBook Level 3
+### Project: Mr. Agent
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Mr. Agent is a desktop app for managing contacts, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-    * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-    * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-    * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-    * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+## <a id="NewFeatures"></a>**1. New Features**
+* **New Feature**: Added the ability to add record commands that allows the user add new insurance record to specific client. (Pull requests [\#48](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/48/files) , [\#64](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/64/files))
+  * What it does: allows the user add insurance record to client one at a time. 
+  * Justification: This feature helps the target user (insurance agent) to keep track of each client's insurance bought by adding them to the app.
+  * Highlights: This feature requires in-depth knowledge about other components ,such as insurance and client, as there exist dependency between the components
+  * Challenges: As the record consist of information about the client and insurance, the implementation needs to provide an accurate linkage between the existing client and insurance when adding a new record.
+  * Credits: AB3
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
 
-* **Code contributed**: [RepoSense link]()
+* **New Feature**: Added the ability to delete record commands (Pull requests [\#48](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/48/files))
+  * What it does: allows the user delete insurance record of a specific client one at a time.
+  * Justification: This feature is crucial as it aids the user to manage the records that they deemed that are no longer needed, increasing the tidiness when viewing the client's record.
+  * Highlights: This feature is made extensible so that it is easier to edit the parameters used in deciding which record to delete
+  * Credits: AB3
 
-* **Project management**:
-    * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
 
+* **New Feature**: Added the ability to edit record commands (Pull requests [\#82](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/82/files))
+  * What it does: allows the user edit a record's detail of specific a client, multiple changes at one go.
+  * Justification: This feature is crucial it is common that user would key in the wrong information or the record's information required some updates. Hence, it would be handy to have this feature to ease user in editing the current record's detail instead of requiring them to delete and add a new record.
+  * Highlights: This feature is made extensible so that if more attributes is required to be stored, it does not require major change to the code base.
+  * Challenges: Editing of a record could possibly cause a duplication of records which is undesired, also, parameters provided by the user may not be correct. 
+    Hence extensive checking is needed to check that the edited record is not stored in the database and checking the validity of the parameters.
+  * Credits: AB3
+
+
+* **New Feature**: Added the ability to list record commands (Pull requests[\#70](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/70), [\#71](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/71))
+  * What it does: allows the user view all unexpired record at one go.
+  * Justification: It would be meaningless if the user are able to add record but could not view them at all, hence, it is crucial this feature is implememeted. With this feature, user can conveniently view all unexpired insurance records and view the details of each record.
+  * Credits: AB3
+
+
+* **New Feature**: Added the ability to find unexpired record commands (Pull requests [\#82](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/82/files))
+  * What it does: allows the user find and view unexpired record by seaching with insurance type
+  * Justification: In reality, the target user (insurance agent) could be selling a variety types of insurance and hence it would be helpful to have such a function for them to know which user had bought the insurance type.
+  * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
+  * Credits: AB3
+
+* **New Feature**: Added clear commands for records (Pull requests [\#82](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/86))
+  (Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
+
+### <a id="code_contributed"></a>2. Code contributed
+* [RepoSense link](https://ay2122s2-cs2103-f09-3.github.io/tp/team/seksek13.html)
+* [Pull Request Link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
+
+### <a id="project_management"></a>3. Project Management
+
+  * Managed releases `v1.3` on GitHub
+  * Contributed incrementally and iteratively by following the [forking workflow](https://nus-cs2103-ay2122s2.github.io/website/se-book-adapted/chapters/revisionControl.html#forking-flow) strictly
+  * Helped to test and debug other components of the application
+
+### <a id="enhancements"></a>4. Enhancements to existing features
 * **Enhancements to existing features**:
-    * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-    * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+    * Updated the GUI color scheme and design (Pull requests [\#137](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/137), [\#138](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/138))
+    * Wrote additional tests for existing features to increase coverage from 51.64% to 52.59% (Pull requests [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/99))
 
 * **Documentation**:
     * User Guide:
-        * Added documentation for the features `delete` and `find` [\#72]()
-        * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+        * Added documentation for the record features, including list/add/delete/find/edit `Record` command (Pull requests [\#117](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/117), [\#196](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/196))
     * Developer Guide:
-        * Added implementation details of the `delete` feature.
+        * Added user stories for the record feature. (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files))
+        * Updated implementation details of the `UI`, `Logic` and `Record` component (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files) ,[\#109](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/109/files))
+        * Added implementation details of the `add record` feature. (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files))
 
 * **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-    * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
+    * PRs reviewed (with non-trivial review comments): [\#12]()
     * Reported bugs and suggestions for other teams in the class (examples: \[1](), [2](), [3]())
-    * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
 
-* **Tools**:
-    * Integrated a third party library (Natty) to the project ([\#42]())
-    * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
