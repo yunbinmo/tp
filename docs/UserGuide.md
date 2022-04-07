@@ -1,3 +1,8 @@
+---
+layout: page
+title: User Guide
+---
+
 By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
 
 - [1. Introduction](#Introduction)
