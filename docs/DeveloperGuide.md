@@ -448,6 +448,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | add an insurance              | manage all insurances in the apllication                               |
 | `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     |
 | `* * *`  | insurance agent                                | list all insurances            | view all that I have stored in the application                         |
+| `* * *`  | insurance agent                                | delete an insurance           | remove entries that I no longer need                           |
+| `* * *`  | insurance agent                                | find insurances by title            | locate insurances without having to go through the entire list                         |
 | `* * *`  | insurance agent                                    | add a record to client        | keep a record of the insurances that the client have                   |
 | `* * *`  | insurance agent                                | delete a record               | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
