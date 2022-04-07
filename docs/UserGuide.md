@@ -1,3 +1,8 @@
+---
+layout: page
+title: User Guide
+---
+
 By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
 
 - [1. Introduction](#Introduction)
@@ -100,6 +105,8 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 ### <a id="add-client"></a>Adding a Client: `add -c`
 
 Adds a client to Mr. Agent.
+
+Note that client name must be unique. The client will be only identified by client name.
 
 Format: `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 

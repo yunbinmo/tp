@@ -1,4 +1,8 @@
-# Mr. Agent - Developer Guide
+---
+layout: page
+title: Developer Guide
+---
+
 By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
 
 - [1. Acknowledgements](#Acknowledgements)
@@ -47,7 +51,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### <a id="Architecture"></a>3.1. Architecture
 
-<img src="images/Arch.png" width="300" />
+<img src="images/Arch.png" width="500" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
@@ -448,6 +452,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | add an insurance              | manage all insurances in the apllication                               |
 | `* * *`  | insurance agent                                | edit an insurance             | make changes to insurance saved in the application                     |
 | `* * *`  | insurance agent                                | list all insurances            | view all that I have stored in the application                         |
+| `* * *`  | insurance agent                                | delete an insurance           | remove entries that I no longer need                           |
+| `* * *`  | insurance agent                                | find insurances by title            | locate insurances without having to go through the entire list                         |
 | `* * *`  | insurance agent                                    | add a record to client        | keep a record of the insurances that the client have                   |
 | `* * *`  | insurance agent                                | delete a record               | remove entries that I no longer need                                   |
 | `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
