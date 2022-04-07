@@ -47,7 +47,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### <a id="Architecture"></a>3.1. Architecture
 
-<img src="images/Arch.png" width="300" />
+<img src="images/Arch.png" width="500" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
