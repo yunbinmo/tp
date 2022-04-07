@@ -459,12 +459,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | insurance agent                                | edit a record                 | make changes to record saved in the application                        |
 | `* * *`  | insurance agent                                | list all records              | view records that are I have with my clients                                    |
 | `*`      | insurance agent want to check records     | sort record by start/end date | locate almost expired/newest records easily                            |
-| `***`    | insurance agent frequently having appointments | view all appointments         | be reminded of all the meetings I have with my clients                 |
-| `***`    | insurance agent frequently having appointments | add new appointments          | note down any future meetings I have with my client                    |
-| `***`    | insurance agent frequently having appointments | delete an appointment         | get rid of any canceled/completed appointments to avoid confusion      |
-| `***`    | insurance agent frequently having appointments | edit an appointment           | amend appointment details to suit clients' needs                       |
-| `***`    | insurance agent frequently having appointments | find an appointment           | quickly locate a related appointment                                   |
-| `***`    | insurance agent frequently having appointments | sort appointments             | prioritize more urgent appointments                                    |
+| `* * *`    | insurance agent frequently having appointments | view all appointments         | be reminded of all the meetings I have with my clients                 |
+| `* * *`    | insurance agent frequently having appointments | add new appointments          | note down any future meetings I have with my client                    |
+| `* * *`    | insurance agent frequently having appointments | delete an appointment         | get rid of any canceled/completed appointments to avoid confusion      |
+| `* * *`    | insurance agent frequently having appointments | edit an appointment           | amend appointment details to suit clients' needs                       |
+| `* * *`    | insurance agent frequently having appointments | find an appointment           | quickly locate a related appointment                                   |
+| `* * *`    | insurance agent frequently having appointments | sort appointments             | prioritize more urgent appointments                                    |
+| `* * *`    | insurance agent frequently having appointments | clear all appointments             | have cleaner view of appointments after a long time                                    |
 | `* * *`  | insurance agent                                | view passed appointments      | know account my meetups with my clients                                |
 | `* * *`  | insurance agent                                | view expired records          | refer to passed records in case clients want to know/renew insurance   |
 
