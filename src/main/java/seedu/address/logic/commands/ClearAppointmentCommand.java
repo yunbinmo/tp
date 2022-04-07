@@ -16,6 +16,7 @@ public class ClearAppointmentCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.setAppointmentBook(new AppointmentBook());
+        model.getAppointmentHistoryBook().getAppointmentHistoryList().clear();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
