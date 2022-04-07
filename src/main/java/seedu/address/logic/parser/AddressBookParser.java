@@ -155,9 +155,6 @@ public class AddressBookParser {
         case ListPersonCommand.COMMAND_WORD:
             return new ListPersonCommand();
 
-        case ClearPersonCommand.COMMAND_WORD:
-            return new ClearPersonCommand();
-
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
@@ -187,9 +184,6 @@ public class AddressBookParser {
 
         case FindInsuranceCommand.COMMAND_WORD:
             return new FindInsuranceCommandParser().parse(arguments);
-
-        case ClearInsuranceCommand.COMMAND_WORD:
-            return new ClearInsuranceCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
@@ -280,9 +274,6 @@ public class AddressBookParser {
 
         case FindRecordCommand.COMMAND_WORD:
             return new FindRecordCommandParser().parse(arguments);
-
-        case ClearRecordCommand.COMMAND_WORD:
-            return new ClearRecordCommand();
 
         case SortRecordCommand.COMMAND_WORD:
             return new SortRecordCommandParser().parse(arguments);
