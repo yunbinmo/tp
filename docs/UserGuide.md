@@ -101,6 +101,8 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 Adds a client to Mr. Agent.
 
+Note that client name must be unique. The client will be only identified by client name.
+
 Format: `add -c n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
