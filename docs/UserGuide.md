@@ -37,6 +37,7 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
     - [Editing an appointment: `edit -a`](#edit-appointment)
     - [Locating appointments by keyword: `find -a`](#find-appointment)
     - [Sorting appointments: `sort -a`](#sort-appointment)
+    - [Clear appointments: `clear -a`](#clear-appointment)
   - [3.6. Others](#others)
 - [4. FAQ](#FAQ)
 - [5. Command Summary](#Summary)
@@ -371,6 +372,12 @@ Format: `sort -a SORT_OPTION`
 
 :information_source:The sort operation will be performed on the appointment list being displayed at that point of time. To sort the whole appointment list, issue a `list -a` command to list all the appointment first.
 
+### <a id="clear-appointment"></a>Clear appointments : `clear -a`
+
+Clear all appointments (including expired and unexpired ones).
+
+Format: `clear -a`
+
 ## <a id="others"></a>3.6. Others
 
 ### Clearing all entries : `clear`
@@ -415,7 +422,8 @@ Format: `exit`
 | **Edit an appointment**                                 | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                               
 | **Find appointment(s)**                                 | `find -a KEYWORD [MORE_KEYWORDS]`                                                                                                                                       
 | **Sort appointments in ascending order by time**        | `sort -a a`                                                                                                                                                             
-| **Sort appointments in descending order by time**       | `sort -a d`                                                                                                                                                             
+| **Sort appointments in descending order by time**       | `sort -a d`  
+| **Clear all appointments**                              | `clear -a` 
 | **Add a record**                                        | `add -r c/CLIENT_INDEX i/INSURANCE_INDEX sd/START_DATE ed/END_DATE`                                                                                                     
 | **Delete a record**                                     | `delete -r RECORD_INDEX`                                                                                                                                                
 | **List all record**                                     | `list -r`                                                                                                                                                              
