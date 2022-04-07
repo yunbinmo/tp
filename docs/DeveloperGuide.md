@@ -47,8 +47,6 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## <a id="Settingup"></a>**3. Design**
 
-<div markdown="span" class="alert alert-primary">
-
 ### <a id="Architecture"></a>3.1. Architecture
 
 <img src="images/Arch.png" width="500" />
