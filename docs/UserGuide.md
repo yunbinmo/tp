@@ -75,6 +75,8 @@ Mr. Agent is a **desktop app for managing contacts, optimized for use via a Comm
 
 1. Refer to the [Features](#features) below for details of each command.
 
+:exclamation:Please do not delete any json file in the generated `data` folder, deletion of a single data file could result in unexpected inconsistencies between data entries in the application.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## <a id="features"></a>**3. Features**
