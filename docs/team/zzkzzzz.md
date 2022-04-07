@@ -19,29 +19,31 @@ Given below are my contributions to the project.
 (Pull requests [\#29](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/29), 
 [\#35](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/35), [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/36), 
 [\#44](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/44), [\#74](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/74))
-
-* **New Feature**: Added clear Client and Insurance commands that allows the user to clear the data.
-(Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
+  * What it does: allows the target users (insurance agents) to manage their insurances on the app by saving/editing insurance details including title and price.
+  * Justification: This feature makes the product much more complete because insurance is an important part for insurance agents to memorize all the details.
+  * Highlights: This enhancement is made extensible such that it is easy to add more attributes to describe an insurance if necessary, which does not require massive change to the code base.
 
 * **New Feature**: Added Sort records Commands that allows the user to sort the records by start/end date in ascending/descending order.
 (Pull request [\#91](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/91))
-
-* **New Feature**: Improved and extended the command syntax more user-friendly and to match our scenario.
-(Pull request [\#24](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/24))
-
-* **New Feature**: ReDesign and add in click event listener for list.
-(Pull requests [\#44](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/44), 
-  [\#46](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/46))
-
+  * What it does: allows users to sort the records list in ascending/descending order by start/end date.
+  * Justification: Record are usually time-sensitive, it is important to provide a quick way for user to prioritize and visualize almost expired records or newest records.
+  * Highlights: This enhancement is implemented such that more sorting options could be made available easily with minor modification, if any ordering of the list is deemed to be meaningful for the users. For example, sort records between certain period.
+ 
+* **New Feature**: Added clear command that allows the user to clear all the data (AddressBook, RecordBook, InsuranceBook and AppointmentBook).
+ (Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
+    
 ## <a id="Codecontributed"></a>**2. Code contributed**
-* [RepoSense link](https://github.com/AY2122S2-CS2103-F09-3/tp)
+* [Repo link](https://github.com/zzkzzzz/tp)
+* [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=zzkzzzz&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2022-02-18&tabOpen=true&tabType=authorship&tabAuthor=zzkzzzz&tabRepo=AY2122S2-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 * [Pull Request](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Azzkzzzz)
 
 
 ## <a id="Projectmanagement"></a>**3. Project management**
-  * Managed repo Pull Requests and Issues on GitHub.
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub.
+  * Maintained repo Pull Requests and Issue Tracker in GitHub.
+  * Managed releases `v1.3` - `v1.5` (3 releases) on GitHub.
   * Hosted weekly team meeting
+  * Setting up the GitHub team org/repo
+  * Formatted user/developer docs and added table of contents
   * Helped team members to debug
   * Helped team to improve code style and quality
   * Set up and update project track [documentation](https://docs.google.com/document/d/1YnxPw8cAvkEcVgljEb4Ux5qUX_KnXIDYhm5BC7UsAq8/edit?usp=sharing)
@@ -50,7 +52,7 @@ Given below are my contributions to the project.
   * Redesigned and improved the GUI interface (Pull requests [\#44](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/44), 
   [\#46](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/46), [\#74](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/74)
   [\#116](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/116))
-  * Connected existing Person Class with Records. (Pull requests [\#61](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/61))
+  * Improved and extended the command syntax more user-friendly and to match project scenario. (Pull request [\#24](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/24))
   * Wrote additional tests for existing and new features to increase coverage 
   (Pull requests [\#65](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/65), [\#91](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/91))
 
@@ -66,18 +68,19 @@ Given below are my contributions to the project.
     (Pull requests [\#98](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/98))
     * Added implementation details of the Sort Records Commands
     (Pull requests [\#98](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/98), [\#108](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/108))
-    * Added implementation details of the Click event on objectListPlaceholder feature
+    * Added implementation details of the Click event feature
     (Pull requests [\#98](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/98))
-    * Updated project scope,Use case, NFR and Glossary
+    * Updated project scope and Use case
     (Pull request [\#24](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/24))
+    * Added user stories for the insurances feature
+    (Pull request [\#98](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/98))
+   
 
   
 ## <a id="Community"></a>**6. Community**
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
+  * PRs reviewed (with non-trivial review comments): [\#45](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/45), [\#89](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/89),  [\#90](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/90), [\#203](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/203)
+  * Contributed to forum discussions (examples: [58](https://github.com/nus-cs2103-AY2122S2/forum/issues/58))
 
 
 
