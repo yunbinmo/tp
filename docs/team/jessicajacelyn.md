@@ -3,21 +3,19 @@ layout: page
 title: jessicajacelyn's Project Portfolio Page
 ---
 
----
 - [1. New Feature](#NewFeature)
 - [2. Code contributed](#Codecontributed)
 - [3. Project management](#Projectmanagement)
 - [4. Enhancements to existing features](#Existing)
 - [5. Documentation](#Documentation)
----
 
-### Project: Mr. Agent
+## Project: Mr. Agent
 
 Mr. Agent is a desktop app for managing contacts, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
 Given below are my contributions to the project.
 
-## <a id="NewFeatures"></a>**1. New Features**
+## <a id="NewFeature"></a>**1. New Features**
 * **New Feature**: Added the ability automatically remove passed appointments from the appointment list (Pull request [\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
   * What it does: Prevents user from seeing passed appointments in their appointment list without deleting them manually.
   * Justification: This feature helps the user in managing upcoming appointments better by not mistaking passed appointments as upcoming one. 
