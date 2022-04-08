@@ -7,7 +7,7 @@ title: jessicajacelyn's Project Portfolio Page
 - [1. New Feature](#NewFeature)
 - [2. Code contributed](#Codecontributed)
 - [3. Project management](#Projectmanagement)
-- [4. Enhancements to existing features](#existing)
+- [4. Enhancements to existing features](#Existing)
 - [5. Documentation](#Documentation)
 ---
 
@@ -44,7 +44,7 @@ Given below are my contributions to the project.
   * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
   * Credits: AB3
 
-### <a id="code_contributed"></a>2. Code contributed
+### <a id="Codecontributed"></a>2. Code contributed
 * [Repo link](https://github.com/jessicajacelyn/tp)
 * [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=sicajacelyn&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2022-02-18&tabOpen=true&tabType=authorship&tabAuthor=jessicajacelyn&tabRepo=AY2122S2-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 * [Pull Request Link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Ajessicajacelyn)
@@ -58,7 +58,7 @@ Given below are my contributions to the project.
   * Fix javadocs and documentations typo and errors for team (Pull requests [\#134](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/134), [\#135](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/135))
   * Update project track [documentation](https://docs.google.com/document/d/1YnxPw8cAvkEcVgljEb4Ux5qUX_KnXIDYhm5BC7UsAq8/edit?usp=sharing)
 
-## <a id="existing"></a>**4. Enhancements to existing features**
+## <a id="Existing"></a>**4. Enhancements to existing features**
   * Redesigned the GUI from scratch (can be seen from README.md)
   * Wrote most of the tests for existing features (Pull requests [\#88](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/88), [\#94](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/94),  [\#88](edit command tests), [\97](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/97))
   * Add more sample data to components
