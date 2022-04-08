@@ -9,7 +9,6 @@ title: jessicajacelyn's Project Portfolio Page
 - [3. Project management](#Projectmanagement)
 - [4. Enhancements to existing features](#existing)
 - [5. Documentation](#Documentation)
-- [6. Community](#Community)
 ---
 
 ### Project: Mr. Agent
@@ -78,9 +77,3 @@ Given below are my contributions to the project.
     * Updated value proposition,target user profile and glossary.
     (Pull request [\#25](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/25), [\#214](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/214))
     * Proofread and edit typo errors for the whole guide [\#131](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/131)
-
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
