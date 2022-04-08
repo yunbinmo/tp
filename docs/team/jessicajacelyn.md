@@ -18,12 +18,12 @@ Mr. Agent is a desktop app for managing contacts, optimized for use via a Comman
 Given below are my contributions to the project.
 
 ## <a id="NewFeatures"></a>**1. New Features**
-* **New Feature**: Added the ability automatically remove passed appointments from the appointment list (Pull request[\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+* **New Feature**: Added the ability automatically remove passed appointments from the appointment list (Pull request [\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
   * What it does: Prevents user from seeing passed appointments in their appointment list without deleting them manually.
   * Justification: This feature helps the user in managing upcoming appointments better by not mistaking passed appointments as upcoming one. 
   * Challenges: Instead of adding another JSON file to store passed appointments (which could waste storage), the passed appointments were kept in the same JSON file as the upcoming appointments. Thus, checking for passed appointments would have to be done well when the application is launched to avoid corruption of the appointment data file and for the correct appointments to be transferred to passed appointment list. 
 
-* **New Feature**: Added the ability automatically remove expired record from the record list Pull request[\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+* **New Feature**: Added the ability automatically remove expired record from the record list Pull request [\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
   * What it does: Prevents user from seeing expired records from each client's detail, where their records are listed, without having to remove them manually. 
   * Justification: This feature helps the user in managin their clients records by not showing expired ones. 
   * Challenges: Instead of adding another JSON file to store expired records (which could waste storage), the passed records were kept in the same JSON file as the active records. Thus, checking for expired records would have to be done well when the application is launched to avoid corruption of the record data file and for the correct records to be transferred to expired record list. 
