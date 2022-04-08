@@ -3,44 +3,77 @@ layout: page
 title: jessicajacelyn's Project Portfolio Page
 ---
 
-### Project: AddressBook Level 3
+---
+- [1. New Feature](#NewFeature)
+- [2. Code contributed](#Codecontributed)
+- [3. Project management](#Projectmanagement)
+- [4. Enhancements to existing features](#existing)
+- [5. Documentation](#Documentation)
+---
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+### Project: Mr. Agent
+
+Mr. Agent is a desktop app for managing contacts, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+## <a id="NewFeatures"></a>**1. New Features**
+* **New Feature**: Added the ability automatically remove passed appointments from the appointment list (Pull request [\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+  * What it does: Prevents user from seeing passed appointments in their appointment list without deleting them manually.
+  * Justification: This feature helps the user in managing upcoming appointments better by not mistaking passed appointments as upcoming one. 
+  * Challenges: Instead of adding another JSON file to store passed appointments (which could waste storage), the passed appointments were kept in the same JSON file as the upcoming appointments. Thus, checking for passed appointments would have to be done well when the application is launched to avoid corruption of the appointment data file and for the correct appointments to be transferred to passed appointment list. 
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+* **New Feature**: Added the ability automatically remove expired record from the record list Pull request [\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+  * What it does: Prevents user from seeing expired records from each client's detail, where their records are listed, without having to remove them manually. 
+  * Justification: This feature helps the user in managin their clients records by not showing expired ones. 
+  * Challenges: Instead of adding another JSON file to store expired records (which could waste storage), the passed records were kept in the same JSON file as the active records. Thus, checking for expired records would have to be done well when the application is launched to avoid corruption of the record data file and for the correct records to be transferred to expired record list. 
+  
+* **New Feature**: Added the ability to list passed appointments (Pull request[\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+  * What it does: Allows user view all expired record at one go.
+  * Justification: Even though they are expired records, user might still want to refer to it for future uses and it would be meaningless to store the expired records without having the ability to view them. 
+  * Credits: AB3
 
-* **Code contributed**: [RepoSense link]()
+* **New Feature**: Added the ability to list expired record (Pull request[\#50](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/50)) 
+  * What it does: Allows user view all passed appointments at one go.
+  * Justification: Even though they are passed appointments, user might still want to refer to it for future uses and it would be meaningless to store the passed appointments without having the ability to view them. 
+  * Credits: AB3
 
-* **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+* **New Feature**: Added the ability to find insurance (Pull request [\#72](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/72))
+  * What it does: Allows user find and view insurance by insurace name as keyword
+  * Justification: User could have stored many insurances in the application storage and it would be helpful and efficient for them to search those insurances quickly by their names.  
+  * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
+  * Credits: AB3
 
-* **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+### <a id="code_contributed"></a>2. Code contributed
+* [Repo link](https://github.com/jessicajacelyn/tp)
+* [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=sicajacelyn&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2022-02-18&tabOpen=true&tabType=authorship&tabAuthor=jessicajacelyn&tabRepo=AY2122S2-CS2103-F09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
+* [Pull Request Link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Ajessicajacelyn)
 
-* **Documentation**:
+## <a id="Projectmanagement"></a>**3. Project management**
+  * Maintained repo Pull Requests and Issue Tracker in GitHub.
+  * Managed releases `v1.3` - `v1.5` (3 releases) on GitHub.
+  * Hosted weekly team meeting
+  * Helped team members to debug
+  * Helped team to improve code style and quality
+  * Fix javadocs and documentations typo and errors for team (Pull requests [\#134](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/134), [\#135](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/135))
+  * Update project track [documentation](https://docs.google.com/document/d/1YnxPw8cAvkEcVgljEb4Ux5qUX_KnXIDYhm5BC7UsAq8/edit?usp=sharing)
+
+## <a id="existing"></a>**4. Enhancements to existing features**
+  * Redesigned the GUI from scratch (can be seen from README.md)
+  * Wrote most of the tests for existing features (Pull requests [\#88](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/88), [\#94](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/94),  [\#88](edit command tests), [\97](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/97))
+  * Add more sample data to components
+
+## <a id="Documentation"></a>**5. Documentation**
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the features `appointment history` and `expired records` [\#60](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/60)
+    * Proofread and edit typo errors for the whole guide [\#119](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/119)
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
-
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+    * Updated implementation details of the Logic component
+    (Pull requests [\#110](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/110))
+     * Added implementation details of the List History feature
+    (Pull requests [\#110](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/110))
+    * Updated use case for list client
+    (Pull request [\#27](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/27))
+    * Updated value proposition,target user profile and glossary.
+    (Pull request [\#25](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/25), [\#214](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/214))
+    * Proofread and edit typo errors for the whole guide [\#131](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/131)
