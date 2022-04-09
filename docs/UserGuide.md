@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
+By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Su En, Zheng ZiKang)
 
 - [1. Introduction](#Introduction)
 - [2. Quick Start](#Quick)
@@ -243,8 +243,8 @@ Adds a record to a client.
 Format: `add -r c/CLIENT_INDEX i/INSURANCE_INDEX sd/START_DATE ed/END_DATE`
 
 * START_DATE and END_DATE are in the format of dd-MM-yyyy
-* Each client can have mutiple same type of insurance where one `STARTDATE` is after another. For example, if `add -r c/1 i/1 sd/02-01-2021 ed/01-03-2026` exist in app,
-  user cannot `add -r c/1 i/1 sd/01-03-2025 ed/01-03-2026` as the `STARTDATE` of the second command is before the `ENDDATE` of the first command.
+* Each client can have mutiple same type of insurance but the previous insurance should be expired before adding the new record. For example, if `add -r c/1 i/1 sd/02-01-2021 ed/01-03-2026` exist in app, which means that the insurance type 1 will be expired on 01-03-2026,
+  user cannot `add -r c/1 i/1 sd/01-03-2025 ed/01-03-2026` as the `STARTDATE` of this command is before the `ENDDATE` of the previous command.
 * Client index and Insurance index starts from 1 
 * Note that insurance/client index will be based on a filtered list. 
 So you can `find -i`/`find -c` to find insurance/client then add record base on the filtered result.
@@ -414,23 +414,23 @@ Format: `exit`
 | **Find a client**                                       | `find -c KEYWORD [MORE_KEYWORDS]`<br> e.g., `find -c James Jake`                                                                                                           
 | **List all client**                                     | `list -c`                                                                                                                                                               
 | **Add an insurance**                                    | `add -i t/TITLE p/PRICE`                                                                                                                                                
-| **List all insurance**                                  | `list -i`                                                                                                                                                               
-| **Delete an insurance**                                 | `delete -i INSURANCE_INDEX`                                                                                                                                             
-| **Edit an insurance**                                   | `edit -i INSURANCE_INDEX [t/TITLE] [p/PRICE]`                                                                                                                           
+| **Delete an insurance**                                 | `delete -i INSURANCE_INDEX`
+| **Edit an insurance**                                   | `edit -i INSURANCE_INDEX [t/TITLE] [p/PRICE]`
 | **Find insurance(s)**                                   | `find -i KEYWORD [MORE_KEYWORDS]`                                                                                                                                                                                                                                                                                |
+| **List all insurance**                                  | `list -i`                                                                                                                                                               
 | **Add an appointment**                                  | `add -a d/DESCRIPTION dt/DATETIME`                                                                                                                                      
+| **Delete an appointment**                               | `delete -a APPOINTMENT_INDEX`
+| **Edit an appointment**                                 | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`
+| **Find appointment(s)**                                 | `find -a KEYWORD [MORE_KEYWORDS]`
 | **List all appointments**                               | `list -a`                                                                                                                                                               
-| **Delete an appointment**                               | `delete -a APPOINTMENT_INDEX`                                                                                                                                           
-| **Edit an appointment**                                 | `edit -a APPOINTMENT_INDEX [d/DESCRIPTION] [dt/DATETIME]`                                                                                                               
-| **Find appointment(s)**                                 | `find -a KEYWORD [MORE_KEYWORDS]`                                                                                                                                       
 | **Sort appointments in ascending order by time**        | `sort -a a`                                                                                                                                                             
 | **Sort appointments in descending order by time**       | `sort -a d`  
 | **Clear all appointments**                              | `clear -a` 
 | **Add a record**                                        | `add -r c/CLIENT_INDEX i/INSURANCE_INDEX sd/START_DATE ed/END_DATE`                                                                                                     
 | **Delete a record**                                     | `delete -r RECORD_INDEX`                                                                                                                                                
+| **Edit a record**                                       | `edit -r INDEX [c/CLIENT_INDEX] [i/INSURANCE_INDEX] [sd/START_DATE] [ed/END_DATE]` <br> e.g.,`edit -r 1 c/5`
+| **Find record(s)**                                      | `find -r KEYWORD [MORE_KEYWORDS]`
 | **List all record**                                     | `list -r`                                                                                                                                                              
-| **Edit a record**                                       | `edit -r INDEX [c/CLIENT_INDEX] [i/INSURANCE_INDEX] [sd/START_DATE] [ed/END_DATE]` <br> e.g.,`edit -r 1 c/5`                                                            
-| **Find record(s)**                                      | `find -r KEYWORD [MORE_KEYWORDS]`                                                                                                                                       
 | **Sort record in ascending order by start/end date**    | `sort -r sa`/ `sort -r ea`                                                                                                                                              
 | **Sort record in descending order by start/end date**   | `sort -r sd`/ `sort -r ed`                                                                                                                                              
 | **List appointment history**                            | `list -h`                                                                                                                                                               
