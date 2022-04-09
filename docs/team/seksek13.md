@@ -51,9 +51,6 @@ Given below are my contributions to the project.
   * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
   * Credits: AB3
 
-* **New Feature**: Added clear commands for records (Pull requests [\#82](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/86))
-  (Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
-
 ### <a id="code_contributed"></a>2. Code contributed
 * [RepoSense link](https://ay2122s2-cs2103-f09-3.github.io/tp/team/seksek13.html)
 * [Pull Request Link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
@@ -77,7 +74,4 @@ Given below are my contributions to the project.
         * Updated implementation details of the `UI`, `Logic` and `Record` component (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files) ,[\#109](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/109/files))
         * Added implementation details of the `add record` feature. (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files))
 
-* **Community**:
-    * PRs reviewed (with non-trivial review comments): [\#12]()
-    * Reported bugs and suggestions for other teams in the class (examples: \[1](), [2](), [3]())
 
