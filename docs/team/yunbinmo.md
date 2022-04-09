@@ -1,14 +1,16 @@
 ---
-# Mo Yunbin's Project Portfolio Page
+layout: page
+title: Mo Yunbin's Project Portfolio Page
+---
+
 - [1. New Features](#new_feature)
 - [2. Code contributed](#code_contributed)
 - [3. Project management](#project_management)
 - [4. Enhancements to existing features](#enhancements)
 - [5. Documentation](#documentation)
 - [6. Community](#community)
----
 
-### Project: Mr. Agent
+## Project: Mr. Agent
 
 Mr. Agent is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Mr. Agent can get your contact management tasks done faster than traditional GUI apps.
 
@@ -50,6 +52,4 @@ Given below are my contributions to the project.
 
 ### <a id="community"></a>6. Community:
   * PRs reviewed (with non-trivial review comments): [\#89](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/89)
-  * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2122S2/forum/issues/141), [2](https://github.com/nus-cs2103-AY2122S2/forum/issues/58))
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
+  * Contributed to forum discussions (examples: [#141](https://github.com/nus-cs2103-AY2122S2/forum/issues/141), [#58](https://github.com/nus-cs2103-AY2122S2/forum/issues/58))
