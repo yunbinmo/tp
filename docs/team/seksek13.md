@@ -53,8 +53,9 @@ Given below are my contributions to the project.
   * Credits: AB3
 
 ### <a id="code_contributed"></a>2. Code contributed
+* [Repo link](https://github.com/seksek13/tp)
 * [RepoSense link](https://ay2122s2-cs2103-f09-3.github.io/tp/team/seksek13.html)
-* [Pull Request Link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
+* [Pull Request link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
 
 ### <a id="project_management"></a>3. Project Management
 
