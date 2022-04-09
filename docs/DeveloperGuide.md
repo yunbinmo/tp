@@ -3,7 +3,7 @@ layout: page
 title: Developer Guide
 ---
 
-By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Suen, Zheng ZiKang)
+By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Su En, Zheng ZiKang)
 
 - [1. Acknowledgements](#Acknowledgements)
 - [2. Setting up](#Settingup)
