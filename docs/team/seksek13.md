@@ -1,12 +1,13 @@
 ---
-# Koh Su En's Project Portfolio Page
+layout: page
+title: Koh Su En's Project Portfolio Page
+---
+
 - [1. New Feature](#NewFeature)
 - [2. Code contributed](#Codecontributed)
 - [3. Project management](#Projectmanagement)
 - [4. Enhancements to existing features](#existing)
 - [5. Documentation](#Documentation)
-- [6. Community](#Community)
----
 
 ### Project: Mr. Agent
 
