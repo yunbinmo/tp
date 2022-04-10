@@ -625,7 +625,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `add -c p/12345678 e/jamesho@example.com a/nus-pgp`<br>
        Expected: No client is added. Error details shown in the status message.
 
-    1. Other incorrect delete commands to try: `add -c`, `add -c n/`
+    1. Other incorrect delete commands to try: `add -c`, `add -c n/`<br>
        Expected: Similar to previous.
        
 ### Deleting a client
@@ -677,13 +677,13 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `sort -r sa`<br>
        Expected: Records are being sorted in ascending order by start date. Sorted records are shown in the objectListPanel and details of sorting is shown in status message. 
 
-    1. Other correct sort commands to try: `sort -r ea`, `sort -r sd`, `sort -r ed`
+    1. Other correct sort commands to try: `sort -r ea`, `sort -r sd`, `sort -r ed` <br>
        Expected: Similar to previous.
       
     1. Test case: `sort -r`<br>
        Expected: No records sorted. Error details shown in the status message.
         
-    1. Other incorrect sort commands to try: `sort -r`, `sort -r ta`
+    1. Other incorrect sort commands to try: `sort -r`, `sort -r ta` <br>
        Expected: Similar to previous.
 
        
@@ -691,15 +691,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. Test case: delete addressbook.json and launch the program 
+   1. Test case: delete addressbook.json and launch the program <br>
       Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
       
-   1. Other test case for missing data files : delete appointmentbook.json/insurancebook.json/recordbook.json and launch the program
+   1. Other test case for missing data files : delete appointmentbook.json/insurancebook.json/recordbook.json and launch the program <br>
       Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
    
-   1. Test case: corrupt addressbook.json by removing the name field from the client data
+   1. Test case: corrupt addressbook.json by removing the name field from the client data <br>
       Expected: Empty addressbook will be created.
       
-   1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data
+   1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data <br>
       Expected: Similar to previous.
       
