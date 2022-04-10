@@ -433,7 +433,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` to show the appointm
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
+**Value proposition**: manage clients, insurances, records and appointments faster than a typical mouse/GUI driven app
 
 
 ### <a id="userStories"></a>User stories
@@ -567,16 +567,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 1.
     
-*{More to be added}*
 
 ### <a id="Non-Functional"></a>Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  No network connection needed.
-
-*{More to be added}*
+1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. No network connection needed.
+6. The source code should be open source.
+7. The user interface should be intuitive enough for users who are not IT-savvy.
 
 ### <a id="Glossary"></a>Glossary
 
