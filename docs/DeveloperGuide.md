@@ -728,7 +728,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: corrupt addressbook.json by removing the name field from the client data <br>
       Expected: Empty addressbook will be created.
       
-   1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data <br>
+   1. Other test case for corrupted data files: remove the `description` field from the appointmentbook.json / remove the `title` field from the insurancebook.json / remove the `startDate` field from the recordbook.json <br>
       Expected: Similar to previous.
       
 
