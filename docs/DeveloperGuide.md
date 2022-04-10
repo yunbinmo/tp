@@ -577,8 +577,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. No network connection needed.
-6. The source code should be open source.
-7. The user interface should be intuitive enough for users who are not IT-savvy.
+5. The source code should be open source.
+6. The user interface should be intuitive enough for users who are not IT-savvy.
+
 
 ### <a id="Glossary"></a>Glossary
 
@@ -617,33 +618,84 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+      
 
-1. _{ more test cases …​ }_
+### Adding a client
 
+1. Adding a client 
+
+    1. Test case: `add -c n/James Ho p/12345678 e/jamesho@example.com a/nus-pgp `<br>
+       Expected: Client named James Ho with phone number 2345678, email account at jamesho@example.com and address of nus-pgp is addded to the list. Details of the added client shown in the status message and on the detailPane
+
+    1. Test case: `add -c p/12345678 e/jamesho@example.com a/nus-pgp`<br>
+       Expected: No client is added. Error details shown in the status message.
+
+    1. Other incorrect delete commands to try: `add -c`, `add -c n/`<br>
+       Expected: Similar to previous.
+       
 ### Deleting a client
 
 1. Deleting a client while all clients are being shown
 
-   1. Prerequisites: List all clients using the `list` command. Multiple clients in the list.
+   1. Prerequisites: List all clients using the `list -c` command. Multiple clients in the list.
 
    1. Test case: `delete -c 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First client is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete -c 0`<br>
       Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete -c`, `delete -c x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+      
+### Editing a client
 
-1. _{ more test cases …​ }_
+1. Editing a client while all clients are being shown
 
+    1. Prerequisites: List all clients using the `list -c` command. Multiple clients in the list.
+    
+    1. Test case: `edit -c 6 n/James Lee e/jameslee@example.com`<br>
+       Expected: Sixth client's details is edited, name will be changeed to James Lee, email address changed to jameslee@example.com. Details of the edited client shown in the status message and on the detailPane
+
+    1. Test case: `edit -c p/12345678 e/jamesho@example.com a/nus-pgp`<br>
+       Expected: No client is edited. Error details shown in the status message.
+
+    1. Other incorrect delete commands to try: `edit -c`, `edit -c n/`, `edit -c x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+### Finding a client
+
+1. Finding a client 
+
+    1. Test case: `find -c James Yu`<br>
+       Expected: Client `Bernince Yu` and `James Lee` will be shown on the objectListPanel and number of clients found shown in status message
+
+    1. Test case: `find -c`<br>
+       Expected: No client found. Error details shown in the status message.
+
+### Sorting records
+
+1. Sorting records while all records are being shown
+
+    1. Prerequisites: List all records using the `list -r` command. Multiple records in the list.
+    
+    1. Test case: `sort -r sa`<br>
+       Expected: Records are being sorted in ascending order by start date. Sorted records are shown in the objectListPanel and details of sorting is shown in status message. 
+
+    1. Other correct sort commands to try: `sort -r ea`, `sort -r sd`, `sort -r ed` <br>
+       Expected: Similar to previous.
+      
+    1. Test case: `sort -r`<br>
+       Expected: No records sorted. Error details shown in the status message.
+        
+    1. Other incorrect sort commands to try: `sort -r`, `sort -r ta` <br>
+       Expected: Similar to previous.
+
+       
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
 
 ## <a id="effort"></a>Effort
 
@@ -654,3 +706,17 @@ testers are expected to do more *exploratory* testing.
   * To reduce coupling of different entities, we had to change/add internal structures and mechanisms such as parser to meet our needs.
 * **Achievements:** Most of the added functionalities have strong cohesion and low coupling, making them extensible for future modifications.
 * **Regarding reuse:** Added entities follow a similar structure as that used by `Person` in AB3, with modifications, which saved our efforts in maintaining consistency with the original AB3 as well as in creating the whole application structure.
+
+   1. Test case: delete addressbook.json and launch the program <br>
+      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
+      
+   1. Other test case for missing data files : delete appointmentbook.json/insurancebook.json/recordbook.json and launch the program <br>
+      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
+   
+   1. Test case: corrupt addressbook.json by removing the name field from the client data <br>
+      Expected: Empty addressbook will be created.
+      
+   1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data <br>
+      Expected: Similar to previous.
+      
+
