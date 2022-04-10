@@ -65,10 +65,10 @@ Given below is a quick overview of main components and how they interact with ea
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#UI): The UI of the App.
+* [**`Logic`**](#Logic): The command executor.
+* [**`Model`**](#Model): Holds the data of the App in memory.
+* [**`Storage`**](#Storage): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
