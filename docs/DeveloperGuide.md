@@ -28,7 +28,7 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Su En, Zheng ZiKang)
 - [Appendix D: Non Functional Requirements](#Non-Functional)
 - [Appendix E: Glossary](#Glossary)
 - [Appendix F: Instructions for Manual Testing](#manual)
-
+- [Appendix G: Effort](#effort)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -642,3 +642,13 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+## <a id="effort"></a>Effort
+
+* **Difficulty level:** This project enhanced the current [AB3](https://github.com/se-edu/addressbook-level3) implementation to make it a more complicated application that includes more data entities including `Insurance`, `Record`, and `Appointment`. By taking into account our targeted user group's requirements, attributes of the entities were carefully selected so that they work together to provide beneficial functionalities for insurance agents.
+
+* **Challenge faced:** 
+  * The GUI needed to be rearranged to fit our data display needs, problems including responsiveness of the GUI and the appropriate types of JAVAFX components to be used were our top concerns.
+  * To reduce coupling of different entities, we had to change/add internal structures and mechanisms such as parser to meet our needs.
+* **Achievements:** Most of the added functionalities have strong cohesion and low coupling, making them extensible for future modifications.
+* **Regarding reuse:** Added entities follow a similar structure as that used by `Person` in AB3, with modifications, which saved our efforts in maintaining consistency with the original AB3 as well as in creating the whole application structure.
