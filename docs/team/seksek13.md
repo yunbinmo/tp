@@ -15,7 +15,7 @@ Mr. Agent is a desktop app for managing contacts, optimized for use via a Comman
 
 Given below are my contributions to the project.
 
-## <a id="NewFeature"></a>**1. New Features**
+## <a id="NewFeature"></a>1. New Features
 * **New Feature**: Added the ability to add record commands that allows the user add new insurance record to specific client. (Pull requests [\#48](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/48/files) , [\#64](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/64/files))
   * What it does: allows the user add insurance record to client one at a time. 
   * Justification: This feature helps the target user (insurance agent) to keep track of each client's insurance bought by adding them to the app.
@@ -49,21 +49,21 @@ Given below are my contributions to the project.
   * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
   * Credits: AB3
 
-## <a id="Codecontributed"></a>**2. Code contributed**
+## <a id="Codecontributed"></a>2. Code contributed
 * [Repo link](https://github.com/seksek13/tp)
 * [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seksek13&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other)
 * [Pull Request link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
 
-## <a id="Projectmanagement"></a>**3. Project Management**
+## <a id="Projectmanagement"></a>3. Project Management
   * Managed releases `v1.3` on GitHub
   * Contributed incrementally and iteratively by following the [forking workflow](https://nus-cs2103-ay2122s2.github.io/website/se-book-adapted/chapters/revisionControl.html#forking-flow) strictly
   * Helped to test and debug other components of the application
 
-## <a id="Enhancement"></a>**4. Enhancements to existing features**
+## <a id="Enhancement"></a>4. Enhancements to existing features
   * Updated the GUI color scheme and design (Pull requests [\#137](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/137), [\#138](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/138))
   * Wrote additional tests for existing features to increase coverage from 51.64% to 52.59% (Pull requests [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/99))
 
-## <a id="Documentation"></a>**5. Documentation**
+## <a id="Documentation"></a>5. Documentation
   * User Guide:
     * Added documentation for the record features, including list/add/delete/find/edit `Record` command (Pull requests [\#117](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/117), [\#196](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/196))
   * Developer Guide:
