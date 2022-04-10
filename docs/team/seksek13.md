@@ -49,17 +49,17 @@ Given below are my contributions to the project.
   * Highlights: This feature is made extensible to ease the process of editing/adding find parameters in the future
   * Credits: AB3
 
-## <a id="Codecontributed"></a>2. Code contributed
+## <a id="Codecontributed"></a>**2. Code contributed**
 * [Repo link](https://github.com/seksek13/tp)
 * [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seksek13&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other)
 * [Pull Request link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
 
-## <a id="Projectmanagement"></a>3. Project Management
+## <a id="Projectmanagement"></a>**3. Project Management**
   * Managed releases `v1.3` on GitHub
   * Contributed incrementally and iteratively by following the [forking workflow](https://nus-cs2103-ay2122s2.github.io/website/se-book-adapted/chapters/revisionControl.html#forking-flow) strictly
   * Helped to test and debug other components of the application
 
-## <a id="Enhancement"></a>4. Enhancements to existing features
+## <a id="Enhancement"></a>**4. Enhancements to existing features**
   * Updated the GUI color scheme and design (Pull requests [\#137](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/137), [\#138](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/138))
   * Wrote additional tests for existing features to increase coverage from 51.64% to 52.59% (Pull requests [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/99))
 
