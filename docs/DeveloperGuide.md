@@ -660,7 +660,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `edit -c p/12345678 e/jamesho@example.com a/nus-pgp`<br>
        Expected: No client is edited. Error details shown in the status message.
 
-    1. Other incorrect delete commands to try: `edit -c`, `edit -c n/`, `edit -c x`, `...` (where x is larger than the list size)<br>
+    1. Other incorrect delete commands to try: `edit -c 0`, `edit -c`, `edit -c x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
 ### Finding a client
@@ -696,6 +696,18 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
+    1. Test case: delete addressbook.json and launch the program <br>
+      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
+      
+   1. Other test case for missing data files : delete appointmentbook.json/insurancebook.json/recordbook.json and launch the program <br>
+      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
+   
+   1. Test case: corrupt addressbook.json by removing the name field from the client data <br>
+      Expected: Empty addressbook will be created.
+      
+   1. Other test case for corrupted data files: remove the `description` field from the appointmentbook.json / remove the `title` field from the insurancebook.json / remove the `startDate` field from the recordbook.json <br>
+      Expected: Similar to previous.
+
 
 ## <a id="effort"></a>Effort
 
@@ -707,16 +719,5 @@ testers are expected to do more *exploratory* testing.
 * **Achievements:** Most of the added functionalities have strong cohesion and low coupling, making them extensible for future modifications.
 * **Regarding reuse:** Added entities follow a similar structure as that used by `Person` in AB3, with modifications, which saved our efforts in maintaining consistency with the original AB3 as well as in creating the whole application structure.
 
-   1. Test case: delete addressbook.json and launch the program <br>
-      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
-      
-   1. Other test case for missing data files : delete appointmentbook.json/insurancebook.json/recordbook.json and launch the program <br>
-      Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
-   
-   1. Test case: corrupt addressbook.json by removing the name field from the client data <br>
-      Expected: Empty addressbook will be created.
-      
-   1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data <br>
-      Expected: Similar to previous.
       
 
