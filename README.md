@@ -16,7 +16,7 @@
   - Management of records
   - Management of appointments
 
-For more information on how to get started, check out the **[Mr. Agent User Guide](https://ay2122s2-cs2103-f09-4.github.io/tp/UserGuide.html)**.
+For more information on how to get started, check out the **[Mr. Agent User Guide](https://ay2122s2-cs2103-f09-3.github.io/tp/UserGuide.html)**.
 
 
 Acknowledgement: This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
