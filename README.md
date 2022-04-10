@@ -5,19 +5,18 @@
 ![Ui](docs/images/Ui.png)
 
   
-* The application is no different than normal mobile contact applications. Our application, targeted towards insurance agents, will ease them in storing their customer's information.
+* This application, targeted towards insurance agents, will ease them in managing their customer's information, insurances, records and appointments.
+    
+    * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
+    * It comes with a **reasonable level of user and developer documentation**.
 
-  * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
-  * It comes with a **reasonable level of user and developer documentation**.
+* Usages:
+  - Management of clients
+  - Management of insurances
+  - Management of records
+  - Management of appointments
 
-* Features:
-  - Customizable insurance and client categories
-  - Connections between customers
-  - Client’s insurance contract → end date, price, company
-  - Advanced search (by location, contract, date, company etc)
-  - Appointment (todo) → when list out can sort by date
-  - Transaction/contract
-  - Contacts become inactive after a specific period
+For more information on how to get started, check out the **[Mr. Agent User Guide](https://ay2122s2-cs2103-f09-3.github.io/tp/UserGuide.html)**.
 
 
-* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+Acknowledgement: This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).

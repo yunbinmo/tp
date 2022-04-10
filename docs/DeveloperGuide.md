@@ -28,14 +28,17 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Su En, Zheng ZiKang)
 - [Appendix D: Non Functional Requirements](#Non-Functional)
 - [Appendix E: Glossary](#Glossary)
 - [Appendix F: Instructions for Manual Testing](#manual)
-
+- [Appendix G: Effort](#effort)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## <a id="Acknowledgements"></a>**1. Acknowledgements**
 
-* [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3)
-* [se-edu/addressbook-level4](https://github.com/se-edu/addressbook-level4)
+* This project is based on the [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3) created by the [SE-EDU initiative](https://se-education.org/).
+* The following libraries were also used in the Mr.Agent.
+  * [JavaFX](https://openjfx.io/) for the Graphical User Interface.
+  * [Jackson](https://github.com/FasterXML/jackson) for data-processing.
+  * [JUnit5](https://github.com/junit-team/junit5) for Testing.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -57,7 +60,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -65,10 +68,10 @@ Given below is a quick overview of main components and how they interact with ea
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#UI): The UI of the App.
+* [**`Logic`**](#Logic): The command executor.
+* [**`Model`**](#Model): Holds the data of the App in memory.
+* [**`Storage`**](#Storage): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
@@ -90,13 +93,13 @@ The sections below give more details of each component.
 
 ### <a id="UI"></a>3.2. UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `AppointmentListPanel`, `InsuranceListPanel`, `RecordListPanel`, `ExpiredRecordPanel`, `ObejctDetailedPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -111,7 +114,7 @@ The `UI` component,
 
 ### <a id="Logic"></a>3.3. Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2122S2-CS2103-F09-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -433,7 +436,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` to show the appointm
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage clients and appointments faster than a typical mouse/GUI driven app
+**Value proposition**: manage clients, insurances, records and appointments faster than a typical mouse/GUI driven app
 
 
 ### <a id="userStories"></a>User stories
@@ -570,10 +573,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### <a id="Non-Functional"></a>Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  No network connection needed.
+1. Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 clients without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. No network connection needed.
+5. The source code should be open source.
+6. The user interface should be intuitive enough for users who are not IT-savvy.
 
 
 ### <a id="Glossary"></a>Glossary
@@ -691,6 +696,17 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
+
+## <a id="effort"></a>Effort
+
+* **Difficulty level:** This project enhanced the current [AB3](https://github.com/se-edu/addressbook-level3) implementation to make it a more complicated application that includes more data entities including `Insurance`, `Record`, and `Appointment`. By taking into account our targeted user group's requirements, attributes of the entities were carefully selected so that they work together to provide beneficial functionalities for insurance agents.
+
+* **Challenge faced:** 
+  * The GUI needed to be rearranged to fit our data display needs, problems including responsiveness of the GUI and the appropriate types of JAVAFX components to be used were our top concerns.
+  * To reduce coupling of different entities, we had to change/add internal structures and mechanisms such as parser to meet our needs.
+* **Achievements:** Most of the added functionalities have strong cohesion and low coupling, making them extensible for future modifications.
+* **Regarding reuse:** Added entities follow a similar structure as that used by `Person` in AB3, with modifications, which saved our efforts in maintaining consistency with the original AB3 as well as in creating the whole application structure.
+
    1. Test case: delete addressbook.json and launch the program <br>
       Expected: Sample data of clients will be populated. Details of the populated client shown in the objectListPanel
       
@@ -703,3 +719,4 @@ testers are expected to do more *exploratory* testing.
    1. Other test case for corrupted data files: corrupt appointmentbook.json by removing the `description` field from the data/ corrupt insurancebook.json by removing the `title` field from the data / corrupt record.json by removing the `startDate` field from the data <br>
       Expected: Similar to previous.
       
+
