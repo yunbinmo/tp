@@ -34,8 +34,11 @@ By: Team CS2103-F09-3  (Mo YunBin, Jessica Jacelyn, Koh Su En, Zheng ZiKang)
 
 ## <a id="Acknowledgements"></a>**1. Acknowledgements**
 
-* [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3)
-* [se-edu/addressbook-level4](https://github.com/se-edu/addressbook-level4)
+* This project is based on the [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3) created by the [SE-EDU initiative](https://se-education.org/).
+* The following libraries were also used in the Mr.Agent.
+  * [JavaFX](https://openjfx.io/) for the Graphical User Interface.
+  * [Jackson](https://github.com/FasterXML/jackson) for data-processing.
+  * [JUnit5](https://github.com/junit-team/junit5) for Testing.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -65,10 +68,10 @@ Given below is a quick overview of main components and how they interact with ea
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#UI): The UI of the App.
+* [**`Logic`**](#Logic): The command executor.
+* [**`Model`**](#Model): Holds the data of the App in memory.
+* [**`Storage`**](#Storage): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
