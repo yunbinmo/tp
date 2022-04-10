@@ -51,7 +51,7 @@ Given below are my contributions to the project.
 
 ## <a id="Codecontributed"></a>2. Code contributed
 * [Repo link](https://github.com/seksek13/tp)
-* [RepoSense link](https://ay2122s2-cs2103-f09-3.github.io/tp/team/seksek13.html)
+* [RepoSense link](https://nus-cs2103-ay2122s2.github.io/tp-dashboard/?search=seksek13&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other)
 * [Pull Request link](https://github.com/AY2122S2-CS2103-F09-3/tp/pulls?q=is%3Apr+is%3Aclosed+author%3Aseksek13)
 
 ## <a id="Projectmanagement"></a>3. Project Management
