@@ -52,7 +52,7 @@ Given below are my contributions to the project.
 
 ## <a id="existing"></a>**4. Enhancements to existing features**
   * Redesigned and improved the GUI interface (Pull requests [\#44](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/44), 
-  [\#46](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/46), [\#74](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/74)
+  [\#46](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/46), [\#74](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/74),
   [\#116](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/116))
   * Improved and extended the command syntax more user-friendly and to match project scenario. (Pull request [\#24](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/24))
   * Wrote additional tests for existing and new features to increase coverage 
