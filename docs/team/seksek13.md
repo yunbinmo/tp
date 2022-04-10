@@ -15,7 +15,7 @@ Mr. Agent is a desktop app for managing contacts, optimized for use via a Comman
 
 Given below are my contributions to the project.
 
-## <a id="NewFeatures"></a>**1. New Features**
+## <a id="NewFeature"></a>**1. New Features**
 * **New Feature**: Added the ability to add record commands that allows the user add new insurance record to specific client. (Pull requests [\#48](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/48/files) , [\#64](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/64/files))
   * What it does: allows the user add insurance record to client one at a time. 
   * Justification: This feature helps the target user (insurance agent) to keep track of each client's insurance bought by adding them to the app.
