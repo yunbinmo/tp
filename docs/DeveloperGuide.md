@@ -712,7 +712,6 @@ testers are expected to do more *exploratory* testing.
 ## <a id="effort"></a>Effort
 
 * **Difficulty level:** This project enhanced the current [AB3](https://github.com/se-edu/addressbook-level3) implementation to make it a more complicated application that includes more data entities including `Insurance`, `Record`, and `Appointment`. By taking into account our targeted user group's requirements, attributes of the entities were carefully selected so that they work together to provide beneficial functionalities for insurance agents.
-
 * **Challenge faced:** 
   * The GUI needed to be rearranged to fit our data display needs, problems including responsiveness of the GUI and the appropriate types of JAVAFX components to be used were our top concerns.
   * To reduce coupling of different entities, we had to change/add internal structures and mechanisms such as parser to meet our needs.
