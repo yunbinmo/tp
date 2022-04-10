@@ -48,7 +48,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## <a id="Settingup"></a>**3. Design**
+## <a id="Design"></a>**3. Design**
 
 ### <a id="Architecture"></a>3.1. Architecture
 
@@ -179,7 +179,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **4. Implementation**
+## <a id="Implementation"></a>**4. Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -413,7 +413,7 @@ Step 5. `MainWindow` will update the `AppointmentListPanel` to show the appointm
 
 --------------------------------------------------------------------------------------------------------------------
 
-## <a id="doc"></a>**5. Documentation, logging, testing, configuration, dev-ops**
+## <a id="Documentation"></a>**5. Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -474,7 +474,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### <a id="usecases"></a>Use cases
 
-(For all use cases below, the **System** is the `Mr Agent` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Mr Agent` and the **Actor** is the `user`, unless specified otherwise. The other functionalities, including `Insurance`, `Record`, `Appointment` follow similar flows as client, therefore, the related use cases are omitted here.)
 
 **Use case: Add a client**
 
