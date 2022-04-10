@@ -3,7 +3,7 @@ layout: page
 title: Zheng ZiKang's Project Portfolio Page
 ---
 
-- [1. New Feature](#NewFeature)
+- [1. New Feature](#NewFeatures)
 - [2. Code contributed](#Codecontributed)
 - [3. Project management](#Projectmanagement)
 - [4. Enhancements to existing features](#existing)
@@ -30,9 +30,6 @@ Given below are my contributions to the project.
   * What it does: allows users to sort the records list in ascending/descending order by start/end date.
   * Justification: Record are usually time-sensitive, it is important to provide a quick way for user to prioritize and visualize almost expired records or newest records.
   * Highlights: This enhancement is implemented such that more sorting options could be made available easily with minor modification, if any ordering of the list is deemed to be meaningful for the users. For example, sort records between certain period.
- 
-* **New Feature**: Added clear command that allows the user to clear all the data (AddressBook, RecordBook, InsuranceBook and AppointmentBook).
- (Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
     
 ## <a id="Codecontributed"></a>**2. Code contributed**
 * [Repo link](https://github.com/zzkzzzz/tp)
@@ -43,7 +40,6 @@ Given below are my contributions to the project.
 ## <a id="Projectmanagement"></a>**3. Project management**
   * Maintained repo Pull Requests and Issue Tracker in GitHub.
   * Managed releases `v1.3` - `v1.5` (3 releases) on GitHub.
-  * Hosted weekly team meeting
   * Setting up the GitHub team org/repo
   * Formatted user/developer docs and added table of contents
   * Helped team members to debug
@@ -77,8 +73,6 @@ Given below are my contributions to the project.
     * Added user stories for the insurances feature
     (Pull request [\#98](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/98))
    
-
-  
 ## <a id="Community"></a>**6. Community**
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#45](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/45), [\#89](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/89),  [\#90](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/90), [\#203](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/203)
