@@ -60,15 +60,15 @@ Given below are my contributions to the project.
   * Helped to test and debug other components of the application
 
 ## <a id="Enhancement"></a>4. Enhancements to existing features
-    * Updated the GUI color scheme and design (Pull requests [\#137](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/137), [\#138](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/138))
-    * Wrote additional tests for existing features to increase coverage from 51.64% to 52.59% (Pull requests [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/99))
+  * Updated the GUI color scheme and design (Pull requests [\#137](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/137), [\#138](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/138))
+  * Wrote additional tests for existing features to increase coverage from 51.64% to 52.59% (Pull requests [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/99))
 
 ## <a id="Documentation"></a>**5. Documentation**
-    * User Guide:
-        * Added documentation for the record features, including list/add/delete/find/edit `Record` command (Pull requests [\#117](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/117), [\#196](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/196))
-    * Developer Guide:
-        * Added user stories for the record feature. (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files))
-        * Updated implementation details of the `UI`, `Logic` and `Record` component (Pull requests https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files)[\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files) ,[\#109](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/109/files))
-        * Added implementation details of the `add record` feature. (Pull requests [\#103]()
-        * Added manual testing instructions (Pull request [\#230](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/230))
+  * User Guide:
+    * Added documentation for the record features, including list/add/delete/find/edit `Record` command (Pull requests [\#117](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/117), [\#196](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/196))
+  * Developer Guide:
+      * Added user stories for the record feature. (Pull requests [\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files))
+      * Updated implementation details of the `UI`, `Logic` and `Record` component (Pull requests https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files)[\#103](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/103/files) ,[\#109](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/109/files))
+      * Added implementation details of the `add record` feature. (Pull requests [\#103]()
+      * Added manual testing instructions (Pull request [\#230](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/230))
 
