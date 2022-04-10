@@ -21,7 +21,7 @@ Given below are my contributions to the project.
 (Pull requests [\#29](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/29), 
 [\#35](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/35), [\#36](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/36), 
 [\#44](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/44), [\#74](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/74))
-  * What it does: allows the target users (insurance agents) to manage their insurances on the app by saving/editing insurance details including title and price.
+  * What it does: allows the target users (insurance agents) to manage their insurances on the app by saving/editing/deleting insurance details including title and price.
   * Justification: This feature makes the product much more complete because insurance is an important part for insurance agents to memorize all the details.
   * Highlights: This enhancement is made extensible such that it is easy to add more attributes to describe an insurance if necessary, which does not require massive change to the code base.
 
@@ -30,6 +30,9 @@ Given below are my contributions to the project.
   * What it does: allows users to sort the records list in ascending/descending order by start/end date.
   * Justification: Record are usually time-sensitive, it is important to provide a quick way for user to prioritize and visualize almost expired records or newest records.
   * Highlights: This enhancement is implemented such that more sorting options could be made available easily with minor modification, if any ordering of the list is deemed to be meaningful for the users. For example, sort records between certain period.
+
+* **New Feature**: Added clear command that allows the user to clear all the data (AddressBook, RecordBook, InsuranceBook and AppointmentBook).
+ (Pull requests [\#83](https://github.com/AY2122S2-CS2103-F09-3/tp/pull/83))
     
 ## <a id="Codecontributed"></a>**2. Code contributed**
 * [Repo link](https://github.com/zzkzzzz/tp)
@@ -43,6 +46,7 @@ Given below are my contributions to the project.
   * Setting up the GitHub team org/repo
   * Formatted user/developer docs and added table of contents
   * Helped team members to debug
+  * Hosted Weekly meeting
   * Helped team to improve code style and quality
   * Set up and update project track [documentation](https://docs.google.com/document/d/1YnxPw8cAvkEcVgljEb4Ux5qUX_KnXIDYhm5BC7UsAq8/edit?usp=sharing)
 
